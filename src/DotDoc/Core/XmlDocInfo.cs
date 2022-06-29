@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace DotDoc.Core
 {
-    public class DotDocEngineOptions
+    internal class XmlDocInfo
     {
-        public string? InputFileName { get; init; }
-
-        public IEnumerable<string>? ExcludeIdPatterns { get; init; }
     }
 }
