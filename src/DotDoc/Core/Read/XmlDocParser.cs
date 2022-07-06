@@ -9,7 +9,7 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
 
-namespace DotDoc.Core
+namespace DotDoc.Core.Read
 {
     internal static class XmlDocParser
     {
@@ -27,27 +27,27 @@ namespace DotDoc.Core
                 return null;
             }
             var nav = xdoc.CreateNavigator();
-            
+
             var result = new XmlDocInfo()
             {
                 RawXml = xmlText,
                 Summary = GetNodeValue(nav, "/member/summary")?.Trim(),
                 Remarks = GetNodeValue(nav, "/member/remarks")?.Trim(),
                 Example = GetNodeValue(nav, "/member/example")?.Trim(),
-                Value =  GetNodeValue(nav, "/member/value")?.Trim(),
-                Returns =  GetNodeValue(nav, "/member/returns")?.Trim(),
+                Value = GetNodeValue(nav, "/member/value")?.Trim(),
+                Returns = GetNodeValue(nav, "/member/returns")?.Trim(),
             };
-            
+
             return result;
-        } 
-        
+        }
+
         private static string? GetNodeValue(XPathNavigator nav, string path)
         {
             var nodeNav = nav.SelectSingleNode(path);
             if (nodeNav is null) return null;
             return GetInnerXml(nodeNav);
         }
- 
+
         private static string GetInnerXml(XPathNavigator node)
         {
             using var sw = new StringWriter(CultureInfo.InvariantCulture);

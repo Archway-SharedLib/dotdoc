@@ -11,5 +11,7 @@ namespace DotDoc.Core
         public string? InputFileName { get; init; }
 
         public IEnumerable<string>? ExcludeIdPatterns { get; init; }
+
+        public string? OutputDir { get; set; }
     }
 }

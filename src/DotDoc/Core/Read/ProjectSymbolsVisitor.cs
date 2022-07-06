@@ -1,6 +1,6 @@
 using Microsoft.CodeAnalysis;
 
-namespace DotDoc.Core;
+namespace DotDoc.Core.Read;
 
 public class ProjectSymbolsVisitor : SymbolVisitor<DocItem>
 {
@@ -21,6 +21,7 @@ public class ProjectSymbolsVisitor : SymbolVisitor<DocItem>
         {
             Id = id,
             Name = symbol.Name,
+            DisplayName = symbol.Name,
             XmlDocInfo = XmlDocParser.Parse(symbol.GetDocumentationCommentXml())
         };
 
@@ -41,6 +42,7 @@ public class ProjectSymbolsVisitor : SymbolVisitor<DocItem>
         {
             Id = id,
             Name = symbol.Name,
+            DisplayName = symbol.Name,
             AssemblyId = VisitorUtil.GetSymbolId(symbol.ContainingAssembly),
             XmlDocInfo = XmlDocParser.Parse(symbol.GetDocumentationCommentXml())
         };
@@ -58,13 +60,13 @@ public class ProjectSymbolsVisitor : SymbolVisitor<DocItem>
         var id = VisitorUtil.GetSymbolId(symbol);
         if (_filter.Exclude(symbol, id)) return null;
 
-        var item = new TypeDocItem()
-        {
-            Id = id,
-            Name = symbol.Name,
-            NamespaceId = VisitorUtil.GetSymbolId(symbol.ContainingNamespace),
-            XmlDocInfo = XmlDocParser.Parse(symbol.GetDocumentationCommentXml())
-        };
+        var item = CreateTypedTypeDocItem(symbol);
+        if (item is null) return null;
+        item.Id = id;
+        item.Name = symbol.Name;
+        item.DisplayName = symbol.ToString().Substring(symbol.ContainingNamespace.Name.Length + 1);
+        item.NamespaceId = VisitorUtil.GetSymbolId(symbol.ContainingNamespace);
+        item.XmlDocInfo = XmlDocParser.Parse(symbol.GetDocumentationCommentXml());
 
         item.Members = new();
         foreach (var member in symbol.GetMembers().Where(s => !(s is INamedTypeSymbol)))
@@ -78,6 +80,16 @@ public class ProjectSymbolsVisitor : SymbolVisitor<DocItem>
         return item;
     }
 
+    private TypeDocItem? CreateTypedTypeDocItem(INamedTypeSymbol symbol)
+    {
+        if (symbol.TypeKind == TypeKind.Class) return new ClassDocItem();
+        if (symbol.TypeKind == TypeKind.Interface) return new ClassDocItem();
+        if (symbol.TypeKind == TypeKind.Enum) return new EnumDocItem();
+        if (symbol.TypeKind == TypeKind.Struct) return new StructDocItem();
+
+        return null;
+    }
+
     public override DocItem? VisitField(IFieldSymbol symbol)
     {
         var id = VisitorUtil.GetSymbolId(symbol);
@@ -87,6 +99,7 @@ public class ProjectSymbolsVisitor : SymbolVisitor<DocItem>
         {
             Id = id,
             Name = symbol.Name,
+            DisplayName = symbol.Name,
             TypeId = VisitorUtil.GetSymbolId(symbol.ContainingType),
             XmlDocInfo = XmlDocParser.Parse(symbol.GetDocumentationCommentXml())
         };
@@ -103,6 +116,7 @@ public class ProjectSymbolsVisitor : SymbolVisitor<DocItem>
         {
             Id = id,
             Name = symbol.Name,
+            DisplayName = symbol.Name,
             TypeId = VisitorUtil.GetSymbolId(symbol.ContainingType),
             XmlDocInfo = XmlDocParser.Parse(symbol.GetDocumentationCommentXml())
         };
@@ -127,6 +141,7 @@ public class ProjectSymbolsVisitor : SymbolVisitor<DocItem>
         {
             Id = id,
             Name = symbol.Name,
+            DisplayName = symbol.Name,
             TypeId = VisitorUtil.GetSymbolId(symbol.ContainingType),
             XmlDocInfo = XmlDocParser.Parse(symbol.GetDocumentationCommentXml())
         };
@@ -143,6 +158,7 @@ public class ProjectSymbolsVisitor : SymbolVisitor<DocItem>
         {
             Id = id,
             Name = symbol.Name,
+            DisplayName = symbol.Name,
             TypeId = VisitorUtil.GetSymbolId(symbol.ContainingType),
             XmlDocInfo = XmlDocParser.Parse(symbol.GetDocumentationCommentXml())
         };
@@ -164,7 +180,7 @@ public class ProjectSymbolsVisitor : SymbolVisitor<DocItem>
             {
                 result.Add(item);
             }
-           
+
             foreach (var m in getChildren(child).Reverse())
             {
                 stack.Push(m);

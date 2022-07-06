@@ -6,12 +6,12 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace DotDoc.Core
+namespace DotDoc.Core.Read
 {
     internal class DefaultFilter : IFilter
     {
         private readonly List<Regex> _excludeIdRegexs;
-        
+
         public DefaultFilter(IEnumerable<string>? excludeIdPatters)
         {
             _excludeIdRegexs = (excludeIdPatters ?? Enumerable.Empty<string>())
@@ -26,7 +26,7 @@ namespace DotDoc.Core
         {
             if (_excludeIdRegexs.Any(r => r.IsMatch(id))) return true;
 
-            if(symbol is IAssemblySymbol)
+            if (symbol is IAssemblySymbol)
             {
                 return false;
             }

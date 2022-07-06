@@ -2,18 +2,22 @@
 
 using DotDoc;
 using DotDoc.Core;
+using DotDoc.Core.Read;
 
 const string InputFile = "../../../../../dotdoc.sample.sln";
 
 var engine = new DotDocEngine(new ConsoleLogger());
-var docItems = await engine.ExecuteAsync(new DotDocEngineOptions()
+var options = new DotDocEngineOptions()
 {
     InputFileName = InputFile,
-    ExcludeIdPatterns = new string[] 
+    ExcludeIdPatterns = new string[]
     {
         "N:SampleLib.Ns1.ExcludeDir"
-    }
-});
+    },
+    OutputDir = "Output"
+};
+
+var docItems = await engine.ReadAsync(options);
 
 foreach(var aItem in docItems.OfType<AssemblyDocItem>())
 {
@@ -33,3 +37,4 @@ foreach(var aItem in docItems.OfType<AssemblyDocItem>())
     }
 }
 
+await engine.WriteAsync(docItems, options);

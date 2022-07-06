@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DotDoc.Core
+namespace DotDoc.Core.Read
 {
     public interface IFilter
     {

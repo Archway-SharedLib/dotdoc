@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DotDoc.Core.Read;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,9 @@ namespace DotDoc.Core
         public string? Id { get; set; }
 
         public string? Name { get; set; }
-        
+
+        public string? DisplayName { get; set; }
+
         public XmlDocInfo? XmlDocInfo { get; set; }
 
     }
@@ -33,6 +36,22 @@ namespace DotDoc.Core
         public List<MemberDocItem>? Members { get; set; }
 
         public string? NamespaceId { get; set; }
+    }
+
+    public class ClassDocItem : TypeDocItem
+    {
+    }
+
+    public class InterfaceDocItem : TypeDocItem
+    {
+    }
+
+    public class EnumDocItem : TypeDocItem
+    {
+    }
+
+    public class StructDocItem : TypeDocItem
+    {
     }
 
     public abstract class MemberDocItem : DocItem

@@ -6,3 +6,5 @@ obj/
 .idea/
 
 .DS_Store
+
+docfx/docfx.console

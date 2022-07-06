@@ -1,4 +1,6 @@
-﻿using Microsoft.Build.Locator;
+﻿using DotDoc.Core.Read;
+using DotDoc.Core.Write;
+using Microsoft.Build.Locator;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.MSBuild;
 
@@ -13,14 +15,14 @@ public class DotDocEngine
         this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
 
-    public async Task<IEnumerable<DocItem>> ExecuteAsync(DotDocEngineOptions options)
+    public async Task<IEnumerable<DocItem>> ReadAsync(DotDocEngineOptions options)
     {
         if (options is null)
         {
             throw new ArgumentNullException(nameof(options));
         }
-        if (!ValidateOptions(options)) return Enumerable.Empty<DocItem>();
-        
+        if (!ValidateReadOptions(options)) return Enumerable.Empty<DocItem>();
+
         MSBuildLocator.RegisterDefaults();
         var workspace = MSBuildWorkspace.Create();
         if (options.InputFileName!.EndsWith(Constants.SolutionFileExtension))
@@ -34,6 +36,26 @@ public class DotDocEngine
         }
     }
 
+    public async Task WriteAsync(IEnumerable<DocItem> docItems, DotDocEngineOptions options)
+    {
+        if (docItems is null)
+        {
+            throw new ArgumentNullException(nameof(docItems));
+        }
+
+        if (options is null)
+        {
+            throw new ArgumentNullException(nameof(options));
+        }
+        if (!ValidateWriteOptions(options)) return;
+
+        var dirInfo = new DirectoryInfo(options.OutputDir);
+        if(!dirInfo.Exists) dirInfo.Create();
+
+        var writer = new AdoWikiWriter(options);
+        await writer.WriteAsync(docItems);
+    }
+
     private async Task<IEnumerable<DocItem>> ReadSolutionFile(MSBuildWorkspace workspace, DotDocEngineOptions options)
     {
         var solution = await workspace.OpenSolutionAsync(options.InputFileName!);
@@ -41,14 +63,14 @@ public class DotDocEngine
         foreach (var proj in solution.Projects)
         {
             var result = await ReadProject(proj, options);
-            if(result is not null)
+            if (result is not null)
             {
                 results.Add(result);
             }
         }
         return results;
     }
-    
+
     private async Task<DocItem?> ReadProjectFile(MSBuildWorkspace workspace, DotDocEngineOptions options)
     {
         var proj = await workspace.OpenProjectAsync(options.InputFileName!);
@@ -62,9 +84,8 @@ public class DotDocEngine
 
         return compilation.Assembly.Accept(new ProjectSymbolsVisitor(new DefaultFilter(options.ExcludeIdPatterns)));
     }
-    
 
-    private bool ValidateOptions(DotDocEngineOptions optins)
+    private bool ValidateReadOptions(DotDocEngineOptions optins)
     {
         if (string.IsNullOrWhiteSpace(optins.InputFileName))
         {
@@ -84,6 +105,16 @@ public class DotDocEngine
             return false;
         }
 
+        return true;
+    }
+
+    private bool ValidateWriteOptions(DotDocEngineOptions optins)
+    {
+        if (string.IsNullOrWhiteSpace(optins.OutputDir))
+        {
+            logger.Error($"出力ディレクトリが指定されていません。 {optins.OutputDir}");
+            return false;
+        }
         return true;
     }
 }
