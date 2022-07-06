@@ -21,6 +21,7 @@ public class ProjectSymbolsVisitor : SymbolVisitor<DocItem>
         {
             Id = id,
             Name = symbol.Name,
+            XmlDocInfo = XmlDocParser.Parse(symbol.GetDocumentationCommentXml())
         };
 
         item.Namespaces = VisitDescendants(
@@ -40,7 +41,8 @@ public class ProjectSymbolsVisitor : SymbolVisitor<DocItem>
         {
             Id = id,
             Name = symbol.Name,
-            AssemblyId = VisitorUtil.GetSymbolId(symbol.ContainingAssembly)
+            AssemblyId = VisitorUtil.GetSymbolId(symbol.ContainingAssembly),
+            XmlDocInfo = XmlDocParser.Parse(symbol.GetDocumentationCommentXml())
         };
 
         item.Types = VisitDescendants(
@@ -60,7 +62,8 @@ public class ProjectSymbolsVisitor : SymbolVisitor<DocItem>
         {
             Id = id,
             Name = symbol.Name,
-            NamespaceId = VisitorUtil.GetSymbolId(symbol.ContainingNamespace)
+            NamespaceId = VisitorUtil.GetSymbolId(symbol.ContainingNamespace),
+            XmlDocInfo = XmlDocParser.Parse(symbol.GetDocumentationCommentXml())
         };
 
         item.Members = new();
@@ -84,7 +87,8 @@ public class ProjectSymbolsVisitor : SymbolVisitor<DocItem>
         {
             Id = id,
             Name = symbol.Name,
-            TypeId = VisitorUtil.GetSymbolId(symbol.ContainingType)
+            TypeId = VisitorUtil.GetSymbolId(symbol.ContainingType),
+            XmlDocInfo = XmlDocParser.Parse(symbol.GetDocumentationCommentXml())
         };
 
         return item;
@@ -99,7 +103,8 @@ public class ProjectSymbolsVisitor : SymbolVisitor<DocItem>
         {
             Id = id,
             Name = symbol.Name,
-            TypeId = VisitorUtil.GetSymbolId(symbol.ContainingType)
+            TypeId = VisitorUtil.GetSymbolId(symbol.ContainingType),
+            XmlDocInfo = XmlDocParser.Parse(symbol.GetDocumentationCommentXml())
         };
 
         return item;
@@ -122,7 +127,8 @@ public class ProjectSymbolsVisitor : SymbolVisitor<DocItem>
         {
             Id = id,
             Name = symbol.Name,
-            TypeId = VisitorUtil.GetSymbolId(symbol.ContainingType)
+            TypeId = VisitorUtil.GetSymbolId(symbol.ContainingType),
+            XmlDocInfo = XmlDocParser.Parse(symbol.GetDocumentationCommentXml())
         };
 
         return item;
@@ -137,9 +143,9 @@ public class ProjectSymbolsVisitor : SymbolVisitor<DocItem>
         {
             Id = id,
             Name = symbol.Name,
-            TypeId = VisitorUtil.GetSymbolId(symbol.ContainingType)
+            TypeId = VisitorUtil.GetSymbolId(symbol.ContainingType),
+            XmlDocInfo = XmlDocParser.Parse(symbol.GetDocumentationCommentXml())
         };
-
         return item;
     }
 

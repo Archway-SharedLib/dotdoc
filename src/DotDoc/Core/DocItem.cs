@@ -11,6 +11,8 @@ namespace DotDoc.Core
         public string? Id { get; set; }
 
         public string? Name { get; set; }
+        
+        public XmlDocInfo? XmlDocInfo { get; set; }
 
     }
 

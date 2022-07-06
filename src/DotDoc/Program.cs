@@ -17,17 +17,17 @@ var docItems = await engine.ExecuteAsync(new DotDocEngineOptions()
 
 foreach(var aItem in docItems.OfType<AssemblyDocItem>())
 {
-    Console.WriteLine($"{aItem.Id} : {aItem.Name}");
+    Console.WriteLine($"{aItem.Id} : {aItem.Name} [{aItem.XmlDocInfo?.Summary}]");
     foreach(var nItem in aItem.Namespaces ?? Enumerable.Empty<NamespaceDocItem>())
     {
-        Console.WriteLine($"  {nItem.Id} : {nItem.Name}");
+        Console.WriteLine($"  {nItem.Id} : {nItem.Name} [{nItem.XmlDocInfo?.Summary}]");
         foreach (var tItem in nItem.Types ?? Enumerable.Empty<TypeDocItem>())
         {
-            Console.WriteLine($"    {tItem.Id} : {tItem.Name}");
+            Console.WriteLine($"    {tItem.Id} : {tItem.Name} [{tItem.XmlDocInfo?.Summary}]");
 
             foreach (var mItem in tItem.Members ?? Enumerable.Empty<MemberDocItem>())
             {
-                Console.WriteLine($"      {mItem.Id} : {mItem.Name}");
+                Console.WriteLine($"      {mItem.Id} : {mItem.Name} [{mItem.XmlDocInfo?.Summary}]");
             }
         }
     }
