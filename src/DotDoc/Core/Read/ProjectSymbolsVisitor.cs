@@ -86,6 +86,7 @@ public class ProjectSymbolsVisitor : SymbolVisitor<DocItem>
         if (symbol.TypeKind == TypeKind.Interface) return new ClassDocItem();
         if (symbol.TypeKind == TypeKind.Enum) return new EnumDocItem();
         if (symbol.TypeKind == TypeKind.Struct) return new StructDocItem();
+        if (symbol.TypeKind == TypeKind.Delegate) return new DelegateDocItem();
 
         return null;
     }

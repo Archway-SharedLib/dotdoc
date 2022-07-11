@@ -64,6 +64,10 @@ namespace DotDoc.Core
     {
     }
 
+    public class DelegateDocItem : TypeDocItem
+    {
+    }
+
     public abstract class MemberDocItem : DocItem
     {
         public string? TypeId { get; set; }

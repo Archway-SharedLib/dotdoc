@@ -41,16 +41,19 @@ namespace DotDoc.Core.Write
             var nsDir = rootDir.CreateSubdirectory(safeName);
 
             var sb = new StringBuilder();
-            sb.AppendLine($"# Namespace {nsDocItem.DisplayName}").AppendLine();
+            sb.AppendLine($"# {nsDocItem.DisplayName} Namespace").AppendLine();
             sb.AppendLine($"assembly: {_textTransform.EscapeMdText(assemDocItem.DisplayName)}").AppendLine();
 
             AppendTypeListMd<ClassDocItem>("Classes", nsDocItem, sb);
             sb.AppendLine();
-            AppendTypeListMd<InterfaceDocItem>("Interfaces", nsDocItem, sb);
-            sb.AppendLine();
             AppendTypeListMd<StructDocItem>("Structs", nsDocItem, sb);
             sb.AppendLine();
+            AppendTypeListMd<InterfaceDocItem>("Interfaces", nsDocItem, sb);
+            sb.AppendLine();
             AppendTypeListMd<EnumDocItem>("Enums", nsDocItem, sb);
+            sb.AppendLine();
+            AppendTypeListMd<DelegateDocItem>("Delegates", nsDocItem, sb);
+
 
             await File.WriteAllTextAsync(Path.Combine(rootDir.FullName, safeName + ".md"), sb.ToString(), Encoding.UTF8);
             
@@ -63,7 +66,7 @@ namespace DotDoc.Core.Write
         private async Task WriteTypeAsync(DirectoryInfo nsDir, NamespaceDocItem nsDocItem, TypeDocItem typeDocItem)
         {
             var sb = new StringBuilder();
-            sb.AppendLine($"# {GetTypeTypeName(typeDocItem)} {typeDocItem.DisplayName}").AppendLine();
+            sb.AppendLine($"# {typeDocItem.DisplayName} {GetTypeTypeName(typeDocItem)}").AppendLine();
 
             sb.AppendLine($"namespace: [{_textTransform.EscapeMdText(nsDocItem.DisplayName)}]({GetRelativeLink(typeDocItem, nsDocItem)})<br />");
             sb.AppendLine($"assembly: {_textTransform.EscapeMdText(_flatItems[typeDocItem.AssemblyId]?.DisplayName)}").AppendLine();
