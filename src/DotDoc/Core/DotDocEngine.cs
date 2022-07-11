@@ -52,8 +52,8 @@ public class DotDocEngine
         var dirInfo = new DirectoryInfo(options.OutputDir);
         if(!dirInfo.Exists) dirInfo.Create();
 
-        var writer = new AdoWikiWriter(options);
-        await writer.WriteAsync(docItems);
+        var writer = new AdoWikiWriter(docItems, options);
+        await writer.WriteAsync();
     }
 
     private async Task<IEnumerable<DocItem>> ReadSolutionFile(MSBuildWorkspace workspace, DotDocEngineOptions options)

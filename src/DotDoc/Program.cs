@@ -1,23 +1,25 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using System.Diagnostics.CodeAnalysis;
+using System.Text.RegularExpressions;
 using DotDoc;
 using DotDoc.Core;
 using DotDoc.Core.Read;
 
-const string InputFile = "../../../../../dotdoc.sample.sln";
+const string inputFile = "../../../../../dotdoc.sample.sln";
 
 var engine = new DotDocEngine(new ConsoleLogger());
 var options = new DotDocEngineOptions()
 {
-    InputFileName = InputFile,
-    ExcludeIdPatterns = new string[]
+    InputFileName = inputFile,
+    ExcludeIdPatterns = new []
     {
         "N:SampleLib.Ns1.ExcludeDir"
     },
     OutputDir = "Output"
 };
 
-var docItems = await engine.ReadAsync(options);
+var docItems = (await engine.ReadAsync(options)).ToList();
 
 foreach(var aItem in docItems.OfType<AssemblyDocItem>())
 {

@@ -10,8 +10,7 @@ public class ProjectSymbolsVisitor : SymbolVisitor<DocItem>
     {
         _filter = filter;
     }
-
-
+    
     public override DocItem? VisitAssembly(IAssemblySymbol symbol)
     {
         var id = VisitorUtil.GetSymbolId(symbol);
@@ -64,9 +63,10 @@ public class ProjectSymbolsVisitor : SymbolVisitor<DocItem>
         if (item is null) return null;
         item.Id = id;
         item.Name = symbol.Name;
-        item.DisplayName = symbol.ToString().Substring(symbol.ContainingNamespace.Name.Length + 1);
+        item.DisplayName = symbol.ToDisplayString().Substring(symbol.ContainingNamespace.ToDisplayString().Length + 1);
         item.NamespaceId = VisitorUtil.GetSymbolId(symbol.ContainingNamespace);
         item.XmlDocInfo = XmlDocParser.Parse(symbol.GetDocumentationCommentXml());
+        item.AssemblyId = VisitorUtil.GetSymbolId(symbol.ContainingAssembly);
 
         item.Members = new();
         foreach (var member in symbol.GetMembers().Where(s => !(s is INamedTypeSymbol)))
@@ -99,7 +99,7 @@ public class ProjectSymbolsVisitor : SymbolVisitor<DocItem>
         {
             Id = id,
             Name = symbol.Name,
-            DisplayName = symbol.Name,
+            DisplayName = symbol.ToDisplayString().Substring(symbol.ContainingType.ToDisplayString().Length + 1),
             TypeId = VisitorUtil.GetSymbolId(symbol.ContainingType),
             XmlDocInfo = XmlDocParser.Parse(symbol.GetDocumentationCommentXml())
         };
@@ -116,7 +116,7 @@ public class ProjectSymbolsVisitor : SymbolVisitor<DocItem>
         {
             Id = id,
             Name = symbol.Name,
-            DisplayName = symbol.Name,
+            DisplayName = symbol.ToDisplayString().Substring(symbol.ContainingType.ToDisplayString().Length + 1),
             TypeId = VisitorUtil.GetSymbolId(symbol.ContainingType),
             XmlDocInfo = XmlDocParser.Parse(symbol.GetDocumentationCommentXml())
         };
@@ -137,11 +137,13 @@ public class ProjectSymbolsVisitor : SymbolVisitor<DocItem>
             MethodKind.EventRemove or
             MethodKind.EventRaise) return null;
 
+        // if (symbol.IsImplicitConstructor()) return null;
+        
         var item = new MethodDocItem()
         {
             Id = id,
             Name = symbol.Name,
-            DisplayName = symbol.Name,
+            DisplayName = symbol.ToDisplayString().Substring(symbol.ContainingType.ToDisplayString().Length + 1),
             TypeId = VisitorUtil.GetSymbolId(symbol.ContainingType),
             XmlDocInfo = XmlDocParser.Parse(symbol.GetDocumentationCommentXml())
         };

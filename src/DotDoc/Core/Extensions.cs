@@ -8,7 +8,7 @@ namespace DotDoc.Core
 {
     internal static class Extensions
     {
-        public static IEnumerable<TItem> OrEmpty<TItem>(this IEnumerable<TItem> source)
-            => source is null ? Enumerable.Empty<TItem>() : source;
+        public static IEnumerable<TItem> OrEmpty<TItem>(this IEnumerable<TItem>? source)
+            => source ?? Enumerable.Empty<TItem>();
     }
 }

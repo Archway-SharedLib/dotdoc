@@ -1,6 +1,8 @@
 bin/
 obj/
 
+.DotSettings.user
+
 .vs/
 .csproj.user
 .idea/

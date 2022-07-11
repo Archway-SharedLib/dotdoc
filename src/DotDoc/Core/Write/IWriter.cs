@@ -8,6 +8,6 @@ namespace DotDoc.Core.Write
 {
     internal interface IWriter
     {
-        Task WriteAsync(IEnumerable<DocItem> docItems);
+        Task WriteAsync();
     }
 }

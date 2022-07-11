@@ -17,11 +17,15 @@ namespace DotDoc.Core
 
         public XmlDocInfo? XmlDocInfo { get; set; }
 
+        public virtual IEnumerable<DocItem>? Items { get; } = Enumerable.Empty<DocItem>();
+
     }
 
     public class AssemblyDocItem : DocItem
     {
         public List<NamespaceDocItem>? Namespaces { get; set; }
+
+        public override IEnumerable<DocItem>? Items => Namespaces;
     }
 
     public class NamespaceDocItem : DocItem
@@ -29,13 +33,19 @@ namespace DotDoc.Core
         public List<TypeDocItem>? Types { get; set; }
 
         public string? AssemblyId { get; set; }
+        
+        public override IEnumerable<DocItem>? Items => Types;
     }
 
     public class TypeDocItem : DocItem
     {
         public List<MemberDocItem>? Members { get; set; }
 
+        public string? AssemblyId { get; set; }
+        
         public string? NamespaceId { get; set; }
+        
+        public override IEnumerable<DocItem>? Items => Members;
     }
 
     public class ClassDocItem : TypeDocItem
