@@ -16,29 +16,38 @@ internal class TextTransform
         _items = items ?? throw new ArgumentNullException(nameof(items));
         _fileSystemOperation = fileSystemOperation ?? throw new ArgumentNullException(nameof(fileSystemOperation));
     }
-    
-    public string ToMdText(DocItem rootItem, DocItem targetItem, Func<DocItem, string> getText, bool removeNewLine = false) => RemoveNewLineIf(toMdTextRegex.Replace(getText(targetItem) ?? string.Empty, m =>
-    {
-        var result = m.Value;
-        if (m.Groups["see"].Success)
-        {
-            var seecrefGroup = m.Groups["seecref"];
-            if (!seecrefGroup.Success) return result;
-            // TODO: touri
-            return ToMdLink(rootItem, seecrefGroup.Value);
-        }
-        return EscapeMdText(result);
-    }), removeNewLine);
 
-    private string RemoveNewLineIf(string text, bool removeNewLine)
+    public string ToMdText<T>(DocItem rootItem, T targetItem, Func<T, string> getText, bool removeNewLine = false) where T : DocItem
     {
-        return removeNewLine ? text.ReplaceLineEndings(" ") : text;
+        var text = TrimEachLine(getText(targetItem), removeNewLine);
+
+        return toMdTextRegex.Replace(text ?? string.Empty, m =>
+        {
+            var result = m.Value;
+            if (m.Groups["see"].Success)
+            {
+                var seecrefGroup = m.Groups["seecref"];
+                if (!seecrefGroup.Success) return result;
+                // TODO: touri
+                return ToMdLink(rootItem, seecrefGroup.Value);
+            }
+            return EscapeMdText(result);
+        });
+    }
+
+    private string TrimEachLine(string text, bool removeNewLine)
+    {
+        if (string.IsNullOrEmpty(text)) return text;
+        var trimedLines = text.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries).Select(t => t.Trim());
+        return string.Join(removeNewLine ? string.Empty : Environment.NewLine, trimedLines);
     }
     
-    public string EscapeMdText(string? text)
-        => (text ?? string.Empty)
-            .Replace("<", "\\<")
-            .Replace(">", "\\>");
+    public string EscapeMdText(string text)
+        => new[] { "*", "_", "\\", "`", "#", "+", "-", ".", "!", "{", "}", "[", "]", "(", ")" }.Aggregate(text, (curr, val) =>
+        {
+            var newText = curr ?? string.Empty;
+            return newText.Replace(val, "\\" + val);
+        });
 
     internal string ToMdLink(DocItem baseItem, string key)
     {

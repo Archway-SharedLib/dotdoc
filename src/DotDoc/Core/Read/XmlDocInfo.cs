@@ -8,7 +8,7 @@ namespace DotDoc.Core.Read
 {
     public class XmlDocInfo
     {
-        public string RawXml { get; set; }
+        public string? RawXml { get; set; }
 
         public string? Summary { get; set; }
 
@@ -19,5 +19,14 @@ namespace DotDoc.Core.Read
         public string? Value { get; set; }
 
         public string? Returns { get; set; }
+
+        public List<XmlDocParameterInfo>? Parameters { get; set; }
+    }
+
+    public class XmlDocParameterInfo
+    {
+        public string? Name { get; set; }
+
+        public string? Text { get; set; }
     }
 }

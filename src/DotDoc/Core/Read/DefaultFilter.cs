@@ -31,6 +31,9 @@ namespace DotDoc.Core.Read
                 return false;
             }
 
+            // コンパイラが生成したものは Exclude
+            if (symbol.IsImplicitlyDeclared) return true;
+
             if (symbol.DeclaredAccessibility is Accessibility.Public or Accessibility.Protected or Accessibility.ProtectedOrInternal)
             {
                 return false;

@@ -13,7 +13,7 @@ namespace SampleLib
     {
 
         /// <summary>
-        /// <see cref="WithInnerClass"/> のインナークラスです。
+        /// `<see cref="WithInnerClass"/>` のインナークラスです!
         /// </summary>
         public class InnerClass
         {

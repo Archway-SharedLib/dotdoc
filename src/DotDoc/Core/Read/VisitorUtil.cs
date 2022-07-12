@@ -9,8 +9,10 @@ namespace DotDoc.Core.Read
 {
     internal static class VisitorUtil
     {
-        public static string GetSymbolId(IAssemblySymbol symbol) => $"A:{symbol.Name}";
+        public static string GetSymbolId(IAssemblySymbol symbol) => $"{IdPrefix.Assembly}:{symbol.Name}";
 
         public static string GetSymbolId(ISymbol symbol) => symbol.GetDocumentationCommentId()!;
+
+        public static string GetSymbolId(IParameterSymbol symbol) => $"{IdPrefix.Parameter}:{symbol.ContainingSymbol.ToDisplayString()}+{symbol.Name}";
     }
 }

@@ -102,6 +102,8 @@ public class ProjectSymbolsVisitor : SymbolVisitor<DocItem>
             Name = symbol.Name,
             DisplayName = symbol.ToDisplayString().Substring(symbol.ContainingType.ToDisplayString().Length + 1),
             TypeId = VisitorUtil.GetSymbolId(symbol.ContainingType),
+            NamespaceId = VisitorUtil.GetSymbolId(symbol.ContainingNamespace),
+            AssemblyId = VisitorUtil.GetSymbolId(symbol.ContainingAssembly),
             XmlDocInfo = XmlDocParser.Parse(symbol.GetDocumentationCommentXml())
         };
 
@@ -119,6 +121,8 @@ public class ProjectSymbolsVisitor : SymbolVisitor<DocItem>
             Name = symbol.Name,
             DisplayName = symbol.ToDisplayString().Substring(symbol.ContainingType.ToDisplayString().Length + 1),
             TypeId = VisitorUtil.GetSymbolId(symbol.ContainingType),
+            NamespaceId = VisitorUtil.GetSymbolId(symbol.ContainingNamespace),
+            AssemblyId = VisitorUtil.GetSymbolId(symbol.ContainingAssembly),
             XmlDocInfo = XmlDocParser.Parse(symbol.GetDocumentationCommentXml())
         };
 
@@ -139,18 +143,58 @@ public class ProjectSymbolsVisitor : SymbolVisitor<DocItem>
             MethodKind.EventRaise) return null;
 
         // if (symbol.IsImplicitConstructor()) return null;
-        
-        var item = new MethodDocItem()
+
+        return symbol.MethodKind == MethodKind.Constructor ? VisitConstructor(symbol) : VisitPlaneMethod(symbol);
+    }
+
+    private DocItem VisitPlaneMethod(IMethodSymbol symbol)
+    {
+        var docInfo = XmlDocParser.Parse(symbol.GetDocumentationCommentXml());
+        return new MethodDocItem()
         {
-            Id = id,
+            Id = VisitorUtil.GetSymbolId(symbol),
             Name = symbol.Name,
             DisplayName = symbol.ToDisplayString().Substring(symbol.ContainingType.ToDisplayString().Length + 1),
             TypeId = VisitorUtil.GetSymbolId(symbol.ContainingType),
-            XmlDocInfo = XmlDocParser.Parse(symbol.GetDocumentationCommentXml())
+            NamespaceId = VisitorUtil.GetSymbolId(symbol.ContainingNamespace),
+            AssemblyId = VisitorUtil.GetSymbolId(symbol.ContainingAssembly),
+            XmlDocInfo = docInfo,
+            Parameters = RetrieveParameters(symbol, docInfo)
         };
-
-        return item;
     }
+
+    private DocItem VisitConstructor(IMethodSymbol symbol)
+    {
+        var docInfo = XmlDocParser.Parse(symbol.GetDocumentationCommentXml());
+        return new ConstructorDocItem()
+        {
+            Id = VisitorUtil.GetSymbolId(symbol),
+            Name = symbol.Name,
+            DisplayName = symbol.ToDisplayString().Substring(symbol.ContainingType.ToDisplayString().Length + 1),
+            TypeId = VisitorUtil.GetSymbolId(symbol.ContainingType),
+            NamespaceId = VisitorUtil.GetSymbolId(symbol.ContainingNamespace),
+            AssemblyId = VisitorUtil.GetSymbolId(symbol.ContainingAssembly),
+            XmlDocInfo = docInfo,
+            Parameters = RetrieveParameters(symbol, docInfo)
+        };
+    }
+
+    private List<ParameterDocItem> RetrieveParameters(IMethodSymbol symbol, XmlDocInfo docInfo)
+    {
+        return symbol.Parameters.Select(ps =>
+        {
+            return new ParameterDocItem()
+            {
+                Name = ps.Name,
+                Id = VisitorUtil.GetSymbolId(ps),
+                DisplayName = ps.Name,
+                TypeId = VisitorUtil.GetSymbolId(ps.Type),
+                TypeName = ps.Type.Name,
+                TypeDisplayName = ps.Type.ToDisplayString(),
+                XmlDocText = docInfo.Parameters.OrEmpty().FirstOrDefault(p => p.Name == ps.Name)?.Text
+            };
+        }).ToList();
+    } 
 
     public override DocItem? VisitEvent(IEventSymbol symbol)
     {
@@ -163,6 +207,8 @@ public class ProjectSymbolsVisitor : SymbolVisitor<DocItem>
             Name = symbol.Name,
             DisplayName = symbol.Name,
             TypeId = VisitorUtil.GetSymbolId(symbol.ContainingType),
+            NamespaceId = VisitorUtil.GetSymbolId(symbol.ContainingNamespace),
+            AssemblyId = VisitorUtil.GetSymbolId(symbol.ContainingAssembly),
             XmlDocInfo = XmlDocParser.Parse(symbol.GetDocumentationCommentXml())
         };
         return item;

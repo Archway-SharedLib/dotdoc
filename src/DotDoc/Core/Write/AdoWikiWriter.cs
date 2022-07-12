@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.Immutable;
-using System.Linq;
+﻿using System.Collections.Immutable;
 using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace DotDoc.Core.Write
 {
@@ -13,7 +8,7 @@ namespace DotDoc.Core.Write
         private readonly List<DocItem> _docItems;
         private readonly DotDocEngineOptions _options;
         private readonly TextTransform _textTransform;
-        private readonly ImmutableDictionary<string,DocItem> _flatItems;
+        private readonly ImmutableDictionary<string, DocItem> _flatItems;
 
         public AdoWikiWriter(IEnumerable<DocItem> docItems, DotDocEngineOptions options)
         {
@@ -26,9 +21,9 @@ namespace DotDoc.Core.Write
         public async Task WriteAsync()
         {
             var rootDir = new DirectoryInfo(_options.OutputDir);
-            foreach(var assemDocItem in _docItems.OfType<AssemblyDocItem>())
+            foreach (var assemDocItem in _docItems.OfType<AssemblyDocItem>())
             {
-                foreach(var nsDocItem in assemDocItem.Namespaces.OrEmpty())
+                foreach (var nsDocItem in assemDocItem.Namespaces.OrEmpty())
                 {
                     await WriteNamespaceAsync(rootDir, assemDocItem, nsDocItem);
                 }
@@ -38,10 +33,11 @@ namespace DotDoc.Core.Write
         private async Task WriteNamespaceAsync(DirectoryInfo rootDir, AssemblyDocItem assemDocItem, NamespaceDocItem nsDocItem)
         {
             var safeName = SafeFileOrDirectoryName(nsDocItem.DisplayName);
-            var nsDir = rootDir.CreateSubdirectory(safeName);
+            var nsDir = new DirectoryInfo(Path.Join(rootDir.FullName, safeName));
 
             var sb = new StringBuilder();
-            sb.AppendLine($"# {nsDocItem.DisplayName} Namespace").AppendLine();
+            AppendTitle(sb, "Namespace", nsDocItem.DisplayName);
+
             sb.AppendLine($"assembly: {_textTransform.EscapeMdText(assemDocItem.DisplayName)}").AppendLine();
 
             AppendTypeListMd<ClassDocItem>("Classes", nsDocItem, sb);
@@ -56,8 +52,8 @@ namespace DotDoc.Core.Write
 
 
             await File.WriteAllTextAsync(Path.Combine(rootDir.FullName, safeName + ".md"), sb.ToString(), Encoding.UTF8);
-            
-            foreach (var typeDocItem in nsDocItem.Types)
+
+            foreach (var typeDocItem in nsDocItem.Types.OrEmpty())
             {
                 await WriteTypeAsync(nsDir, nsDocItem, typeDocItem);
             }
@@ -65,14 +61,18 @@ namespace DotDoc.Core.Write
 
         private async Task WriteTypeAsync(DirectoryInfo nsDir, NamespaceDocItem nsDocItem, TypeDocItem typeDocItem)
         {
+            if (!nsDir.Exists) nsDir.Create();
+
             var sb = new StringBuilder();
-            sb.AppendLine($"# {typeDocItem.DisplayName} {GetTypeTypeName(typeDocItem)}").AppendLine();
+            AppendTitle(sb, GetTypeTypeName(typeDocItem), typeDocItem.DisplayName);
 
             sb.AppendLine($"namespace: [{_textTransform.EscapeMdText(nsDocItem.DisplayName)}]({GetRelativeLink(typeDocItem, nsDocItem)})<br />");
             sb.AppendLine($"assembly: {_textTransform.EscapeMdText(_flatItems[typeDocItem.AssemblyId]?.DisplayName)}").AppendLine();
 
             sb.AppendLine(_textTransform.ToMdText(typeDocItem, typeDocItem, t => t.XmlDocInfo?.Summary)).AppendLine();
-            
+
+            AppendMemberListMd<ConstructorDocItem>("Constructors", typeDocItem, sb);
+            sb.AppendLine();
             AppendMemberListMd<MethodDocItem>("Methods", typeDocItem, sb);
             sb.AppendLine();
             AppendMemberListMd<PropertyDocItem>("Properties", typeDocItem, sb);
@@ -80,11 +80,73 @@ namespace DotDoc.Core.Write
             AppendMemberListMd<FieldDocItem>("Fields", typeDocItem, sb);
             sb.AppendLine();
             AppendMemberListMd<EventDocItem>("Events", typeDocItem, sb);
-            
-            await File.WriteAllTextAsync(Path.Combine(nsDir.FullName, SafeFileOrDirectoryName(typeDocItem.DisplayName) + ".md"), sb.ToString(), Encoding.UTF8);
+
+            var typeDirOrFile = Path.Combine(nsDir.FullName, SafeFileOrDirectoryName(typeDocItem.DisplayName));
+            await File.WriteAllTextAsync(typeDirOrFile + ".md", sb.ToString(), Encoding.UTF8);
+            var typeDir = new DirectoryInfo(typeDirOrFile);
+
+            foreach (var memberDocItem in typeDocItem.Members.OrEmpty())
+            {
+                await WriteMemberAsync(typeDir, typeDocItem, memberDocItem);
+            }
         }
 
-        private string GetTypeTypeName(TypeDocItem docItem) => 
+        private async Task WriteMemberAsync(DirectoryInfo typeDir, TypeDocItem typeDocItem, MemberDocItem memberDocItem)
+        {
+            var sb = memberDocItem switch
+            {
+                ConstructorDocItem conDocItem => CreteConstructorPageText(typeDocItem, conDocItem),
+                _ => null
+            };
+            if (sb is null) return;
+
+            if (!typeDir.Exists) typeDir.Create();
+            await File.WriteAllTextAsync(Path.Combine(typeDir.FullName, SafeFileOrDirectoryName(memberDocItem.DisplayName)) + ".md", sb.ToString(), Encoding.UTF8);
+
+        }
+
+        private StringBuilder CreteConstructorPageText(TypeDocItem typeDocItem, ConstructorDocItem memberDocItem)
+        {
+            var sb = new StringBuilder();
+            AppendTitle(sb, "Constructor", memberDocItem.DisplayName);
+            // AppendNamespaceAssemblyInformation(sb, memberDocItem.Id, memberDocItem.NamespaceId, memberDocItem.AssemblyId);
+            var nsDocItem = _flatItems[memberDocItem.NamespaceId];
+            sb.AppendLine($"namespace: [{_textTransform.EscapeMdText(nsDocItem?.DisplayName)}]({GetRelativeLink(memberDocItem, nsDocItem)})<br />");
+            sb.AppendLine($"assembly: {_textTransform.EscapeMdText(_flatItems[memberDocItem.AssemblyId]?.DisplayName)}").AppendLine();
+
+            sb.AppendLine(_textTransform.ToMdText(memberDocItem, memberDocItem, t => t.XmlDocInfo?.Summary)).AppendLine();
+
+            var parameters = memberDocItem.Parameters.OrEmpty();
+            if(parameters.Any())
+            {
+                sb.AppendLine($"## Parameters").AppendLine();
+                sb.AppendLine("| Type | Name | Summary |");
+                sb.AppendLine("|------|------|---------|");
+                foreach(var param in parameters)
+                {
+                    sb.AppendLine($@"| {_textTransform.EscapeMdText(param.TypeDisplayName)} | {_textTransform.EscapeMdText(param.DisplayName)} | {_textTransform.ToMdText(memberDocItem, param, t => t.XmlDocText, true)} |");
+                }
+            }
+
+            return sb;
+        }
+
+        private void AppendTitle(StringBuilder sb, string type, string title) =>
+            sb.AppendLine($"# {title} {type}").AppendLine();
+        
+        private void AppendNamespaceAssemblyInformation(StringBuilder sb, string targetId, string namespaceId, string assemblyId, bool withoutNamespace)
+        {
+            var targetItem = _flatItems[targetId];
+            var nsDocItem = _flatItems[namespaceId];
+            var assemDocItem = _flatItems[assemblyId];
+            if (!withoutNamespace)
+            {
+                sb.AppendLine($"namespace: [{_textTransform.EscapeMdText(nsDocItem?.DisplayName)}]({GetRelativeLink(targetItem, nsDocItem)})<br />");
+            }
+            sb.AppendLine($"assembly: {_textTransform.EscapeMdText(assemDocItem?.DisplayName)}").AppendLine();
+        }
+
+        private string GetTypeTypeName(TypeDocItem docItem) =>
             docItem is ClassDocItem ? "Class" :
             docItem is InterfaceDocItem ? "Interface" :
             docItem is EnumDocItem ? "Enum" :
@@ -102,14 +164,10 @@ namespace DotDoc.Core.Write
 
             foreach (var typeDocItem in docItems)
             {
-                sb.AppendLine($@"| [{
-                    _textTransform.EscapeMdText(typeDocItem.DisplayName)
-                }]({GetRelativeLink(nsDocItem, typeDocItem)}) | {
-                    _textTransform.ToMdText(nsDocItem, typeDocItem, t => t.XmlDocInfo?.Summary, true)
-                } |");
+                sb.AppendLine($@"| [{_textTransform.EscapeMdText(typeDocItem.DisplayName)}]({GetRelativeLink(nsDocItem, typeDocItem)}) | {_textTransform.ToMdText(nsDocItem, typeDocItem, t => t.XmlDocInfo?.Summary, true)} |");
             }
         }
-        
+
         private void AppendMemberListMd<T>(string title, TypeDocItem typeDocItem, StringBuilder sb) where T : MemberDocItem
         {
             var docItems = typeDocItem.Members.OrEmpty().OfType<T>();
@@ -120,42 +178,37 @@ namespace DotDoc.Core.Write
             sb.AppendLine("| Name | Summary |");
             sb.AppendLine("|------|---------|");
 
+            var isEnumField = docItems.First() is FieldDocItem && typeDocItem is EnumDocItem;
+
             foreach (var memberDocItem in docItems)
             {
-                sb.AppendLine($@"| [{
-                    _textTransform.EscapeMdText(memberDocItem.DisplayName)
-                }]({GetRelativeLink(typeDocItem, memberDocItem)}) | {
-                    _textTransform.ToMdText(typeDocItem, memberDocItem, t => t.XmlDocInfo?.Summary ?? string.Empty, true)
-                } |");
+                if (isEnumField)
+                {
+                    sb.AppendLine($@"| {_textTransform.EscapeMdText(memberDocItem.DisplayName)} | {_textTransform.ToMdText(typeDocItem, memberDocItem, t => t.XmlDocInfo?.Summary ?? string.Empty, true)} |");
+                }
+                else
+                {
+                    sb.AppendLine($@"| [{_textTransform.EscapeMdText(memberDocItem.DisplayName)}]({GetRelativeLink(typeDocItem, memberDocItem)}) | {_textTransform.ToMdText(typeDocItem, memberDocItem, t => t.XmlDocInfo?.Summary ?? string.Empty, true)} |");
+                }
             }
         }
 
         public string GetRelativeLink(DocItem source, DocItem dest)
         {
-            if (source is NamespaceDocItem)
+            var basePath = dest switch
             {
-                if (dest is NamespaceDocItem)
-                {
-                    return $"./{SafeFileOrDirectoryName(dest.DisplayName)}.md";
-                }
-                if (dest is TypeDocItem typeDestDocItem)
-                {
-                    var destNamespace = _flatItems[typeDestDocItem.NamespaceId];
-                    return $"./{SafeFileOrDirectoryName(destNamespace.DisplayName)}/{SafeFileOrDirectoryName(dest.DisplayName)}.md";
-                }
-            }
-            if (source is TypeDocItem)
+                NamespaceDocItem => $"{SafeFileOrDirectoryName(dest.DisplayName)}.md",
+                TypeDocItem t => $"{SafeFileOrDirectoryName(_flatItems[t.NamespaceId].DisplayName)}/{SafeFileOrDirectoryName(dest.DisplayName)}.md",
+                MemberDocItem m => $"{SafeFileOrDirectoryName(_flatItems[m.NamespaceId].DisplayName)}/{SafeFileOrDirectoryName(_flatItems[m.TypeId].DisplayName)}/{SafeFileOrDirectoryName(dest.DisplayName)}.md",
+                _ => string.Empty,
+            };
+            return source switch
             {
-                if (dest is NamespaceDocItem)
-                {
-                    return $"../{SafeFileOrDirectoryName(dest.DisplayName)}.md";
-                }
-                if (dest is TypeDocItem typeDestDocItem)
-                {
-                    var destNamespace = _flatItems[typeDestDocItem.NamespaceId];
-                    return $"../{SafeFileOrDirectoryName(destNamespace.DisplayName)}/{SafeFileOrDirectoryName(dest.DisplayName)}.md";
-                }
-            }
+                NamespaceDocItem => "./",
+                TypeDocItem => "../",
+                MemberDocItem => "../../",
+                _ => string.Empty,
+            } + basePath;
 
             return string.Empty;
         }
@@ -170,7 +223,7 @@ namespace DotDoc.Core.Write
 
             return createBuilder;
         }
-        
+
         public string SafeFileOrDirectoryName(string? fileOrDirectoryName)
             => (fileOrDirectoryName ?? string.Empty)
                 .Replace(":", "%3A")
@@ -182,6 +235,6 @@ namespace DotDoc.Core.Write
                 .Replace("-", "%2D")
                 .Replace("\"", "%22")
                 .Replace(" ", "-");
-        
+
     }
 }

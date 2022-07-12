@@ -70,7 +70,18 @@ namespace DotDoc.Core
 
     public abstract class MemberDocItem : DocItem
     {
+        public string? AssemblyId { get; set; }
+
+        public string? NamespaceId { get; set; }
+
         public string? TypeId { get; set; }
+    }
+
+    public class ConstructorDocItem : MemberDocItem
+    {
+        public List<ParameterDocItem>? Parameters { get; set; }
+
+        public override IEnumerable<DocItem>? Items => Parameters;
     }
 
     public class FieldDocItem : MemberDocItem
@@ -83,9 +94,23 @@ namespace DotDoc.Core
 
     public class MethodDocItem : MemberDocItem
     {
+        public List<ParameterDocItem>? Parameters { get; set; }
+
+        public override IEnumerable<DocItem>? Items => Parameters;
     }
 
     public class EventDocItem : MemberDocItem
     {
+    }
+
+    public class ParameterDocItem: DocItem
+    {
+        public string TypeId { get; set; }
+
+        public string TypeName { get; set; }
+
+        public string TypeDisplayName { get; set; }
+
+        public string? XmlDocText { get; internal set; }
     }
 }
