@@ -41,7 +41,7 @@ public class ProjectSymbolsVisitor : SymbolVisitor<DocItem>
         {
             Id = id,
             Name = symbol.Name,
-            DisplayName = symbol.Name,
+            DisplayName = symbol.ToDisplayString(),
             AssemblyId = VisitorUtil.GetSymbolId(symbol.ContainingAssembly),
             XmlDocInfo = XmlDocParser.Parse(symbol.GetDocumentationCommentXml())
         };
