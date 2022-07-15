@@ -104,7 +104,13 @@ public class ProjectSymbolsVisitor : SymbolVisitor<DocItem>
             TypeId = VisitorUtil.GetSymbolId(symbol.ContainingType),
             NamespaceId = VisitorUtil.GetSymbolId(symbol.ContainingNamespace),
             AssemblyId = VisitorUtil.GetSymbolId(symbol.ContainingAssembly),
-            XmlDocInfo = XmlDocParser.Parse(symbol.GetDocumentationCommentXml())
+            XmlDocInfo = XmlDocParser.Parse(symbol.GetDocumentationCommentXml()),
+            TypeInfo = new TypeInfo()
+            {
+                TypeId = VisitorUtil.GetSymbolId(symbol.Type),
+                DisplayName = symbol.Type.ToDisplayString(),
+                Name = symbol.Type.Name
+            }
         };
 
         return item;
@@ -123,7 +129,13 @@ public class ProjectSymbolsVisitor : SymbolVisitor<DocItem>
             TypeId = VisitorUtil.GetSymbolId(symbol.ContainingType),
             NamespaceId = VisitorUtil.GetSymbolId(symbol.ContainingNamespace),
             AssemblyId = VisitorUtil.GetSymbolId(symbol.ContainingAssembly),
-            XmlDocInfo = XmlDocParser.Parse(symbol.GetDocumentationCommentXml())
+            XmlDocInfo = XmlDocParser.Parse(symbol.GetDocumentationCommentXml()),
+            TypeInfo = new TypeInfo()
+            {
+                TypeId = VisitorUtil.GetSymbolId(symbol.Type),
+                DisplayName = symbol.Type.ToDisplayString(),
+                Name = symbol.Type.Name
+            }
         };
 
         return item;
@@ -188,9 +200,12 @@ public class ProjectSymbolsVisitor : SymbolVisitor<DocItem>
                 Name = ps.Name,
                 Id = VisitorUtil.GetSymbolId(ps),
                 DisplayName = ps.Name,
-                TypeId = VisitorUtil.GetSymbolId(ps.Type),
-                TypeName = ps.Type.Name,
-                TypeDisplayName = ps.Type.ToDisplayString(),
+                TypeInfo = new TypeInfo()
+                {
+                    TypeId = VisitorUtil.GetSymbolId(ps.Type),
+                    Name = ps.Type.Name,
+                    DisplayName = ps.Type.ToDisplayString(),
+                },
                 XmlDocText = docInfo.Parameters.OrEmpty().FirstOrDefault(p => p.Name == ps.Name)?.Text
             };
         }).ToList();

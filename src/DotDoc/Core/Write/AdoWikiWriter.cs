@@ -83,41 +83,85 @@ namespace DotDoc.Core.Write
         {
             var sb = memberDocItem switch
             {
-                ConstructorDocItem conDocItem => CreteConstructorPageText(typeDocItem, conDocItem),
+                ConstructorDocItem conDocItem => CreteConstructorPageText(conDocItem),
+                MethodDocItem methodDocItem => CreteMethodPageText(methodDocItem),
+                PropertyDocItem propDocItm => CretePropertyPageText(propDocItm),
+                FieldDocItem fieldDocItm => CreteFieldPageText(fieldDocItm),
                 _ => null
             };
             if (sb is null) return;
 
             if (!typeDir.Exists) typeDir.Create();
             await File.WriteAllTextAsync(Path.Combine(typeDir.FullName, SafeFileOrDirectoryName(memberDocItem.DisplayName)) + ".md", sb.ToString(), Encoding.UTF8);
-
         }
 
-        private StringBuilder CreteConstructorPageText(TypeDocItem typeDocItem, ConstructorDocItem memberDocItem)
+        private StringBuilder CreteConstructorPageText(ConstructorDocItem memberDocItem)
         {
             var sb = new StringBuilder();
             AppendTitle(sb, "Constructor", memberDocItem.DisplayName);
             AppendNamespaceAssemblyInformation(sb, memberDocItem.Id, memberDocItem.NamespaceId, memberDocItem.AssemblyId, false);
 
             sb.AppendLine(_textTransform.ToMdText(memberDocItem, memberDocItem, t => t.XmlDocInfo?.Summary)).AppendLine();
+            AppendParameterList(memberDocItem.Parameters.OrEmpty(), memberDocItem, sb);
+            
+            return sb;
+        }
+        
+        private StringBuilder CreteMethodPageText(MethodDocItem memberDocItem)
+        {
+            var sb = new StringBuilder();
+            AppendTitle(sb, "Method", memberDocItem.DisplayName);
+            AppendNamespaceAssemblyInformation(sb, memberDocItem.Id, memberDocItem.NamespaceId, memberDocItem.AssemblyId, false);
 
-            var parameters = memberDocItem.Parameters.OrEmpty();
-            if(parameters.Any())
+            sb.AppendLine(_textTransform.ToMdText(memberDocItem, memberDocItem, t => t.XmlDocInfo?.Summary)).AppendLine();
+            AppendParameterList(memberDocItem.Parameters.OrEmpty(), memberDocItem, sb);
+            
+            return sb;
+        }
+        
+        private StringBuilder CretePropertyPageText(PropertyDocItem memberDocItem)
+        {
+            var sb = new StringBuilder();
+            AppendTitle(sb, "Property", memberDocItem.DisplayName);
+            AppendNamespaceAssemblyInformation(sb, memberDocItem.Id, memberDocItem.NamespaceId, memberDocItem.AssemblyId, false);
+
+            sb.AppendLine(_textTransform.ToMdText(memberDocItem, memberDocItem, t => t.XmlDocInfo?.Summary)).AppendLine();
+            
+            AppendSubTitle(sb, "Property Value");
+
+            sb.AppendLine($"{_textTransform.ToMdLink(memberDocItem, memberDocItem.TypeInfo.TypeId, memberDocItem.TypeInfo.DisplayName)}").AppendLine();
+            if (!string.IsNullOrEmpty(memberDocItem.XmlDocInfo?.Value))
             {
-                sb.AppendLine($"## Parameters").AppendLine();
-                sb.AppendLine("| Type | Name | Summary |");
-                sb.AppendLine("|------|------|---------|");
-                foreach(var param in parameters)
-                {
-                    sb.AppendLine($@"| {_textTransform.EscapeMdText(param.TypeDisplayName)} | {_textTransform.EscapeMdText(param.DisplayName)} | {_textTransform.ToMdText(memberDocItem, param, t => t.XmlDocText, true)} |");
-                }
+                sb.AppendLine(_textTransform.ToMdText(memberDocItem, memberDocItem, t => t.XmlDocInfo?.Value)).AppendLine();
             }
+            
+            return sb;
+        }
+        
+        private StringBuilder CreteFieldPageText(FieldDocItem memberDocItem)
+        {
+            var sb = new StringBuilder();
+            AppendTitle(sb, "Field", memberDocItem.DisplayName);
+            AppendNamespaceAssemblyInformation(sb, memberDocItem.Id, memberDocItem.NamespaceId, memberDocItem.AssemblyId, false);
 
+            sb.AppendLine(_textTransform.ToMdText(memberDocItem, memberDocItem, t => t.XmlDocInfo?.Summary)).AppendLine();
+            
+            AppendSubTitle(sb, "Field Value");
+
+            sb.AppendLine($"{_textTransform.ToMdLink(memberDocItem, memberDocItem.TypeInfo.TypeId, memberDocItem.TypeInfo.DisplayName)}").AppendLine();
+            if (!string.IsNullOrEmpty(memberDocItem.XmlDocInfo?.Value))
+            {
+                sb.AppendLine(_textTransform.ToMdText(memberDocItem, memberDocItem, t => t.XmlDocInfo?.Value)).AppendLine();
+            }
+            
             return sb;
         }
 
         private void AppendTitle(StringBuilder sb, string type, string title) =>
             sb.AppendLine($"# {title} {type}").AppendLine();
+        
+        private void AppendSubTitle(StringBuilder sb, string title) =>
+            sb.AppendLine($"## {title}").AppendLine();
         
         private void AppendNamespaceAssemblyInformation(StringBuilder sb, string targetId, string namespaceId, string assemblyId, bool withoutNamespace)
         {
@@ -136,8 +180,7 @@ namespace DotDoc.Core.Write
             var docItems = docItem.Items.OrEmpty().OfType<T>();
             if (!docItems.Any()) return;
 
-            sb.AppendLine($"## {title}");
-            sb.AppendLine();
+            AppendSubTitle(sb, title);
             sb.AppendLine("| Name | Summary |");
             sb.AppendLine("|------|---------|");
 
@@ -155,6 +198,19 @@ namespace DotDoc.Core.Write
             sb.AppendLine();
         }
 
+        private void AppendParameterList(IEnumerable<ParameterDocItem> parameters, DocItem source, StringBuilder sb)
+        {
+            if(parameters.Any())
+            {
+                AppendSubTitle(sb, "Parameters");
+                sb.AppendLine("| Type | Name | Summary |");
+                sb.AppendLine("|------|------|---------|");
+                foreach(var param in parameters)
+                {
+                    sb.AppendLine($@"| {_textTransform.EscapeMdText(param.TypeInfo.DisplayName)} | {_textTransform.EscapeMdText(param.DisplayName)} | {_textTransform.ToMdText(source, param, t => t.XmlDocText, true)} |");
+                }
+            }
+        }
 
         public string GetRelativeLink(DocItem source, DocItem dest)
         {

@@ -1,6 +1,7 @@
 using System.Data;
 using System.Text.RegularExpressions;
 using System.Collections.Immutable;
+using System.Text;
 
 namespace DotDoc.Core.Write;
 
@@ -49,20 +50,20 @@ internal class TextTransform
             return newText.Replace(val, "\\" + val);
         });
 
-    internal string ToMdLink(DocItem baseItem, string key)
+    public string ToMdLink(DocItem baseItem, string key, string? display = null)
     {
         var linkText = key;
-        var displayText = key;
+        var displayText = display ?? key;
         if (_items.ContainsKey(key))
         {
             var destItem = _items[key];
             linkText = _fileSystemOperation.GetRelativeLink(baseItem, destItem);
-            displayText = destItem.DisplayName;
+            displayText = display ?? destItem.DisplayName;
         }
         if(key.StartsWith("T:Microsoft.", StringComparison.InvariantCultureIgnoreCase) || key.StartsWith("T:System.", StringComparison.InvariantCultureIgnoreCase))
         {
-            displayText = key.Substring(2);
-            linkText = $"https://docs.microsoft.com/ja-jp/dotnet/api/{displayText})";
+            displayText = display ?? key.Substring(2);
+            linkText = $"https://docs.microsoft.com/ja-jp/dotnet/api/{displayText}";
         }
 
         return $"[{EscapeMdText(displayText)}]({linkText})";

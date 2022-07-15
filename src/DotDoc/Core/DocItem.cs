@@ -86,10 +86,12 @@ namespace DotDoc.Core
 
     public class FieldDocItem : MemberDocItem
     {
+        public TypeInfo TypeInfo { get; set; }
     }
 
     public class PropertyDocItem : MemberDocItem
     {
+        public TypeInfo TypeInfo { get; set; }
     }
 
     public class MethodDocItem : MemberDocItem
@@ -105,12 +107,16 @@ namespace DotDoc.Core
 
     public class ParameterDocItem: DocItem
     {
+        public TypeInfo TypeInfo { get; set; }
+        public string? XmlDocText { get; set; }
+    }
+
+    public class TypeInfo
+    {
         public string TypeId { get; set; }
 
-        public string TypeName { get; set; }
-
-        public string TypeDisplayName { get; set; }
-
-        public string? XmlDocText { get; internal set; }
+        public string Name { get; set; }
+        
+        public string DisplayName { get; set; }
     }
 }

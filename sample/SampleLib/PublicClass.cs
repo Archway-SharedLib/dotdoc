@@ -1,4 +1,6 @@
-﻿namespace SampleLib
+﻿using System.Text;
+
+namespace SampleLib
 {
     /// <summary>
     /// パブリックなクラスです。
@@ -36,7 +38,7 @@
         /// <summary>
         /// Getだけのプロパティです。
         /// </summary>
-        public string GetOnly { get; }
+        public Exception GetOnly { get; }
 
         /// <summary>
         /// Setできるプロパティです。
@@ -51,13 +53,14 @@
         /// <summary>
         /// Setだけのプロパティです。
         /// </summary>
-        public string SetOnly { 
+        public StringBuilder SetOnly { 
             set { }
         }
 
         /// <summary>
         /// Initだけのプロパティです。
         /// </summary>
+        /// <value>Initなプロパティです。 <see cref="PublicClass"/> 参照をはってみます。</value>
         public string InitOnly
         {
             init { }
