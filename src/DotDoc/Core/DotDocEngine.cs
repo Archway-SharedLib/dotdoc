@@ -8,11 +8,11 @@ namespace DotDoc.Core;
 
 public class DotDocEngine
 {
-    private readonly ILogger logger;
+    private readonly ILogger _logger;
 
     public DotDocEngine(ILogger logger)
     {
-        this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
+        _logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
 
     public async Task<IEnumerable<DocItem>> ReadAsync(DotDocEngineOptions options)
@@ -21,7 +21,8 @@ public class DotDocEngine
         {
             throw new ArgumentNullException(nameof(options));
         }
-        if (!ValidateReadOptions(options)) return Enumerable.Empty<DocItem>();
+        var fsModel = options.CreateFsModel();
+        if (!ValidateReadOptions(options, fsModel)) return Enumerable.Empty<DocItem>();
 
         MSBuildLocator.RegisterDefaults();
         var workspace = MSBuildWorkspace.Create();
@@ -49,10 +50,10 @@ public class DotDocEngine
         }
         if (!ValidateWriteOptions(options)) return;
 
-        var dirInfo = new DirectoryInfo(options.OutputDir);
-        if(!dirInfo.Exists) dirInfo.Create();
-
-        var writer = new AdoWikiWriter(docItems, options);
+        var fsModelFactory = options.CreateFsModel();
+        fsModelFactory.CreateDirectoryModel(options.OutputDir).CreateIfNotExists();
+        
+        var writer = new AdoWikiWriter(docItems, options, fsModelFactory);
         await writer.WriteAsync();
     }
 
@@ -85,22 +86,24 @@ public class DotDocEngine
         return compilation.Assembly.Accept(new ProjectSymbolsVisitor(new DefaultFilter(options)));
     }
 
-    private bool ValidateReadOptions(DotDocEngineOptions optins)
+    private bool ValidateReadOptions(DotDocEngineOptions optins, IFsModel fsModel)
     {
         if (string.IsNullOrWhiteSpace(optins.InputFileName))
         {
-            logger.Error($"入力パスが指定されていません。 {optins.InputFileName}");
+            _logger.Error($"入力パスが指定されていません。 {optins.InputFileName}");
             return false;
         }
-        var file = new FileInfo(optins.InputFileName);
-        if (!file.Exists)
+
+        var file = fsModel.CreateFileModel(optins.InputFileName);
+        // var file = new FileInfo(optins.InputFileName);
+        if (!file.Exists())
         {
-            logger.Error($"入力するファイルが見つかりません。 {optins.InputFileName}");
+            _logger.Error($"入力するファイルが見つかりません。 {optins.InputFileName}");
             return false;
         }
-        if (file.Extension != Constants.SolutionFileExtension && file.Extension != Constants.CsProjectFileExtension)
+        if (file.GetExtension() != Constants.SolutionFileExtension && file.GetExtension() != Constants.CsProjectFileExtension)
         {
-            logger.Error($"入力するファイルはソリューションファイル({Constants.SolutionFileExtension})" +
+            _logger.Error($"入力するファイルはソリューションファイル({Constants.SolutionFileExtension})" +
                          $"もしくはC#プロジェクトファイル({Constants.CsProjectFileExtension})を指定してください。 {optins.InputFileName}");
             return false;
         }
@@ -112,7 +115,7 @@ public class DotDocEngine
     {
         if (string.IsNullOrWhiteSpace(optins.OutputDir))
         {
-            logger.Error($"出力ディレクトリが指定されていません。 {optins.OutputDir}");
+            _logger.Error($"出力ディレクトリが指定されていません。 {optins.OutputDir}");
             return false;
         }
         return true;

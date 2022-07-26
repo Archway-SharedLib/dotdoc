@@ -1,26 +1,67 @@
+using System.Text;
+
 namespace DotDoc.Core.Write;
 
-public interface IFsModelFactory
+public interface IFsModel
 {
     IFileModel CreateFileModel(string fileName);
     
     IDirectoryModel CreateDirectoryModel(string path);
+
+    string PathJoin(string path1, string path2);
 }
 
 public interface IFileModel
 {
+    void WriteText(string toString);
+    bool Exists();
+    string GetExtension();
 }
 
 public interface IDirectoryModel
 {
+    string GetFullName();
+    void CreateIfNotExists();
 }
 
-public interface PhysicalFileModel : IFileModel
+public class PhysicalFileModel : IFileModel
 {
+    private readonly FileInfo _fileInfo;
+    public PhysicalFileModel(FileInfo fileInfo)
+    {
+        _fileInfo = fileInfo;
+    }
+
+    public void WriteText(string text)
+    {
+        File.WriteAllText(_fileInfo.FullName, text, Encoding.UTF8);
+    }
+
+    public bool Exists() => _fileInfo.Exists;
     
+    public string GetExtension() => _fileInfo.Extension;
 }
 
-public interface PhysicalDirectoryModel : IDirectoryModel
+public class PhysicalFsModel : IFsModel
 {
-    
+    public IFileModel CreateFileModel(string fileName) => new PhysicalFileModel(new FileInfo(fileName));
+
+    public IDirectoryModel CreateDirectoryModel(string path) => new PhysicalDirectoryModel(new DirectoryInfo(path));
+    public string PathJoin(string path1, string path2) => Path.Combine(path1, path2);
+}
+
+public class PhysicalDirectoryModel : IDirectoryModel
+{
+    private readonly DirectoryInfo _directoryInfo;
+
+    public PhysicalDirectoryModel(DirectoryInfo directoryInfo)
+    {
+        _directoryInfo = directoryInfo;
+    }
+
+    public string GetFullName() => _directoryInfo.FullName;
+    public void CreateIfNotExists()
+    {
+        if(!_directoryInfo.Exists) _directoryInfo.Create();
+    }
 }

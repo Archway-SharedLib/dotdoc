@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DotDoc.Core.Write;
 
 namespace DotDoc.Core
 {
@@ -24,7 +25,9 @@ namespace DotDoc.Core
 
         public IEnumerable<Accessibility> Accessibilities { get; init; } = _defaultAccessibilities;
 
-        public string? OutputDir { get; set; }
+        public string? OutputDir { get; init; }
+
+        public Func<IFsModel> CreateFsModel { get; init; } = () => new PhysicalFsModel();
 
         public static DotDocEngineOptions Default(string inputFileName)
         {

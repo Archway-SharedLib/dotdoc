@@ -7,20 +7,22 @@ namespace DotDoc.Core.Write
     {
         private readonly List<DocItem> _docItems;
         private readonly DotDocEngineOptions _options;
+        private readonly IFsModel _fsModel;
         private readonly TextTransform _textTransform;
         private readonly ImmutableDictionary<string, DocItem> _flatItems;
 
-        public AdoWikiWriter(IEnumerable<DocItem> docItems, DotDocEngineOptions options)
+        public AdoWikiWriter(IEnumerable<DocItem> docItems, DotDocEngineOptions options, IFsModel fsModel)
         {
             _docItems = docItems?.ToList() ?? throw new ArgumentNullException(nameof(docItems));
             _options = options ?? throw new ArgumentNullException(nameof(options));
+            _fsModel = fsModel ?? throw new ArgumentNullException(nameof(fsModel));
             _flatItems = FlattenDocItems(ImmutableDictionary.CreateBuilder<string, DocItem>(), _docItems).ToImmutable();
             _textTransform = new TextTransform(_flatItems, this);
         }
 
         public async Task WriteAsync()
         {
-            var rootDir = new DirectoryInfo(_options.OutputDir);
+            var rootDir = _fsModel.CreateDirectoryModel(_options.OutputDir);
             foreach (var assemDocItem in _docItems.OfType<AssemblyDocItem>())
             {
                 foreach (var nsDocItem in assemDocItem.Namespaces.OrEmpty())
@@ -30,10 +32,10 @@ namespace DotDoc.Core.Write
             }
         }
 
-        private async Task WriteNamespaceAsync(DirectoryInfo rootDir, NamespaceDocItem nsDocItem)
+        private async Task WriteNamespaceAsync(IDirectoryModel rootDir, NamespaceDocItem nsDocItem)
         {
             var safeName = SafeFileOrDirectoryName(nsDocItem.DisplayName);
-            var nsDir = new DirectoryInfo(Path.Join(rootDir.FullName, safeName));
+            var nsDir = _fsModel.CreateDirectoryModel(_fsModel.PathJoin(rootDir.GetFullName(), safeName));
 
             var sb = new StringBuilder();
             AppendTitle(sb, "Namespace", nsDocItem.DisplayName);
@@ -47,7 +49,9 @@ namespace DotDoc.Core.Write
             AppendItemList<EnumDocItem>("Enums", nsDocItem, sb);
             AppendItemList<DelegateDocItem>("Delegates", nsDocItem, sb);
 
-            await File.WriteAllTextAsync(Path.Combine(rootDir.FullName, safeName + ".md"), sb.ToString(), Encoding.UTF8);
+            var file = _fsModel.CreateFileModel(_fsModel.PathJoin(rootDir.GetFullName(), safeName + ".md"));
+            file.WriteText(sb.ToString());
+            // await File.WriteAllTextAsync(Path.Combine(rootDir.GetFullName(), safeName + ".md"), sb.ToString(), Encoding.UTF8);
 
             foreach (var typeDocItem in nsDocItem.Types.OrEmpty())
             {
@@ -55,10 +59,10 @@ namespace DotDoc.Core.Write
             }
         }
 
-        private async Task WriteTypeAsync(DirectoryInfo nsDir, TypeDocItem typeDocItem)
+        private async Task WriteTypeAsync(IDirectoryModel nsDir, TypeDocItem typeDocItem)
         {
-            if (!nsDir.Exists) nsDir.Create();
-
+            nsDir.CreateIfNotExists();
+            
             var sb = new StringBuilder();
             AppendTitle(sb, GetTypeTypeName(typeDocItem), typeDocItem.DisplayName);
             AppendNamespaceAssemblyInformation(sb, typeDocItem.Id, typeDocItem.NamespaceId, typeDocItem.AssemblyId, false);
@@ -80,12 +84,13 @@ namespace DotDoc.Core.Write
             if(typeDocItem is IHaveReturnValue hrv)
                 AppendReturnValue(hrv, typeDocItem, sb);
             
-            var typeDirOrFile = Path.Combine(nsDir.FullName, SafeFileOrDirectoryName(typeDocItem.DisplayName));
-            await File.WriteAllTextAsync(typeDirOrFile + ".md", sb.ToString(), Encoding.UTF8);
+            var typeDirOrFile = _fsModel.PathJoin(nsDir.GetFullName(), SafeFileOrDirectoryName(typeDocItem.DisplayName));
+            _fsModel.CreateFileModel(typeDirOrFile + ".md").WriteText(sb.ToString());
+            //await File.WriteAllTextAsync(typeDirOrFile + ".md", sb.ToString(), Encoding.UTF8);
 
             if (typeDocItem is EnumDocItem) return;
             
-            var typeDir = new DirectoryInfo(typeDirOrFile);
+            var typeDir = _fsModel.CreateDirectoryModel(typeDirOrFile);
 
             foreach (var memberDocItem in typeDocItem.Members.OrEmpty())
             {
@@ -93,7 +98,7 @@ namespace DotDoc.Core.Write
             }
         }
 
-        private async Task WriteMemberAsync(DirectoryInfo typeDir, TypeDocItem typeDocItem, MemberDocItem memberDocItem)
+        private async Task WriteMemberAsync(IDirectoryModel typeDir, TypeDocItem typeDocItem, MemberDocItem memberDocItem)
         {
             var sb = memberDocItem switch
             {
@@ -105,8 +110,9 @@ namespace DotDoc.Core.Write
             };
             if (sb is null) return;
 
-            if (!typeDir.Exists) typeDir.Create();
-            await File.WriteAllTextAsync(Path.Combine(typeDir.FullName, SafeFileOrDirectoryName(memberDocItem.DisplayName)) + ".md", sb.ToString(), Encoding.UTF8);
+            typeDir.CreateIfNotExists();
+            _fsModel.CreateFileModel(_fsModel.PathJoin(typeDir.GetFullName(), SafeFileOrDirectoryName(memberDocItem.DisplayName)) + ".md").WriteText(sb.ToString());
+            // await File.WriteAllTextAsync(Path.Combine(typeDir.FullName, SafeFileOrDirectoryName(memberDocItem.DisplayName)) + ".md", sb.ToString(), Encoding.UTF8);
         }
 
         private StringBuilder CreteConstructorPageText(ConstructorDocItem memberDocItem)
