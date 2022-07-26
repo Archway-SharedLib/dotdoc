@@ -17,9 +17,6 @@ namespace SampleLib
         /// </summary>
         public class InnerClass
         {
-
-
-
         }
 
     }

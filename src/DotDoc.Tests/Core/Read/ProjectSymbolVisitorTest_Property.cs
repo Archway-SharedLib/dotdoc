@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DotDoc.Core;
 
 namespace DotDoc.Tests.Core.Read
 {
@@ -16,7 +17,24 @@ namespace DotDoc.Tests.Core.Read
             var tree = CSharpSyntaxTree.ParseText(@"
 namespace Test;
 
-public class TestClass {
+public abstract class BaseTestClass {
+    /// <summary>
+    /// protected なベースプロパティです、
+    /// </summary>
+    protected string BaseProtected { get; }
+    
+    /// <summary>
+    /// virtual なベースプロパティです。
+    /// </summary>
+    protected virtual string BaseVirtual { get; }
+    
+    /// <summary>
+    /// abstract なベースプロパティです。
+    /// </summary>
+    protected abstract string BaseAbstract { get; init; }
+}
+
+public class TestClass: BaseTestClass {
     /// <summary>
     /// Getだけのプロパティです。
     /// </summary>
@@ -46,10 +64,20 @@ public class TestClass {
     {
         init { }
     }
+
+    public static string StaticProp { get; set; }
+
+    protected new string BaseProtected { get; }
+
+    /// <inheritdoc />
+    protected override string BaseVirtual { get; }
+    
+    /// <inheritdoc />
+    protected override string BaseAbstract { get; init; }
 }
 ");
             var compilation = CSharpCompilation.Create("Test", new[] { tree });
-            var docItem = compilation.Assembly.Accept(new ProjectSymbolsVisitor(new DefaultFilter(null)));
+            var docItem = compilation.Assembly.Accept(new ProjectSymbolsVisitor(new DefaultFilter(DotDocEngineOptions.Default(""))));
         }
     }
 }

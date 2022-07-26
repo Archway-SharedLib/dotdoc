@@ -39,6 +39,8 @@ namespace DotDoc.Core.Write
             AppendTitle(sb, "Namespace", nsDocItem.DisplayName);
             AppendNamespaceAssemblyInformation(sb, nsDocItem.Id, nsDocItem.Id, nsDocItem.AssemblyId, true);
 
+            AppendDeclareCode(sb, nsDocItem.ToDeclareCSharpCode());
+            
             AppendItemList<ClassDocItem>("Classes", nsDocItem, sb);
             AppendItemList<StructDocItem>("Structs", nsDocItem, sb);
             AppendItemList<InterfaceDocItem>("Interfaces", nsDocItem, sb);
@@ -62,15 +64,27 @@ namespace DotDoc.Core.Write
             AppendNamespaceAssemblyInformation(sb, typeDocItem.Id, typeDocItem.NamespaceId, typeDocItem.AssemblyId, false);
 
             sb.AppendLine(_textTransform.ToMdText(typeDocItem, typeDocItem, t => t.XmlDocInfo?.Summary)).AppendLine();
-
+            
+            AppendDeclareCode(sb, typeDocItem.ToDeclareCSharpCode());
+            
             AppendItemList<ConstructorDocItem>("Constructors", typeDocItem, sb);
             AppendItemList<MethodDocItem>("Methods", typeDocItem, sb);
             AppendItemList<PropertyDocItem>("Properties", typeDocItem, sb);
             AppendItemList<FieldDocItem>("Fields", typeDocItem, sb);
             AppendItemList<EventDocItem>("Events", typeDocItem, sb);
-
+            
+            if(typeDocItem is IHaveTypeParameters htp)
+                AppendTypeParameterList(htp.TypeParameters.OrEmpty(), typeDocItem, sb);
+            if(typeDocItem is IHaveParameters hp)
+                AppendParameterList(hp.Parameters.OrEmpty(), typeDocItem, sb);
+            if(typeDocItem is IHaveReturnValue hrv)
+                AppendReturnValue(hrv, typeDocItem, sb);
+            
             var typeDirOrFile = Path.Combine(nsDir.FullName, SafeFileOrDirectoryName(typeDocItem.DisplayName));
             await File.WriteAllTextAsync(typeDirOrFile + ".md", sb.ToString(), Encoding.UTF8);
+
+            if (typeDocItem is EnumDocItem) return;
+            
             var typeDir = new DirectoryInfo(typeDirOrFile);
 
             foreach (var memberDocItem in typeDocItem.Members.OrEmpty())
@@ -114,8 +128,10 @@ namespace DotDoc.Core.Write
             AppendNamespaceAssemblyInformation(sb, memberDocItem.Id, memberDocItem.NamespaceId, memberDocItem.AssemblyId, false);
 
             sb.AppendLine(_textTransform.ToMdText(memberDocItem, memberDocItem, t => t.XmlDocInfo?.Summary)).AppendLine();
+            AppendTypeParameterList(memberDocItem.TypeParameters.OrEmpty(), memberDocItem, sb);
             AppendParameterList(memberDocItem.Parameters.OrEmpty(), memberDocItem, sb);
-            
+            AppendReturnValue(memberDocItem, memberDocItem, sb);
+
             return sb;
         }
         
@@ -126,6 +142,8 @@ namespace DotDoc.Core.Write
             AppendNamespaceAssemblyInformation(sb, memberDocItem.Id, memberDocItem.NamespaceId, memberDocItem.AssemblyId, false);
 
             sb.AppendLine(_textTransform.ToMdText(memberDocItem, memberDocItem, t => t.XmlDocInfo?.Summary)).AppendLine();
+            
+            AppendDeclareCode(sb, memberDocItem.ToDeclareCSharpCode());
             
             AppendSubTitle(sb, "Property Value");
 
@@ -158,10 +176,18 @@ namespace DotDoc.Core.Write
         }
 
         private void AppendTitle(StringBuilder sb, string type, string title) =>
-            sb.AppendLine($"# {title} {type}").AppendLine();
+            sb.AppendLine($"# {_textTransform.EscapeMdText(title)} {_textTransform.EscapeMdText(type)}").AppendLine();
         
         private void AppendSubTitle(StringBuilder sb, string title) =>
-            sb.AppendLine($"## {title}").AppendLine();
+            sb.AppendLine($"## {_textTransform.EscapeMdText(title)}").AppendLine();
+        
+        private void AppendDeclareCode(StringBuilder sb, string code)
+        {
+            sb.AppendLine("```csharp");
+            sb.AppendLine(code);
+            sb.AppendLine("```");
+            sb.AppendLine();
+        }
         
         private void AppendNamespaceAssemblyInformation(StringBuilder sb, string targetId, string namespaceId, string assemblyId, bool withoutNamespace)
         {
@@ -207,10 +233,36 @@ namespace DotDoc.Core.Write
                 sb.AppendLine("|------|------|---------|");
                 foreach(var param in parameters)
                 {
-                    sb.AppendLine($@"| {_textTransform.EscapeMdText(param.TypeInfo.DisplayName)} | {_textTransform.EscapeMdText(param.DisplayName)} | {_textTransform.ToMdText(source, param, t => t.XmlDocText, true)} |");
+                    sb.AppendLine($@"| {_textTransform.ToMdLink(source,  param.TypeInfo.TypeId, param.TypeInfo.DisplayName)} | {_textTransform.EscapeMdText(param.DisplayName)} | {_textTransform.ToMdText(source, param, t => t.XmlDocText, true)} |");
                 }
+                sb.AppendLine();
             }
         }
+        
+        private void AppendTypeParameterList(IEnumerable<TypeParameterDocItem> typeParameters, DocItem source, StringBuilder sb)
+        {
+            if(typeParameters.Any())
+            {
+                AppendSubTitle(sb, "Type Parameters");
+                sb.AppendLine("| Name | Summary |");
+                sb.AppendLine("|------|---------|");
+                foreach(var param in typeParameters)
+                {
+                    sb.AppendLine($@"| {_textTransform.EscapeMdText(param.DisplayName)} | {_textTransform.ToMdText(source, param, t => t.XmlDocText, true)} |");
+                }
+                sb.AppendLine();
+            }
+        }
+        
+        private void AppendReturnValue(IHaveReturnValue docItem, DocItem source, StringBuilder sb)
+        {
+            if (docItem.ReturnValue is null) return;
+            
+            AppendSubTitle(sb, "Return Value");
+            sb.AppendLine(_textTransform.ToMdLink(source,  docItem.ReturnValue.TypeId, docItem.ReturnValue.DisplayName)).AppendLine();
+            sb.AppendLine(_textTransform.ToMdText(source, source, t => t.XmlDocInfo?.Returns)).AppendLine();
+        }
+        
 
         public string GetRelativeLink(DocItem source, DocItem dest)
         {

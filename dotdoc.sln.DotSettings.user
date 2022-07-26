@@ -1,4 +1,15 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=c529a4b7_002Dadb7_002D43ec_002Da75a_002D9be8019fdc84/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="ToMdText_Seecref" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;ProjectFile&gt;3C0DF703-CEF6-4893-9A32-6D55BE7517A4/d:Core/d:Write/f:TextTransformTest.cs&lt;/ProjectFile&gt;
+  &lt;Or&gt;
+    &lt;ProjectFile&gt;3C0DF703-CEF6-4893-9A32-6D55BE7517A4/d:Core/d:Write/f:TextTransformTest.cs&lt;/ProjectFile&gt;
+    &lt;TestAncestor&gt;
+      &lt;TestId&gt;xUnit::3C0DF703-CEF6-4893-9A32-6D55BE7517A4::net6.0::DotDoc.Tests.Core.Read.ProjectSymbolVisitorTest_Parameter.GetMethodParameter&lt;/TestId&gt;
+      &lt;TestId&gt;xUnit::3C0DF703-CEF6-4893-9A32-6D55BE7517A4::net6.0::DotDoc.Tests.Core.Read.ProjectSymbolVisitorTest_Method.表示名でパラメーターの型は型名のみ&lt;/TestId&gt;
+      &lt;TestId&gt;xUnit::3C0DF703-CEF6-4893-9A32-6D55BE7517A4::net6.0::DotDoc.Tests.Core.Read.ProjectSymbolVisitorTest_Accessibility&lt;/TestId&gt;
+      &lt;TestId&gt;xUnit::3C0DF703-CEF6-4893-9A32-6D55BE7517A4::net6.0::DotDoc.Tests.Core.Read.ProjectSymbolVisitorTest_Delegate.GetAccessibility&lt;/TestId&gt;
+      &lt;TestId&gt;xUnit::3C0DF703-CEF6-4893-9A32-6D55BE7517A4::net6.0::DotDoc.Tests.Core.Read.ProjectSymbolVisitorTest_Delegate&lt;/TestId&gt;
+      &lt;TestId&gt;xUnit::3C0DF703-CEF6-4893-9A32-6D55BE7517A4::net6.0::DotDoc.Tests.Core.Read.ProjectSymbolVisitorTest_Property.Property&lt;/TestId&gt;
+      &lt;TestId&gt;xUnit::3C0DF703-CEF6-4893-9A32-6D55BE7517A4::net6.0::DotDoc.Tests.Core.Read.ProjectSymbolVisitorTest_Property&lt;/TestId&gt;
+    &lt;/TestAncestor&gt;
+  &lt;/Or&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

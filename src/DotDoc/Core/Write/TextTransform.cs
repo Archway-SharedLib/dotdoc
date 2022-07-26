@@ -44,7 +44,7 @@ internal class TextTransform
     }
     
     public string EscapeMdText(string text)
-        => new[] { "*", "_", "\\", "`", "#", "+", "-", ".", "!", "{", "}", "[", "]", "(", ")" }.Aggregate(text, (curr, val) =>
+        => new[] { "*", "_", "\\", "`", "#", "+", "-", ".", "!", "{", "}", "[", "]", "(", ")", "<", ">" }.Aggregate(text, (curr, val) =>
         {
             var newText = curr ?? string.Empty;
             return newText.Replace(val, "\\" + val);
@@ -62,8 +62,9 @@ internal class TextTransform
         }
         if(key.StartsWith("T:Microsoft.", StringComparison.InvariantCultureIgnoreCase) || key.StartsWith("T:System.", StringComparison.InvariantCultureIgnoreCase))
         {
-            displayText = display ?? key.Substring(2);
-            linkText = $"https://docs.microsoft.com/ja-jp/dotnet/api/{displayText}";
+            var linkKey = key.Substring(2);
+            displayText = display ?? linkKey;
+            linkText = $"https://docs.microsoft.com/ja-jp/dotnet/api/{linkKey}";
         }
 
         return $"[{EscapeMdText(displayText)}]({linkText})";

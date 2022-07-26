@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -11,13 +12,27 @@ namespace DotDoc.Core.Read
     internal class DefaultFilter : IFilter
     {
         private readonly List<Regex> _excludeIdRegexs;
-
-        public DefaultFilter(IEnumerable<string>? excludeIdPatters)
+        private readonly List<Microsoft.CodeAnalysis.Accessibility> _includeAccessibilities;
+        public DefaultFilter(DotDocEngineOptions options)
         {
-            _excludeIdRegexs = (excludeIdPatters ?? Enumerable.Empty<string>())
+            _excludeIdRegexs = (options?.ExcludeIdPatterns ?? Enumerable.Empty<string>())
                 .Select(Regex.Escape)
                 .Select(ConvertToRegexPattern)
                 .Select(p => new Regex(p)).ToList();
+            _includeAccessibilities = (options?.Accessibilities ?? Enumerable.Empty<Accessibility>())
+                .Where(a => a is not Accessibility.Unknown)
+                .Select(a =>
+                {
+                    return a switch
+                    {
+                        Accessibility.Private => Microsoft.CodeAnalysis.Accessibility.Private,
+                        Accessibility.Protected => Microsoft.CodeAnalysis.Accessibility.Protected,
+                        Accessibility.Internal => Microsoft.CodeAnalysis.Accessibility.Internal,
+                        Accessibility.Public => Microsoft.CodeAnalysis.Accessibility.Public,
+                        Accessibility.PrivateProtected => Microsoft.CodeAnalysis.Accessibility.ProtectedAndInternal,
+                        Accessibility.ProtectedInternal => Microsoft.CodeAnalysis.Accessibility.ProtectedOrInternal
+                    };
+                }).ToList();
         }
 
         private string ConvertToRegexPattern(string pattern) => $"^{pattern.Replace("\\*", "(.*?)")}$";
@@ -34,11 +49,12 @@ namespace DotDoc.Core.Read
             // コンパイラが生成したものは Exclude
             if (symbol.IsImplicitlyDeclared) return true;
 
-            if (symbol.DeclaredAccessibility is Accessibility.Public or Accessibility.Protected or Accessibility.ProtectedOrInternal)
-            {
-                return false;
-            }
+            if (_includeAccessibilities.Any(a => a == symbol.DeclaredAccessibility)) return false;
+            
             return true;
         }
+
+        
+        
     }
 }

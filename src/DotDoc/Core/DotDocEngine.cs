@@ -82,7 +82,7 @@ public class DotDocEngine
         var compilation = await proj.GetCompilationAsync();
         if (compilation is null) return null;
 
-        return compilation.Assembly.Accept(new ProjectSymbolsVisitor(new DefaultFilter(options.ExcludeIdPatterns)));
+        return compilation.Assembly.Accept(new ProjectSymbolsVisitor(new DefaultFilter(options)));
     }
 
     private bool ValidateReadOptions(DotDocEngineOptions optins)

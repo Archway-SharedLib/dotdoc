@@ -23,7 +23,7 @@ public class TextTransformTest
                         DisplayName = "Ns1",
                         Types = new()
                         {
-                            new()
+                            new ClassDocItem()
                             {
                                 Id = "T:Type1",
                                 DisplayName = "Type1",
@@ -56,7 +56,7 @@ public class TextTransformTest
     public void ToMdText_Seecref単体()
     {
         var transformer = new TextTransform(TestDocItems(), new TestFileSystemOperation());
-        var transformed = transformer.ToMdText(new TypeDocItem(),new TypeDocItem(),_ => "<see cref=\"T:Type1\" />");
+        var transformed = transformer.ToMdText(new ClassDocItem(),new ClassDocItem(),_ => "<see cref=\"T:Type1\" />");
         transformed.Should().Be("[Type1](T:Type1.md)");
     }
     
@@ -64,7 +64,7 @@ public class TextTransformTest
     public void ToMdText_Seecref後()
     {
         var transformer = new TextTransform(TestDocItems(), new TestFileSystemOperation());
-        var transformed = transformer.ToMdText(new TypeDocItem(),new TypeDocItem(), _ => "<see cref=\"T:Type1\" />後ろに<dummy />別の文字");
+        var transformed = transformer.ToMdText(new ClassDocItem(),new ClassDocItem(), _ => "<see cref=\"T:Type1\" />後ろに<dummy />別の文字");
         transformed.Should().Be("[Type1](T:Type1.md)後ろに\\<dummy /\\>別の文字");
     }
     
@@ -72,7 +72,7 @@ public class TextTransformTest
     public void ToMdText_Seecref前()
     {
         var transformer = new TextTransform(TestDocItems(), new TestFileSystemOperation());
-        var transformed = transformer.ToMdText(new TypeDocItem(),new TypeDocItem(), _ => "前に<dummy />別の文字<see cref=\"T:Type1\" />");
+        var transformed = transformer.ToMdText(new ClassDocItem(),new ClassDocItem(), _ => "前に<dummy />別の文字<see cref=\"T:Type1\" />");
         transformed.Should().Be("前に\\<dummy /\\>別の文字[Type1](T:Type1.md)");
     }
 
@@ -80,7 +80,7 @@ public class TextTransformTest
     public void ToMdText_Seecref前後()
     {
         var transformer = new TextTransform(TestDocItems(), new TestFileSystemOperation());
-        var transformed = transformer.ToMdText(new TypeDocItem(),new TypeDocItem(), _ => "前に<dummy />別の文字<see cref=\"T:Type1\" />後ろに<dummy />別の文字");
+        var transformed = transformer.ToMdText(new ClassDocItem(),new ClassDocItem(), _ => "前に<dummy />別の文字<see cref=\"T:Type1\" />後ろに<dummy />別の文字");
         transformed.Should().Be("前に\\<dummy /\\>別の文字[Type1](T:Type1.md)後ろに\\<dummy /\\>別の文字");
     }
 }

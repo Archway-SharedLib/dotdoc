@@ -20,10 +20,12 @@ namespace DotDoc.Core.Read
 
         public string? Returns { get; set; }
 
-        public List<XmlDocParameterInfo>? Parameters { get; set; }
+        public List<XmlDocNameTextInfo>? Parameters { get; set; }
+        
+        public List<XmlDocNameTextInfo>? TypeParameters { get; set; }
     }
 
-    public class XmlDocParameterInfo
+    public class XmlDocNameTextInfo
     {
         public string? Name { get; set; }
 

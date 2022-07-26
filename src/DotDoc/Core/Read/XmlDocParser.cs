@@ -36,16 +36,17 @@ namespace DotDoc.Core.Read
                 Example = GetNodeValue(nav, "/member/example")?.Trim(),
                 Value = GetNodeValue(nav, "/member/value")?.Trim(),
                 Returns = GetNodeValue(nav, "/member/returns")?.Trim(),
-                Parameters = GetParameterInfo(nav)
+                Parameters = GetNameTextInfo(nav, "/member/param"),
+                TypeParameters = GetNameTextInfo(nav,"/member/typeparam"),
             };
 
             return result;
         }
 
-        private static List<XmlDocParameterInfo> GetParameterInfo(XPathNavigator nav)
+        private static List<XmlDocNameTextInfo> GetNameTextInfo(XPathNavigator nav, string path)
         {
-            var result = new List<XmlDocParameterInfo>();
-            var nodeIterator = nav.Select("/member/param");
+            var result = new List<XmlDocNameTextInfo>();
+            var nodeIterator = nav.Select(path);
             foreach (XPathNavigator nodeNav in nodeIterator)
             {
                 result.Add(new()

@@ -8,26 +8,26 @@ using System.Threading.Tasks;
 
 namespace DotDoc.Tests.Core.Read
 {
-    public class ProjectSymbolVisitorTest_Parameter
+    public class ProjectSymbolVisitorTest_Accessibility
     {
         [Fact]
-        public void GetMethodParameter() 
+        public void GetAccessibility() 
         {
             var tree = CSharpSyntaxTree.ParseText(@"
 namespace Test;
 
-public class TestClass {
+public class PublicClass {}
 
-    /// <summary>
-    /// テストを取得します。
-    /// </summary>
-    /// <param name=""foo"">Fooパラメーターです</param>
-    /// <param name=""bar"">Barパラメーターです。</param>
-    /// <returns>戻り値です。</returns>
-    public string GetTest(string foo, int bar) {
-        return foo;
-    }
-}
+private class PrivateClass {}
+
+protected class ProtectedClass {}
+
+internal class InternalClass {}
+
+protected internal class ProtectedInternalClass {}
+
+private protected class PrivateProtectedClass {}
+
 ");
             var compilation = CSharpCompilation.Create("Test", new[] { tree });
             var docItem = compilation.Assembly.Accept(new ProjectSymbolsVisitor(new DefaultFilter(null)));

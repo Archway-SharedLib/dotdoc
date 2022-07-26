@@ -16,7 +16,16 @@ var options = new DotDocEngineOptions()
     {
         "N:SampleLib.Ns1.ExcludeDir"
     },
-    OutputDir = "Output"
+    OutputDir = "Output",
+    Accessibilities = new []
+    {
+        Accessibility.Private,
+        Accessibility.Protected,
+        Accessibility.Internal,
+        Accessibility.Public,
+        Accessibility.PrivateProtected,
+        Accessibility.ProtectedInternal
+    }
 };
 
 var docItems = (await engine.ReadAsync(options)).ToList();
