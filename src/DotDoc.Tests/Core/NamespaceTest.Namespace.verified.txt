@@ -1,0 +1,14 @@
+﻿
+---------------------
+file name ./output/Test.md
+---------------------
+
+# Test Namespace
+
+assembly: Test
+
+```csharp
+namespace Test;
+```
+
+

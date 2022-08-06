@@ -1,0 +1,331 @@
+﻿
+---------------------
+file name ./output/Test.md
+---------------------
+
+# Test Namespace
+
+assembly: Test
+
+```csharp
+namespace Test;
+```
+
+## Classes
+
+| Name | Summary |
+|------|---------|
+| [BasePropertyVariation](./Test/BasePropertyVariation.md) | プロパティを検証するためのabstractクラスです。 |
+| [PropertyVariation](./Test/PropertyVariation.md) |  |
+
+
+
+---------------------
+file name ./output/Test/BasePropertyVariation.md
+---------------------
+
+# BasePropertyVariation Class
+
+namespace: [Test](../Test.md)<br />
+assembly: Test
+
+プロパティを検証するためのabstractクラスです。
+
+```csharp
+public abstract class BasePropertyVariation;
+```
+
+## Properties
+
+| Name | Summary |
+|------|---------|
+| [BaseProtected](../Test/BasePropertyVariation/BaseProtected.md) | protected なベースプロパティです、 |
+| [BaseVirtual](../Test/BasePropertyVariation/BaseVirtual.md) | virtual なベースプロパティです。 |
+| [BaseAbstract](../Test/BasePropertyVariation/BaseAbstract.md) | abstract なベースプロパティです。 |
+
+
+
+---------------------
+file name ./output/Test/BasePropertyVariation/BaseProtected.md
+---------------------
+
+# BaseProtected Property
+
+namespace: [Test](../../Test.md)<br />
+assembly: Test
+
+protected なベースプロパティです、
+
+```csharp
+protected string BaseProtected { get; };
+```
+
+## Property Value
+
+[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+
+
+
+---------------------
+file name ./output/Test/BasePropertyVariation/BaseVirtual.md
+---------------------
+
+# BaseVirtual Property
+
+namespace: [Test](../../Test.md)<br />
+assembly: Test
+
+virtual なベースプロパティです。
+
+```csharp
+protected virtual string BaseVirtual { get; };
+```
+
+## Property Value
+
+[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+
+
+
+---------------------
+file name ./output/Test/BasePropertyVariation/BaseAbstract.md
+---------------------
+
+# BaseAbstract Property
+
+namespace: [Test](../../Test.md)<br />
+assembly: Test
+
+abstract なベースプロパティです。
+
+```csharp
+protected abstract string BaseAbstract { get; init; };
+```
+
+## Property Value
+
+[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+
+
+
+---------------------
+file name ./output/Test/PropertyVariation.md
+---------------------
+
+# PropertyVariation Class
+
+namespace: [Test](../Test.md)<br />
+assembly: Test
+
+
+
+```csharp
+public class PropertyVariation;
+```
+
+## Properties
+
+| Name | Summary |
+|------|---------|
+| [ReadWrite](../Test/PropertyVariation/ReadWrite.md) | 読み書きプロパティです。 |
+| [Read](../Test/PropertyVariation/Read.md) | 読みとり専用プロパティです。 |
+| [Write](../Test/PropertyVariation/Write.md) | 書き込み専用プロパティです。 |
+| [InitWrite](../Test/PropertyVariation/InitWrite.md) | イニット専用プロパティです。 |
+| [ReadInit](../Test/PropertyVariation/ReadInit.md) | 読みイニットプロパティです。 |
+| [StaticProp](../Test/PropertyVariation/StaticProp.md) | 静的プロパティです。 |
+| [BaseProtected](../Test/PropertyVariation/BaseProtected.md) | newプロパティです。 |
+| [BaseVirtual](../Test/PropertyVariation/BaseVirtual.md) |  |
+| [BaseAbstract](../Test/PropertyVariation/BaseAbstract.md) |  |
+
+
+
+---------------------
+file name ./output/Test/PropertyVariation/ReadWrite.md
+---------------------
+
+# ReadWrite Property
+
+namespace: [Test](../../Test.md)<br />
+assembly: Test
+
+読み書きプロパティです。
+
+```csharp
+public string ReadWrite { get; set; };
+```
+
+## Property Value
+
+[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+
+[System\.String](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+
+
+
+---------------------
+file name ./output/Test/PropertyVariation/Read.md
+---------------------
+
+# Read Property
+
+namespace: [Test](../../Test.md)<br />
+assembly: Test
+
+読みとり専用プロパティです。
+
+```csharp
+public string Read { get; };
+```
+
+## Property Value
+
+[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+
+
+
+---------------------
+file name ./output/Test/PropertyVariation/Write.md
+---------------------
+
+# Write Property
+
+namespace: [Test](../../Test.md)<br />
+assembly: Test
+
+書き込み専用プロパティです。
+
+```csharp
+public string Write { set; };
+```
+
+## Property Value
+
+[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+
+
+
+---------------------
+file name ./output/Test/PropertyVariation/InitWrite.md
+---------------------
+
+# InitWrite Property
+
+namespace: [Test](../../Test.md)<br />
+assembly: Test
+
+イニット専用プロパティです。
+
+```csharp
+public string InitWrite { init; };
+```
+
+## Property Value
+
+[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+
+
+
+---------------------
+file name ./output/Test/PropertyVariation/ReadInit.md
+---------------------
+
+# ReadInit Property
+
+namespace: [Test](../../Test.md)<br />
+assembly: Test
+
+読みイニットプロパティです。
+
+```csharp
+public string ReadInit { get; init; };
+```
+
+## Property Value
+
+[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+
+
+
+---------------------
+file name ./output/Test/PropertyVariation/StaticProp.md
+---------------------
+
+# StaticProp Property
+
+namespace: [Test](../../Test.md)<br />
+assembly: Test
+
+静的プロパティです。
+
+```csharp
+public static string StaticProp { get; set; };
+```
+
+## Property Value
+
+[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+
+
+
+---------------------
+file name ./output/Test/PropertyVariation/BaseProtected.md
+---------------------
+
+# BaseProtected Property
+
+namespace: [Test](../../Test.md)<br />
+assembly: Test
+
+newプロパティです。
+
+```csharp
+protected string BaseProtected { get; };
+```
+
+## Property Value
+
+[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+
+
+
+---------------------
+file name ./output/Test/PropertyVariation/BaseVirtual.md
+---------------------
+
+# BaseVirtual Property
+
+namespace: [Test](../../Test.md)<br />
+assembly: Test
+
+
+
+```csharp
+protected override string BaseVirtual { get; };
+```
+
+## Property Value
+
+[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+
+
+
+---------------------
+file name ./output/Test/PropertyVariation/BaseAbstract.md
+---------------------
+
+# BaseAbstract Property
+
+namespace: [Test](../../Test.md)<br />
+assembly: Test
+
+
+
+```csharp
+protected override string BaseAbstract { get; init; };
+```
+
+## Property Value
+
+[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+
+

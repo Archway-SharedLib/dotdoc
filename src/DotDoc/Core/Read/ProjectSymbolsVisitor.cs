@@ -237,6 +237,10 @@ public class ProjectSymbolsVisitor : SymbolVisitor<DocItem>
                 Name = symbol.ReturnType.Name,
                 DisplayName = symbol.ReturnType.ToDisplayString(),
             },
+            IsStatic = symbol.IsStatic,
+            IsAbstract = symbol.IsAbstract,
+            IsOverride = symbol.IsOverride,
+            IsVirtual = symbol.IsVirtual
         };
     }
 

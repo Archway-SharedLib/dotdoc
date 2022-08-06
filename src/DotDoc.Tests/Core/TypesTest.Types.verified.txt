@@ -1,0 +1,147 @@
+﻿
+---------------------
+file name ./output/Test.md
+---------------------
+
+# Test Namespace
+
+assembly: Test
+
+```csharp
+namespace Test;
+```
+
+## Classes
+
+| Name | Summary |
+|------|---------|
+| [ClassType](./Test/ClassType.md) | Classです。 |
+| [RecordType](./Test/RecordType.md) | Recordです。 |
+
+## Structs
+
+| Name | Summary |
+|------|---------|
+| [StructType](./Test/StructType.md) | Structです。 |
+
+## Interfaces
+
+| Name | Summary |
+|------|---------|
+| [InterfaceType](./Test/InterfaceType.md) | Interfaceです。 |
+
+## Enums
+
+| Name | Summary |
+|------|---------|
+| [EnumType](./Test/EnumType.md) | Enumです。 |
+
+## Delegates
+
+| Name | Summary |
+|------|---------|
+| [DelegateType](./Test/DelegateType.md) | Delegateです。 |
+
+
+
+---------------------
+file name ./output/Test/ClassType.md
+---------------------
+
+# ClassType Class
+
+namespace: [Test](../Test.md)<br />
+assembly: Test
+
+Classです。
+
+```csharp
+public class ClassType;
+```
+
+
+
+---------------------
+file name ./output/Test/EnumType.md
+---------------------
+
+# EnumType Enum
+
+namespace: [Test](../Test.md)<br />
+assembly: Test
+
+Enumです。
+
+```csharp
+public enum EnumType;
+```
+
+
+
+---------------------
+file name ./output/Test/InterfaceType.md
+---------------------
+
+# InterfaceType Interface
+
+namespace: [Test](../Test.md)<br />
+assembly: Test
+
+Interfaceです。
+
+```csharp
+public interface InterfaceType;
+```
+
+
+
+---------------------
+file name ./output/Test/StructType.md
+---------------------
+
+# StructType Struct
+
+namespace: [Test](../Test.md)<br />
+assembly: Test
+
+Structです。
+
+```csharp
+public struct StructType;
+```
+
+
+
+---------------------
+file name ./output/Test/DelegateType.md
+---------------------
+
+# DelegateType 
+
+namespace: [Test](../Test.md)<br />
+assembly: Test
+
+Delegateです。
+
+```csharp
+public delegate void DelegateType();
+```
+
+
+
+---------------------
+file name ./output/Test/RecordType.md
+---------------------
+
+# RecordType Class
+
+namespace: [Test](../Test.md)<br />
+assembly: Test
+
+Recordです。
+
+```csharp
+public class RecordType;
+```
+
+

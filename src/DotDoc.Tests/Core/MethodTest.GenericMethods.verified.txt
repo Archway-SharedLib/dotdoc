@@ -1,0 +1,134 @@
+﻿
+---------------------
+file name ./output/Test.md
+---------------------
+
+# Test Namespace
+
+assembly: Test
+
+```csharp
+namespace Test;
+```
+
+## Classes
+
+| Name | Summary |
+|------|---------|
+| [GenericMethod](./Test/GenericMethod.md) |  |
+
+
+
+---------------------
+file name ./output/Test/GenericMethod.md
+---------------------
+
+# GenericMethod Class
+
+namespace: [Test](../Test.md)<br />
+assembly: Test
+
+
+
+```csharp
+public class GenericMethod;
+```
+
+## Methods
+
+| Name | Summary |
+|------|---------|
+| [SingleMethod\<T\>\(\)](../Test/GenericMethod/SingleMethod%3CT%3E().md) | 一つのメソッドです |
+| [DoubleMethod\<TArg, TVal\>\(\)](../Test/GenericMethod/DoubleMethod%3CTArg,-TVal%3E().md) | ２つのメソッドです |
+| [DoubleMethodWithParam\<TArg, TVal\>\(TArg\)](../Test/GenericMethod/DoubleMethodWithParam%3CTArg,-TVal%3E(TArg).md) | 引数に使います。 |
+
+
+
+---------------------
+file name ./output/Test/GenericMethod/SingleMethod%3CT%3E().md
+---------------------
+
+# SingleMethod\<T\>\(\) Method
+
+namespace: [Test](../../Test.md)<br />
+assembly: Test
+
+一つのメソッドです
+
+```csharp
+public void SingleMethod<T>();
+```
+
+## Type Parameters
+
+| Name | Summary |
+|------|---------|
+| T |  |
+
+
+
+---------------------
+file name ./output/Test/GenericMethod/DoubleMethod%3CTArg,-TVal%3E().md
+---------------------
+
+# DoubleMethod\<TArg, TVal\>\(\) Method
+
+namespace: [Test](../../Test.md)<br />
+assembly: Test
+
+２つのメソッドです
+
+```csharp
+public string DoubleMethod<TArg ,TVal>();
+```
+
+## Type Parameters
+
+| Name | Summary |
+|------|---------|
+| TArg | TArgです |
+| TVal | TValです |
+
+## Return Value
+
+[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+
+
+
+
+
+---------------------
+file name ./output/Test/GenericMethod/DoubleMethodWithParam%3CTArg,-TVal%3E(TArg).md
+---------------------
+
+# DoubleMethodWithParam\<TArg, TVal\>\(TArg\) Method
+
+namespace: [Test](../../Test.md)<br />
+assembly: Test
+
+引数に使います。
+
+```csharp
+public TVal DoubleMethodWithParam<TArg ,TVal>(TArg arg);
+```
+
+## Type Parameters
+
+| Name | Summary |
+|------|---------|
+| TArg |  |
+| TVal |  |
+
+## Parameters
+
+| Type | Name | Summary |
+|------|------|---------|
+| TArg | arg |  |
+
+## Return Value
+
+TVal
+
+
+
+

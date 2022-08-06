@@ -23,5 +23,20 @@ namespace DotDoc.Core
                 _ => string.Empty
             };
         
+        public static string ConcatWith<T>(this IEnumerable<T> source, string separator)
+            => string.Join(separator, source);
+
+        public static string SurroundsWith(this string source, string value)
+            => value + source + value;
+        
+        public static string SurroundsWith(this string source, string start, string end)
+            => start + source + end;
+        
+        public static string SurroundsWith(this string source, string value, Func<string, bool> predicate)
+            => predicate(source) ? value + source + value : source;
+
+        public static string SurroundsWith(this string source, string start, string end, Func<string, bool> predicate)
+            => predicate(source) ? start + source + end : source;
+
     }
 }

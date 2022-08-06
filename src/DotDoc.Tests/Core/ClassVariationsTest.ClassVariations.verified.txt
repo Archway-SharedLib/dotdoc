@@ -1,0 +1,91 @@
+﻿
+---------------------
+file name ./output/Test.md
+---------------------
+
+# Test Namespace
+
+assembly: Test
+
+```csharp
+namespace Test;
+```
+
+## Classes
+
+| Name | Summary |
+|------|---------|
+| [NormalClass](./Test/NormalClass.md) | NormalClassです。 |
+| [StaticClass](./Test/StaticClass.md) | StaticなClassです。 |
+| [AbstractClass](./Test/AbstractClass.md) | AbstractなClassです。 |
+| [SealedClass](./Test/SealedClass.md) | SealedなClassです。 |
+
+
+
+---------------------
+file name ./output/Test/NormalClass.md
+---------------------
+
+# NormalClass Class
+
+namespace: [Test](../Test.md)<br />
+assembly: Test
+
+NormalClassです。
+
+```csharp
+public class NormalClass;
+```
+
+
+
+---------------------
+file name ./output/Test/StaticClass.md
+---------------------
+
+# StaticClass Class
+
+namespace: [Test](../Test.md)<br />
+assembly: Test
+
+StaticなClassです。
+
+```csharp
+public static class StaticClass;
+```
+
+
+
+---------------------
+file name ./output/Test/AbstractClass.md
+---------------------
+
+# AbstractClass Class
+
+namespace: [Test](../Test.md)<br />
+assembly: Test
+
+AbstractなClassです。
+
+```csharp
+public abstract class AbstractClass;
+```
+
+
+
+---------------------
+file name ./output/Test/SealedClass.md
+---------------------
+
+# SealedClass Class
+
+namespace: [Test](../Test.md)<br />
+assembly: Test
+
+SealedなClassです。
+
+```csharp
+public sealed class SealedClass;
+```
+
+

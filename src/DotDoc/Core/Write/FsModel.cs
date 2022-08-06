@@ -13,7 +13,7 @@ public interface IFsModel
 
 public interface IFileModel
 {
-    void WriteText(string toString);
+    void WriteText(string text);
     bool Exists();
     string GetExtension();
 }

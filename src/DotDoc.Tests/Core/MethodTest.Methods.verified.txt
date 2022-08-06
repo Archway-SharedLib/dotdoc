@@ -1,0 +1,271 @@
+﻿
+---------------------
+file name ./output/Test.md
+---------------------
+
+# Test Namespace
+
+assembly: Test
+
+```csharp
+namespace Test;
+```
+
+## Classes
+
+| Name | Summary |
+|------|---------|
+| [BaseMethodVariation](./Test/BaseMethodVariation.md) |  |
+| [MethodVariation](./Test/MethodVariation.md) |  |
+
+
+
+---------------------
+file name ./output/Test/BaseMethodVariation.md
+---------------------
+
+# BaseMethodVariation Class
+
+namespace: [Test](../Test.md)<br />
+assembly: Test
+
+
+
+```csharp
+public abstract class BaseMethodVariation;
+```
+
+## Methods
+
+| Name | Summary |
+|------|---------|
+| [BaseMethod\(\)](../Test/BaseMethodVariation/BaseMethod().md) | Baseメソッドです |
+| [VirtualMethod\(\)](../Test/BaseMethodVariation/VirtualMethod().md) | バーチャルです。 |
+| [AbstractMethod\(\)](../Test/BaseMethodVariation/AbstractMethod().md) | abstractです。 |
+
+
+
+---------------------
+file name ./output/Test/BaseMethodVariation/BaseMethod().md
+---------------------
+
+# BaseMethod\(\) Method
+
+namespace: [Test](../../Test.md)<br />
+assembly: Test
+
+Baseメソッドです
+
+```csharp
+public void BaseMethod();
+```
+
+
+
+---------------------
+file name ./output/Test/BaseMethodVariation/VirtualMethod().md
+---------------------
+
+# VirtualMethod\(\) Method
+
+namespace: [Test](../../Test.md)<br />
+assembly: Test
+
+バーチャルです。
+
+```csharp
+public virtual void VirtualMethod();
+```
+
+
+
+---------------------
+file name ./output/Test/BaseMethodVariation/AbstractMethod().md
+---------------------
+
+# AbstractMethod\(\) Method
+
+namespace: [Test](../../Test.md)<br />
+assembly: Test
+
+abstractです。
+
+```csharp
+public abstract void AbstractMethod();
+```
+
+
+
+---------------------
+file name ./output/Test/MethodVariation.md
+---------------------
+
+# MethodVariation Class
+
+namespace: [Test](../Test.md)<br />
+assembly: Test
+
+
+
+```csharp
+public class MethodVariation;
+```
+
+## Methods
+
+| Name | Summary |
+|------|---------|
+| [ReturnVoidNoParam\(\)](../Test/MethodVariation/ReturnVoidNoParam().md) | リターンなし引数なし |
+| [ReturnStringNoParam\(\)](../Test/MethodVariation/ReturnStringNoParam().md) | リターン文字列引数なし |
+| [ReturnVoidWithParam\(string, int\)](../Test/MethodVariation/ReturnVoidWithParam(string,-int).md) | リターンなし引数2 |
+| [ReturnIntWithParam\(string, int\)](../Test/MethodVariation/ReturnIntWithParam(string,-int).md) | リターン数字引数2 |
+| [AbstractMethod\(\)](../Test/MethodVariation/AbstractMethod().md) |  |
+| [VirtualMethod\(\)](../Test/MethodVariation/VirtualMethod().md) |  |
+| [BaseMethod\(\)](../Test/MethodVariation/BaseMethod().md) |  |
+
+
+
+---------------------
+file name ./output/Test/MethodVariation/ReturnVoidNoParam().md
+---------------------
+
+# ReturnVoidNoParam\(\) Method
+
+namespace: [Test](../../Test.md)<br />
+assembly: Test
+
+リターンなし引数なし
+
+```csharp
+public void ReturnVoidNoParam();
+```
+
+
+
+---------------------
+file name ./output/Test/MethodVariation/ReturnStringNoParam().md
+---------------------
+
+# ReturnStringNoParam\(\) Method
+
+namespace: [Test](../../Test.md)<br />
+assembly: Test
+
+リターン文字列引数なし
+
+```csharp
+public string ReturnStringNoParam();
+```
+
+## Return Value
+
+[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+
+文字列の [System\.String](https://docs.microsoft.com/ja-jp/dotnet/api/System.String) を返します。
+
+
+
+---------------------
+file name ./output/Test/MethodVariation/ReturnVoidWithParam(string,-int).md
+---------------------
+
+# ReturnVoidWithParam\(string, int\) Method
+
+namespace: [Test](../../Test.md)<br />
+assembly: Test
+
+リターンなし引数2
+
+```csharp
+public void ReturnVoidWithParam(string param1 ,int param2);
+```
+
+## Parameters
+
+| Type | Name | Summary |
+|------|------|---------|
+| [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String) | param1 | 文字列の [System\.String](https://docs.microsoft.com/ja-jp/dotnet/api/System.String) です |
+| [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32) | param2 | 数字の [System\.Int32](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32) です |
+
+
+
+---------------------
+file name ./output/Test/MethodVariation/ReturnIntWithParam(string,-int).md
+---------------------
+
+# ReturnIntWithParam\(string, int\) Method
+
+namespace: [Test](../../Test.md)<br />
+assembly: Test
+
+リターン数字引数2
+
+```csharp
+public int ReturnIntWithParam(string param1 ,int param2);
+```
+
+## Parameters
+
+| Type | Name | Summary |
+|------|------|---------|
+| [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String) | param1 | 文字列の [System\.String](https://docs.microsoft.com/ja-jp/dotnet/api/System.String) です |
+| [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32) | param2 | 数字の [System\.Int32](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32) です |
+
+## Return Value
+
+[int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
+
+数字の [System\.Int32](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32) を返します。
+
+
+
+---------------------
+file name ./output/Test/MethodVariation/AbstractMethod().md
+---------------------
+
+# AbstractMethod\(\) Method
+
+namespace: [Test](../../Test.md)<br />
+assembly: Test
+
+
+
+```csharp
+public override void AbstractMethod();
+```
+
+
+
+---------------------
+file name ./output/Test/MethodVariation/VirtualMethod().md
+---------------------
+
+# VirtualMethod\(\) Method
+
+namespace: [Test](../../Test.md)<br />
+assembly: Test
+
+
+
+```csharp
+public override void VirtualMethod();
+```
+
+
+
+---------------------
+file name ./output/Test/MethodVariation/BaseMethod().md
+---------------------
+
+# BaseMethod\(\) Method
+
+namespace: [Test](../../Test.md)<br />
+assembly: Test
+
+
+
+```csharp
+public void BaseMethod();
+```
+
+

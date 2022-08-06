@@ -3,7 +3,7 @@ using System.Text;
 
 namespace DotDoc.Core.Write
 {
-    internal class AdoWikiWriter : IWriter, IFileSystemOperation
+    public class AdoWikiWriter : IWriter, IFileSystemOperation
     {
         private readonly List<DocItem> _docItems;
         private readonly DotDocEngineOptions _options;
@@ -134,6 +134,9 @@ namespace DotDoc.Core.Write
             AppendNamespaceAssemblyInformation(sb, memberDocItem.Id, memberDocItem.NamespaceId, memberDocItem.AssemblyId, false);
 
             sb.AppendLine(_textTransform.ToMdText(memberDocItem, memberDocItem, t => t.XmlDocInfo?.Summary)).AppendLine();
+            
+            AppendDeclareCode(sb, memberDocItem.ToDeclareCSharpCode());
+            
             AppendTypeParameterList(memberDocItem.TypeParameters.OrEmpty(), memberDocItem, sb);
             AppendParameterList(memberDocItem.Parameters.OrEmpty(), memberDocItem, sb);
             AppendReturnValue(memberDocItem, memberDocItem, sb);

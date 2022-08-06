@@ -57,7 +57,7 @@ namespace DotDoc.Core
         
         public override IEnumerable<DocItem>? Items => Types;
 
-        public override string ToDeclareCSharpCode() => $"{Accessiblity.ToCSharpText()} {DisplayName};";
+        public override string ToDeclareCSharpCode() => $"namespace {DisplayName};";
     }
 
     public abstract class TypeDocItem : DocItem
@@ -191,7 +191,31 @@ namespace DotDoc.Core
         
         public TypeInfo? ReturnValue { get; set; }
         
-        public override string ToDeclareCSharpCode() => string.Empty;
+        public bool IsStatic { get; set; }
+        
+        public bool IsOverride { get; set; }
+        
+        public bool IsVirtual { get; set; }
+        
+        public bool IsAbstract { get; set; }
+        
+        public override string ToDeclareCSharpCode()
+        {
+            var modifiersText = new List<string>();
+            if(IsAbstract) modifiersText.Add("abstract ");
+            if(IsStatic) modifiersText.Add("static ");
+            if(IsOverride) modifiersText.Add("override ");
+            if(IsVirtual) modifiersText.Add("virtual ");
+
+            var returnValueText = ReturnValue is not null ? ReturnValue.DisplayName : "void";
+            var typeParamsText = TypeParameters.OrEmpty().Select(p => p.Name)
+                .ConcatWith(" ,")
+                .SurroundsWith("<", ">", v => !string.IsNullOrEmpty(v));
+            var paramsText = Parameters.OrEmpty().Select(p => $"{p.TypeInfo.DisplayName} {p.Name}")
+                .ConcatWith(" ,");
+
+            return $"{Accessiblity.ToCSharpText()} {string.Join("", modifiersText)}{returnValueText} {Name}{typeParamsText}({paramsText});";
+        }
     }
 
     public class EventDocItem : MemberDocItem

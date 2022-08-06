@@ -52,8 +52,15 @@ internal class TextTransform
 
     public string ToMdLink(DocItem baseItem, string key, string? display = null)
     {
+        
+        if (key.StartsWith("!:", StringComparison.InvariantCultureIgnoreCase))
+        {
+            return EscapeMdText(display ?? key.Substring(2));
+        }
+        
         var linkText = key;
         var displayText = display ?? key;
+
         if (_items.ContainsKey(key))
         {
             var destItem = _items[key];
