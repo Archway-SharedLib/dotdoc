@@ -23,6 +23,8 @@ namespace DotDoc.Core.Read
         public List<XmlDocNameTextInfo>? Parameters { get; set; }
         
         public List<XmlDocNameTextInfo>? TypeParameters { get; set; }
+        
+        public XmlDocInheritdocInfo? Inheritdoc { get; set; }
     }
 
     public class XmlDocNameTextInfo
@@ -30,5 +32,10 @@ namespace DotDoc.Core.Read
         public string? Name { get; set; }
 
         public string? Text { get; set; }
+    }
+
+    public class XmlDocInheritdocInfo
+    {
+        public string? Cref { get; set; }
     }
 }

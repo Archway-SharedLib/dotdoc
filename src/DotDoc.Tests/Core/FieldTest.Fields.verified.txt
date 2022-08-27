@@ -1,0 +1,234 @@
+﻿
+---------------------
+file name ./output/Test.md
+---------------------
+
+# Test Assembly
+
+## Namespaces
+
+| Name | Summary |
+|------|---------|
+| [Test](./Test/Test.md) |  |
+
+
+
+---------------------
+file name ./output/Test/Test.md
+---------------------
+
+# Test Namespace
+
+assembly: [Test](../Test.md)
+
+```csharp
+namespace Test;
+```
+
+## Classes
+
+| Name | Summary |
+|------|---------|
+| [FieldClass](../Test/Test/FieldClass.md) | NormalClassです。 |
+
+
+
+---------------------
+file name ./output/Test/Test/FieldClass.md
+---------------------
+
+# FieldClass Class
+
+namespace: [Test](../../Test/Test.md)<br />
+assembly: [Test](../../Test.md)
+
+NormalClassです。
+
+```csharp
+public class FieldClass;
+```
+
+Inheritance: [System\.Object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > FieldClass
+
+## Fields
+
+| Name | Value | Summary |
+|------|-------|---------|
+| [StringField](../../Test/Test/FieldClass/StringField.md) |  | 文字列フィールドです。 |
+| [ConstStringField](../../Test/Test/FieldClass/ConstStringField.md) | "文字列" | 文字列定数フィールドです。 |
+| [ConstIntField](../../Test/Test/FieldClass/ConstIntField.md) | 123 | 数値定数フィールドです。 |
+| [ReadonlyDoubleField](../../Test/Test/FieldClass/ReadonlyDoubleField.md) |  | 読み取り専用フィールドです。 |
+| [StaticStringField](../../Test/Test/FieldClass/StaticStringField.md) |  | Staticなフィールドです。 |
+| [StaticReadonlyDoubleField](../../Test/Test/FieldClass/StaticReadonlyDoubleField.md) |  | Staticな読み取り専用フィールドです。 |
+| [VolatileFied](../../Test/Test/FieldClass/VolatileFied.md) |  | Volatileなフィールドです。 |
+| [NullFiled](../../Test/Test/FieldClass/NullFiled.md) | null | nullな定数フィールドです。 |
+
+
+
+---------------------
+file name ./output/Test/Test/FieldClass/StringField.md
+---------------------
+
+# StringField Field
+
+namespace: [Test](../../../Test/Test.md)<br />
+assembly: [Test](../../../Test.md)
+
+文字列フィールドです。
+
+```csharp
+public string StringField;
+```
+
+## Field Value
+
+[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+
+
+
+---------------------
+file name ./output/Test/Test/FieldClass/ConstStringField.md
+---------------------
+
+# ConstStringField Field
+
+namespace: [Test](../../../Test/Test.md)<br />
+assembly: [Test](../../../Test.md)
+
+文字列定数フィールドです。
+
+```csharp
+public const string ConstStringField = "文字列";
+```
+
+## Field Value
+
+[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+
+
+
+---------------------
+file name ./output/Test/Test/FieldClass/ConstIntField.md
+---------------------
+
+# ConstIntField Field
+
+namespace: [Test](../../../Test/Test.md)<br />
+assembly: [Test](../../../Test.md)
+
+数値定数フィールドです。
+
+```csharp
+public const int ConstIntField = 123;
+```
+
+## Field Value
+
+[int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
+
+
+
+---------------------
+file name ./output/Test/Test/FieldClass/ReadonlyDoubleField.md
+---------------------
+
+# ReadonlyDoubleField Field
+
+namespace: [Test](../../../Test/Test.md)<br />
+assembly: [Test](../../../Test.md)
+
+読み取り専用フィールドです。
+
+```csharp
+public readonly double ReadonlyDoubleField;
+```
+
+## Field Value
+
+[double](https://docs.microsoft.com/ja-jp/dotnet/api/System.Double)
+
+
+
+---------------------
+file name ./output/Test/Test/FieldClass/StaticStringField.md
+---------------------
+
+# StaticStringField Field
+
+namespace: [Test](../../../Test/Test.md)<br />
+assembly: [Test](../../../Test.md)
+
+Staticなフィールドです。
+
+```csharp
+public static string StaticStringField;
+```
+
+## Field Value
+
+[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+
+
+
+---------------------
+file name ./output/Test/Test/FieldClass/StaticReadonlyDoubleField.md
+---------------------
+
+# StaticReadonlyDoubleField Field
+
+namespace: [Test](../../../Test/Test.md)<br />
+assembly: [Test](../../../Test.md)
+
+Staticな読み取り専用フィールドです。
+
+```csharp
+public static readonly double StaticReadonlyDoubleField;
+```
+
+## Field Value
+
+[double](https://docs.microsoft.com/ja-jp/dotnet/api/System.Double)
+
+
+
+---------------------
+file name ./output/Test/Test/FieldClass/VolatileFied.md
+---------------------
+
+# VolatileFied Field
+
+namespace: [Test](../../../Test/Test.md)<br />
+assembly: [Test](../../../Test.md)
+
+Volatileなフィールドです。
+
+```csharp
+public volatile object VolatileFied;
+```
+
+## Field Value
+
+[object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object)
+
+
+
+---------------------
+file name ./output/Test/Test/FieldClass/NullFiled.md
+---------------------
+
+# NullFiled Field
+
+namespace: [Test](../../../Test/Test.md)<br />
+assembly: [Test](../../../Test.md)
+
+nullな定数フィールドです。
+
+```csharp
+public const Test.FieldClass NullFiled = null;
+```
+
+## Field Value
+
+[Test\.FieldClass](../../../Test/Test/FieldClass.md)
+
+

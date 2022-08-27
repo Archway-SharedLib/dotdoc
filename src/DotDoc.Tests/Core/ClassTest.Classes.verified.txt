@@ -1,0 +1,133 @@
+﻿
+---------------------
+file name ./output/Assem.md
+---------------------
+
+# Assem Assembly
+
+## Namespaces
+
+| Name | Summary |
+|------|---------|
+| [Test](./Assem/Test.md) |  |
+
+
+
+---------------------
+file name ./output/Assem/Test.md
+---------------------
+
+# Test Namespace
+
+assembly: [Assem](../Assem.md)
+
+```csharp
+namespace Test;
+```
+
+## Classes
+
+| Name | Summary |
+|------|---------|
+| [NormalClass](../Assem/Test/NormalClass.md) | NormalClassです。 |
+| [StaticClass](../Assem/Test/StaticClass.md) | StaticなClassです。 |
+| [AbstractClass](../Assem/Test/AbstractClass.md) | AbstractなClassです。 |
+| [SealedClass](../Assem/Test/SealedClass.md) | SealedなClassです。 |
+| [InheritClass](../Assem/Test/InheritClass.md) | [AbstractClass](../Assem/Test/AbstractClass.md) を継承したクラス。 |
+
+
+
+---------------------
+file name ./output/Assem/Test/NormalClass.md
+---------------------
+
+# NormalClass Class
+
+namespace: [Test](../../Assem/Test.md)<br />
+assembly: [Assem](../../Assem.md)
+
+NormalClassです。
+
+```csharp
+public class NormalClass;
+```
+
+Inheritance: [System\.Object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > NormalClass
+
+
+
+---------------------
+file name ./output/Assem/Test/StaticClass.md
+---------------------
+
+# StaticClass Class
+
+namespace: [Test](../../Assem/Test.md)<br />
+assembly: [Assem](../../Assem.md)
+
+StaticなClassです。
+
+```csharp
+public static class StaticClass;
+```
+
+Inheritance: [System\.Object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > StaticClass
+
+
+
+---------------------
+file name ./output/Assem/Test/AbstractClass.md
+---------------------
+
+# AbstractClass Class
+
+namespace: [Test](../../Assem/Test.md)<br />
+assembly: [Assem](../../Assem.md)
+
+AbstractなClassです。
+
+```csharp
+public abstract class AbstractClass;
+```
+
+Inheritance: [System\.Object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > AbstractClass
+
+
+
+---------------------
+file name ./output/Assem/Test/SealedClass.md
+---------------------
+
+# SealedClass Class
+
+namespace: [Test](../../Assem/Test.md)<br />
+assembly: [Assem](../../Assem.md)
+
+SealedなClassです。
+
+```csharp
+public sealed class SealedClass;
+```
+
+Inheritance: [System\.Object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > SealedClass
+
+
+
+---------------------
+file name ./output/Assem/Test/InheritClass.md
+---------------------
+
+# InheritClass Class
+
+namespace: [Test](../../Assem/Test.md)<br />
+assembly: [Assem](../../Assem.md)
+
+[AbstractClass](../../Assem/Test/AbstractClass.md) を継承したクラス。
+
+```csharp
+public class InheritClass;
+```
+
+Inheritance: [System\.Object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > [AbstractClass](../../Assem/Test/AbstractClass.md) > InheritClass
+
+

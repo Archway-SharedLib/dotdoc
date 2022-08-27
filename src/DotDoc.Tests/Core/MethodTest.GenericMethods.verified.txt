@@ -3,9 +3,23 @@
 file name ./output/Test.md
 ---------------------
 
+# Test Assembly
+
+## Namespaces
+
+| Name | Summary |
+|------|---------|
+| [Test](./Test/Test.md) |  |
+
+
+
+---------------------
+file name ./output/Test/Test.md
+---------------------
+
 # Test Namespace
 
-assembly: Test
+assembly: [Test](../Test.md)
 
 ```csharp
 namespace Test;
@@ -15,18 +29,18 @@ namespace Test;
 
 | Name | Summary |
 |------|---------|
-| [GenericMethod](./Test/GenericMethod.md) |  |
+| [GenericMethod](../Test/Test/GenericMethod.md) |  |
 
 
 
 ---------------------
-file name ./output/Test/GenericMethod.md
+file name ./output/Test/Test/GenericMethod.md
 ---------------------
 
 # GenericMethod Class
 
-namespace: [Test](../Test.md)<br />
-assembly: Test
+namespace: [Test](../../Test/Test.md)<br />
+assembly: [Test](../../Test.md)
 
 
 
@@ -34,24 +48,28 @@ assembly: Test
 public class GenericMethod;
 ```
 
+Inheritance: [System\.Object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > GenericMethod
+
 ## Methods
 
 | Name | Summary |
 |------|---------|
-| [SingleMethod\<T\>\(\)](../Test/GenericMethod/SingleMethod%3CT%3E().md) | 一つのメソッドです |
-| [DoubleMethod\<TArg, TVal\>\(\)](../Test/GenericMethod/DoubleMethod%3CTArg,-TVal%3E().md) | ２つのメソッドです |
-| [DoubleMethodWithParam\<TArg, TVal\>\(TArg\)](../Test/GenericMethod/DoubleMethodWithParam%3CTArg,-TVal%3E(TArg).md) | 引数に使います。 |
+| [SingleMethod\<T\>\(\)](../../Test/Test/GenericMethod/SingleMethod.md) | 一つのメソッドです |
+| [DoubleMethod\<TArg, TVal\>\(\)](../../Test/Test/GenericMethod/DoubleMethod.md) | ２つのメソッドです |
+| [DoubleMethodWithParam\<TArg, TVal\>\(TArg\)](../../Test/Test/GenericMethod/DoubleMethodWithParam.md) | 引数に使います。 |
+| [ReturnIntWithParam\(in string, ref int, out int\)](../../Test/Test/GenericMethod/ReturnIntWithParam.md) | リターン数字引数2 |
+| [ReturnRefReadOnly\(in int\)](../../Test/Test/GenericMethod/ReturnRefReadOnly.md) |  |
 
 
 
 ---------------------
-file name ./output/Test/GenericMethod/SingleMethod%3CT%3E().md
+file name ./output/Test/Test/GenericMethod/SingleMethod.md
 ---------------------
 
 # SingleMethod\<T\>\(\) Method
 
-namespace: [Test](../../Test.md)<br />
-assembly: Test
+namespace: [Test](../../../Test/Test.md)<br />
+assembly: [Test](../../../Test.md)
 
 一つのメソッドです
 
@@ -68,13 +86,13 @@ public void SingleMethod<T>();
 
 
 ---------------------
-file name ./output/Test/GenericMethod/DoubleMethod%3CTArg,-TVal%3E().md
+file name ./output/Test/Test/GenericMethod/DoubleMethod.md
 ---------------------
 
 # DoubleMethod\<TArg, TVal\>\(\) Method
 
-namespace: [Test](../../Test.md)<br />
-assembly: Test
+namespace: [Test](../../../Test/Test.md)<br />
+assembly: [Test](../../../Test.md)
 
 ２つのメソッドです
 
@@ -91,20 +109,20 @@ public string DoubleMethod<TArg ,TVal>();
 
 ## Return Value
 
-[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+[System\.String](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
 
 
 
 
 
 ---------------------
-file name ./output/Test/GenericMethod/DoubleMethodWithParam%3CTArg,-TVal%3E(TArg).md
+file name ./output/Test/Test/GenericMethod/DoubleMethodWithParam.md
 ---------------------
 
 # DoubleMethodWithParam\<TArg, TVal\>\(TArg\) Method
 
-namespace: [Test](../../Test.md)<br />
-assembly: Test
+namespace: [Test](../../../Test/Test.md)<br />
+assembly: [Test](../../../Test.md)
 
 引数に使います。
 
@@ -128,6 +146,66 @@ public TVal DoubleMethodWithParam<TArg ,TVal>(TArg arg);
 ## Return Value
 
 TVal
+
+
+
+
+
+---------------------
+file name ./output/Test/Test/GenericMethod/ReturnIntWithParam.md
+---------------------
+
+# ReturnIntWithParam\(in string, ref int, out int\) Method
+
+namespace: [Test](../../../Test/Test.md)<br />
+assembly: [Test](../../../Test.md)
+
+リターン数字引数2
+
+```csharp
+public int ReturnIntWithParam(in string param1 ,ref int param2 ,out int param3);
+```
+
+## Parameters
+
+| Type | Name | Summary |
+|------|------|---------|
+| [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String) | param1 | 文字列の [System\.String](https://docs.microsoft.com/ja-jp/dotnet/api/System.String) です |
+| [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32) | param2 | 数字の [System\.Int32](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32) です |
+| [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32) | param3 |  |
+
+## Return Value
+
+[System\.Int32](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
+
+数字の [System\.Int32](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32) を返します。
+
+
+
+---------------------
+file name ./output/Test/Test/GenericMethod/ReturnRefReadOnly.md
+---------------------
+
+# ReturnRefReadOnly\(in int\) Method
+
+namespace: [Test](../../../Test/Test.md)<br />
+assembly: [Test](../../../Test.md)
+
+
+
+```csharp
+public ref readonly int ReturnRefReadOnly(in int v);
+```
+
+## Parameters
+
+| Type | Name | Summary |
+|------|------|---------|
+| [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32) | v |  |
+
+## Return Value
+
+[System\.Int32](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
 
 
 

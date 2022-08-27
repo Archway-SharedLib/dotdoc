@@ -3,9 +3,23 @@
 file name ./output/Test.md
 ---------------------
 
+# Test Assembly
+
+## Namespaces
+
+| Name | Summary |
+|------|---------|
+| [Test](./Test/Test.md) |  |
+
+
+
+---------------------
+file name ./output/Test/Test.md
+---------------------
+
 # Test Namespace
 
-assembly: Test
+assembly: [Test](../Test.md)
 
 ```csharp
 namespace Test;
@@ -15,19 +29,19 @@ namespace Test;
 
 | Name | Summary |
 |------|---------|
-| [BaseMethodVariation](./Test/BaseMethodVariation.md) |  |
-| [MethodVariation](./Test/MethodVariation.md) |  |
+| [BaseMethodVariation](../Test/Test/BaseMethodVariation.md) |  |
+| [MethodVariation](../Test/Test/MethodVariation.md) |  |
 
 
 
 ---------------------
-file name ./output/Test/BaseMethodVariation.md
+file name ./output/Test/Test/BaseMethodVariation.md
 ---------------------
 
 # BaseMethodVariation Class
 
-namespace: [Test](../Test.md)<br />
-assembly: Test
+namespace: [Test](../../Test/Test.md)<br />
+assembly: [Test](../../Test.md)
 
 
 
@@ -35,24 +49,26 @@ assembly: Test
 public abstract class BaseMethodVariation;
 ```
 
+Inheritance: [System\.Object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > BaseMethodVariation
+
 ## Methods
 
 | Name | Summary |
 |------|---------|
-| [BaseMethod\(\)](../Test/BaseMethodVariation/BaseMethod().md) | Baseメソッドです |
-| [VirtualMethod\(\)](../Test/BaseMethodVariation/VirtualMethod().md) | バーチャルです。 |
-| [AbstractMethod\(\)](../Test/BaseMethodVariation/AbstractMethod().md) | abstractです。 |
+| [BaseMethod\(\)](../../Test/Test/BaseMethodVariation/BaseMethod.md) | Baseメソッドです |
+| [VirtualMethod\(\)](../../Test/Test/BaseMethodVariation/VirtualMethod.md) | バーチャルです。 |
+| [AbstractMethod\(\)](../../Test/Test/BaseMethodVariation/AbstractMethod.md) | abstractです。 |
 
 
 
 ---------------------
-file name ./output/Test/BaseMethodVariation/BaseMethod().md
+file name ./output/Test/Test/BaseMethodVariation/BaseMethod.md
 ---------------------
 
 # BaseMethod\(\) Method
 
-namespace: [Test](../../Test.md)<br />
-assembly: Test
+namespace: [Test](../../../Test/Test.md)<br />
+assembly: [Test](../../../Test.md)
 
 Baseメソッドです
 
@@ -63,13 +79,13 @@ public void BaseMethod();
 
 
 ---------------------
-file name ./output/Test/BaseMethodVariation/VirtualMethod().md
+file name ./output/Test/Test/BaseMethodVariation/VirtualMethod.md
 ---------------------
 
 # VirtualMethod\(\) Method
 
-namespace: [Test](../../Test.md)<br />
-assembly: Test
+namespace: [Test](../../../Test/Test.md)<br />
+assembly: [Test](../../../Test.md)
 
 バーチャルです。
 
@@ -80,13 +96,13 @@ public virtual void VirtualMethod();
 
 
 ---------------------
-file name ./output/Test/BaseMethodVariation/AbstractMethod().md
+file name ./output/Test/Test/BaseMethodVariation/AbstractMethod.md
 ---------------------
 
 # AbstractMethod\(\) Method
 
-namespace: [Test](../../Test.md)<br />
-assembly: Test
+namespace: [Test](../../../Test/Test.md)<br />
+assembly: [Test](../../../Test.md)
 
 abstractです。
 
@@ -97,13 +113,13 @@ public abstract void AbstractMethod();
 
 
 ---------------------
-file name ./output/Test/MethodVariation.md
+file name ./output/Test/Test/MethodVariation.md
 ---------------------
 
 # MethodVariation Class
 
-namespace: [Test](../Test.md)<br />
-assembly: Test
+namespace: [Test](../../Test/Test.md)<br />
+assembly: [Test](../../Test.md)
 
 
 
@@ -111,28 +127,30 @@ assembly: Test
 public class MethodVariation;
 ```
 
+Inheritance: [System\.Object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > [BaseMethodVariation](../../Test/Test/BaseMethodVariation.md) > MethodVariation
+
 ## Methods
 
 | Name | Summary |
 |------|---------|
-| [ReturnVoidNoParam\(\)](../Test/MethodVariation/ReturnVoidNoParam().md) | リターンなし引数なし |
-| [ReturnStringNoParam\(\)](../Test/MethodVariation/ReturnStringNoParam().md) | リターン文字列引数なし |
-| [ReturnVoidWithParam\(string, int\)](../Test/MethodVariation/ReturnVoidWithParam(string,-int).md) | リターンなし引数2 |
-| [ReturnIntWithParam\(string, int\)](../Test/MethodVariation/ReturnIntWithParam(string,-int).md) | リターン数字引数2 |
-| [AbstractMethod\(\)](../Test/MethodVariation/AbstractMethod().md) |  |
-| [VirtualMethod\(\)](../Test/MethodVariation/VirtualMethod().md) |  |
-| [BaseMethod\(\)](../Test/MethodVariation/BaseMethod().md) |  |
+| [ReturnVoidNoParam\(\)](../../Test/Test/MethodVariation/ReturnVoidNoParam.md) | リターンなし引数なし |
+| [ReturnStringNoParam\(\)](../../Test/Test/MethodVariation/ReturnStringNoParam.md) | リターン文字列引数なし |
+| [ReturnVoidWithParam\(string, int\)](../../Test/Test/MethodVariation/ReturnVoidWithParam.md) | リターンなし引数2 |
+| [ReturnIntWithParam\(string, int\)](../../Test/Test/MethodVariation/ReturnIntWithParam.md) | リターン数字引数2 |
+| [AbstractMethod\(\)](../../Test/Test/MethodVariation/AbstractMethod.md) |  |
+| [VirtualMethod\(\)](../../Test/Test/MethodVariation/VirtualMethod.md) |  |
+| [BaseMethod\(\)](../../Test/Test/MethodVariation/BaseMethod.md) |  |
 
 
 
 ---------------------
-file name ./output/Test/MethodVariation/ReturnVoidNoParam().md
+file name ./output/Test/Test/MethodVariation/ReturnVoidNoParam.md
 ---------------------
 
 # ReturnVoidNoParam\(\) Method
 
-namespace: [Test](../../Test.md)<br />
-assembly: Test
+namespace: [Test](../../../Test/Test.md)<br />
+assembly: [Test](../../../Test.md)
 
 リターンなし引数なし
 
@@ -143,13 +161,13 @@ public void ReturnVoidNoParam();
 
 
 ---------------------
-file name ./output/Test/MethodVariation/ReturnStringNoParam().md
+file name ./output/Test/Test/MethodVariation/ReturnStringNoParam.md
 ---------------------
 
 # ReturnStringNoParam\(\) Method
 
-namespace: [Test](../../Test.md)<br />
-assembly: Test
+namespace: [Test](../../../Test/Test.md)<br />
+assembly: [Test](../../../Test.md)
 
 リターン文字列引数なし
 
@@ -159,20 +177,20 @@ public string ReturnStringNoParam();
 
 ## Return Value
 
-[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+[System\.String](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
 
 文字列の [System\.String](https://docs.microsoft.com/ja-jp/dotnet/api/System.String) を返します。
 
 
 
 ---------------------
-file name ./output/Test/MethodVariation/ReturnVoidWithParam(string,-int).md
+file name ./output/Test/Test/MethodVariation/ReturnVoidWithParam.md
 ---------------------
 
 # ReturnVoidWithParam\(string, int\) Method
 
-namespace: [Test](../../Test.md)<br />
-assembly: Test
+namespace: [Test](../../../Test/Test.md)<br />
+assembly: [Test](../../../Test.md)
 
 リターンなし引数2
 
@@ -190,13 +208,13 @@ public void ReturnVoidWithParam(string param1 ,int param2);
 
 
 ---------------------
-file name ./output/Test/MethodVariation/ReturnIntWithParam(string,-int).md
+file name ./output/Test/Test/MethodVariation/ReturnIntWithParam.md
 ---------------------
 
 # ReturnIntWithParam\(string, int\) Method
 
-namespace: [Test](../../Test.md)<br />
-assembly: Test
+namespace: [Test](../../../Test/Test.md)<br />
+assembly: [Test](../../../Test.md)
 
 リターン数字引数2
 
@@ -213,20 +231,20 @@ public int ReturnIntWithParam(string param1 ,int param2);
 
 ## Return Value
 
-[int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
+[System\.Int32](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
 
 数字の [System\.Int32](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32) を返します。
 
 
 
 ---------------------
-file name ./output/Test/MethodVariation/AbstractMethod().md
+file name ./output/Test/Test/MethodVariation/AbstractMethod.md
 ---------------------
 
 # AbstractMethod\(\) Method
 
-namespace: [Test](../../Test.md)<br />
-assembly: Test
+namespace: [Test](../../../Test/Test.md)<br />
+assembly: [Test](../../../Test.md)
 
 
 
@@ -237,13 +255,13 @@ public override void AbstractMethod();
 
 
 ---------------------
-file name ./output/Test/MethodVariation/VirtualMethod().md
+file name ./output/Test/Test/MethodVariation/VirtualMethod.md
 ---------------------
 
 # VirtualMethod\(\) Method
 
-namespace: [Test](../../Test.md)<br />
-assembly: Test
+namespace: [Test](../../../Test/Test.md)<br />
+assembly: [Test](../../../Test.md)
 
 
 
@@ -254,13 +272,13 @@ public override void VirtualMethod();
 
 
 ---------------------
-file name ./output/Test/MethodVariation/BaseMethod().md
+file name ./output/Test/Test/MethodVariation/BaseMethod.md
 ---------------------
 
 # BaseMethod\(\) Method
 
-namespace: [Test](../../Test.md)<br />
-assembly: Test
+namespace: [Test](../../../Test/Test.md)<br />
+assembly: [Test](../../../Test.md)
 
 
 

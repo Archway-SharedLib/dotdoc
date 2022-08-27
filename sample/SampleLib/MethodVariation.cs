@@ -53,7 +53,21 @@ public class MethodVariation : BaseMethodVariation
     /// <param name="param1"> 文字列の <see cref="string"/> です </param>
     /// <param name="param2"> 数字の <see cref="int"/> です</param>
     /// <returns>数字の <see cref="int"/> を返します。</returns>
-    public int ReturnIntWithParam(string param1, int param2) => param2;
+    public int ReturnIntWithParam(in string param1, ref int param2, out int param3)
+    {
+        param3 = 1;
+        return 1;
+    }
+
+    public readonly struct S1
+    {
+    }
+    
+    public ref readonly int ReturnRefReadOnly(in int v)
+    {
+        ref readonly var result = ref v;
+        return ref result;
+    }
 
     /// <inheritdoc />
     public override void AbstractMethod()
@@ -69,4 +83,54 @@ public class MethodVariation : BaseMethodVariation
     
     public new void BaseMethod(){}
     
+    
+    /// <summary>
+    /// リターンなし引数なし
+    /// </summary>
+    public void OverloadMethod()
+    {
+    }
+
+    /// <summary>
+    /// 文字引数
+    /// </summary>
+    /// <param name="str">Strです。</param>
+    public void OverloadMethod(string str)
+    {
+    }
+
+    /// <summary>
+    /// 数字引数
+    /// </summary>
+    /// <param name="num">Numです。</param>
+    public void OverloadMethod(int num)
+    {
+    }
+
+    /// <summary>
+    /// 文字数字引数
+    /// </summary>
+    /// <param name="num">Numです。</param>
+    /// <param name="str">Strです。</param>
+    /// <returns>strです</returns>
+    public string OverloadMethod(int num, string str) => str;
+    
+    /// <summary>
+    /// 文字T引数
+    /// </summary>
+    /// <param name="num">Numです。</param>
+    /// <param name="str">Strです。</param>
+    /// <typeparam name="T">Tです</typeparam>
+    /// <returns>strです</returns>
+    public string OverloadMethod<T>(T num, string str) => str;
+    
+    /// <summary>
+    /// T1T2引数
+    /// </summary>
+    /// <param name="num">Numです。</param>
+    /// <param name="str">Strです。</param>
+    /// <typeparam name="T">Tです</typeparam>
+    /// <typeparam name="T2">T2です</typeparam>
+    /// <returns>T2です</returns>
+    public T2 OverloadMethod<T, T2>(T num, T2 str) => str;
 }

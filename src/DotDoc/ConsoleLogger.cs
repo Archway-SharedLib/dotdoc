@@ -7,15 +7,41 @@ using System.Threading.Tasks;
 
 namespace DotDoc
 {
-    public class ConsoleLogger : ILogger
+    public class ConsoleLogger : BaseLogger
     {
-        public void Error(string message)
+        public ConsoleLogger() : this(LogLevel.Info)
         {
-            Console.Error.WriteLine(message);
+        }
+        
+        public ConsoleLogger(LogLevel level) : base(level)
+        {
         }
 
-        public void Info(string message)
+        protected override void WriteTrace(string message)
         {
+            Write(ConsoleColor.Cyan, "Trace", message);
+        }
+
+        protected override void WriteInfo(string message)
+        {
+            Write(ConsoleColor.Blue, "Info", message);
+        }
+        
+        protected override void WriteWarn(string message)
+        {
+            Write(ConsoleColor.Magenta, "Warn", message);
+        }
+
+        protected override void WriteError(string message)
+        {
+            Write(ConsoleColor.Red, "Error", message);
+        }
+
+        private void Write(ConsoleColor color, string header, string message)
+        {
+            Console.ForegroundColor = color;
+            Console.Write($"{header}: ");
+            Console.ResetColor();
             Console.WriteLine(message);
         }
     }

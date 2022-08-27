@@ -3,12 +3,41 @@
 file name ./output/Test.md
 ---------------------
 
+# Test Assembly
+
+## Namespaces
+
+| Name | Summary |
+|------|---------|
+| [Test](./Test/Test.md) |  |
+| [Test\.Test1](./Test/Test.Test1.md) |  |
+
+
+
+---------------------
+file name ./output/Test/Test.md
+---------------------
+
 # Test Namespace
 
-assembly: Test
+assembly: [Test](../Test.md)
 
 ```csharp
 namespace Test;
+```
+
+
+
+---------------------
+file name ./output/Test/Test.Test1.md
+---------------------
+
+# Test\.Test1 Namespace
+
+assembly: [Test](../Test.md)
+
+```csharp
+namespace Test.Test1;
 ```
 
 

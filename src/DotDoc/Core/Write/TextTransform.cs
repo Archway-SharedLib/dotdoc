@@ -9,13 +9,15 @@ internal class TextTransform
 {
     private readonly static Regex toMdTextRegex = new (@"(?<see>\<see\s+?cref\s*?=\s*?""(?<seecref>.+?)""\s*?/\>)|(?<text>.+?)", 
         RegexOptions.Compiled | RegexOptions.Multiline | RegexOptions.ExplicitCapture | RegexOptions.IgnoreCase);
-    private readonly ImmutableDictionary<string,DocItem> _items;
+    private readonly DocItemContainer _items;
     private readonly IFileSystemOperation _fileSystemOperation;
+    private readonly ILogger _logger;
 
-    public TextTransform(ImmutableDictionary<string,DocItem> items, IFileSystemOperation fileSystemOperation)
+    public TextTransform(DocItemContainer items, IFileSystemOperation fileSystemOperation, ILogger logger)
     {
         _items = items ?? throw new ArgumentNullException(nameof(items));
         _fileSystemOperation = fileSystemOperation ?? throw new ArgumentNullException(nameof(fileSystemOperation));
+        _logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
 
     public string ToMdText<T>(DocItem rootItem, T targetItem, Func<T, string> getText, bool removeNewLine = false) where T : DocItem
@@ -51,8 +53,16 @@ internal class TextTransform
         });
 
     public string ToMdLink(DocItem baseItem, string key, string? display = null)
+    //public string ToMdLink()
     {
-        
+        // DocItem baseItem = null;
+        // string key = null;
+        // string? display = null;
+        if (key is null)
+        {
+            _logger.Trace($"{nameof(ToMdLink)}: key is null : {baseItem.Id}");
+            return EscapeMdText(display ?? "!no value!");
+        }
         if (key.StartsWith("!:", StringComparison.InvariantCultureIgnoreCase))
         {
             return EscapeMdText(display ?? key.Substring(2));
@@ -61,13 +71,15 @@ internal class TextTransform
         var linkText = key;
         var displayText = display ?? key;
 
-        if (_items.ContainsKey(key))
+        if (_items.TryGet(key, out var destItem))
         {
-            var destItem = _items[key];
             linkText = _fileSystemOperation.GetRelativeLink(baseItem, destItem);
             displayText = display ?? destItem.DisplayName;
         }
-        if(key.StartsWith("T:Microsoft.", StringComparison.InvariantCultureIgnoreCase) || key.StartsWith("T:System.", StringComparison.InvariantCultureIgnoreCase))
+        if(key.StartsWith("T:Microsoft.", StringComparison.InvariantCultureIgnoreCase) || 
+           key.StartsWith("T:System.", StringComparison.InvariantCultureIgnoreCase) ||
+           key.StartsWith("N:Microsoft.", StringComparison.InvariantCultureIgnoreCase) ||
+            key.StartsWith("N:System.", StringComparison.InvariantCultureIgnoreCase))
         {
             var linkKey = key.Substring(2);
             displayText = display ?? linkKey;

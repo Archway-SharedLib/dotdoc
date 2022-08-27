@@ -6,12 +6,20 @@ using DotDoc.Core.Write;
 using DotDoc.Tests.Helper;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
+using Xunit.Abstractions;
 
 namespace DotDoc.Tests.Core;
 
 [UsesVerify]
 public class MethodTest
 {
+    private readonly ILogger _logger;
+
+    public MethodTest(ITestOutputHelper output)
+    {
+        _logger = new XUnitLogger(output);
+    }
+    
     [Fact]
     public async Task Methods()
     {
@@ -94,7 +102,7 @@ public class MethodVariation : BaseMethodVariation
         var docItem = compilation.Assembly.Accept(new ProjectSymbolsVisitor(new DefaultFilter(DotDocEngineOptions.Default(""))));
         var outputText = new StringBuilder();
         var writer = new AdoWikiWriter(new[] { docItem }, DotDocEngineOptions.Default("test.sln"),
-            new TestFsModel(outputText));
+            new TestFsModel(outputText), _logger);
         await writer.WriteAsync();
 
         await Verify(outputText.ToString());
@@ -129,6 +137,24 @@ public class GenericMethod
     {
         return default(TVal);
     }
+
+    /// <summary>
+    /// リターン数字引数2
+    /// </summary>
+    /// <param name=""param1""> 文字列の <see cref=""string""/> です </param>
+    /// <param name=""param2""> 数字の <see cref=""int""/> です</param>
+    /// <returns>数字の <see cref=""int""/> を返します。</returns>
+    public int ReturnIntWithParam(in string param1, ref int param2, out int param3)
+    {
+        param3 = 1;
+        return 1;
+    }
+
+    public ref readonly int ReturnRefReadOnly(in int v)
+    {
+        ref readonly var result = ref v;
+        return ref result;
+    }
 }
 ");
 
@@ -140,7 +166,81 @@ public class GenericMethod
         var docItem = compilation.Assembly.Accept(new ProjectSymbolsVisitor(new DefaultFilter(DotDocEngineOptions.Default(""))));
         var outputText = new StringBuilder();
         var writer = new AdoWikiWriter(new[] { docItem }, DotDocEngineOptions.Default("test.sln"),
-            new TestFsModel(outputText));
+            new TestFsModel(outputText), _logger);
+        await writer.WriteAsync();
+
+        await Verify(outputText.ToString());
+    }
+    
+    [Fact]
+    public async Task Overload()
+    {
+        var tree = CSharpSyntaxTree.ParseText(@"
+namespace Test;
+
+public class MethodOverload
+{
+    
+    /// <summary>
+    /// リターンなし引数なし
+    /// </summary>
+    public void OverloadMethod()
+    {
+    }
+
+    /// <summary>
+    /// 文字引数
+    /// </summary>
+    /// <param name=""str"">Strです。</param>
+        public void OverloadMethod(string str)
+        {
+        }
+
+        /// <summary>
+        /// 数字引数
+        /// </summary>
+        /// <param name=""num"">Numです。</param>
+        public void OverloadMethod(int num)
+        {
+        }
+
+        /// <summary>
+        /// 文字数字引数
+        /// </summary>
+        /// <param name=""num"">Numです。</param>
+        /// <param name=""str"">Strです。</param>
+        /// <returns>strです</returns>
+        public string OverloadMethod(int num, string str) => str;
+    
+        /// <summary>
+        /// 文字T引数
+        /// </summary>
+        /// <param name=""num"">Numです。</param>
+        /// <param name=""str"">Strです。</param>
+        /// <typeparam name=""T"">Tです</typeparam>
+        /// <returns>strです</returns>
+        public string OverloadMethod<T>(T num, string str) => str;
+    
+        /// <summary>
+        /// T1T2引数
+        /// </summary>
+        /// <param name=""num"">Numです。</param>
+        /// <param name=""str"">Strです。</param>
+        /// <typeparam name=""T"">Tです</typeparam>
+        /// <typeparam name=""T2"">T2です</typeparam>
+        /// <returns>T2です</returns>
+        public T2 OverloadMethod<T, T2>(T num, T2 str) => str;
+}");
+
+        var assems = AppDomain.CurrentDomain.GetAssemblies()
+            .Where(a => a.GetName().Name.StartsWith("system", StringComparison.InvariantCultureIgnoreCase) || a.GetName().Name == "netstandard")
+            .Select(a => MetadataReference.CreateFromFile(a.Location));
+        
+        var compilation = CSharpCompilation.Create("Test", new[] { tree }, assems);
+        var docItem = compilation.Assembly.Accept(new ProjectSymbolsVisitor(new DefaultFilter(DotDocEngineOptions.Default(""))));
+        var outputText = new StringBuilder();
+        var writer = new AdoWikiWriter(new[] { docItem }, DotDocEngineOptions.Default("test.sln"),
+            new TestFsModel(outputText), _logger);
         await writer.WriteAsync();
 
         await Verify(outputText.ToString());

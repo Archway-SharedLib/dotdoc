@@ -22,6 +22,7 @@ public interface IDirectoryModel
 {
     string GetFullName();
     void CreateIfNotExists();
+    void Delete();
 }
 
 public class PhysicalFileModel : IFileModel
@@ -63,5 +64,10 @@ public class PhysicalDirectoryModel : IDirectoryModel
     public void CreateIfNotExists()
     {
         if(!_directoryInfo.Exists) _directoryInfo.Create();
+    }
+
+    public void Delete()
+    {
+        if(_directoryInfo.Exists) _directoryInfo.Delete(true);
     }
 }

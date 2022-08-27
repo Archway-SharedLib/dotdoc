@@ -10,21 +10,35 @@ using Xunit.Abstractions;
 namespace DotDoc.Tests.Core;
 
 [UsesVerify]
-public class NamespaceTest
+public class DelegateTest
 {
     private readonly ILogger _logger;
 
-    public NamespaceTest(ITestOutputHelper output)
+    public DelegateTest(ITestOutputHelper output)
     {
         _logger = new XUnitLogger(output);
     }
     
     [Fact]
-    public async Task Namespace()
+    public async Task Delegates()
     {
         var tree = CSharpSyntaxTree.ParseText(@"
-namespace Test.Test1{
-}
+namespace Test;
+
+/// <summary>
+/// パブリックなデリゲートです。
+/// </summary>
+/// <param name=""value"">引数です。</param>
+/// <returns>戻り値です</returns>
+public delegate string PublicDelegate(string value);
+
+/// <summary>
+/// パブリックなTをもつデリゲートです。
+/// </summary>
+/// <param name=""value"">引数です。</param>
+/// <returns>戻り値です</returns>
+/// <typeparam name=""T"">Tです</typeparam>
+public delegate T PublicDelegate<T>(in T value) where T : class;
 ");
         var assems = AppDomain.CurrentDomain.GetAssemblies()
             .Where(a => a.GetName().Name.StartsWith("system", StringComparison.InvariantCultureIgnoreCase) || a.GetName().Name == "netstandard")

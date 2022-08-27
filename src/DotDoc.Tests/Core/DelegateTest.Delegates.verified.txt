@@ -1,0 +1,99 @@
+﻿
+---------------------
+file name ./output/Test.md
+---------------------
+
+# Test Assembly
+
+## Namespaces
+
+| Name | Summary |
+|------|---------|
+| [Test](./Test/Test.md) |  |
+
+
+
+---------------------
+file name ./output/Test/Test.md
+---------------------
+
+# Test Namespace
+
+assembly: [Test](../Test.md)
+
+```csharp
+namespace Test;
+```
+
+## Delegates
+
+| Name | Summary |
+|------|---------|
+| [PublicDelegate](../Test/Test/PublicDelegate.md) | パブリックなデリゲートです。 |
+| [PublicDelegate\<T\>](../Test/Test/PublicDelegate`1.md) | パブリックなTをもつデリゲートです。 |
+
+
+
+---------------------
+file name ./output/Test/Test/PublicDelegate.md
+---------------------
+
+# PublicDelegate 
+
+namespace: [Test](../../Test/Test.md)<br />
+assembly: [Test](../../Test.md)
+
+パブリックなデリゲートです。
+
+```csharp
+public delegate string PublicDelegate(string value);
+```
+
+## Parameters
+
+| Type | Name | Summary |
+|------|------|---------|
+| [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String) | value | 引数です。 |
+
+## Return Value
+
+[System\.String](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+
+戻り値です
+
+
+
+---------------------
+file name ./output/Test/Test/PublicDelegate`1.md
+---------------------
+
+# PublicDelegate\<T\> 
+
+namespace: [Test](../../Test/Test.md)<br />
+assembly: [Test](../../Test.md)
+
+パブリックなTをもつデリゲートです。
+
+```csharp
+public delegate T PublicDelegate<T>(in T value);
+```
+
+## Type Parameters
+
+| Name | Summary |
+|------|---------|
+| T | Tです |
+
+## Parameters
+
+| Type | Name | Summary |
+|------|------|---------|
+| T | value | 引数です。 |
+
+## Return Value
+
+T
+
+戻り値です
+
+

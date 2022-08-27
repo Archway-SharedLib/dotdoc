@@ -60,6 +60,10 @@ public class TestDirectoryModel : IDirectoryModel
     public void CreateIfNotExists()
     {
     }
+
+    public void Delete()
+    {
+    }
 }
 
 

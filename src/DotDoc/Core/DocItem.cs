@@ -19,7 +19,7 @@ namespace DotDoc.Core
     
     public interface IHaveReturnValue
     {
-        public TypeInfo? ReturnValue { get; set; }
+        public ReturnDocItem? ReturnValue { get; set; }
     }
 
     public abstract class DocItem
@@ -29,6 +29,8 @@ namespace DotDoc.Core
         public string? Name { get; set; }
 
         public string? DisplayName { get; set; }
+        
+        public string? MetadataName { get; set; }
 
         public XmlDocInfo? XmlDocInfo { get; set; }
 
@@ -69,6 +71,10 @@ namespace DotDoc.Core
         public string? NamespaceId { get; set; }
         
         public override IEnumerable<DocItem>? Items => Members;
+        
+        public string? BaseTypeId { get; set; }
+        
+        public IEnumerable<string>? InterfaceIds { get; set; }
 
     }
 
@@ -115,10 +121,10 @@ namespace DotDoc.Core
 
         public List<ParameterDocItem>? Parameters { get; set; }
 
-        public TypeInfo? ReturnValue { get; set; }
+        public ReturnDocItem? ReturnValue { get; set; }
         
         public override string ToDeclareCSharpCode() =>
-            $"{Accessiblity.ToCSharpText()} delegate {ReturnValue?.DisplayName ?? "void"} {DisplayName}({string.Join(", ", Parameters.Select(p => p.TypeInfo.DisplayName + " " + p.DisplayName))});";
+            $"{Accessiblity.ToCSharpText()} delegate {ReturnValue?.ToDeclareCSharpCode() ?? "void"} {DisplayName}({string.Join(", ", Parameters.OrEmpty().Select(p => p.ToDeclareCSharpCode()))});";
 
     }
 
@@ -137,16 +143,49 @@ namespace DotDoc.Core
 
         public override IEnumerable<DocItem>? Items => Parameters;
         
-        public override string ToDeclareCSharpCode() => string.Empty;
+        public string CSharpConstructorName { get; set; }
+        
+        public override string ToDeclareCSharpCode()
+        {
+            var paramsText = Parameters.OrEmpty().Select(p => p.ToDeclareCSharpCode())
+                .ConcatWith(" ,");
+
+            return $"{Accessiblity.ToCSharpText()} {CSharpConstructorName}({paramsText});";
+        }
     }
 
     public class FieldDocItem : MemberDocItem
     {
         public TypeInfo TypeInfo { get; set; }
         
-        public override string ToDeclareCSharpCode() => string.Empty;
-    }
+        public bool IsStatic { get; set; }
+        
+        public bool IsReadOnly { get; set; }
+        
+        public object? ConstantValue { get; set; }
+        
+        public bool IsConstant { get; set; }
+        
+        public bool IsVolatile { get; set; }
 
+        public override string ToDeclareCSharpCode()
+        {
+            var modifiers = new List<string>();
+            if(IsStatic && !IsConstant) modifiers.Add("static ");
+            if(IsConstant) modifiers.Add("const ");
+            if(IsVolatile) modifiers.Add("volatile ");
+            if(IsReadOnly) modifiers.Add("readonly ");
+            return $"{Accessiblity.ToCSharpText()} {string.Join("", modifiers)}{TypeInfo.DisplayName} {DisplayName}{(!IsConstant ? "" : " = " + GetConstantValueDisplayText(ConstantValue))};";
+        }
+            
+        private string GetConstantValueDisplayText(object? value)
+        {
+            if (value is null) return "null";
+            return value is char ? $"'{value}'" :
+                value is string ? $"\"{value}\"" : value.ToString();
+        }
+    }
+    
     public class PropertyDocItem : MemberDocItem
     {
         public TypeInfo TypeInfo { get; set; }
@@ -189,7 +228,7 @@ namespace DotDoc.Core
         
         public List<TypeParameterDocItem>? TypeParameters { get; set; }
         
-        public TypeInfo? ReturnValue { get; set; }
+        public ReturnDocItem? ReturnValue { get; set; }
         
         public bool IsStatic { get; set; }
         
@@ -207,11 +246,11 @@ namespace DotDoc.Core
             if(IsOverride) modifiersText.Add("override ");
             if(IsVirtual) modifiersText.Add("virtual ");
 
-            var returnValueText = ReturnValue is not null ? ReturnValue.DisplayName : "void";
+            var returnValueText = ReturnValue is not null ? ReturnValue.ToDeclareCSharpCode() : "void";
             var typeParamsText = TypeParameters.OrEmpty().Select(p => p.Name)
                 .ConcatWith(" ,")
                 .SurroundsWith("<", ">", v => !string.IsNullOrEmpty(v));
-            var paramsText = Parameters.OrEmpty().Select(p => $"{p.TypeInfo.DisplayName} {p.Name}")
+            var paramsText = Parameters.OrEmpty().Select(p => p.ToDeclareCSharpCode())
                 .ConcatWith(" ,");
 
             return $"{Accessiblity.ToCSharpText()} {string.Join("", modifiersText)}{returnValueText} {Name}{typeParamsText}({paramsText});";
@@ -227,8 +266,32 @@ namespace DotDoc.Core
     {
         public TypeInfo TypeInfo { get; set; }
         public string? XmlDocText { get; set; }
+
+        public ValueRefKind RefKind { get; set; } = ValueRefKind.None;
+
+        public override string ToDeclareCSharpCode()
+        {
+            var refKindString = (RefKind == ValueRefKind.RefReadoly || RefKind == ValueRefKind.None)
+                ? string.Empty
+                : (RefKind.ToString().ToLower() + " ");
+            return $"{refKindString}{TypeInfo.DisplayName} {Name}";
+        }
+    }
+    
+    public class ReturnDocItem: DocItem
+    {
+        public TypeInfo TypeInfo { get; set; }
         
-        public override string ToDeclareCSharpCode() => string.Empty;
+        public string? XmlDocText { get; set; }
+
+        public ValueRefKind RefKind { get; set; } = ValueRefKind.None;
+
+        public override string ToDeclareCSharpCode()
+        {
+            var refKindString = RefKind == ValueRefKind.RefReadoly ? "ref readonly "
+                : string.Empty;
+            return $"{refKindString}{TypeInfo.DisplayName}";
+        }
     }
 
     public class TypeParameterDocItem : DocItem
@@ -245,5 +308,16 @@ namespace DotDoc.Core
         public string Name { get; set; }
         
         public string DisplayName { get; set; }
+        
+        public TypeInfo LinkType { get; set; }
+    }
+
+    public enum ValueRefKind
+    {
+        None,
+        In,
+        Out,
+        Ref,
+        RefReadoly
     }
 }

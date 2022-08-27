@@ -1,0 +1,124 @@
+﻿
+---------------------
+file name ./output/Assem.md
+---------------------
+
+# Assem Assembly
+
+## Namespaces
+
+| Name | Summary |
+|------|---------|
+| [Test](./Assem/Test.md) |  |
+
+
+
+---------------------
+file name ./output/Assem/Test.md
+---------------------
+
+# Test Namespace
+
+assembly: [Assem](../Assem.md)
+
+```csharp
+namespace Test;
+```
+
+## Classes
+
+| Name | Summary |
+|------|---------|
+| [NormalClass](../Assem/Test/NormalClass.md) | NormalClassです。 |
+
+
+
+---------------------
+file name ./output/Assem/Test/NormalClass.md
+---------------------
+
+# NormalClass Class
+
+namespace: [Test](../../Assem/Test.md)<br />
+assembly: [Assem](../../Assem.md)
+
+NormalClassです。
+
+```csharp
+public class NormalClass;
+```
+
+Inheritance: [System\.Object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > NormalClass
+
+## Properties
+
+| Name | Summary |
+|------|---------|
+| [Names](../../Assem/Test/NormalClass/Names.md) | 文字列配列です。 |
+| [NamesArray](../../Assem/Test/NormalClass/NamesArray.md) |  |
+| [NamesList](../../Assem/Test/NormalClass/NamesList.md) | List\{T\}です。 |
+
+
+
+---------------------
+file name ./output/Assem/Test/NormalClass/Names.md
+---------------------
+
+# Names Property
+
+namespace: [Test](../../../Assem/Test.md)<br />
+assembly: [Assem](../../../Assem.md)
+
+文字列配列です。
+
+```csharp
+public string[] Names { get; set; };
+```
+
+## Property Value
+
+string\[\]
+
+
+
+---------------------
+file name ./output/Assem/Test/NormalClass/NamesArray.md
+---------------------
+
+# NamesArray Property
+
+namespace: [Test](../../../Assem/Test.md)<br />
+assembly: [Assem](../../../Assem.md)
+
+
+
+```csharp
+public string[][] NamesArray { get; set; };
+```
+
+## Property Value
+
+string\[\]\[\]
+
+
+
+---------------------
+file name ./output/Assem/Test/NormalClass/NamesList.md
+---------------------
+
+# NamesList Property
+
+namespace: [Test](../../../Assem/Test.md)<br />
+assembly: [Assem](../../../Assem.md)
+
+List\{T\}です。
+
+```csharp
+public List<List<string>> NamesList { get; set; };
+```
+
+## Property Value
+
+List\<List\<string\>\>
+
+

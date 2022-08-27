@@ -1,0 +1,139 @@
+﻿
+---------------------
+file name ./output/Assem.md
+---------------------
+
+# Assem Assembly
+
+## Namespaces
+
+| Name | Summary |
+|------|---------|
+| [Test](./Assem/Test.md) |  |
+
+
+
+---------------------
+file name ./output/Assem/Test.md
+---------------------
+
+# Test Namespace
+
+assembly: [Assem](../Assem.md)
+
+```csharp
+namespace Test;
+```
+
+## Classes
+
+| Name | Summary |
+|------|---------|
+| [GenericClass\<T\>](../Assem/Test/GenericClass`1.md) | Genericクラスです。 |
+
+
+
+---------------------
+file name ./output/Assem/Test/GenericClass`1.md
+---------------------
+
+# GenericClass\<T\> Class
+
+namespace: [Test](../../Assem/Test.md)<br />
+assembly: [Assem](../../Assem.md)
+
+Genericクラスです。
+
+```csharp
+public class GenericClass<T>;
+```
+
+Inheritance: [System\.Object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > GenericClass<T>
+
+## Methods
+
+| Name | Summary |
+|------|---------|
+| [GenericMethod\<T1\>\(T\)](../../Assem/Test/GenericClass`1/GenericMethod.md) | T1です。 |
+| [GenericMethod\<T1, T2, T3\>\(T\)](../../Assem/Test/GenericClass`1/GenericMethod.md) | T３つです。 |
+
+## Type Parameters
+
+| Name | Summary |
+|------|---------|
+| T | Tの型です。 |
+
+
+
+---------------------
+file name ./output/Assem/Test/GenericClass`1/GenericMethod.md
+---------------------
+
+# GenericMethod Method
+
+namespace: [Test](../../../Assem/Test.md)<br />
+assembly: [Assem](../../../Assem.md)
+
+
+
+## Overloads
+
+| Name | Summary |
+|------|---------|
+| GenericMethod\<T1\>\(T\) | T1です。 |
+| GenericMethod\<T1, T2, T3\>\(T\) | T３つです。 |
+## GenericMethod\<T1\>\(T\)
+
+T1です。
+
+```csharp
+public T GenericMethod<T1>(T arg);
+```
+
+### Type Parameters
+
+| Name | Summary |
+|------|---------|
+| T1 | 型です |
+
+### Parameters
+
+| Type | Name | Summary |
+|------|------|---------|
+| T | arg | T |
+
+### Return Value
+
+T
+
+Tです
+
+## GenericMethod\<T1, T2, T3\>\(T\)
+
+T３つです。
+
+```csharp
+public T3 GenericMethod<T1 ,T2 ,T3>(T arg);
+```
+
+### Type Parameters
+
+| Name | Summary |
+|------|---------|
+| T1 |  |
+| T2 |  |
+| T3 |  |
+
+### Parameters
+
+| Type | Name | Summary |
+|------|------|---------|
+| T | arg |  |
+
+### Return Value
+
+T3
+
+
+
+

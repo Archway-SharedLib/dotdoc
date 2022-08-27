@@ -5,43 +5,56 @@ using DotDoc.Core.Write;
 using DotDoc.Tests.Helper;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
+using Xunit.Abstractions;
 
 namespace DotDoc.Tests.Core;
 
 [UsesVerify]
-public class ClassVariationsTest
+public class CtorTest
 {
+    private readonly ILogger _logger;
+
+    public CtorTest(ITestOutputHelper output)
+    {
+        _logger = new XUnitLogger(output);
+    }
+    
     [Fact]
-    public async Task ClassVariations()
+    public async Task DefaultTest()
     {
         var tree = CSharpSyntaxTree.ParseText(@"
 namespace Test;
 
 /// <summary>NormalClassです。</summary>
-public class NormalClass {
+public class NormalClass<T> {
+    
+    /// <summary> インスタンスを初期化します。</summary>
+    public NormalClass(string name) {}
+
 }
 
-/// <summary>StaticなClassです。</summary>
-public static class StaticClass {
-}
+/// <summary>OverloadClassです。</summary>
+public class OverloadClass<T> {
 
-/// <summary>AbstractなClassです。</summary>
-public abstract class AbstractClass {
-}
+    /// <summary> インスタンスを初期化します。</summary>
+    public OverloadClass() {}
+    
+    /// <summary> インスタンスを初期化します。</summary>
+    public OverloadClass(string name) {}
 
-/// <summary>SealedなClassです。</summary>
-public sealed class SealedClass {
+    /// <summary> インスタンスを初期化します。</summary>
+    public OverloadClass(string name, int age) {}
 }
 ");
         var assems = AppDomain.CurrentDomain.GetAssemblies()
             .Where(a => a.GetName().Name.StartsWith("system", StringComparison.InvariantCultureIgnoreCase) || a.GetName().Name == "netstandard")
             .Select(a => MetadataReference.CreateFromFile(a.Location));
         
-        var compilation = CSharpCompilation.Create("Test", new[] { tree }, assems);
+        var compilation = CSharpCompilation.Create("Assem", new[] { tree }, assems);
         var docItem = compilation.Assembly.Accept(new ProjectSymbolsVisitor(new DefaultFilter(DotDocEngineOptions.Default(""))));
         var outputText = new StringBuilder();
         var writer = new AdoWikiWriter(new[] { docItem }, DotDocEngineOptions.Default("test.sln"),
-            new TestFsModel(outputText));
+            new TestFsModel(outputText), _logger);
         await writer.WriteAsync();
 
         await Verify(outputText.ToString());

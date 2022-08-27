@@ -1,0 +1,116 @@
+﻿
+---------------------
+file name ./output/Test.md
+---------------------
+
+# Test Assembly
+
+## Namespaces
+
+| Name | Summary |
+|------|---------|
+| [Test](./Test/Test.md) |  |
+
+
+
+---------------------
+file name ./output/Test/Test.md
+---------------------
+
+# Test Namespace
+
+assembly: [Test](../Test.md)
+
+```csharp
+namespace Test;
+```
+
+## Enums
+
+| Name | Summary |
+|------|---------|
+| [NormalEnum](../Test/Test/NormalEnum.md) | 通常のEnumです。 |
+| [FlagsEnum](../Test/Test/FlagsEnum.md) | FlagsAttribute付きのEnumです。 |
+| [ShortEnum](../Test/Test/ShortEnum.md) | [System\.Int16](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int16) を元にしている Enum です。 |
+
+
+
+---------------------
+file name ./output/Test/Test/NormalEnum.md
+---------------------
+
+# NormalEnum Enum
+
+namespace: [Test](../../Test/Test.md)<br />
+assembly: [Test](../../Test.md)
+
+通常のEnumです。
+
+```csharp
+public enum NormalEnum;
+```
+
+Inheritance: [System\.Enum](https://docs.microsoft.com/ja-jp/dotnet/api/System.Enum) > NormalEnum
+
+## Fields
+
+| Name | Value | Summary |
+|------|-------|---------|
+| ValueA | 0 | ValueAです。 |
+| ValueB | 1 | ValueBです。 |
+
+
+
+---------------------
+file name ./output/Test/Test/FlagsEnum.md
+---------------------
+
+# FlagsEnum Enum
+
+namespace: [Test](../../Test/Test.md)<br />
+assembly: [Test](../../Test.md)
+
+FlagsAttribute付きのEnumです。
+
+```csharp
+public enum FlagsEnum;
+```
+
+Inheritance: [System\.Enum](https://docs.microsoft.com/ja-jp/dotnet/api/System.Enum) > FlagsEnum
+
+## Fields
+
+| Name | Value | Summary |
+|------|-------|---------|
+| None | 0 | 0です。 |
+| ValueA | 1 | 1です |
+| ValueB | 2 | 2です。 |
+| ValueC | 4 | 4です。 |
+
+
+
+---------------------
+file name ./output/Test/Test/ShortEnum.md
+---------------------
+
+# ShortEnum Enum
+
+namespace: [Test](../../Test/Test.md)<br />
+assembly: [Test](../../Test.md)
+
+[System\.Int16](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int16) を元にしている Enum です。
+
+```csharp
+public enum ShortEnum;
+```
+
+Inheritance: [System\.Enum](https://docs.microsoft.com/ja-jp/dotnet/api/System.Enum) > ShortEnum
+
+## Fields
+
+| Name | Value | Summary |
+|------|-------|---------|
+| ValueA | 1 | short 1です。 |
+| ValueB | 2 | short 2です。 |
+
+

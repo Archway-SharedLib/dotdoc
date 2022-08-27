@@ -10,27 +10,46 @@ using Xunit.Abstractions;
 namespace DotDoc.Tests.Core;
 
 [UsesVerify]
-public class NamespaceTest
+public class ClassTest
 {
     private readonly ILogger _logger;
 
-    public NamespaceTest(ITestOutputHelper output)
+    public ClassTest(ITestOutputHelper output)
     {
         _logger = new XUnitLogger(output);
     }
     
     [Fact]
-    public async Task Namespace()
+    public async Task Classes()
     {
         var tree = CSharpSyntaxTree.ParseText(@"
-namespace Test.Test1{
+namespace Test;
+
+/// <summary>NormalClassです。</summary>
+public class NormalClass {
+}
+
+/// <summary>StaticなClassです。</summary>
+public static class StaticClass {
+}
+
+/// <summary>AbstractなClassです。</summary>
+public abstract class AbstractClass {
+}
+
+/// <summary>SealedなClassです。</summary>
+public sealed class SealedClass {
+}
+
+/// <summary><see cref=""AbstractClass"" /> を継承したクラス。</summary>
+public class InheritClass: AbstractClass {
 }
 ");
         var assems = AppDomain.CurrentDomain.GetAssemblies()
             .Where(a => a.GetName().Name.StartsWith("system", StringComparison.InvariantCultureIgnoreCase) || a.GetName().Name == "netstandard")
             .Select(a => MetadataReference.CreateFromFile(a.Location));
         
-        var compilation = CSharpCompilation.Create("Test", new[] { tree }, assems);
+        var compilation = CSharpCompilation.Create("Assem", new[] { tree }, assems);
         var docItem = compilation.Assembly.Accept(new ProjectSymbolsVisitor(new DefaultFilter(DotDocEngineOptions.Default(""))));
         var outputText = new StringBuilder();
         var writer = new AdoWikiWriter(new[] { docItem }, DotDocEngineOptions.Default("test.sln"),

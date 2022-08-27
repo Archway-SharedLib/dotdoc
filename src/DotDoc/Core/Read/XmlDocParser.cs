@@ -38,11 +38,23 @@ namespace DotDoc.Core.Read
                 Returns = GetNodeValue(nav, "/member/returns")?.Trim(),
                 Parameters = GetNameTextInfo(nav, "/member/param"),
                 TypeParameters = GetNameTextInfo(nav,"/member/typeparam"),
+                Inheritdoc = GetInheritdoc(nav)
             };
 
             return result;
         }
 
+        private static XmlDocInheritdocInfo? GetInheritdoc(XPathNavigator nav)
+        {
+            var node = nav.SelectSingleNode("/inheritdoc");
+            if (node is null) return null;
+            return new XmlDocInheritdocInfo()
+            {
+                Cref = node.GetAttribute("cref", string.Empty)
+            };
+        }
+        
+        
         private static List<XmlDocNameTextInfo> GetNameTextInfo(XPathNavigator nav, string path)
         {
             var result = new List<XmlDocNameTextInfo>();

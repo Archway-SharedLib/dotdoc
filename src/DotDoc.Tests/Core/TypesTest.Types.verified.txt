@@ -3,9 +3,23 @@
 file name ./output/Test.md
 ---------------------
 
+# Test Assembly
+
+## Namespaces
+
+| Name | Summary |
+|------|---------|
+| [Test](./Test/Test.md) |  |
+
+
+
+---------------------
+file name ./output/Test/Test.md
+---------------------
+
 # Test Namespace
 
-assembly: Test
+assembly: [Test](../Test.md)
 
 ```csharp
 namespace Test;
@@ -15,43 +29,43 @@ namespace Test;
 
 | Name | Summary |
 |------|---------|
-| [ClassType](./Test/ClassType.md) | Classです。 |
-| [RecordType](./Test/RecordType.md) | Recordです。 |
+| [ClassType](../Test/Test/ClassType.md) | Classです。 |
+| [RecordType](../Test/Test/RecordType.md) | Recordです。 |
 
 ## Structs
 
 | Name | Summary |
 |------|---------|
-| [StructType](./Test/StructType.md) | Structです。 |
+| [StructType](../Test/Test/StructType.md) | Structです。 |
 
 ## Interfaces
 
 | Name | Summary |
 |------|---------|
-| [InterfaceType](./Test/InterfaceType.md) | Interfaceです。 |
+| [InterfaceType](../Test/Test/InterfaceType.md) | Interfaceです。 |
 
 ## Enums
 
 | Name | Summary |
 |------|---------|
-| [EnumType](./Test/EnumType.md) | Enumです。 |
+| [EnumType](../Test/Test/EnumType.md) | Enumです。 |
 
 ## Delegates
 
 | Name | Summary |
 |------|---------|
-| [DelegateType](./Test/DelegateType.md) | Delegateです。 |
+| [DelegateType](../Test/Test/DelegateType.md) | Delegateです。 |
 
 
 
 ---------------------
-file name ./output/Test/ClassType.md
+file name ./output/Test/Test/ClassType.md
 ---------------------
 
 # ClassType Class
 
-namespace: [Test](../Test.md)<br />
-assembly: Test
+namespace: [Test](../../Test/Test.md)<br />
+assembly: [Test](../../Test.md)
 
 Classです。
 
@@ -59,16 +73,18 @@ Classです。
 public class ClassType;
 ```
 
+Inheritance: [System\.Object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > ClassType
+
 
 
 ---------------------
-file name ./output/Test/EnumType.md
+file name ./output/Test/Test/EnumType.md
 ---------------------
 
 # EnumType Enum
 
-namespace: [Test](../Test.md)<br />
-assembly: Test
+namespace: [Test](../../Test/Test.md)<br />
+assembly: [Test](../../Test.md)
 
 Enumです。
 
@@ -76,16 +92,18 @@ Enumです。
 public enum EnumType;
 ```
 
+Inheritance: [System\.Enum](https://docs.microsoft.com/ja-jp/dotnet/api/System.Enum) > EnumType
+
 
 
 ---------------------
-file name ./output/Test/InterfaceType.md
+file name ./output/Test/Test/InterfaceType.md
 ---------------------
 
 # InterfaceType Interface
 
-namespace: [Test](../Test.md)<br />
-assembly: Test
+namespace: [Test](../../Test/Test.md)<br />
+assembly: [Test](../../Test.md)
 
 Interfaceです。
 
@@ -96,13 +114,13 @@ public interface InterfaceType;
 
 
 ---------------------
-file name ./output/Test/StructType.md
+file name ./output/Test/Test/StructType.md
 ---------------------
 
 # StructType Struct
 
-namespace: [Test](../Test.md)<br />
-assembly: Test
+namespace: [Test](../../Test/Test.md)<br />
+assembly: [Test](../../Test.md)
 
 Structです。
 
@@ -110,16 +128,18 @@ Structです。
 public struct StructType;
 ```
 
+Inheritance: [System\.ValueType](https://docs.microsoft.com/ja-jp/dotnet/api/System.ValueType) > StructType
+
 
 
 ---------------------
-file name ./output/Test/DelegateType.md
+file name ./output/Test/Test/DelegateType.md
 ---------------------
 
 # DelegateType 
 
-namespace: [Test](../Test.md)<br />
-assembly: Test
+namespace: [Test](../../Test/Test.md)<br />
+assembly: [Test](../../Test.md)
 
 Delegateです。
 
@@ -130,18 +150,22 @@ public delegate void DelegateType();
 
 
 ---------------------
-file name ./output/Test/RecordType.md
+file name ./output/Test/Test/RecordType.md
 ---------------------
 
 # RecordType Class
 
-namespace: [Test](../Test.md)<br />
-assembly: Test
+namespace: [Test](../../Test/Test.md)<br />
+assembly: [Test](../../Test.md)
 
 Recordです。
 
 ```csharp
 public class RecordType;
 ```
+
+Inheritance: [System\.Object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > RecordType
+
+Implements: [System\.IEquatable\{Test\.RecordType\}](https://docs.microsoft.com/ja-jp/dotnet/api/System.IEquatable{Test.RecordType})
 
 

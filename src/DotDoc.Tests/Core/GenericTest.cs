@@ -10,27 +10,52 @@ using Xunit.Abstractions;
 namespace DotDoc.Tests.Core;
 
 [UsesVerify]
-public class NamespaceTest
+public class GenericTest
 {
     private readonly ILogger _logger;
 
-    public NamespaceTest(ITestOutputHelper output)
+    public GenericTest(ITestOutputHelper output)
     {
         _logger = new XUnitLogger(output);
     }
     
     [Fact]
-    public async Task Namespace()
+    public async Task DefaultTest()
     {
         var tree = CSharpSyntaxTree.ParseText(@"
-namespace Test.Test1{
-}
-");
+namespace Test;
+
+
+/// <summary>
+/// Genericクラスです。
+/// </summary>
+/// <typeparam name=""T"">Tの型です。</typeparam>
+public class GenericClass<T> where T: new()
+{
+    /// <summary>
+    /// T1です。
+    /// </summary>
+    /// <param name=""arg""><see cref=""T"" /></param>
+    /// <typeparam name=""T1"">型です</typeparam>
+    /// <returns>Tです</returns>
+    public T GenericMethod<T1>(T arg) where T1: T => new T();
+
+    /// <summary>
+    /// T３つです。
+    /// </summary>
+    /// <param name=""arg""></param>
+    /// <typeparam name=""T1""></typeparam>
+    /// <typeparam name=""T2""></typeparam>
+    /// <typeparam name=""T3""></typeparam>
+    /// <returns></returns>
+    public T3 GenericMethod<T1, T2, T3>(T arg) where T3 : new() => new T3();
+
+}");
         var assems = AppDomain.CurrentDomain.GetAssemblies()
             .Where(a => a.GetName().Name.StartsWith("system", StringComparison.InvariantCultureIgnoreCase) || a.GetName().Name == "netstandard")
             .Select(a => MetadataReference.CreateFromFile(a.Location));
         
-        var compilation = CSharpCompilation.Create("Test", new[] { tree }, assems);
+        var compilation = CSharpCompilation.Create("Assem", new[] { tree }, assems);
         var docItem = compilation.Assembly.Accept(new ProjectSymbolsVisitor(new DefaultFilter(DotDocEngineOptions.Default(""))));
         var outputText = new StringBuilder();
         var writer = new AdoWikiWriter(new[] { docItem }, DotDocEngineOptions.Default("test.sln"),
@@ -39,4 +64,5 @@ namespace Test.Test1{
 
         await Verify(outputText.ToString());
     }    
+    
 }

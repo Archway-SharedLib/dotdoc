@@ -19,5 +19,5 @@ namespace SampleLib
     /// <param name="value">引数です。</param>
     /// <returns>戻り値です</returns>
     /// <typeparam name="T">Tです</typeparam>
-    public delegate T PublicDelegate<T>(string value);
+    public delegate T PublicDelegate<T>(in T value) where T : class;
 }

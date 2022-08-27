@@ -19,7 +19,7 @@ namespace DotDoc.Core.Read
                 .Select(Regex.Escape)
                 .Select(ConvertToRegexPattern)
                 .Select(p => new Regex(p)).ToList();
-            _includeAccessibilities = (options?.Accessibilities ?? Enumerable.Empty<Accessibility>())
+            _includeAccessibilities = (options?.Accessibility ?? Enumerable.Empty<Accessibility>())
                 .Where(a => a is not Accessibility.Unknown)
                 .Select(a =>
                 {

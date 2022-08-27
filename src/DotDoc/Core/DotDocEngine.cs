@@ -15,13 +15,15 @@ public class DotDocEngine
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
 
-    public async Task<IEnumerable<DocItem>> ReadAsync(DotDocEngineOptions options)
+    public async Task<IEnumerable<DocItem>> ReadAsync(DotDocEngineOptions options, IFsModel fsModel)
     {
         if (options is null)
         {
             throw new ArgumentNullException(nameof(options));
         }
-        var fsModel = options.CreateFsModel();
+
+        if (fsModel is null) throw new ArgumentNullException(nameof(fsModel));
+        
         if (!ValidateReadOptions(options, fsModel)) return Enumerable.Empty<DocItem>();
 
         MSBuildLocator.RegisterDefaults();
@@ -37,7 +39,7 @@ public class DotDocEngine
         }
     }
 
-    public async Task WriteAsync(IEnumerable<DocItem> docItems, DotDocEngineOptions options)
+    public async Task WriteAsync(IEnumerable<DocItem> docItems, DotDocEngineOptions options, IFsModel fsModel)
     {
         if (docItems is null)
         {
@@ -48,18 +50,30 @@ public class DotDocEngine
         {
             throw new ArgumentNullException(nameof(options));
         }
+
+        if (fsModel is null) throw new ArgumentNullException(nameof(fsModel));
+        
         if (!ValidateWriteOptions(options)) return;
 
-        var fsModelFactory = options.CreateFsModel();
-        fsModelFactory.CreateDirectoryModel(options.OutputDir).CreateIfNotExists();
+        _logger.Info($"write to {options.OutputDir}");
+
+        var dirModel = fsModel.CreateDirectoryModel(options.OutputDir);
+        if (options.RemoveOutputDir)
+        {
+            dirModel.Delete();
+        }
         
-        var writer = new AdoWikiWriter(docItems, options, fsModelFactory);
+        fsModel.CreateDirectoryModel(options.OutputDir).CreateIfNotExists();
+        
+        var writer = new AdoWikiWriter(docItems, options, fsModel, _logger);
         await writer.WriteAsync();
     }
 
     private async Task<IEnumerable<DocItem>> ReadSolutionFile(MSBuildWorkspace workspace, DotDocEngineOptions options)
     {
         var solution = await workspace.OpenSolutionAsync(options.InputFileName!);
+        _logger.Info($"Read solution: {solution.Id}");
+
         var results = new List<DocItem>();
         foreach (var proj in solution.Projects)
         {
@@ -74,12 +88,15 @@ public class DotDocEngine
 
     private async Task<DocItem?> ReadProjectFile(MSBuildWorkspace workspace, DotDocEngineOptions options)
     {
+        
         var proj = await workspace.OpenProjectAsync(options.InputFileName!);
         return await ReadProject(proj, options);
     }
 
     private async Task<DocItem?> ReadProject(Project proj, DotDocEngineOptions options)
     {
+        _logger.Info($"Read project: {proj.Name}");
+
         var compilation = await proj.GetCompilationAsync();
         if (compilation is null) return null;
 

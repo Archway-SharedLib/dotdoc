@@ -5,12 +5,20 @@ using DotDoc.Core.Write;
 using DotDoc.Tests.Helper;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
+using Xunit.Abstractions;
 
 namespace DotDoc.Tests.Core;
 
 [UsesVerify]
 public class TypesTest
 {
+    private readonly ILogger _logger;
+
+    public TypesTest(ITestOutputHelper output)
+    {
+        _logger = new XUnitLogger(output);
+    }
+    
     [Fact]
     public async Task Types()
     {
@@ -48,7 +56,7 @@ public record RecordType{
         var docItem = compilation.Assembly.Accept(new ProjectSymbolsVisitor(new DefaultFilter(DotDocEngineOptions.Default(""))));
         var outputText = new StringBuilder();
         var writer = new AdoWikiWriter(new[] { docItem }, DotDocEngineOptions.Default("test.sln"),
-            new TestFsModel(outputText));
+            new TestFsModel(outputText), _logger);
         await writer.WriteAsync();
 
         await Verify(outputText.ToString());

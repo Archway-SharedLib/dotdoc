@@ -27,4 +27,19 @@
       <ProjectReference Include="..\DotDoc\DotDoc.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="Core\ClassTest.Classes.verified.txt">
+        <DependentUpon>ClassTest.cs</DependentUpon>
+      </None>
+      <None Update="Core\EnumTest.Enums.verified.txt">
+        <DependentUpon>EnumTest.cs</DependentUpon>
+      </None>
+      <None Update="Core\FieldTest.Fields.received.txt">
+        <DependentUpon>FieldTest.cs</DependentUpon>
+      </None>
+      <None Update="Core\DelegateTest.Delegates.verified.txt">
+        <DependentUpon>DelegateTest.cs</DependentUpon>
+      </None>
+    </ItemGroup>
+
 </Project>

@@ -22,6 +22,7 @@ public class ProjectSymbolsVisitor : SymbolVisitor<DocItem>
             Id = id,
             Name = symbol.Name,
             DisplayName = symbol.Name,
+            MetadataName = symbol.MetadataName,
             XmlDocInfo = XmlDocParser.Parse(symbol.GetDocumentationCommentXml())
         };
 
@@ -43,6 +44,7 @@ public class ProjectSymbolsVisitor : SymbolVisitor<DocItem>
             Id = id,
             Name = symbol.Name,
             DisplayName = symbol.ToDisplayString(),
+            MetadataName = symbol.MetadataName,
             AssemblyId = SymbolUtil.GetSymbolId(symbol.ContainingAssembly),
             XmlDocInfo = XmlDocParser.Parse(symbol.GetDocumentationCommentXml())
         };
@@ -76,10 +78,13 @@ public class ProjectSymbolsVisitor : SymbolVisitor<DocItem>
                 Name = symbol.Name,
                 DisplayName = symbol.ToDisplayString()
                     .Substring(symbol.ContainingNamespace.ToDisplayString().Length + 1),
+                MetadataName = symbol.MetadataName,
                 NamespaceId = SymbolUtil.GetSymbolId(symbol.ContainingNamespace),
                 XmlDocInfo = XmlDocParser.Parse(symbol.GetDocumentationCommentXml()),
                 AssemblyId = SymbolUtil.GetSymbolId(symbol.ContainingAssembly),
-                Accessiblity = SymbolUtil.MapAccessibility(symbol.DeclaredAccessibility)
+                Accessiblity = SymbolUtil.MapAccessibility(symbol.DeclaredAccessibility),
+                BaseTypeId = symbol.BaseType is not null ? SymbolUtil.GetSymbolId(symbol.BaseType) : null,
+                InterfaceIds = symbol.Interfaces.OrEmpty().Select(i => SymbolUtil.GetSymbolId(i)).ToList()
             };
             additionalAction(item);
             return item;
@@ -127,11 +132,10 @@ public class ProjectSymbolsVisitor : SymbolVisitor<DocItem>
             v.Parameters = RetrieveParameters(delegMethod.Parameters, v.XmlDocInfo);
             v.ReturnValue = delegMethod.ReturnsVoid
                 ? null
-                : new TypeInfo()
+                : new ReturnDocItem()
                 {
-                    TypeId = SymbolUtil.GetSymbolId(delegMethod.ReturnType),
-                    Name = delegMethod.ReturnType.Name,
-                    DisplayName = delegMethod.ReturnType.ToDisplayString(),
+                    TypeInfo = delegMethod.ReturnType.ToTypeInfo(),
+                    RefKind = delegMethod.ReturnsByRefReadonly ? ValueRefKind.RefReadoly : ValueRefKind.None
                 };
         });
 
@@ -148,17 +152,18 @@ public class ProjectSymbolsVisitor : SymbolVisitor<DocItem>
             Id = id,
             Name = symbol.Name,
             DisplayName = symbol.ToDisplayString().Substring(symbol.ContainingType.ToDisplayString().Length + 1),
+            MetadataName = symbol.MetadataName,
             TypeId = SymbolUtil.GetSymbolId(symbol.ContainingType),
             NamespaceId = SymbolUtil.GetSymbolId(symbol.ContainingNamespace),
             AssemblyId = SymbolUtil.GetSymbolId(symbol.ContainingAssembly),
             XmlDocInfo = XmlDocParser.Parse(symbol.GetDocumentationCommentXml()),
             Accessiblity = SymbolUtil.MapAccessibility(symbol.DeclaredAccessibility),
-            TypeInfo = new TypeInfo()
-            {
-                TypeId = SymbolUtil.GetSymbolId(symbol.Type),
-                DisplayName = symbol.Type.ToDisplayString(),
-                Name = symbol.Type.Name
-            }
+            ConstantValue = symbol.ConstantValue,
+            IsStatic = symbol.IsStatic,
+            IsReadOnly = symbol.IsReadOnly,
+            IsConstant = symbol.IsConst,
+            IsVolatile = symbol.IsVolatile,
+            TypeInfo = symbol.Type.ToTypeInfo()
         };
 
         return item;
@@ -174,17 +179,13 @@ public class ProjectSymbolsVisitor : SymbolVisitor<DocItem>
             Id = id,
             Name = symbol.Name,
             DisplayName = symbol.ToDisplayString().Substring(symbol.ContainingType.ToDisplayString().Length + 1),
+            MetadataName = symbol.MetadataName,
             TypeId = SymbolUtil.GetSymbolId(symbol.ContainingType),
             NamespaceId = SymbolUtil.GetSymbolId(symbol.ContainingNamespace),
             AssemblyId = SymbolUtil.GetSymbolId(symbol.ContainingAssembly),
             XmlDocInfo = XmlDocParser.Parse(symbol.GetDocumentationCommentXml()),
             Accessiblity = SymbolUtil.MapAccessibility(symbol.DeclaredAccessibility),
-            TypeInfo = new TypeInfo()
-            {
-                TypeId = SymbolUtil.GetSymbolId(symbol.Type),
-                DisplayName = symbol.Type.ToDisplayString(),
-                Name = symbol.Type.Name
-            },
+            TypeInfo = symbol.Type.ToTypeInfo(),
             HasGet = symbol.GetMethod is not null,
             HasSet = symbol.SetMethod is not null,
             IsInit = symbol.SetMethod?.IsInitOnly ?? false,
@@ -224,6 +225,7 @@ public class ProjectSymbolsVisitor : SymbolVisitor<DocItem>
             Id = SymbolUtil.GetSymbolId(symbol),
             Name = symbol.Name,
             DisplayName = symbol.ToDisplayString().Substring(symbol.ContainingType.ToDisplayString().Length + 1),
+            MetadataName = symbol.MetadataName,
             TypeId = SymbolUtil.GetSymbolId(symbol.ContainingType),
             NamespaceId = SymbolUtil.GetSymbolId(symbol.ContainingNamespace),
             AssemblyId = SymbolUtil.GetSymbolId(symbol.ContainingAssembly),
@@ -231,11 +233,10 @@ public class ProjectSymbolsVisitor : SymbolVisitor<DocItem>
             Parameters = RetrieveParameters(symbol.Parameters, docInfo),
             TypeParameters = RetrieveTypeParameters(symbol.TypeParameters, docInfo),
             Accessiblity = SymbolUtil.MapAccessibility(symbol.DeclaredAccessibility),
-            ReturnValue = symbol.ReturnsVoid ? null :  new TypeInfo()
+            ReturnValue = symbol.ReturnsVoid ? null :  new ReturnDocItem()
             {
-                TypeId = SymbolUtil.GetSymbolId(symbol.ReturnType),
-                Name = symbol.ReturnType.Name,
-                DisplayName = symbol.ReturnType.ToDisplayString(),
+                TypeInfo = symbol.ReturnType.ToTypeInfo(),
+                RefKind = symbol.ReturnsByRefReadonly ? ValueRefKind.RefReadoly : ValueRefKind.None
             },
             IsStatic = symbol.IsStatic,
             IsAbstract = symbol.IsAbstract,
@@ -252,12 +253,14 @@ public class ProjectSymbolsVisitor : SymbolVisitor<DocItem>
             Id = SymbolUtil.GetSymbolId(symbol),
             Name = symbol.Name,
             DisplayName = symbol.ToDisplayString().Substring(symbol.ContainingType.ToDisplayString().Length + 1),
+            MetadataName = symbol.MetadataName,
             TypeId = SymbolUtil.GetSymbolId(symbol.ContainingType),
             NamespaceId = SymbolUtil.GetSymbolId(symbol.ContainingNamespace),
             AssemblyId = SymbolUtil.GetSymbolId(symbol.ContainingAssembly),
             XmlDocInfo = docInfo,
             Parameters = RetrieveParameters(symbol.Parameters, docInfo),
             Accessiblity = SymbolUtil.MapAccessibility(symbol.DeclaredAccessibility),
+            CSharpConstructorName = symbol.ContainingType.Name
         };
     }
     
@@ -271,6 +274,7 @@ public class ProjectSymbolsVisitor : SymbolVisitor<DocItem>
             Id = id,
             Name = symbol.Name,
             DisplayName = symbol.Name,
+            MetadataName = symbol.MetadataName,
             TypeId = SymbolUtil.GetSymbolId(symbol.ContainingType),
             NamespaceId = SymbolUtil.GetSymbolId(symbol.ContainingNamespace),
             AssemblyId = SymbolUtil.GetSymbolId(symbol.ContainingAssembly),
@@ -313,13 +317,13 @@ public class ProjectSymbolsVisitor : SymbolVisitor<DocItem>
                 Name = ps.Name,
                 Id = SymbolUtil.GetSymbolId(ps),
                 DisplayName = ps.Name,
-                TypeInfo = new TypeInfo()
-                {
-                    TypeId = SymbolUtil.GetSymbolId(ps.Type),
-                    Name = ps.Type.Name,
-                    DisplayName = ps.Type.ToDisplayString(),
-                },
-                XmlDocText = docInfo?.Parameters.OrEmpty().FirstOrDefault(p => p.Name == ps.Name)?.Text
+                MetadataName = ps.MetadataName,
+                TypeInfo = ps.Type.ToTypeInfo(),
+                XmlDocText = docInfo?.Parameters.OrEmpty().FirstOrDefault(p => p.Name == ps.Name)?.Text,
+                RefKind = ps.RefKind == RefKind.In ? ValueRefKind.In :
+                    ps.RefKind == RefKind.Out ? ValueRefKind.Out :
+                    ps.RefKind == RefKind.None ? ValueRefKind.None :
+                    ps.RefKind == RefKind.Ref ? ValueRefKind.Ref : ValueRefKind.RefReadoly
             };
         }).ToList();
     } 
@@ -333,6 +337,7 @@ public class ProjectSymbolsVisitor : SymbolVisitor<DocItem>
             {
                 Id = SymbolUtil.GetSymbolId(typeParam),
                 DisplayName = typeParam.ToDisplayString(),
+                MetadataName = typeParam.MetadataName,
                 Name = typeParam.Name,
                 XmlDocText = docInfo?.TypeParameters.OrEmpty().FirstOrDefault(p => p.Name == typeParam.Name)?.Text
             });
