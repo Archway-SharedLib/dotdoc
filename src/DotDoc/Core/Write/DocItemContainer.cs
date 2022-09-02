@@ -5,10 +5,10 @@ namespace DotDoc.Core.Write;
 public class DocItemContainer
 {
     private readonly ILogger _logger;
-    private readonly Dictionary<string, Dictionary<string, DocItem>> _pool = new();
-    private readonly Dictionary<string, DocItem> _cache = new();
+    private readonly Dictionary<string, Dictionary<string, IDocItem>> _pool = new();
+    private readonly Dictionary<string, IDocItem> _cache = new();
 
-    public DocItemContainer(IEnumerable<DocItem> docItems, ILogger logger)
+    public DocItemContainer(IEnumerable<IDocItem> docItems, ILogger logger)
     {
         _logger = logger;
         foreach (var item in docItems.OrEmpty())
@@ -17,7 +17,7 @@ public class DocItemContainer
             {
                 if(string.IsNullOrWhiteSpace(assemDocItem.Id)) continue;
                 
-                var poolByAssem = new Dictionary<string, DocItem>();
+                var poolByAssem = new Dictionary<string, IDocItem>();
                 _pool.Add(assemDocItem.Id, poolByAssem);
                 poolByAssem.Add(assemDocItem.Id, assemDocItem);
                 FlattenAssemblyItems(assemDocItem, poolByAssem);        
@@ -25,7 +25,7 @@ public class DocItemContainer
         }
     }
 
-    private void FlattenAssemblyItems(DocItem parentItem, Dictionary<string, DocItem> pool)
+    private void FlattenAssemblyItems(IDocItem parentItem, Dictionary<string, IDocItem> pool)
     {
         foreach (var item in parentItem.Items.OrEmpty())
         {
@@ -39,7 +39,7 @@ public class DocItemContainer
         }
     }
 
-    public DocItem? Get(string id)
+    public IDocItem? Get(string id)
     {
         if (_cache.ContainsKey(id)) return _cache[id];
         foreach (var value in _pool.Values)
@@ -54,7 +54,7 @@ public class DocItemContainer
         return null;
     }
     
-    public DocItem? Get(string assemblyId, string id)
+    public IDocItem? Get(string assemblyId, string id)
     {
         if (!_pool.ContainsKey(assemblyId)) return null;
         var value = _pool[assemblyId];
@@ -62,13 +62,13 @@ public class DocItemContainer
         return value[id];
     }
     
-    public bool TryGet(string id, [NotNullWhen(true)] out DocItem? item)
+    public bool TryGet(string id, [NotNullWhen(true)] out IDocItem? item)
     {
         item = Get(id);
         return item is not null;
     }
 
-    public bool TryGet(string assemblyId, string id, [NotNullWhen(true)] out DocItem? item)
+    public bool TryGet(string assemblyId, string id, [NotNullWhen(true)] out IDocItem? item)
     {
         item = Get(assemblyId, id);
         return item is not null;

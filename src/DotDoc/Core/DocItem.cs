@@ -7,6 +7,17 @@ using System.Threading.Tasks;
 
 namespace DotDoc.Core
 {
+    public interface IDocItem
+    {
+        string? Id { get; }
+        
+        string? DisplayName { get; }
+        
+        IEnumerable<IDocItem>? Items { get; }
+        
+        XmlDocInfo? XmlDocInfo { get; }
+    }
+    
     public interface IHaveParameters
     {
         public List<ParameterDocItem>? Parameters { get; set; }
@@ -22,7 +33,7 @@ namespace DotDoc.Core
         public ReturnDocItem? ReturnValue { get; set; }
     }
 
-    public abstract class DocItem
+    public abstract class DocItem : IDocItem
     {
         public string? Id { get; set; }
 
@@ -34,7 +45,7 @@ namespace DotDoc.Core
 
         public XmlDocInfo? XmlDocInfo { get; set; }
 
-        public virtual IEnumerable<DocItem>? Items { get; } = Enumerable.Empty<DocItem>();
+        public virtual IEnumerable<IDocItem>? Items { get; } = Enumerable.Empty<IDocItem>();
 
         public Accessibility Accessiblity { get; set; } = Accessibility.Unknown;
 
@@ -46,7 +57,7 @@ namespace DotDoc.Core
     {
         public List<NamespaceDocItem>? Namespaces { get; set; }
 
-        public override IEnumerable<DocItem>? Items => Namespaces;
+        public override IEnumerable<IDocItem>? Items => Namespaces;
 
         public override string ToDeclareCSharpCode() => string.Empty;
     }
@@ -57,20 +68,20 @@ namespace DotDoc.Core
 
         public string? AssemblyId { get; set; }
         
-        public override IEnumerable<DocItem>? Items => Types;
+        public override IEnumerable<IDocItem>? Items => Types;
 
         public override string ToDeclareCSharpCode() => $"namespace {DisplayName};";
     }
 
     public abstract class TypeDocItem : DocItem
     {
-        public List<MemberDocItem>? Members { get; set; }
+        public List<IMemberDocItem>? Members { get; set; }
 
         public string? AssemblyId { get; set; }
         
         public string? NamespaceId { get; set; }
         
-        public override IEnumerable<DocItem>? Items => Members;
+        public override IEnumerable<IDocItem>? Items => Members;
         
         public string? BaseTypeId { get; set; }
         
@@ -128,7 +139,17 @@ namespace DotDoc.Core
 
     }
 
-    public abstract class MemberDocItem : DocItem
+    public interface IMemberDocItem : IDocItem
+    {
+        string? AssemblyId { get; }
+
+        string? NamespaceId { get; }
+
+        string? TypeId { get; }
+    }
+    
+    
+    public abstract class MemberDocItem : DocItem, IMemberDocItem
     {
         public string? AssemblyId { get; set; }
 
@@ -141,7 +162,7 @@ namespace DotDoc.Core
     {
         public List<ParameterDocItem>? Parameters { get; set; }
 
-        public override IEnumerable<DocItem>? Items => Parameters;
+        public override IEnumerable<IDocItem>? Items => Parameters;
         
         public string CSharpConstructorName { get; set; }
         
@@ -217,14 +238,13 @@ namespace DotDoc.Core
             
             return $"{Accessiblity.ToCSharpText()} {string.Join("", modifiers)}{TypeInfo.DisplayName} {DisplayName} {{ {getset} }};";
         }
-            
     }
 
     public class MethodDocItem : MemberDocItem, IHaveParameters, IHaveTypeParameters, IHaveReturnValue
     {
         public List<ParameterDocItem>? Parameters { get; set; }
 
-        public override IEnumerable<DocItem>? Items => Parameters;
+        public override IEnumerable<IDocItem>? Items => Parameters;
         
         public List<TypeParameterDocItem>? TypeParameters { get; set; }
         
@@ -299,6 +319,67 @@ namespace DotDoc.Core
         public string? XmlDocText { get; set; }
         
         public override string ToDeclareCSharpCode() => string.Empty;
+    }
+    
+    public class OverloadMethodDocItem : IDocItem, IMemberDocItem
+    {
+        public OverloadMethodDocItem(IList<MethodDocItem> docItems)
+        {
+            Methods = docItems;
+            var first = docItems.First();
+            Id = first.Id;
+            DisplayName = first.MetadataName;
+            AssemblyId = first.AssemblyId;
+            NamespaceId = first.NamespaceId;
+            XmlDocInfo = first.XmlDocInfo;
+            TypeId = first.TypeId;
+        }
+
+        public string? Id { get; }
+        public string? DisplayName { get; }
+
+        public string? AssemblyId { get; set; }
+
+        public string? NamespaceId { get; set; }
+        
+        public string? TypeId { get; }
+
+        public IEnumerable<IDocItem>? Items { get; } = new List<IDocItem>();
+        
+        public XmlDocInfo? XmlDocInfo { get; }
+        
+        public IEnumerable<MethodDocItem> Methods { get; }
+    }
+        
+    public class OverloadConstructorDocItem : IDocItem, IMemberDocItem
+    {
+        public OverloadConstructorDocItem(IList<ConstructorDocItem> docItems)
+        {
+            var first = docItems.First();
+            Id = first.Id;
+            DisplayName = first.MetadataName;
+            Constructors = docItems;
+            AssemblyId = first.AssemblyId;
+            NamespaceId = first.NamespaceId;
+            TypeId = first.TypeId;
+            XmlDocInfo = first.XmlDocInfo;
+        }
+
+        public string? Id { get; }
+        public string? DisplayName { get; }
+       
+
+        public IEnumerable<IDocItem>? Items { get; } = new List<IDocItem>();
+        
+        public IEnumerable<ConstructorDocItem> Constructors { get; }
+        
+        public XmlDocInfo? XmlDocInfo { get; }
+        
+        public string? AssemblyId { get; }
+        
+        public string? NamespaceId { get; }
+        
+        public string? TypeId { get; }
     }
 
     public class TypeInfo

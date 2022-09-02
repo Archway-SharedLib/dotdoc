@@ -29,9 +29,9 @@ namespace Test;
 
 | Name | Summary |
 |------|---------|
-| [NormalEnum](../Test/Test/NormalEnum.md) | 通常のEnumです。 |
-| [FlagsEnum](../Test/Test/FlagsEnum.md) | FlagsAttribute付きのEnumです。 |
-| [ShortEnum](../Test/Test/ShortEnum.md) | [System\.Int16](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int16) を元にしている Enum です。 |
+| [NormalEnum](./Test/NormalEnum.md) | 通常のEnumです。 |
+| [FlagsEnum](./Test/FlagsEnum.md) | FlagsAttribute付きのEnumです。 |
+| [ShortEnum](./Test/ShortEnum.md) | [System\.Int16](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int16) を元にしている Enum です。 |
 
 
 
@@ -41,7 +41,7 @@ file name ./output/Test/Test/NormalEnum.md
 
 # NormalEnum Enum
 
-namespace: [Test](../../Test/Test.md)<br />
+namespace: [Test](../Test.md)<br />
 assembly: [Test](../../Test.md)
 
 通常のEnumです。
@@ -67,7 +67,7 @@ file name ./output/Test/Test/FlagsEnum.md
 
 # FlagsEnum Enum
 
-namespace: [Test](../../Test/Test.md)<br />
+namespace: [Test](../Test.md)<br />
 assembly: [Test](../../Test.md)
 
 FlagsAttribute付きのEnumです。
@@ -95,7 +95,7 @@ file name ./output/Test/Test/ShortEnum.md
 
 # ShortEnum Enum
 
-namespace: [Test](../../Test/Test.md)<br />
+namespace: [Test](../Test.md)<br />
 assembly: [Test](../../Test.md)
 
 [System\.Int16](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int16) を元にしている Enum です。

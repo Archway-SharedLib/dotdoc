@@ -29,8 +29,8 @@ namespace Test;
 
 | Name | Summary |
 |------|---------|
-| [BasePropertyVariation](../Test/Test/BasePropertyVariation.md) | プロパティを検証するためのabstractクラスです。 |
-| [PropertyVariation](../Test/Test/PropertyVariation.md) |  |
+| [BasePropertyVariation](./Test/BasePropertyVariation.md) | プロパティを検証するためのabstractクラスです。 |
+| [PropertyVariation](./Test/PropertyVariation.md) |  |
 
 
 
@@ -40,7 +40,7 @@ file name ./output/Test/Test/BasePropertyVariation.md
 
 # BasePropertyVariation Class
 
-namespace: [Test](../../Test/Test.md)<br />
+namespace: [Test](../Test.md)<br />
 assembly: [Test](../../Test.md)
 
 プロパティを検証するためのabstractクラスです。
@@ -55,9 +55,9 @@ Inheritance: [System\.Object](https://docs.microsoft.com/ja-jp/dotnet/api/System
 
 | Name | Summary |
 |------|---------|
-| [BaseProtected](../../Test/Test/BasePropertyVariation/BaseProtected.md) | protected なベースプロパティです、 |
-| [BaseVirtual](../../Test/Test/BasePropertyVariation/BaseVirtual.md) | virtual なベースプロパティです。 |
-| [BaseAbstract](../../Test/Test/BasePropertyVariation/BaseAbstract.md) | abstract なベースプロパティです。 |
+| [BaseProtected](./BasePropertyVariation/BaseProtected.md) | protected なベースプロパティです、 |
+| [BaseVirtual](./BasePropertyVariation/BaseVirtual.md) | virtual なベースプロパティです。 |
+| [BaseAbstract](./BasePropertyVariation/BaseAbstract.md) | abstract なベースプロパティです。 |
 
 
 
@@ -130,7 +130,7 @@ file name ./output/Test/Test/PropertyVariation.md
 
 # PropertyVariation Class
 
-namespace: [Test](../../Test/Test.md)<br />
+namespace: [Test](../Test.md)<br />
 assembly: [Test](../../Test.md)
 
 
@@ -145,15 +145,15 @@ Inheritance: [System\.Object](https://docs.microsoft.com/ja-jp/dotnet/api/System
 
 | Name | Summary |
 |------|---------|
-| [ReadWrite](../../Test/Test/PropertyVariation/ReadWrite.md) | 読み書きプロパティです。 |
-| [Read](../../Test/Test/PropertyVariation/Read.md) | 読みとり専用プロパティです。 |
-| [Write](../../Test/Test/PropertyVariation/Write.md) | 書き込み専用プロパティです。 |
-| [InitWrite](../../Test/Test/PropertyVariation/InitWrite.md) | イニット専用プロパティです。 |
-| [ReadInit](../../Test/Test/PropertyVariation/ReadInit.md) | 読みイニットプロパティです。 |
-| [StaticProp](../../Test/Test/PropertyVariation/StaticProp.md) | 静的プロパティです。 |
-| [BaseProtected](../../Test/Test/PropertyVariation/BaseProtected.md) | newプロパティです。 |
-| [BaseVirtual](../../Test/Test/PropertyVariation/BaseVirtual.md) |  |
-| [BaseAbstract](../../Test/Test/PropertyVariation/BaseAbstract.md) |  |
+| [ReadWrite](./PropertyVariation/ReadWrite.md) | 読み書きプロパティです。 |
+| [Read](./PropertyVariation/Read.md) | 読みとり専用プロパティです。 |
+| [Write](./PropertyVariation/Write.md) | 書き込み専用プロパティです。 |
+| [InitWrite](./PropertyVariation/InitWrite.md) | イニット専用プロパティです。 |
+| [ReadInit](./PropertyVariation/ReadInit.md) | 読みイニットプロパティです。 |
+| [StaticProp](./PropertyVariation/StaticProp.md) | 静的プロパティです。 |
+| [BaseProtected](./PropertyVariation/BaseProtected.md) | newプロパティです。 |
+| [BaseVirtual](./PropertyVariation/BaseVirtual.md) |  |
+| [BaseAbstract](./PropertyVariation/BaseAbstract.md) |  |
 
 
 

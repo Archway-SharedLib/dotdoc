@@ -47,7 +47,7 @@ public class TextTransformTest
     {
         public string SafeFileOrDirectoryName(string sourceName) => sourceName;
 
-        public string GetRelativeLink(DocItem baseItem, DocItem targetItem) => $"{targetItem.Id}.md";
+        public string GetRelativeLink(IDocItem baseItem, IDocItem targetItem) => $"{targetItem.Id}.md";
     }
 
     [Fact]

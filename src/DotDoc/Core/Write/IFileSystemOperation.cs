@@ -4,5 +4,5 @@ public interface IFileSystemOperation
 {
     string SafeFileOrDirectoryName(string sourceName);
 
-    string GetRelativeLink(DocItem baseItem, DocItem targetItem);
+    string GetRelativeLink(IDocItem baseItem, IDocItem targetItem);
 }

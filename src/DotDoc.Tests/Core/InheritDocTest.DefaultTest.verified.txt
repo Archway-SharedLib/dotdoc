@@ -29,20 +29,20 @@ namespace Test;
 
 | Name | Summary |
 |------|---------|
-| [Source](../Assem/Test/Source.md) |  |
-| [BaseSource](../Assem/Test/BaseSource.md) |  |
-| [InheritBaseSource](../Assem/Test/InheritBaseSource.md) |  |
-| [OverwriteSource](../Assem/Test/OverwriteSource.md) | [OverwriteSource](../Assem/Test/OverwriteSource.md) のコメントです。 |
-| [InheritanceOverwriteSource](../Assem/Test/InheritanceOverwriteSource.md) |  |
-| [MixSource](../Assem/Test/MixSource.md) |  |
-| [MixSource2](../Assem/Test/MixSource2.md) |  |
+| [Source](./Test/Source.md) |  |
+| [BaseSource](./Test/BaseSource.md) |  |
+| [InheritBaseSource](./Test/InheritBaseSource.md) |  |
+| [OverwriteSource](./Test/OverwriteSource.md) | [OverwriteSource](../Assem/Test/OverwriteSource.md) のコメントです。 |
+| [InheritanceOverwriteSource](./Test/InheritanceOverwriteSource.md) |  |
+| [MixSource](./Test/MixSource.md) |  |
+| [MixSource2](./Test/MixSource2.md) |  |
 
 ## Interfaces
 
 | Name | Summary |
 |------|---------|
-| [ISource](../Assem/Test/ISource.md) | [ISource](../Assem/Test/ISource.md) の Summary です。 |
-| [ISecondSource](../Assem/Test/ISecondSource.md) | [ISecondSource](../Assem/Test/ISecondSource.md) の Summary です。 |
+| [ISource](./Test/ISource.md) | [ISource](../Assem/Test/ISource.md) の Summary です。 |
+| [ISecondSource](./Test/ISecondSource.md) | [ISecondSource](../Assem/Test/ISecondSource.md) の Summary です。 |
 
 
 
@@ -52,7 +52,7 @@ file name ./output/Assem/Test/ISource.md
 
 # ISource Interface
 
-namespace: [Test](../../Assem/Test.md)<br />
+namespace: [Test](../Test.md)<br />
 assembly: [Assem](../../Assem.md)
 
 [ISource](../../Assem/Test/ISource.md) の Summary です。
@@ -69,7 +69,7 @@ file name ./output/Assem/Test/Source.md
 
 # Source Class
 
-namespace: [Test](../../Assem/Test.md)<br />
+namespace: [Test](../Test.md)<br />
 assembly: [Assem](../../Assem.md)
 
 
@@ -90,7 +90,7 @@ file name ./output/Assem/Test/BaseSource.md
 
 # BaseSource Class
 
-namespace: [Test](../../Assem/Test.md)<br />
+namespace: [Test](../Test.md)<br />
 assembly: [Assem](../../Assem.md)
 
 
@@ -111,7 +111,7 @@ file name ./output/Assem/Test/InheritBaseSource.md
 
 # InheritBaseSource Class
 
-namespace: [Test](../../Assem/Test.md)<br />
+namespace: [Test](../Test.md)<br />
 assembly: [Assem](../../Assem.md)
 
 
@@ -130,7 +130,7 @@ file name ./output/Assem/Test/OverwriteSource.md
 
 # OverwriteSource Class
 
-namespace: [Test](../../Assem/Test.md)<br />
+namespace: [Test](../Test.md)<br />
 assembly: [Assem](../../Assem.md)
 
 [OverwriteSource](../../Assem/Test/OverwriteSource.md) のコメントです。
@@ -151,7 +151,7 @@ file name ./output/Assem/Test/InheritanceOverwriteSource.md
 
 # InheritanceOverwriteSource Class
 
-namespace: [Test](../../Assem/Test.md)<br />
+namespace: [Test](../Test.md)<br />
 assembly: [Assem](../../Assem.md)
 
 
@@ -170,7 +170,7 @@ file name ./output/Assem/Test/ISecondSource.md
 
 # ISecondSource Interface
 
-namespace: [Test](../../Assem/Test.md)<br />
+namespace: [Test](../Test.md)<br />
 assembly: [Assem](../../Assem.md)
 
 [ISecondSource](../../Assem/Test/ISecondSource.md) の Summary です。
@@ -187,7 +187,7 @@ file name ./output/Assem/Test/MixSource.md
 
 # MixSource Class
 
-namespace: [Test](../../Assem/Test.md)<br />
+namespace: [Test](../Test.md)<br />
 assembly: [Assem](../../Assem.md)
 
 
@@ -208,7 +208,7 @@ file name ./output/Assem/Test/MixSource2.md
 
 # MixSource2 Class
 
-namespace: [Test](../../Assem/Test.md)<br />
+namespace: [Test](../Test.md)<br />
 assembly: [Assem](../../Assem.md)
 
 

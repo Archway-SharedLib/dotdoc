@@ -29,7 +29,7 @@ namespace Test;
 
 | Name | Summary |
 |------|---------|
-| [NormalClass](../Assem/Test/NormalClass.md) | NormalClassです。 |
+| [NormalClass](./Test/NormalClass.md) | NormalClassです。 |
 
 
 
@@ -39,7 +39,7 @@ file name ./output/Assem/Test/NormalClass.md
 
 # NormalClass Class
 
-namespace: [Test](../../Assem/Test.md)<br />
+namespace: [Test](../Test.md)<br />
 assembly: [Assem](../../Assem.md)
 
 NormalClassです。
@@ -54,9 +54,9 @@ Inheritance: [System\.Object](https://docs.microsoft.com/ja-jp/dotnet/api/System
 
 | Name | Summary |
 |------|---------|
-| [Names](../../Assem/Test/NormalClass/Names.md) | 文字列配列です。 |
-| [NamesArray](../../Assem/Test/NormalClass/NamesArray.md) |  |
-| [NamesList](../../Assem/Test/NormalClass/NamesList.md) | List\{T\}です。 |
+| [Names](./NormalClass/Names.md) | 文字列配列です。 |
+| [NamesArray](./NormalClass/NamesArray.md) |  |
+| [NamesList](./NormalClass/NamesList.md) | List\{T\}です。 |
 
 
 

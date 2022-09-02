@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DotDoc.Core.Write;
 
-internal class TextTransform
+public class TextTransform
 {
     private readonly static Regex toMdTextRegex = new (@"(?<see>\<see\s+?cref\s*?=\s*?""(?<seecref>.+?)""\s*?/\>)|(?<text>.+?)", 
         RegexOptions.Compiled | RegexOptions.Multiline | RegexOptions.ExplicitCapture | RegexOptions.IgnoreCase);
@@ -20,7 +20,7 @@ internal class TextTransform
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
 
-    public string ToMdText<T>(DocItem rootItem, T targetItem, Func<T, string> getText, bool removeNewLine = false) where T : DocItem
+    public string ToMdText<T>(IDocItem rootItem, T targetItem, Func<T, string> getText, bool removeNewLine = false) where T : IDocItem
     {
         var text = TrimEachLine(getText(targetItem), removeNewLine);
 
@@ -52,7 +52,7 @@ internal class TextTransform
             return newText.Replace(val, "\\" + val);
         });
 
-    public string ToMdLink(DocItem baseItem, string key, string? display = null)
+    public string ToMdLink(IDocItem baseItem, string key, string? display = null)
     //public string ToMdLink()
     {
         // DocItem baseItem = null;

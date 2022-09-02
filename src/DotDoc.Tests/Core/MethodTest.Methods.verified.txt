@@ -29,8 +29,8 @@ namespace Test;
 
 | Name | Summary |
 |------|---------|
-| [BaseMethodVariation](../Test/Test/BaseMethodVariation.md) |  |
-| [MethodVariation](../Test/Test/MethodVariation.md) |  |
+| [BaseMethodVariation](./Test/BaseMethodVariation.md) |  |
+| [MethodVariation](./Test/MethodVariation.md) |  |
 
 
 
@@ -40,7 +40,7 @@ file name ./output/Test/Test/BaseMethodVariation.md
 
 # BaseMethodVariation Class
 
-namespace: [Test](../../Test/Test.md)<br />
+namespace: [Test](../Test.md)<br />
 assembly: [Test](../../Test.md)
 
 
@@ -55,9 +55,9 @@ Inheritance: [System\.Object](https://docs.microsoft.com/ja-jp/dotnet/api/System
 
 | Name | Summary |
 |------|---------|
-| [BaseMethod\(\)](../../Test/Test/BaseMethodVariation/BaseMethod.md) | Baseメソッドです |
-| [VirtualMethod\(\)](../../Test/Test/BaseMethodVariation/VirtualMethod.md) | バーチャルです。 |
-| [AbstractMethod\(\)](../../Test/Test/BaseMethodVariation/AbstractMethod.md) | abstractです。 |
+| [BaseMethod\(\)](./BaseMethodVariation/BaseMethod.md) | Baseメソッドです |
+| [VirtualMethod\(\)](./BaseMethodVariation/VirtualMethod.md) | バーチャルです。 |
+| [AbstractMethod\(\)](./BaseMethodVariation/AbstractMethod.md) | abstractです。 |
 
 
 
@@ -118,7 +118,7 @@ file name ./output/Test/Test/MethodVariation.md
 
 # MethodVariation Class
 
-namespace: [Test](../../Test/Test.md)<br />
+namespace: [Test](../Test.md)<br />
 assembly: [Test](../../Test.md)
 
 
@@ -133,13 +133,13 @@ Inheritance: [System\.Object](https://docs.microsoft.com/ja-jp/dotnet/api/System
 
 | Name | Summary |
 |------|---------|
-| [ReturnVoidNoParam\(\)](../../Test/Test/MethodVariation/ReturnVoidNoParam.md) | リターンなし引数なし |
-| [ReturnStringNoParam\(\)](../../Test/Test/MethodVariation/ReturnStringNoParam.md) | リターン文字列引数なし |
-| [ReturnVoidWithParam\(string, int\)](../../Test/Test/MethodVariation/ReturnVoidWithParam.md) | リターンなし引数2 |
-| [ReturnIntWithParam\(string, int\)](../../Test/Test/MethodVariation/ReturnIntWithParam.md) | リターン数字引数2 |
-| [AbstractMethod\(\)](../../Test/Test/MethodVariation/AbstractMethod.md) |  |
-| [VirtualMethod\(\)](../../Test/Test/MethodVariation/VirtualMethod.md) |  |
-| [BaseMethod\(\)](../../Test/Test/MethodVariation/BaseMethod.md) |  |
+| [ReturnVoidNoParam\(\)](./MethodVariation/ReturnVoidNoParam.md) | リターンなし引数なし |
+| [ReturnStringNoParam\(\)](./MethodVariation/ReturnStringNoParam.md) | リターン文字列引数なし |
+| [ReturnVoidWithParam\(string, int\)](./MethodVariation/ReturnVoidWithParam.md) | リターンなし引数2 |
+| [ReturnIntWithParam\(string, int\)](./MethodVariation/ReturnIntWithParam.md) | リターン数字引数2 |
+| [AbstractMethod\(\)](./MethodVariation/AbstractMethod.md) |  |
+| [VirtualMethod\(\)](./MethodVariation/VirtualMethod.md) |  |
+| [BaseMethod\(\)](./MethodVariation/BaseMethod.md) |  |
 
 
 

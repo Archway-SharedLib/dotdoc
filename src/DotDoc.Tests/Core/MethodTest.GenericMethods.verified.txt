@@ -29,7 +29,7 @@ namespace Test;
 
 | Name | Summary |
 |------|---------|
-| [GenericMethod](../Test/Test/GenericMethod.md) |  |
+| [GenericMethod](./Test/GenericMethod.md) |  |
 
 
 
@@ -39,7 +39,7 @@ file name ./output/Test/Test/GenericMethod.md
 
 # GenericMethod Class
 
-namespace: [Test](../../Test/Test.md)<br />
+namespace: [Test](../Test.md)<br />
 assembly: [Test](../../Test.md)
 
 
@@ -54,11 +54,11 @@ Inheritance: [System\.Object](https://docs.microsoft.com/ja-jp/dotnet/api/System
 
 | Name | Summary |
 |------|---------|
-| [SingleMethod\<T\>\(\)](../../Test/Test/GenericMethod/SingleMethod.md) | 一つのメソッドです |
-| [DoubleMethod\<TArg, TVal\>\(\)](../../Test/Test/GenericMethod/DoubleMethod.md) | ２つのメソッドです |
-| [DoubleMethodWithParam\<TArg, TVal\>\(TArg\)](../../Test/Test/GenericMethod/DoubleMethodWithParam.md) | 引数に使います。 |
-| [ReturnIntWithParam\(in string, ref int, out int\)](../../Test/Test/GenericMethod/ReturnIntWithParam.md) | リターン数字引数2 |
-| [ReturnRefReadOnly\(in int\)](../../Test/Test/GenericMethod/ReturnRefReadOnly.md) |  |
+| [SingleMethod\<T\>\(\)](./GenericMethod/SingleMethod.md) | 一つのメソッドです |
+| [DoubleMethod\<TArg, TVal\>\(\)](./GenericMethod/DoubleMethod.md) | ２つのメソッドです |
+| [DoubleMethodWithParam\<TArg, TVal\>\(TArg\)](./GenericMethod/DoubleMethodWithParam.md) | 引数に使います。 |
+| [ReturnIntWithParam\(in string, ref int, out int\)](./GenericMethod/ReturnIntWithParam.md) | リターン数字引数2 |
+| [ReturnRefReadOnly\(in int\)](./GenericMethod/ReturnRefReadOnly.md) |  |
 
 
 

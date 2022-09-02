@@ -29,8 +29,8 @@ namespace Test;
 
 | Name | Summary |
 |------|---------|
-| [PublicDelegate](../Test/Test/PublicDelegate.md) | パブリックなデリゲートです。 |
-| [PublicDelegate\<T\>](../Test/Test/PublicDelegate`1.md) | パブリックなTをもつデリゲートです。 |
+| [PublicDelegate](./Test/PublicDelegate.md) | パブリックなデリゲートです。 |
+| [PublicDelegate\<T\>](./Test/PublicDelegate`1.md) | パブリックなTをもつデリゲートです。 |
 
 
 
@@ -38,9 +38,9 @@ namespace Test;
 file name ./output/Test/Test/PublicDelegate.md
 ---------------------
 
-# PublicDelegate 
+# PublicDelegate Delegate
 
-namespace: [Test](../../Test/Test.md)<br />
+namespace: [Test](../Test.md)<br />
 assembly: [Test](../../Test.md)
 
 パブリックなデリゲートです。
@@ -48,6 +48,8 @@ assembly: [Test](../../Test.md)
 ```csharp
 public delegate string PublicDelegate(string value);
 ```
+
+Inheritance: [System\.MulticastDelegate](https://docs.microsoft.com/ja-jp/dotnet/api/System.MulticastDelegate) > PublicDelegate
 
 ## Parameters
 
@@ -67,9 +69,9 @@ public delegate string PublicDelegate(string value);
 file name ./output/Test/Test/PublicDelegate`1.md
 ---------------------
 
-# PublicDelegate\<T\> 
+# PublicDelegate\<T\> Delegate
 
-namespace: [Test](../../Test/Test.md)<br />
+namespace: [Test](../Test.md)<br />
 assembly: [Test](../../Test.md)
 
 パブリックなTをもつデリゲートです。
@@ -77,6 +79,8 @@ assembly: [Test](../../Test.md)
 ```csharp
 public delegate T PublicDelegate<T>(in T value);
 ```
+
+Inheritance: [System\.MulticastDelegate](https://docs.microsoft.com/ja-jp/dotnet/api/System.MulticastDelegate) > PublicDelegate<T>
 
 ## Type Parameters
 

@@ -29,8 +29,8 @@ namespace Test;
 
 | Name | Summary |
 |------|---------|
-| [NormalClass\<T\>](../Assem/Test/NormalClass`1.md) | NormalClassです。 |
-| [OverloadClass\<T\>](../Assem/Test/OverloadClass`1.md) | OverloadClassです。 |
+| [NormalClass\<T\>](./Test/NormalClass`1.md) | NormalClassです。 |
+| [OverloadClass\<T\>](./Test/OverloadClass`1.md) | OverloadClassです。 |
 
 
 
@@ -40,7 +40,7 @@ file name ./output/Assem/Test/NormalClass`1.md
 
 # NormalClass\<T\> Class
 
-namespace: [Test](../../Assem/Test.md)<br />
+namespace: [Test](../Test.md)<br />
 assembly: [Assem](../../Assem.md)
 
 NormalClassです。
@@ -55,7 +55,7 @@ Inheritance: [System\.Object](https://docs.microsoft.com/ja-jp/dotnet/api/System
 
 | Name | Summary |
 |------|---------|
-| [NormalClass\(string\)](../../Assem/Test/NormalClass`1/$ctor.md) | インスタンスを初期化します。 |
+| [NormalClass\(string\)](./NormalClass`1/$ctor.md) | インスタンスを初期化します。 |
 
 ## Type Parameters
 
@@ -94,7 +94,7 @@ file name ./output/Assem/Test/OverloadClass`1.md
 
 # OverloadClass\<T\> Class
 
-namespace: [Test](../../Assem/Test.md)<br />
+namespace: [Test](../Test.md)<br />
 assembly: [Assem](../../Assem.md)
 
 OverloadClassです。
@@ -109,9 +109,9 @@ Inheritance: [System\.Object](https://docs.microsoft.com/ja-jp/dotnet/api/System
 
 | Name | Summary |
 |------|---------|
-| [OverloadClass\(\)](../../Assem/Test/OverloadClass`1/$ctor.md) | インスタンスを初期化します。 |
-| [OverloadClass\(string\)](../../Assem/Test/OverloadClass`1/$ctor.md) | インスタンスを初期化します。 |
-| [OverloadClass\(string, int\)](../../Assem/Test/OverloadClass`1/$ctor.md) | インスタンスを初期化します。 |
+| [OverloadClass\(\)](./OverloadClass`1/$ctor.md) | インスタンスを初期化します。 |
+| [OverloadClass\(string\)](./OverloadClass`1/$ctor.md) | インスタンスを初期化します。 |
+| [OverloadClass\(string, int\)](./OverloadClass`1/$ctor.md) | インスタンスを初期化します。 |
 
 ## Type Parameters
 
@@ -130,7 +130,7 @@ file name ./output/Assem/Test/OverloadClass`1/$ctor.md
 namespace: [Test](../../../Assem/Test.md)<br />
 assembly: [Assem](../../../Assem.md)
 
-
+インスタンスを初期化します。
 
 ## Overloads
 

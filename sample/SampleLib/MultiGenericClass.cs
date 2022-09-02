@@ -30,8 +30,8 @@ namespace SampleLib
         where T6: new()
         where T7: PublicClass
         where T8: PublicClass?
-        where T9: IPublicInterface
-        where T10: IPublicInterface?
+        where T9: ISource
+        where T10: ISource?
         where T11: T12
     {
     }

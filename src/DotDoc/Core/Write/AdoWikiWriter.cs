@@ -1,19 +1,20 @@
 ﻿using System.Collections.Immutable;
 using System.Text;
 using DotDoc.Core.Read;
+using DotDoc.Core.Write.Page;
 
 namespace DotDoc.Core.Write
 {
     public class AdoWikiWriter : IWriter, IFileSystemOperation
     {
-        private readonly List<DocItem> _docItems;
+        private readonly List<IDocItem> _docItems;
         private readonly DotDocEngineOptions _options;
         private readonly IFsModel _fsModel;
         private readonly ILogger _logger;
         private readonly TextTransform _textTransform;
         private readonly DocItemContainer _docItemContainer;
 
-        public AdoWikiWriter(IEnumerable<DocItem> docItems, DotDocEngineOptions options, IFsModel fsModel, ILogger logger)
+        public AdoWikiWriter(IEnumerable<IDocItem> docItems, DotDocEngineOptions options, IFsModel fsModel, ILogger logger)
         {
             _docItems = docItems?.ToList() ?? throw new ArgumentNullException(nameof(docItems));
             _options = options ?? throw new ArgumentNullException(nameof(options));
@@ -34,17 +35,13 @@ namespace DotDoc.Core.Write
 
         private async Task WriteAssemblyAsync(IDirectoryModel rootDir, AssemblyDocItem assemDocItem)
         {
-            var safeName = SafeFileOrDirectoryName(assemDocItem.ToFileName());
-            var assemDir = _fsModel.CreateDirectoryModel(_fsModel.PathJoin(rootDir.GetFullName(), safeName));
-
-            var sb = new StringBuilder();
-            AppendTitle(sb, "Assembly", assemDocItem.DisplayName);
-
-            AppendItemList<NamespaceDocItem>("Namespaces", assemDocItem, sb);
-
+            var pageMd = new AssemblyPage(assemDocItem, _textTransform).Write();
+            
+            var safeName = assemDocItem.ToFileName();
             var file = _fsModel.CreateFileModel(_fsModel.PathJoin(rootDir.GetFullName(), safeName + ".md"));
-            file.WriteText(sb.ToString());
+            file.WriteText(pageMd);
 
+            var assemDir = _fsModel.CreateDirectoryModel(_fsModel.PathJoin(rootDir.GetFullName(), safeName));
             foreach (var nsDocItem in assemDocItem.Namespaces.OrEmpty())
             {
                 await WriteNamespaceAsync(assemDir, nsDocItem);
@@ -54,26 +51,14 @@ namespace DotDoc.Core.Write
         private async Task WriteNamespaceAsync(IDirectoryModel assemDir, NamespaceDocItem nsDocItem)
         {
             assemDir.CreateIfNotExists();
+
+            var pageMd = new NamespacePage(nsDocItem, _textTransform, _docItemContainer).Write();
             
             var safeName = SafeFileOrDirectoryName(nsDocItem.ToFileName());
-            var nsDir = _fsModel.CreateDirectoryModel(_fsModel.PathJoin(assemDir.GetFullName(), safeName));
-
-            var sb = new StringBuilder();
-            AppendTitle(sb, "Namespace", nsDocItem.DisplayName);
-            AppendNamespaceAssemblyInformation(sb, nsDocItem.Id, nsDocItem.Id, nsDocItem.AssemblyId, true);
-
-            AppendDeclareCode(sb, nsDocItem.ToDeclareCSharpCode());
-            
-            AppendItemList<ClassDocItem>("Classes", nsDocItem, sb);
-            AppendItemList<StructDocItem>("Structs", nsDocItem, sb);
-            AppendItemList<InterfaceDocItem>("Interfaces", nsDocItem, sb);
-            AppendItemList<EnumDocItem>("Enums", nsDocItem, sb);
-            AppendItemList<DelegateDocItem>("Delegates", nsDocItem, sb);
-
             var file = _fsModel.CreateFileModel(_fsModel.PathJoin(assemDir.GetFullName(), safeName + ".md"));
-            file.WriteText(sb.ToString());
-            // await File.WriteAllTextAsync(Path.Combine(rootDir.GetFullName(), safeName + ".md"), sb.ToString(), Encoding.UTF8);
-
+            file.WriteText(pageMd);
+            
+            var nsDir = _fsModel.CreateDirectoryModel(_fsModel.PathJoin(assemDir.GetFullName(), safeName));
             foreach (var typeDocItem in nsDocItem.Types.OrEmpty())
             {
                 await WriteTypeAsync(nsDir, typeDocItem);
@@ -83,58 +68,21 @@ namespace DotDoc.Core.Write
         private async Task WriteTypeAsync(IDirectoryModel nsDir, TypeDocItem typeDocItem)
         {
             nsDir.CreateIfNotExists();
-            
-            var sb = new StringBuilder();
-            AppendTitle(sb, GetTypeTypeName(typeDocItem), typeDocItem.DisplayName);
-            AppendNamespaceAssemblyInformation(sb, typeDocItem.Id, typeDocItem.NamespaceId, typeDocItem.AssemblyId, false);
 
-            sb.AppendLine(_textTransform.ToMdText(typeDocItem, typeDocItem, t => t.XmlDocInfo?.Summary)).AppendLine();
-            
-            AppendDeclareCode(sb, typeDocItem.ToDeclareCSharpCode());
-
-            if (typeDocItem is not DelegateDocItem)
+            IPage? page = typeDocItem switch
             {
-                if (!string.IsNullOrEmpty(typeDocItem.BaseTypeId))
-                {
-                    var bases = new List<string>();
-                    var baseId = typeDocItem.BaseTypeId;
-                    while (!string.IsNullOrEmpty(baseId))
-                    {
-                        bases.Add(baseId);
-                        var baseDocItem = _docItemContainer.Get(baseId);
-                        baseId = null;
-                        if (baseDocItem is TypeDocItem baseTypeDoc)
-                        {
-                            baseId = baseTypeDoc.BaseTypeId;
-                        }
-                    }
-
-                    var links = bases.AsEnumerable().Reverse().Select(id => _textTransform.ToMdLink(typeDocItem, id));
-                    sb.AppendLine("Inheritance: " + string.Join(" > ", links.Append(typeDocItem.DisplayName))).AppendLine();
-                }
-                if (typeDocItem.InterfaceIds.OrEmpty().Any())
-                {
-                    sb.AppendLine("Implements: " + string.Join(", ", typeDocItem.InterfaceIds.Select(id => _textTransform.ToMdLink(typeDocItem, id)))).AppendLine();    
-                }
-            }
-            
-            AppendItemList<ConstructorDocItem>("Constructors", typeDocItem, sb);
-            AppendItemList<MethodDocItem>("Methods", typeDocItem, sb);
-            AppendItemList<PropertyDocItem>("Properties", typeDocItem, sb);
-            AppendFieldItemList(typeDocItem, sb);
-            AppendItemList<EventDocItem>("Events", typeDocItem, sb);
-            
-            if(typeDocItem is IHaveTypeParameters htp)
-                AppendTypeParameterList(htp.TypeParameters.OrEmpty(), typeDocItem, sb);
-            if(typeDocItem is IHaveParameters hp)
-                AppendParameterList(hp.Parameters.OrEmpty(), typeDocItem, sb);
-            if(typeDocItem is IHaveReturnValue hrv)
-                AppendReturnValue(hrv, typeDocItem, sb);
+                ClassDocItem i => new ClassPage(i, _textTransform, _docItemContainer),
+                InterfaceDocItem i => new InterfacePage(i, _textTransform, _docItemContainer),
+                EnumDocItem i => new EnumPage(i, _textTransform, _docItemContainer),
+                StructDocItem i => new StructPage(i, _textTransform, _docItemContainer),
+                DelegateDocItem i => new DelegatePage(i, _textTransform, _docItemContainer),
+                _ => null
+            };
+            if (page is null) return;
             
             var typeDirOrFile = _fsModel.PathJoin(nsDir.GetFullName(), SafeFileOrDirectoryName(typeDocItem.ToFileName()));
-            _fsModel.CreateFileModel(typeDirOrFile + ".md").WriteText(sb.ToString());
-            //await File.WriteAllTextAsync(typeDirOrFile + ".md", sb.ToString(), Encoding.UTF8);
-
+            _fsModel.CreateFileModel(typeDirOrFile + ".md").WriteText(page.Write());
+            
             if (typeDocItem is EnumDocItem) return;
             
             var typeDir = _fsModel.CreateDirectoryModel(typeDirOrFile);
@@ -145,34 +93,40 @@ namespace DotDoc.Core.Write
             }
         }
 
-        private IEnumerable<MemberDocItem> PrepareMemberDocItems(IEnumerable<MemberDocItem> members)
+        private IEnumerable<IMemberDocItem> PrepareMemberDocItems(IEnumerable<IMemberDocItem> members)
         {
-            var nonMethodDocItems = new List<MemberDocItem>();
-            var methodDocItems = new Dictionary<string, OverloadMethodDocItem>();
-            var overloadConstructorItem = new OverloadConstructorDocItem();
+            var nonMethodDocItems = new List<IMemberDocItem>();
+            var methodDocItems = new Dictionary<string, List<MethodDocItem>>();
+            var ctorDocItems = new List<ConstructorDocItem>();
+            // var overloadConstructorItem = new OverloadConstructorDocItem();
             
             foreach (var member in members)
             {
                 if (member is MethodDocItem method)
                 {
-                    var name = member.Name!;
+                    var name = method.Name!;
                     var overload = methodDocItems.ContainsKey(name) ? methodDocItems[name] : new();
-                    overload.Name = name;
-                    overload.DisplayName = name;
-                    overload.AssemblyId = method.AssemblyId;
-                    overload.NamespaceId = method.NamespaceId;
-                    overload.TypeId = method.TypeId;
-                    overload.Methods.Add(method);
+                    overload.Add(method);
                     methodDocItems[name] = overload;
+                    // var name = member.Name!;
+                    // var overload = methodDocItems.ContainsKey(name) ? methodDocItems[name] : new();
+                    // overload.Name = name;
+                    // overload.DisplayName = name;
+                    // overload.AssemblyId = method.AssemblyId;
+                    // overload.NamespaceId = method.NamespaceId;
+                    // overload.TypeId = method.TypeId;
+                    // overload.Methods.Add(method);
+                    // methodDocItems[name] = overload;
                 }
                 else if (member is ConstructorDocItem ctor)
                 {
-                    overloadConstructorItem.Name = ctor.Name;
-                    overloadConstructorItem.DisplayName = ctor.Name;
-                    overloadConstructorItem.AssemblyId = ctor.AssemblyId;
-                    overloadConstructorItem.NamespaceId = ctor.NamespaceId;
-                    overloadConstructorItem.TypeId = ctor.TypeId;
-                    overloadConstructorItem.Constructors.Add(ctor);
+                    ctorDocItems.Add(ctor);
+                    // overloadConstructorItem.Name = ctor.Name;
+                    // overloadConstructorItem.DisplayName = ctor.Name;
+                    // overloadConstructorItem.AssemblyId = ctor.AssemblyId;
+                    // overloadConstructorItem.NamespaceId = ctor.NamespaceId;
+                    // overloadConstructorItem.TypeId = ctor.TypeId;
+                    // overloadConstructorItem.Constructors.Add(ctor);
                 }
                 else
                 {
@@ -180,27 +134,39 @@ namespace DotDoc.Core.Write
                 }
             }
 
-            if (overloadConstructorItem.Constructors.Any())
+            if (ctorDocItems.Any())
             {
-                nonMethodDocItems.Add(overloadConstructorItem);
+                nonMethodDocItems.Add(new OverloadConstructorDocItem(ctorDocItems));
             }
+            // if (overloadConstructorItem.Constructors.Any())
+            // {
+            //     nonMethodDocItems.Add(overloadConstructorItem);
+            // }
 
             foreach (var method in methodDocItems.Values)
             {
-                if (method.Methods.Count == 1)
+                // if (method.Methods.Count() == 1)
+                // {
+                //     nonMethodDocItems.Add(method.Methods.First());
+                // }
+                // else
+                // {
+                //     nonMethodDocItems.Add(method);
+                // }
+                if (method.Count == 1)
                 {
-                    nonMethodDocItems.Add(method.Methods.First());
+                    nonMethodDocItems.Add(method.First());
                 }
                 else
                 {
-                    nonMethodDocItems.Add(method);
+                    nonMethodDocItems.Add(new OverloadMethodDocItem(method));
                 }
             }
 
             return nonMethodDocItems;
         }
 
-        private async Task WriteMemberAsync(IDirectoryModel typeDir, TypeDocItem typeDocItem, MemberDocItem memberDocItem)
+        private async Task WriteMemberAsync(IDirectoryModel typeDir, TypeDocItem typeDocItem, IMemberDocItem memberDocItem)
         {
             var sb = memberDocItem switch
             {
@@ -225,7 +191,7 @@ namespace DotDoc.Core.Write
             
             AppendNamespaceAssemblyInformation(sb, memberDocItem.Constructors.First().Id, memberDocItem.NamespaceId, memberDocItem.AssemblyId, false);
             
-            if (memberDocItem.Constructors.Count == 1)
+            if (memberDocItem.Constructors.Count() == 1)
             {
                 var ctor = memberDocItem.Constructors.First();
                 sb.AppendLine(_textTransform.ToMdText(ctor, ctor, t => t.XmlDocInfo?.Summary)).AppendLine();
@@ -447,7 +413,7 @@ namespace DotDoc.Core.Write
         }
 
         
-        private void AppendParameterList(IEnumerable<ParameterDocItem> parameters, DocItem source, StringBuilder sb, int depth = 2)
+        private void AppendParameterList(IEnumerable<ParameterDocItem> parameters, IDocItem source, StringBuilder sb, int depth = 2)
         {
             if(parameters.Any())
             {
@@ -462,7 +428,7 @@ namespace DotDoc.Core.Write
             }
         }
         
-        private void AppendTypeParameterList(IEnumerable<TypeParameterDocItem> typeParameters, DocItem source, StringBuilder sb, int depth = 2)
+        private void AppendTypeParameterList(IEnumerable<TypeParameterDocItem> typeParameters, IDocItem source, StringBuilder sb, int depth = 2)
         {
             if(typeParameters.Any())
             {
@@ -487,7 +453,7 @@ namespace DotDoc.Core.Write
         }
         
 
-        public string GetRelativeLink(DocItem source, DocItem dest)
+        public string GetRelativeLink(IDocItem source, IDocItem dest)
         {
             var basePath = dest switch
             {
@@ -527,15 +493,5 @@ namespace DotDoc.Core.Write
         
     }
     
-    public class OverloadMethodDocItem : MemberDocItem
-    {
-        public List<MethodDocItem> Methods { get; } = new();
-        public override string ToDeclareCSharpCode() => string.Empty;
-    }
-        
-    public class OverloadConstructorDocItem : ConstructorDocItem
-    {
-        public List<ConstructorDocItem> Constructors { get; } = new();
-        public override string ToDeclareCSharpCode() => string.Empty;
-    }
+    
 }

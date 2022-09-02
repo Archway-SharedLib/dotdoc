@@ -90,9 +90,9 @@ public class ProjectSymbolsVisitor : SymbolVisitor<DocItem>
             return item;
         }
 
-        List<MemberDocItem> GetMembers()
+        List<IMemberDocItem> GetMembers()
         {
-            var members = new List<MemberDocItem>();
+            var members = new List<IMemberDocItem>();
             foreach (var member in symbol.GetMembers().Where(s => s is not INamedTypeSymbol))
             {
                 if (member.Accept(this) is MemberDocItem mItem)

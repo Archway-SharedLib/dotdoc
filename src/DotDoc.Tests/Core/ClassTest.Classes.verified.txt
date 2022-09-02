@@ -29,11 +29,11 @@ namespace Test;
 
 | Name | Summary |
 |------|---------|
-| [NormalClass](../Assem/Test/NormalClass.md) | NormalClassです。 |
-| [StaticClass](../Assem/Test/StaticClass.md) | StaticなClassです。 |
-| [AbstractClass](../Assem/Test/AbstractClass.md) | AbstractなClassです。 |
-| [SealedClass](../Assem/Test/SealedClass.md) | SealedなClassです。 |
-| [InheritClass](../Assem/Test/InheritClass.md) | [AbstractClass](../Assem/Test/AbstractClass.md) を継承したクラス。 |
+| [NormalClass](./Test/NormalClass.md) | NormalClassです。 |
+| [StaticClass](./Test/StaticClass.md) | StaticなClassです。 |
+| [AbstractClass](./Test/AbstractClass.md) | AbstractなClassです。 |
+| [SealedClass](./Test/SealedClass.md) | SealedなClassです。 |
+| [InheritClass](./Test/InheritClass.md) | [AbstractClass](../Assem/Test/AbstractClass.md) を継承したクラス。 |
 
 
 
@@ -43,7 +43,7 @@ file name ./output/Assem/Test/NormalClass.md
 
 # NormalClass Class
 
-namespace: [Test](../../Assem/Test.md)<br />
+namespace: [Test](../Test.md)<br />
 assembly: [Assem](../../Assem.md)
 
 NormalClassです。
@@ -62,7 +62,7 @@ file name ./output/Assem/Test/StaticClass.md
 
 # StaticClass Class
 
-namespace: [Test](../../Assem/Test.md)<br />
+namespace: [Test](../Test.md)<br />
 assembly: [Assem](../../Assem.md)
 
 StaticなClassです。
@@ -81,7 +81,7 @@ file name ./output/Assem/Test/AbstractClass.md
 
 # AbstractClass Class
 
-namespace: [Test](../../Assem/Test.md)<br />
+namespace: [Test](../Test.md)<br />
 assembly: [Assem](../../Assem.md)
 
 AbstractなClassです。
@@ -100,7 +100,7 @@ file name ./output/Assem/Test/SealedClass.md
 
 # SealedClass Class
 
-namespace: [Test](../../Assem/Test.md)<br />
+namespace: [Test](../Test.md)<br />
 assembly: [Assem](../../Assem.md)
 
 SealedなClassです。
@@ -119,7 +119,7 @@ file name ./output/Assem/Test/InheritClass.md
 
 # InheritClass Class
 
-namespace: [Test](../../Assem/Test.md)<br />
+namespace: [Test](../Test.md)<br />
 assembly: [Assem](../../Assem.md)
 
 [AbstractClass](../../Assem/Test/AbstractClass.md) を継承したクラス。

@@ -29,12 +29,4 @@ public static class Extensions
         return result;
     }
 
-    public static TypeInfo GetLinkTypeInfo(this TypeInfo info)
-    {
-        while (info.LinkType is not null)
-        {
-            info = info.LinkType;
-        }
-        return info;
-    }
 }
