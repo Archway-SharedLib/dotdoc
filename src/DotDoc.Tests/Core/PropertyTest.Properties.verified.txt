@@ -67,7 +67,7 @@ file name ./output/Test/Test/BasePropertyVariation/BaseProtected.md
 
 # BaseProtected Property
 
-namespace: [Test](../../../Test/Test.md)<br />
+namespace: [Test](../../Test.md)<br />
 assembly: [Test](../../../Test.md)
 
 protected なベースプロパティです、
@@ -88,7 +88,7 @@ file name ./output/Test/Test/BasePropertyVariation/BaseVirtual.md
 
 # BaseVirtual Property
 
-namespace: [Test](../../../Test/Test.md)<br />
+namespace: [Test](../../Test.md)<br />
 assembly: [Test](../../../Test.md)
 
 virtual なベースプロパティです。
@@ -109,7 +109,7 @@ file name ./output/Test/Test/BasePropertyVariation/BaseAbstract.md
 
 # BaseAbstract Property
 
-namespace: [Test](../../../Test/Test.md)<br />
+namespace: [Test](../../Test.md)<br />
 assembly: [Test](../../../Test.md)
 
 abstract なベースプロパティです。
@@ -163,7 +163,7 @@ file name ./output/Test/Test/PropertyVariation/ReadWrite.md
 
 # ReadWrite Property
 
-namespace: [Test](../../../Test/Test.md)<br />
+namespace: [Test](../../Test.md)<br />
 assembly: [Test](../../../Test.md)
 
 読み書きプロパティです。
@@ -186,7 +186,7 @@ file name ./output/Test/Test/PropertyVariation/Read.md
 
 # Read Property
 
-namespace: [Test](../../../Test/Test.md)<br />
+namespace: [Test](../../Test.md)<br />
 assembly: [Test](../../../Test.md)
 
 読みとり専用プロパティです。
@@ -207,7 +207,7 @@ file name ./output/Test/Test/PropertyVariation/Write.md
 
 # Write Property
 
-namespace: [Test](../../../Test/Test.md)<br />
+namespace: [Test](../../Test.md)<br />
 assembly: [Test](../../../Test.md)
 
 書き込み専用プロパティです。
@@ -228,7 +228,7 @@ file name ./output/Test/Test/PropertyVariation/InitWrite.md
 
 # InitWrite Property
 
-namespace: [Test](../../../Test/Test.md)<br />
+namespace: [Test](../../Test.md)<br />
 assembly: [Test](../../../Test.md)
 
 イニット専用プロパティです。
@@ -249,7 +249,7 @@ file name ./output/Test/Test/PropertyVariation/ReadInit.md
 
 # ReadInit Property
 
-namespace: [Test](../../../Test/Test.md)<br />
+namespace: [Test](../../Test.md)<br />
 assembly: [Test](../../../Test.md)
 
 読みイニットプロパティです。
@@ -270,7 +270,7 @@ file name ./output/Test/Test/PropertyVariation/StaticProp.md
 
 # StaticProp Property
 
-namespace: [Test](../../../Test/Test.md)<br />
+namespace: [Test](../../Test.md)<br />
 assembly: [Test](../../../Test.md)
 
 静的プロパティです。
@@ -291,7 +291,7 @@ file name ./output/Test/Test/PropertyVariation/BaseProtected.md
 
 # BaseProtected Property
 
-namespace: [Test](../../../Test/Test.md)<br />
+namespace: [Test](../../Test.md)<br />
 assembly: [Test](../../../Test.md)
 
 newプロパティです。
@@ -312,7 +312,7 @@ file name ./output/Test/Test/PropertyVariation/BaseVirtual.md
 
 # BaseVirtual Property
 
-namespace: [Test](../../../Test/Test.md)<br />
+namespace: [Test](../../Test.md)<br />
 assembly: [Test](../../../Test.md)
 
 
@@ -333,7 +333,7 @@ file name ./output/Test/Test/PropertyVariation/BaseAbstract.md
 
 # BaseAbstract Property
 
-namespace: [Test](../../../Test/Test.md)<br />
+namespace: [Test](../../Test.md)<br />
 assembly: [Test](../../../Test.md)
 
 

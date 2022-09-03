@@ -71,7 +71,7 @@ file name ./output/Assem/Test/GenericClass`1/GenericMethod.md
 
 # GenericMethod Method
 
-namespace: [Test](../../../Assem/Test.md)<br />
+namespace: [Test](../../Test.md)<br />
 assembly: [Assem](../../../Assem.md)
 
 T1です。

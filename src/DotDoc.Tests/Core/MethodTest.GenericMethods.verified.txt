@@ -68,7 +68,7 @@ file name ./output/Test/Test/GenericMethod/SingleMethod.md
 
 # SingleMethod\<T\>\(\) Method
 
-namespace: [Test](../../../Test/Test.md)<br />
+namespace: [Test](../../Test.md)<br />
 assembly: [Test](../../../Test.md)
 
 一つのメソッドです
@@ -91,7 +91,7 @@ file name ./output/Test/Test/GenericMethod/DoubleMethod.md
 
 # DoubleMethod\<TArg, TVal\>\(\) Method
 
-namespace: [Test](../../../Test/Test.md)<br />
+namespace: [Test](../../Test.md)<br />
 assembly: [Test](../../../Test.md)
 
 ２つのメソッドです
@@ -121,7 +121,7 @@ file name ./output/Test/Test/GenericMethod/DoubleMethodWithParam.md
 
 # DoubleMethodWithParam\<TArg, TVal\>\(TArg\) Method
 
-namespace: [Test](../../../Test/Test.md)<br />
+namespace: [Test](../../Test.md)<br />
 assembly: [Test](../../../Test.md)
 
 引数に使います。
@@ -157,7 +157,7 @@ file name ./output/Test/Test/GenericMethod/ReturnIntWithParam.md
 
 # ReturnIntWithParam\(in string, ref int, out int\) Method
 
-namespace: [Test](../../../Test/Test.md)<br />
+namespace: [Test](../../Test.md)<br />
 assembly: [Test](../../../Test.md)
 
 リターン数字引数2
@@ -188,7 +188,7 @@ file name ./output/Test/Test/GenericMethod/ReturnRefReadOnly.md
 
 # ReturnRefReadOnly\(in int\) Method
 
-namespace: [Test](../../../Test/Test.md)<br />
+namespace: [Test](../../Test.md)<br />
 assembly: [Test](../../../Test.md)
 
 

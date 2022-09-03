@@ -71,7 +71,7 @@ file name ./output/Assem/Test/NormalClass`1/$ctor.md
 
 # NormalClass\<T\> Constructor
 
-namespace: [Test](../../../Assem/Test.md)<br />
+namespace: [Test](../../Test.md)<br />
 assembly: [Assem](../../../Assem.md)
 
 インスタンスを初期化します。
@@ -127,7 +127,7 @@ file name ./output/Assem/Test/OverloadClass`1/$ctor.md
 
 # OverloadClass\<T\> Constructor
 
-namespace: [Test](../../../Assem/Test.md)<br />
+namespace: [Test](../../Test.md)<br />
 assembly: [Assem](../../../Assem.md)
 
 インスタンスを初期化します。

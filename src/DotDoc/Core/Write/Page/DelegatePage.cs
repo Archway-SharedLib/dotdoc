@@ -27,8 +27,8 @@ public class DelegatePage: IPage
         AppendDeclareCode(sb);
         AppendInheritAndImplements(sb);
 
-        AppendTypeParameterList(sb, _item.TypeParameters);
-        AppendParameterList(sb, _item.Parameters);
+        AppendTypeParameterList(sb, _item.TypeParameters.OrEmpty());
+        AppendParameterList(sb, _item.Parameters.OrEmpty());
         
         AppendReturnValue(sb);
         
