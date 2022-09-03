@@ -41,7 +41,7 @@ public class StructPage: IPage
     private void AppendTitle(StringBuilder sb, string title, int depth = 1) =>
         sb.AppendLine($"{string.Concat(Enumerable.Repeat("#", depth))} {_transform.EscapeMdText(title)}").AppendLine();
     
-    private void AppendItemList<T>(StringBuilder sb, string title, IEnumerable<IDocItem> docItems, int depth = 2) where T : DocItem
+    private void AppendItemList<T>(StringBuilder sb, string title, IEnumerable<IDocItem> docItems, int depth = 2) where T : IDocItem
     {
         var items = docItems.OrEmpty().OfType<T>();
         if (!items.Any()) return;

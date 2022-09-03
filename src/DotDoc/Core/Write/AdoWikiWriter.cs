@@ -162,7 +162,7 @@ namespace DotDoc.Core.Write
                 AssemblyDocItem => $"{SafeFileOrDirectoryName(dest.ToFileName())}.md",
                 NamespaceDocItem n => $"{SafeFileOrDirectoryName(_docItemContainer.Get(n.AssemblyId).ToFileName())}/{SafeFileOrDirectoryName(dest.ToFileName())}.md",
                 TypeDocItem t => $"{SafeFileOrDirectoryName(_docItemContainer.Get(t.AssemblyId).ToFileName())}/{SafeFileOrDirectoryName(_docItemContainer.Get(t.NamespaceId).ToFileName())}/{SafeFileOrDirectoryName(dest.ToFileName())}.md",
-                MemberDocItem m => $"{SafeFileOrDirectoryName(_docItemContainer.Get(m.AssemblyId).ToFileName())}/{SafeFileOrDirectoryName(_docItemContainer.Get(m.NamespaceId).ToFileName())}/{SafeFileOrDirectoryName(_docItemContainer.Get(m.TypeId).ToFileName())}/{SafeFileOrDirectoryName(dest.ToFileName())}.md",
+                IMemberDocItem m => $"{SafeFileOrDirectoryName(_docItemContainer.Get(m.AssemblyId).ToFileName())}/{SafeFileOrDirectoryName(_docItemContainer.Get(m.NamespaceId).ToFileName())}/{SafeFileOrDirectoryName(_docItemContainer.Get(m.TypeId).ToFileName())}/{SafeFileOrDirectoryName(dest.ToFileName())}.md",
                 _ => string.Empty,
             };
             return source switch
@@ -170,7 +170,7 @@ namespace DotDoc.Core.Write
                 AssemblyDocItem => "./",
                 NamespaceDocItem => "../",
                 TypeDocItem => "../../",
-                MemberDocItem => "../../../",
+                IMemberDocItem => "../../../",
                 _ => string.Empty,
             } + basePath;
         }

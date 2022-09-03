@@ -141,11 +141,11 @@ public TVal DoubleMethodWithParam<TArg ,TVal>(TArg arg);
 
 | Type | Name | Summary |
 |------|------|---------|
-| TArg | arg |  |
+| [TArg](V:Test.GenericMethod.DoubleMethodWithParam<TArg, TVal>(TArg)+TArg) | arg |  |
 
 ## Return Value
 
-TVal
+[V:Test\.GenericMethod\.DoubleMethodWithParam\<TArg, TVal\>\(TArg\)\+TVal](V:Test.GenericMethod.DoubleMethodWithParam<TArg, TVal>(TArg)+TVal)
 
 
 

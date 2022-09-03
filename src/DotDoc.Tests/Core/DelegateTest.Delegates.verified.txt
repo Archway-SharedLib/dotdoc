@@ -92,11 +92,11 @@ Inheritance: [System\.MulticastDelegate](https://docs.microsoft.com/ja-jp/dotnet
 
 | Type | Name | Summary |
 |------|------|---------|
-| T | value | 引数です。 |
+| [T](V:Test.PublicDelegate<T>+T) | value | 引数です。 |
 
 ## Return Value
 
-T
+[V:Test\.PublicDelegate\<T\>\+T](V:Test.PublicDelegate<T>+T)
 
 戻り値です
 

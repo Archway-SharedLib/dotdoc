@@ -1,9 +1,5 @@
 ﻿using DotDoc.Core.Read;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.CodeAnalysis;
 
 namespace DotDoc.Core
 {
@@ -17,37 +13,35 @@ namespace DotDoc.Core
         
         XmlDocInfo? XmlDocInfo { get; }
     }
-    
-    public interface IHaveParameters
-    {
-        public List<ParameterDocItem>? Parameters { get; set; }
-    }
 
-    public interface IHaveTypeParameters
+    public abstract class DocItem: IDocItem
     {
-        public List<TypeParameterDocItem>? TypeParameters { get; set; }
-    }
-    
-    public interface IHaveReturnValue
-    {
-        public ReturnDocItem? ReturnValue { get; set; }
-    }
+        private readonly ISymbol _symbol;
 
-    public abstract class DocItem : IDocItem
-    {
-        public string? Id { get; set; }
+        protected DocItem(ISymbol symbol)
+        {
+            _symbol = symbol;
+            Id = SymbolUtil.GetSymbolId(symbol);
+            Name = symbol.Name;
+            DisplayName = symbol.ToDisplayString();
+            MetadataName = symbol.MetadataName;
+            XmlDocInfo = XmlDocParser.Parse(symbol.GetDocumentationCommentXml());
+            Accessiblity = SymbolUtil.MapAccessibility(symbol.DeclaredAccessibility);
+        }
 
-        public string? Name { get; set; }
+        public string? Id { get; protected set; }
 
-        public string? DisplayName { get; set; }
+        public string? Name { get; protected set; }
+
+        public string? DisplayName { get; protected set; }
         
-        public string? MetadataName { get; set; }
+        public string? MetadataName { get; protected set; }
 
-        public XmlDocInfo? XmlDocInfo { get; set; }
+        public XmlDocInfo? XmlDocInfo { get; protected set; }
 
-        public virtual IEnumerable<IDocItem>? Items { get; } = Enumerable.Empty<IDocItem>();
+        public virtual IEnumerable<IDocItem> Items { get; } = Enumerable.Empty<IDocItem>();
 
-        public Accessibility Accessiblity { get; set; } = Accessibility.Unknown;
+        public Accessibility Accessiblity { get; protected set; } = Accessibility.Unknown;
 
         public abstract string ToDeclareCSharpCode();
 
@@ -55,57 +49,90 @@ namespace DotDoc.Core
 
     public class AssemblyDocItem : DocItem
     {
-        public List<NamespaceDocItem>? Namespaces { get; set; }
+        public AssemblyDocItem(IAssemblySymbol symbol) : base(symbol)
+        {
+            DisplayName = symbol.Name;
+        }
 
-        public override IEnumerable<IDocItem>? Items => Namespaces;
+        public List<NamespaceDocItem> Namespaces { get; } = new();
+
+        public override IEnumerable<IDocItem> Items => Namespaces;
 
         public override string ToDeclareCSharpCode() => string.Empty;
     }
 
     public class NamespaceDocItem : DocItem
     {
-        public List<TypeDocItem>? Types { get; set; }
+        public NamespaceDocItem(INamespaceSymbol symbol) : base(symbol)
+        {
+            AssemblyId = SymbolUtil.GetSymbolId(symbol.ContainingAssembly);
+        }
 
-        public string? AssemblyId { get; set; }
+        public List<TypeDocItem> Types { get; } = new();
+
+        public string? AssemblyId { get;}
         
-        public override IEnumerable<IDocItem>? Items => Types;
+        public override IEnumerable<IDocItem> Items => Types;
 
         public override string ToDeclareCSharpCode() => $"namespace {DisplayName};";
     }
 
     public abstract class TypeDocItem : DocItem
     {
-        public List<IMemberDocItem>? Members { get; set; }
+        public TypeDocItem(INamedTypeSymbol symbol) : base(symbol)
+        {
+            DisplayName = symbol.ToDisplayString()
+                .Substring(symbol.ContainingNamespace.ToDisplayString().Length + 1);
+            NamespaceId = SymbolUtil.GetSymbolId(symbol.ContainingNamespace);
+            AssemblyId = SymbolUtil.GetSymbolId(symbol.ContainingAssembly);
+            BaseTypeId = symbol.BaseType is not null ? SymbolUtil.GetSymbolId(symbol.BaseType) : null;
+            InterfaceIds = symbol.Interfaces.OrEmpty().Select(i => SymbolUtil.GetSymbolId(i)).ToList();
+        }
 
-        public string? AssemblyId { get; set; }
+        public List<IMemberDocItem> Members { get; } = new();
+
+        public string? AssemblyId { get; protected set; }
         
-        public string? NamespaceId { get; set; }
+        public string? NamespaceId { get; protected set; }
         
-        public override IEnumerable<IDocItem>? Items => Members;
+        public override IEnumerable<IDocItem> Items => Members;
         
-        public string? BaseTypeId { get; set; }
-        
-        public IEnumerable<string>? InterfaceIds { get; set; }
+        public string? BaseTypeId { get; protected set; }
+
+        public List<string> InterfaceIds { get; }
 
     }
 
-    public class ClassDocItem : TypeDocItem, IHaveTypeParameters
+    public class ClassDocItem : TypeDocItem
     {
-        public List<TypeParameterDocItem>? TypeParameters { get; set; }
+        public ClassDocItem(INamedTypeSymbol symbol) : base(symbol)
+        {
+            IsSealed = symbol.IsSealed;
+            IsAbstract = symbol.IsAbstract;
+            IsStatic = symbol.IsStatic;
+            TypeParameters.AddRange( SymbolUtil.RetrieveTypeParameters(symbol.TypeParameters, XmlDocInfo));
+        }
+
+        public List<TypeParameterDocItem> TypeParameters { get; } = new ();
         
-        public bool IsSealed { get; set; }
+        public bool IsSealed { get; }
         
-        public bool IsAbstract { get; set; }
+        public bool IsAbstract { get; }
         
-        public bool IsStatic { get; set; }
+        public bool IsStatic { get; }
 
         public override string ToDeclareCSharpCode() =>
             $"{Accessiblity.ToCSharpText()} {(IsStatic ? "static " : string.Empty)}{(IsSealed ? "sealed " : string.Empty)}{(IsAbstract ? "abstract " : string.Empty)}class {DisplayName};";
     }
 
-    public class InterfaceDocItem : TypeDocItem, IHaveTypeParameters
+    public class InterfaceDocItem : TypeDocItem
     {
-        public List<TypeParameterDocItem>? TypeParameters { get; set; }
+        public InterfaceDocItem(INamedTypeSymbol symbol) : base(symbol)
+        {
+            TypeParameters.AddRange( SymbolUtil.RetrieveTypeParameters(symbol.TypeParameters, XmlDocInfo));
+        }
+
+        public List<TypeParameterDocItem> TypeParameters { get; } = new();
         
         public override string ToDeclareCSharpCode() =>
             $"{Accessiblity.ToCSharpText()} interface {DisplayName};";
@@ -114,25 +141,43 @@ namespace DotDoc.Core
 
     public class EnumDocItem : TypeDocItem
     {
+        public EnumDocItem(INamedTypeSymbol symbol) : base(symbol)
+        {
+        }
         public override string ToDeclareCSharpCode() =>
             $"{Accessiblity.ToCSharpText()} enum {DisplayName};";
     }
 
-    public class StructDocItem : TypeDocItem, IHaveTypeParameters
+    public class StructDocItem : TypeDocItem
     {
-        public List<TypeParameterDocItem>? TypeParameters { get; set; }
+        public StructDocItem(INamedTypeSymbol symbol) : base(symbol)
+        {
+            TypeParameters.AddRange( SymbolUtil.RetrieveTypeParameters(symbol.TypeParameters, XmlDocInfo));
+        }
+
+        public List<TypeParameterDocItem> TypeParameters { get; } = new();
         
         public override string ToDeclareCSharpCode() =>
             $"{Accessiblity.ToCSharpText()} struct {DisplayName};";
     }
 
-    public class DelegateDocItem : TypeDocItem, IHaveTypeParameters, IHaveParameters, IHaveReturnValue
+    public class DelegateDocItem : TypeDocItem
     {
-        public List<TypeParameterDocItem>? TypeParameters { get; set; }
+        public DelegateDocItem(INamedTypeSymbol symbol) : base(symbol)
+        {
+            TypeParameters.AddRange( SymbolUtil.RetrieveTypeParameters(symbol.TypeParameters, XmlDocInfo));
+            var delegMethod = symbol.DelegateInvokeMethod!;
+            Parameters.AddRange(SymbolUtil.RetrieveParameters(delegMethod.Parameters, XmlDocInfo));
+            ReturnValue = delegMethod.ReturnsVoid
+                ? null
+                : new ReturnItem(delegMethod);
+        }
 
-        public List<ParameterDocItem>? Parameters { get; set; }
+        public List<TypeParameterDocItem> TypeParameters { get; } = new();
 
-        public ReturnDocItem? ReturnValue { get; set; }
+        public List<ParameterDocItem> Parameters { get; } = new();
+
+        public ReturnItem? ReturnValue { get; }
         
         public override string ToDeclareCSharpCode() =>
             $"{Accessiblity.ToCSharpText()} delegate {ReturnValue?.ToDeclareCSharpCode() ?? "void"} {DisplayName}({string.Join(", ", Parameters.OrEmpty().Select(p => p.ToDeclareCSharpCode()))});";
@@ -151,20 +196,34 @@ namespace DotDoc.Core
     
     public abstract class MemberDocItem : DocItem, IMemberDocItem
     {
-        public string? AssemblyId { get; set; }
+        protected MemberDocItem(ISymbol symbol) : base(symbol)
+        {
+            NamespaceId = SymbolUtil.GetSymbolId(symbol.ContainingNamespace);
+            AssemblyId = SymbolUtil.GetSymbolId(symbol.ContainingAssembly);
+            TypeId = SymbolUtil.GetSymbolId(symbol.ContainingType);
+            DisplayName = symbol.ToDisplayString().Substring(symbol.ContainingType.ToDisplayString().Length + 1);
+        }
+        
+        public string? AssemblyId { get; protected set; }
 
-        public string? NamespaceId { get; set; }
+        public string? NamespaceId { get; protected set; }
 
-        public string? TypeId { get; set; }
+        public string? TypeId { get; protected set; }
     }
 
-    public class ConstructorDocItem : MemberDocItem, IHaveParameters
+    public class ConstructorDocItem : MemberDocItem
     {
-        public List<ParameterDocItem>? Parameters { get; set; }
+        public ConstructorDocItem(IMethodSymbol symbol) : base(symbol)
+        {
+            CSharpConstructorName = symbol.ContainingType.Name;
+            Parameters.AddRange(SymbolUtil.RetrieveParameters(symbol.Parameters, XmlDocInfo));
+        }
 
-        public override IEnumerable<IDocItem>? Items => Parameters;
+        public List<ParameterDocItem> Parameters { get; } = new();
+
+        public override IEnumerable<IDocItem> Items => Parameters;
         
-        public string CSharpConstructorName { get; set; }
+        public string CSharpConstructorName { get; }
         
         public override string ToDeclareCSharpCode()
         {
@@ -177,17 +236,27 @@ namespace DotDoc.Core
 
     public class FieldDocItem : MemberDocItem
     {
-        public TypeInfo TypeInfo { get; set; }
+        public FieldDocItem(IFieldSymbol symbol) : base(symbol)
+        {
+            ConstantValue = symbol.ConstantValue;
+            IsStatic = symbol.IsStatic;
+            IsReadOnly = symbol.IsReadOnly;
+            IsConstant = symbol.IsConst;
+            IsVolatile = symbol.IsVolatile;
+            TypeInfo = symbol.Type.ToTypeInfo();
+        }
         
-        public bool IsStatic { get; set; }
+        public TypeInfo TypeInfo { get; }
         
-        public bool IsReadOnly { get; set; }
+        public bool IsStatic { get; }
         
-        public object? ConstantValue { get; set; }
+        public bool IsReadOnly { get; }
         
-        public bool IsConstant { get; set; }
+        public object? ConstantValue { get; }
         
-        public bool IsVolatile { get; set; }
+        public bool IsConstant { get; }
+        
+        public bool IsVolatile { get; }
 
         public override string ToDeclareCSharpCode()
         {
@@ -209,21 +278,33 @@ namespace DotDoc.Core
     
     public class PropertyDocItem : MemberDocItem
     {
-        public TypeInfo TypeInfo { get; set; }
+        public PropertyDocItem(IPropertySymbol symbol) : base(symbol)
+        {
+            TypeInfo = symbol.Type.ToTypeInfo();
+            HasGet = symbol.GetMethod is not null;
+            HasSet = symbol.SetMethod is not null;
+            IsInit = symbol.SetMethod?.IsInitOnly ?? false;
+            IsStatic = symbol.IsStatic;
+            IsAbstract = symbol.IsAbstract;
+            IsOverride = symbol.IsOverride;
+            IsVirtual = symbol.IsVirtual;
+        }
         
-        public bool HasGet { get; set; }
+        public TypeInfo TypeInfo { get; }
         
-        public bool HasSet { get; set; }
+        public bool HasGet { get; }
         
-        public bool IsInit { get; set; }
+        public bool HasSet { get; }
+        
+        public bool IsInit { get; }
 
-        public bool IsStatic { get; set; }
+        public bool IsStatic { get; }
         
-        public bool IsOverride { get; set; }
+        public bool IsOverride { get; }
         
-        public bool IsVirtual { get; set; }
+        public bool IsVirtual { get; }
         
-        public bool IsAbstract { get; set; }
+        public bool IsAbstract { get; }
         
         public override string ToDeclareCSharpCode()
         {
@@ -240,23 +321,37 @@ namespace DotDoc.Core
         }
     }
 
-    public class MethodDocItem : MemberDocItem, IHaveParameters, IHaveTypeParameters, IHaveReturnValue
+    public class MethodDocItem : MemberDocItem
     {
-        public List<ParameterDocItem>? Parameters { get; set; }
+        public MethodDocItem(IMethodSymbol symbol) : base(symbol)
+        {
+            ReturnValue = symbol.ReturnsVoid
+                ? null
+                : new ReturnItem(symbol);
+            IsStatic = symbol.IsStatic;
+            IsAbstract = symbol.IsAbstract;
+            IsOverride = symbol.IsOverride;
+            IsVirtual = symbol.IsVirtual;
+            
+            TypeParameters.AddRange( SymbolUtil.RetrieveTypeParameters(symbol.TypeParameters, XmlDocInfo));
+            Parameters.AddRange(SymbolUtil.RetrieveParameters(symbol.Parameters, XmlDocInfo));
+        }
 
-        public override IEnumerable<IDocItem>? Items => Parameters;
+        public List<ParameterDocItem> Parameters { get; } = new();
+
+        public override IEnumerable<IDocItem> Items => Parameters;
+
+        public List<TypeParameterDocItem> TypeParameters { get; } = new();
         
-        public List<TypeParameterDocItem>? TypeParameters { get; set; }
+        public ReturnItem? ReturnValue { get; }
         
-        public ReturnDocItem? ReturnValue { get; set; }
+        public bool IsStatic { get; }
         
-        public bool IsStatic { get; set; }
+        public bool IsOverride { get; }
         
-        public bool IsOverride { get; set; }
+        public bool IsVirtual { get; }
         
-        public bool IsVirtual { get; set; }
-        
-        public bool IsAbstract { get; set; }
+        public bool IsAbstract { get; }
         
         public override string ToDeclareCSharpCode()
         {
@@ -279,15 +374,30 @@ namespace DotDoc.Core
 
     public class EventDocItem : MemberDocItem
     {
+        public EventDocItem(IEventSymbol symbol) : base(symbol)
+        {
+        }
+        
         public override string ToDeclareCSharpCode() => string.Empty;
     }
 
     public class ParameterDocItem: DocItem
     {
-        public TypeInfo TypeInfo { get; set; }
-        public string? XmlDocText { get; set; }
+        public ParameterDocItem(IParameterSymbol symbol, XmlDocInfo docInfo) : base(symbol)
+        {
+            DisplayName = symbol.Name;
+            TypeInfo = symbol.Type.ToTypeInfo();
+            XmlDocText = docInfo?.Parameters.OrEmpty().FirstOrDefault(p => p.Name == symbol.Name)?.Text;
+            RefKind = symbol.RefKind == Microsoft.CodeAnalysis.RefKind.In ? ValueRefKind.In :
+                symbol.RefKind == Microsoft.CodeAnalysis.RefKind.Out ? ValueRefKind.Out :
+                symbol.RefKind == Microsoft.CodeAnalysis.RefKind.None ? ValueRefKind.None :
+                symbol.RefKind == Microsoft.CodeAnalysis.RefKind.Ref ? ValueRefKind.Ref : ValueRefKind.RefReadoly;
+        }
+        
+        public TypeInfo TypeInfo { get; }
+        public string? XmlDocText { get; }
 
-        public ValueRefKind RefKind { get; set; } = ValueRefKind.None;
+        public ValueRefKind RefKind { get; }
 
         public override string ToDeclareCSharpCode()
         {
@@ -298,15 +408,22 @@ namespace DotDoc.Core
         }
     }
     
-    public class ReturnDocItem: DocItem
+    public class ReturnItem
     {
-        public TypeInfo TypeInfo { get; set; }
+        public ReturnItem(IMethodSymbol symbol)
+        {
+            TypeInfo = symbol.ReturnType.ToTypeInfo();
+            RefKind = symbol.ReturnsByRefReadonly ? ValueRefKind.RefReadoly : ValueRefKind.None;
+        }
         
-        public string? XmlDocText { get; set; }
+        public TypeInfo TypeInfo { get; }
+        
+        
+        public string? XmlDocText { get; }
 
-        public ValueRefKind RefKind { get; set; } = ValueRefKind.None;
+        public ValueRefKind RefKind { get; }
 
-        public override string ToDeclareCSharpCode()
+        public string ToDeclareCSharpCode()
         {
             var refKindString = RefKind == ValueRefKind.RefReadoly ? "ref readonly "
                 : string.Empty;
@@ -316,12 +433,17 @@ namespace DotDoc.Core
 
     public class TypeParameterDocItem : DocItem
     {
-        public string? XmlDocText { get; set; }
+        public TypeParameterDocItem(ITypeParameterSymbol symbol, XmlDocInfo docInfo) : base(symbol)
+        {
+            XmlDocText = docInfo?.TypeParameters.OrEmpty().FirstOrDefault(p => p.Name == symbol.Name)?.Text;
+        }
+        
+        public string? XmlDocText { get; }
         
         public override string ToDeclareCSharpCode() => string.Empty;
     }
     
-    public class OverloadMethodDocItem : IDocItem, IMemberDocItem
+    public class OverloadMethodDocItem : IMemberDocItem
     {
         public OverloadMethodDocItem(IList<MethodDocItem> docItems)
         {
@@ -351,7 +473,7 @@ namespace DotDoc.Core
         public IEnumerable<MethodDocItem> Methods { get; }
     }
         
-    public class OverloadConstructorDocItem : IDocItem, IMemberDocItem
+    public class OverloadConstructorDocItem : IMemberDocItem
     {
         public OverloadConstructorDocItem(IList<ConstructorDocItem> docItems)
         {

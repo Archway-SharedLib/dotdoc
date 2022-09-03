@@ -15,7 +15,7 @@ public class DotDocEngine
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
 
-    public async Task<IEnumerable<DocItem>> ReadAsync(DotDocEngineOptions options, IFsModel fsModel)
+    public async Task<IEnumerable<IDocItem>> ReadAsync(DotDocEngineOptions options, IFsModel fsModel)
     {
         if (options is null)
         {
@@ -24,7 +24,7 @@ public class DotDocEngine
 
         if (fsModel is null) throw new ArgumentNullException(nameof(fsModel));
         
-        if (!ValidateReadOptions(options, fsModel)) return Enumerable.Empty<DocItem>();
+        if (!ValidateReadOptions(options, fsModel)) return Enumerable.Empty<IDocItem>();
 
         MSBuildLocator.RegisterDefaults();
         var workspace = MSBuildWorkspace.Create();
@@ -35,11 +35,11 @@ public class DotDocEngine
         else
         {
             var result = await ReadProjectFile(workspace, options);
-            return result is null ? Enumerable.Empty<DocItem>() : new List<DocItem>() { result };
+            return result is null ? Enumerable.Empty<IDocItem>() : new List<IDocItem>() { result };
         }
     }
 
-    public async Task WriteAsync(IEnumerable<DocItem> docItems, DotDocEngineOptions options, IFsModel fsModel)
+    public async Task WriteAsync(IEnumerable<IDocItem> docItems, DotDocEngineOptions options, IFsModel fsModel)
     {
         if (docItems is null)
         {
@@ -69,12 +69,12 @@ public class DotDocEngine
         await writer.WriteAsync();
     }
 
-    private async Task<IEnumerable<DocItem>> ReadSolutionFile(MSBuildWorkspace workspace, DotDocEngineOptions options)
+    private async Task<IEnumerable<IDocItem>> ReadSolutionFile(MSBuildWorkspace workspace, DotDocEngineOptions options)
     {
         var solution = await workspace.OpenSolutionAsync(options.InputFileName!);
         _logger.Info($"Read solution: {solution.Id}");
 
-        var results = new List<DocItem>();
+        var results = new List<IDocItem>();
         foreach (var proj in solution.Projects)
         {
             var result = await ReadProject(proj, options);
@@ -86,14 +86,14 @@ public class DotDocEngine
         return results;
     }
 
-    private async Task<DocItem?> ReadProjectFile(MSBuildWorkspace workspace, DotDocEngineOptions options)
+    private async Task<IDocItem?> ReadProjectFile(MSBuildWorkspace workspace, DotDocEngineOptions options)
     {
         
         var proj = await workspace.OpenProjectAsync(options.InputFileName!);
         return await ReadProject(proj, options);
     }
 
-    private async Task<DocItem?> ReadProject(Project proj, DotDocEngineOptions options)
+    private async Task<IDocItem?> ReadProject(Project proj, DotDocEngineOptions options)
     {
         _logger.Info($"Read project: {proj.Name}");
 

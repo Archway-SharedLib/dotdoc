@@ -87,7 +87,7 @@ public class MethodPage: IPage
         if (_item.ReturnValue?.TypeInfo is null) return;
             
         AppendTitle(sb, "Return Value", depth);
-        sb.AppendLine(_transform.ToMdLink(_item,  _item.ReturnValue.TypeInfo.GetLinkTypeInfo().TypeId, _item.ReturnValue.DisplayName)).AppendLine();
+        sb.AppendLine(_transform.ToMdLink(_item,  _item.ReturnValue.TypeInfo.GetLinkTypeInfo().TypeId)).AppendLine();
         sb.AppendLine(_transform.ToMdText(_item, _item, t => t.XmlDocInfo?.Returns)).AppendLine();
     }
 

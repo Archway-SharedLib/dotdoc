@@ -100,11 +100,11 @@ public T GenericMethod<T1>(T arg);
 
 | Type | Name | Summary |
 |------|------|---------|
-| T | arg | T |
+| [T](V:Test.GenericClass<T>+T) | arg | T |
 
 ### Return Value
 
-T
+[V:Test\.GenericClass\<T\>\+T](V:Test.GenericClass<T>+T)
 
 Tです
 
@@ -128,11 +128,11 @@ public T3 GenericMethod<T1 ,T2 ,T3>(T arg);
 
 | Type | Name | Summary |
 |------|------|---------|
-| T | arg |  |
+| [T](V:Test.GenericClass<T>+T) | arg |  |
 
 ### Return Value
 
-T3
+[V:Test\.GenericClass\<T\>\.GenericMethod\<T1, T2, T3\>\(T\)\+T3](V:Test.GenericClass<T>.GenericMethod<T1, T2, T3>(T)+T3)
 
 
 

@@ -107,7 +107,7 @@ public class OverloadMethodPage: IPage
         if (item.ReturnValue?.TypeInfo is null) return;
             
         AppendTitle(sb, "Return Value", depth);
-        sb.AppendLine(_transform.ToMdLink(item,  item.ReturnValue.TypeInfo.GetLinkTypeInfo().TypeId, item.ReturnValue.DisplayName)).AppendLine();
+        sb.AppendLine(_transform.ToMdLink(item,  item.ReturnValue.TypeInfo.GetLinkTypeInfo().TypeId)).AppendLine();
         sb.AppendLine(_transform.ToMdText(item, item, t => t.XmlDocInfo?.Returns)).AppendLine();
     }
 }
