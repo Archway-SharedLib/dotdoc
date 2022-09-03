@@ -1,10 +1,6 @@
-﻿using Microsoft.CodeAnalysis;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Immutable;
+using Microsoft.CodeAnalysis;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
@@ -13,8 +9,9 @@ namespace DotDoc.Core.Read
 {
     internal static class XmlDocParser
     {
-        public static XmlDocInfo? Parse(string? xmlText)
+        public static XmlDocInfo? Parse(ISymbol symbol, Compilation compilation)
         {
+            var xmlText = symbol.GetDocumentationCommentXml();
             if (string.IsNullOrEmpty(xmlText)) return null;
             if (xmlText.StartsWith("<!-- Badly formed XML comment ignored for member")) return null;
             XDocument xdoc;
@@ -30,7 +27,7 @@ namespace DotDoc.Core.Read
 
             var result = new XmlDocInfo()
             {
-                RawXml = xmlText,
+                // RawXml = xmlText,
                 Summary = GetNodeValue(nav, "/member/summary")?.Trim(),
                 Remarks = GetNodeValue(nav, "/member/remarks")?.Trim(),
                 Example = GetNodeValue(nav, "/member/example")?.Trim(),
@@ -38,23 +35,106 @@ namespace DotDoc.Core.Read
                 Returns = GetNodeValue(nav, "/member/returns")?.Trim(),
                 Parameters = GetNameTextInfo(nav, "/member/param"),
                 TypeParameters = GetNameTextInfo(nav,"/member/typeparam"),
-                Inheritdoc = GetInheritdoc(nav)
+                // Inheritdoc = GetInheritdoc(nav)
             };
+            var inheritdoc = GetInheritdoc(nav);
 
+            if (inheritdoc is not null)
+            {
+                var baseSymbol = GetBaseDocSymbol(symbol, inheritdoc, compilation);
+                if (baseSymbol is null)
+                {
+                    return result;
+                }
+                var baseXmlDocInfo = Parse(baseSymbol, compilation);
+                if (baseXmlDocInfo is not null)
+                {
+                    result.Summary ??= baseXmlDocInfo.Summary;
+                    result.Remarks ??= baseXmlDocInfo.Remarks;
+                    result.Example ??= baseXmlDocInfo.Example;
+                    result.Value ??= baseXmlDocInfo.Value;
+                    result.Returns ??= baseXmlDocInfo.Returns;
+                    result.Parameters = result.Parameters.Any() ? result.Parameters : baseXmlDocInfo.Parameters;
+                    result.TypeParameters = result.TypeParameters.Any() ? result.TypeParameters : baseXmlDocInfo.TypeParameters;
+                }
+            }
+            
             return result;
+        }
+
+        private static ISymbol? GetBaseDocSymbol(ISymbol source, XmlDocInheritdocInfo inheritInfo, Compilation compilation)
+        {
+            if (!string.IsNullOrWhiteSpace(inheritInfo.Cref))
+            {
+                var inheritSource = DocumentationCommentId.GetFirstSymbolForDeclarationId(inheritInfo.Cref, compilation);
+                if (inheritSource is null)
+                {
+                    return null;
+                }
+                return inheritSource;
+            }
+
+            if (source is INamedTypeSymbol namedTypeSymbol)
+            {
+                if (namedTypeSymbol.Interfaces.Length > 1)
+                {
+                    return null;
+                }
+
+                var hasExplicitBaseType = HasExplicitBaseType(namedTypeSymbol);
+                if (hasExplicitBaseType && namedTypeSymbol.Interfaces.Any())
+                {
+                    return null;
+                }
+                if (hasExplicitBaseType)
+                {
+                    return namedTypeSymbol.BaseType;
+                }
+                if (namedTypeSymbol.Interfaces.Any())
+                {
+                    return namedTypeSymbol.Interfaces.First();
+                }
+
+                return null;
+            }
+
+            if (source is IMethodSymbol methodSymbol) return methodSymbol.OverriddenMethod ?? ExplicitOrImplicitInterfaceImplementations(methodSymbol).FirstOrDefault();
+            if (source is IPropertySymbol propertySymbol) return propertySymbol.OverriddenProperty ?? ExplicitOrImplicitInterfaceImplementations(propertySymbol).FirstOrDefault();
+
+            return null;
+        }
+        
+        public static ImmutableArray<ISymbol> ExplicitOrImplicitInterfaceImplementations(ISymbol symbol)
+        {
+            if (symbol.Kind is not SymbolKind.Method and not SymbolKind.Property and not SymbolKind.Event)
+                return ImmutableArray<ISymbol>.Empty;
+
+            var containingType = symbol.ContainingType;
+            var query = from iface in containingType.AllInterfaces
+                from interfaceMember in iface.GetMembers()
+                let impl = containingType.FindImplementationForInterfaceMember(interfaceMember)
+                where symbol.Equals(impl)
+                select interfaceMember;
+            return query.ToImmutableArray();
+        }
+
+        private static bool HasExplicitBaseType(INamedTypeSymbol symbol)
+        {
+            if (symbol.BaseType is null) return false;
+            var baseType = symbol.BaseType.GetDocumentationCommentId();
+            return baseType is not ("T:System.Object" or "T:System.ValueType" or "T:System.Enum");
         }
 
         private static XmlDocInheritdocInfo? GetInheritdoc(XPathNavigator nav)
         {
-            var node = nav.SelectSingleNode("/inheritdoc");
+            var node = nav.SelectSingleNode("/member/inheritdoc");
             if (node is null) return null;
             return new XmlDocInheritdocInfo()
             {
                 Cref = node.GetAttribute("cref", string.Empty)
             };
         }
-        
-        
+
         private static List<XmlDocNameTextInfo> GetNameTextInfo(XPathNavigator nav, string path)
         {
             var result = new List<XmlDocNameTextInfo>();
@@ -66,9 +146,6 @@ namespace DotDoc.Core.Read
                     Text = GetInnerXml(nodeNav),
                     Name = nodeNav.GetAttribute("name", string.Empty)
                 });
-                //    var text = GetInnerXml(nodeNav);
-                //    var nodeNav.GetAttribute("name", string.Empty)
-                //}
             }
             return result;
         }

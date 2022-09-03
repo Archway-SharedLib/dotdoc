@@ -8,7 +8,7 @@ namespace DotDoc.Core.Read
 {
     public class XmlDocInfo
     {
-        public string? RawXml { get; set; }
+        // public string? RawXml { get; set; }
 
         public string? Summary { get; set; }
 
@@ -24,7 +24,8 @@ namespace DotDoc.Core.Read
         
         public List<XmlDocNameTextInfo>? TypeParameters { get; set; }
         
-        public XmlDocInheritdocInfo? Inheritdoc { get; set; }
+        // public XmlDocInheritdocInfo? Inheritdoc { get; set; }
+        
     }
 
     public class XmlDocNameTextInfo

@@ -34,10 +34,10 @@ public class OverwriteSource : ISource
     /// <param name="p2">param2</param>
     /// <returns>戻り</returns>
     public virtual string M(string p1, int p2) => string.Empty;
+    
 }
 
 /// <inheritdoc />
-/// <summary></summary>
 public class InheritanceOverwriteSource : OverwriteSource
 {
     /// <inheritdoc />

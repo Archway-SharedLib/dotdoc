@@ -33,20 +33,20 @@ namespace DotDoc.Core
         }
         
         
-        public static List<ParameterDocItem> RetrieveParameters(IEnumerable<IParameterSymbol> symbols, XmlDocInfo? docInfo)
+        public static List<ParameterDocItem> RetrieveParameters(IEnumerable<IParameterSymbol> symbols, XmlDocInfo? docInfo, Compilation compilation)
         {
             return symbols.Select(ps =>
             {
-                return new ParameterDocItem(ps, docInfo);
+                return new ParameterDocItem(ps, docInfo, compilation);
             }).ToList();
         } 
     
-        public static List<TypeParameterDocItem> RetrieveTypeParameters(IEnumerable<ITypeParameterSymbol> symbols, XmlDocInfo? docInfo)
+        public static List<TypeParameterDocItem> RetrieveTypeParameters(IEnumerable<ITypeParameterSymbol> symbols, XmlDocInfo? docInfo, Compilation compilation)
         {
             var typeParamItems = new List<TypeParameterDocItem>();
             foreach (var typeParam in symbols.OrEmpty())
             {
-                typeParamItems.Add(new TypeParameterDocItem(typeParam, docInfo));
+                typeParamItems.Add(new TypeParameterDocItem(typeParam, docInfo, compilation));
             }
 
             return typeParamItems;

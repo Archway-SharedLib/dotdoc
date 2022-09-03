@@ -137,8 +137,8 @@ Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object)
 | [ReturnStringNoParam\(\)](./MethodVariation/ReturnStringNoParam.md) | リターン文字列引数なし |
 | [ReturnVoidWithParam\(string, int\)](./MethodVariation/ReturnVoidWithParam.md) | リターンなし引数2 |
 | [ReturnIntWithParam\(string, int\)](./MethodVariation/ReturnIntWithParam.md) | リターン数字引数2 |
-| [AbstractMethod\(\)](./MethodVariation/AbstractMethod.md) |  |
-| [VirtualMethod\(\)](./MethodVariation/VirtualMethod.md) |  |
+| [AbstractMethod\(\)](./MethodVariation/AbstractMethod.md) | abstractです。 |
+| [VirtualMethod\(\)](./MethodVariation/VirtualMethod.md) | バーチャルです。 |
 | [BaseMethod\(\)](./MethodVariation/BaseMethod.md) |  |
 
 
@@ -246,7 +246,7 @@ file name ./output/Test/Test/MethodVariation/AbstractMethod.md
 namespace: [Test](../../Test.md)<br />
 assembly: [Test](../../../Test.md)
 
-
+abstractです。
 
 ```csharp
 public override void AbstractMethod();
@@ -263,7 +263,7 @@ file name ./output/Test/Test/MethodVariation/VirtualMethod.md
 namespace: [Test](../../Test.md)<br />
 assembly: [Test](../../../Test.md)
 
-
+バーチャルです。
 
 ```csharp
 public override void VirtualMethod();

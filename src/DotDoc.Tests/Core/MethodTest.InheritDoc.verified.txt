@@ -1,0 +1,316 @@
+﻿
+---------------------
+file name ./output/Test.md
+---------------------
+
+# Test Assembly
+
+## Namespaces
+
+| Name | Summary |
+|------|---------|
+| [Test](./Test/Test.md) |  |
+
+
+
+---------------------
+file name ./output/Test/Test.md
+---------------------
+
+# Test Namespace
+
+assembly: [Test](../Test.md)
+
+```csharp
+namespace Test;
+```
+
+## Classes
+
+| Name | Summary |
+|------|---------|
+| [BaseType](./Test/BaseType.md) |  |
+| [InheritDoc](./Test/InheritDoc.md) |  |
+| [NoInheritDoc](./Test/NoInheritDoc.md) |  |
+| [BaseImplDoc](./Test/BaseImplDoc.md) |  |
+
+## Interfaces
+
+| Name | Summary |
+|------|---------|
+| [BaseInterface](./Test/BaseInterface.md) |  |
+
+
+
+---------------------
+file name ./output/Test/Test/BaseInterface.md
+---------------------
+
+# BaseInterface Interface
+
+namespace: [Test](../Test.md)<br />
+assembly: [Test](../../Test.md)
+
+
+
+```csharp
+public interface BaseInterface;
+```
+
+## Methods
+
+| Name | Summary |
+|------|---------|
+| [IM\(DateTime\)](./BaseInterface/IM.md) | [BaseInterface](../../Test/Test/BaseInterface.md) の [IM\(DateTime\)](../../Test/Test/BaseInterface/IM.md) のサマリです。 |
+
+
+
+---------------------
+file name ./output/Test/Test/BaseInterface/IM.md
+---------------------
+
+# IM\(DateTime\) Method
+
+namespace: [Test](../../Test.md)<br />
+assembly: [Test](../../../Test.md)
+
+[BaseInterface](../../../Test/Test/BaseInterface.md) の [IM\(DateTime\)](../../../Test/Test/BaseInterface/IM.md) のサマリです。
+
+```csharp
+public abstract int IM(DateTime a);
+```
+
+## Parameters
+
+| Type | Name | Summary |
+|------|------|---------|
+| DateTime | a | BaseInterface a 引数です |
+
+## Return Value
+
+[int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
+
+[System\.Int32](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
+
+
+
+---------------------
+file name ./output/Test/Test/BaseType.md
+---------------------
+
+# BaseType Class
+
+namespace: [Test](../Test.md)<br />
+assembly: [Test](../../Test.md)
+
+
+
+```csharp
+public class BaseType;
+```
+
+Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > BaseType
+
+## Methods
+
+| Name | Summary |
+|------|---------|
+| [M\(string, int\)](./BaseType/M.md) | [BaseType](../../Test/Test/BaseType.md) の [M\(string, int\)](../../Test/Test/BaseType/M.md) のサマリです。 |
+
+
+
+---------------------
+file name ./output/Test/Test/BaseType/M.md
+---------------------
+
+# M\(string, int\) Method
+
+namespace: [Test](../../Test.md)<br />
+assembly: [Test](../../../Test.md)
+
+[BaseType](../../../Test/Test/BaseType.md) の [M\(string, int\)](../../../Test/Test/BaseType/M.md) のサマリです。
+
+```csharp
+public virtual string M(string a ,int b);
+```
+
+## Parameters
+
+| Type | Name | Summary |
+|------|------|---------|
+| [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String) | a | BaseType a 引数です |
+| [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32) | b | Baseype b 引数です |
+
+## Return Value
+
+[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+
+[BaseType](../../../Test/Test/BaseType.md) の [M\(string, int\)](../../../Test/Test/BaseType/M.md) の戻り値です。
+
+
+
+---------------------
+file name ./output/Test/Test/InheritDoc.md
+---------------------
+
+# InheritDoc Class
+
+namespace: [Test](../Test.md)<br />
+assembly: [Test](../../Test.md)
+
+
+
+```csharp
+public class InheritDoc;
+```
+
+Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > [Test\.BaseType](../../Test/Test/BaseType.md) > InheritDoc
+
+## Methods
+
+| Name | Summary |
+|------|---------|
+| [M\(string, int\)](./InheritDoc/M.md) | [BaseType](../../Test/Test/BaseType.md) の [M\(string, int\)](../../Test/Test/BaseType/M.md) のサマリです。 |
+
+
+
+---------------------
+file name ./output/Test/Test/InheritDoc/M.md
+---------------------
+
+# M\(string, int\) Method
+
+namespace: [Test](../../Test.md)<br />
+assembly: [Test](../../../Test.md)
+
+[BaseType](../../../Test/Test/BaseType.md) の [M\(string, int\)](../../../Test/Test/BaseType/M.md) のサマリです。
+
+```csharp
+public override string M(string a ,int b);
+```
+
+## Parameters
+
+| Type | Name | Summary |
+|------|------|---------|
+| [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String) | a | BaseType a 引数です |
+| [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32) | b | Baseype b 引数です |
+
+## Return Value
+
+[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+
+[BaseType](../../../Test/Test/BaseType.md) の [M\(string, int\)](../../../Test/Test/BaseType/M.md) の戻り値です。
+
+
+
+---------------------
+file name ./output/Test/Test/NoInheritDoc.md
+---------------------
+
+# NoInheritDoc Class
+
+namespace: [Test](../Test.md)<br />
+assembly: [Test](../../Test.md)
+
+
+
+```csharp
+public class NoInheritDoc;
+```
+
+Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > NoInheritDoc
+
+## Methods
+
+| Name | Summary |
+|------|---------|
+| [M\(string, int\)](./NoInheritDoc/M.md) | [BaseType](../../Test/Test/BaseType.md) の [M\(string, int\)](../../Test/Test/BaseType/M.md) のサマリです。 |
+
+
+
+---------------------
+file name ./output/Test/Test/NoInheritDoc/M.md
+---------------------
+
+# M\(string, int\) Method
+
+namespace: [Test](../../Test.md)<br />
+assembly: [Test](../../../Test.md)
+
+[BaseType](../../../Test/Test/BaseType.md) の [M\(string, int\)](../../../Test/Test/BaseType/M.md) のサマリです。
+
+```csharp
+public string M(string a ,int b);
+```
+
+## Parameters
+
+| Type | Name | Summary |
+|------|------|---------|
+| [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String) | a | BaseType a 引数です |
+| [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32) | b | Baseype b 引数です |
+
+## Return Value
+
+[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+
+[BaseType](../../../Test/Test/BaseType.md) の [M\(string, int\)](../../../Test/Test/BaseType/M.md) の戻り値です。
+
+
+
+---------------------
+file name ./output/Test/Test/BaseImplDoc.md
+---------------------
+
+# BaseImplDoc Class
+
+namespace: [Test](../Test.md)<br />
+assembly: [Test](../../Test.md)
+
+
+
+```csharp
+public class BaseImplDoc;
+```
+
+Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > BaseImplDoc
+
+Implements: [Test\.BaseInterface](../../Test/Test/BaseInterface.md)
+
+## Methods
+
+| Name | Summary |
+|------|---------|
+| [IM\(DateTime\)](./BaseImplDoc/IM.md) | [BaseInterface](../../Test/Test/BaseInterface.md) の [IM\(DateTime\)](../../Test/Test/BaseInterface/IM.md) のサマリです。 |
+
+
+
+---------------------
+file name ./output/Test/Test/BaseImplDoc/IM.md
+---------------------
+
+# IM\(DateTime\) Method
+
+namespace: [Test](../../Test.md)<br />
+assembly: [Test](../../../Test.md)
+
+[BaseInterface](../../../Test/Test/BaseInterface.md) の [IM\(DateTime\)](../../../Test/Test/BaseInterface/IM.md) のサマリです。
+
+```csharp
+public int IM(DateTime a);
+```
+
+## Parameters
+
+| Type | Name | Summary |
+|------|------|---------|
+| DateTime | a | BaseInterface a 引数です |
+
+## Return Value
+
+[int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
+
+[System\.Int32](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
+
+

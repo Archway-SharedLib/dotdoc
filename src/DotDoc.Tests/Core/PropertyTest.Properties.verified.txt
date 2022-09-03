@@ -152,8 +152,8 @@ Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object)
 | [ReadInit](./PropertyVariation/ReadInit.md) | 読みイニットプロパティです。 |
 | [StaticProp](./PropertyVariation/StaticProp.md) | 静的プロパティです。 |
 | [BaseProtected](./PropertyVariation/BaseProtected.md) | newプロパティです。 |
-| [BaseVirtual](./PropertyVariation/BaseVirtual.md) |  |
-| [BaseAbstract](./PropertyVariation/BaseAbstract.md) |  |
+| [BaseVirtual](./PropertyVariation/BaseVirtual.md) | virtual なベースプロパティです。 |
+| [BaseAbstract](./PropertyVariation/BaseAbstract.md) | abstract なベースプロパティです。 |
 
 
 
@@ -315,7 +315,7 @@ file name ./output/Test/Test/PropertyVariation/BaseVirtual.md
 namespace: [Test](../../Test.md)<br />
 assembly: [Test](../../../Test.md)
 
-
+virtual なベースプロパティです。
 
 ```csharp
 protected override string BaseVirtual { get; };
@@ -336,7 +336,7 @@ file name ./output/Test/Test/PropertyVariation/BaseAbstract.md
 namespace: [Test](../../Test.md)<br />
 assembly: [Test](../../../Test.md)
 
-
+abstract なベースプロパティです。
 
 ```csharp
 protected override string BaseAbstract { get; init; };

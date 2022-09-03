@@ -29,13 +29,13 @@ namespace Test;
 
 | Name | Summary |
 |------|---------|
-| [Source](./Test/Source.md) |  |
-| [BaseSource](./Test/BaseSource.md) |  |
-| [InheritBaseSource](./Test/InheritBaseSource.md) |  |
+| [Source](./Test/Source.md) | [ISource](../Assem/Test/ISource.md) の Summary です。 |
+| [BaseSource](./Test/BaseSource.md) | [ISource](../Assem/Test/ISource.md) の Summary です。 |
+| [InheritBaseSource](./Test/InheritBaseSource.md) | [ISource](../Assem/Test/ISource.md) の Summary です。 |
 | [OverwriteSource](./Test/OverwriteSource.md) | [OverwriteSource](../Assem/Test/OverwriteSource.md) のコメントです。 |
-| [InheritanceOverwriteSource](./Test/InheritanceOverwriteSource.md) |  |
+| [InheritanceOverwriteSource](./Test/InheritanceOverwriteSource.md) | [OverwriteSource](../Assem/Test/OverwriteSource.md) のコメントです。 |
 | [MixSource](./Test/MixSource.md) |  |
-| [MixSource2](./Test/MixSource2.md) |  |
+| [MixSource2](./Test/MixSource2.md) | [ISecondSource](../Assem/Test/ISecondSource.md) の Summary です。 |
 
 ## Interfaces
 
@@ -72,7 +72,7 @@ file name ./output/Assem/Test/Source.md
 namespace: [Test](../Test.md)<br />
 assembly: [Assem](../../Assem.md)
 
-
+[ISource](../../Assem/Test/ISource.md) の Summary です。
 
 ```csharp
 public class Source;
@@ -93,7 +93,7 @@ file name ./output/Assem/Test/BaseSource.md
 namespace: [Test](../Test.md)<br />
 assembly: [Assem](../../Assem.md)
 
-
+[ISource](../../Assem/Test/ISource.md) の Summary です。
 
 ```csharp
 public class BaseSource;
@@ -114,7 +114,7 @@ file name ./output/Assem/Test/InheritBaseSource.md
 namespace: [Test](../Test.md)<br />
 assembly: [Assem](../../Assem.md)
 
-
+[ISource](../../Assem/Test/ISource.md) の Summary です。
 
 ```csharp
 public class InheritBaseSource;
@@ -154,7 +154,7 @@ file name ./output/Assem/Test/InheritanceOverwriteSource.md
 namespace: [Test](../Test.md)<br />
 assembly: [Assem](../../Assem.md)
 
-
+[OverwriteSource](../../Assem/Test/OverwriteSource.md) のコメントです。
 
 ```csharp
 public class InheritanceOverwriteSource;
@@ -211,7 +211,7 @@ file name ./output/Assem/Test/MixSource2.md
 namespace: [Test](../Test.md)<br />
 assembly: [Assem](../../Assem.md)
 
-
+[ISecondSource](../../Assem/Test/ISecondSource.md) の Summary です。
 
 ```csharp
 public class MixSource2;

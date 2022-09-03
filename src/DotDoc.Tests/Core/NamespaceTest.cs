@@ -34,7 +34,7 @@ namespace Test.Test1{
             .Select(a => MetadataReference.CreateFromFile(a.Location));
         
         var compilation = CSharpCompilation.Create("Test", new[] { tree }, assems);
-        var docItem = compilation.Assembly.Accept(new ProjectSymbolsVisitor(new DefaultFilter(DotDocEngineOptions.Default(""))));
+        var docItem = compilation.Assembly.Accept(new ProjectSymbolsVisitor(new DefaultFilter(DotDocEngineOptions.Default("")), compilation));
         var outputText = new StringBuilder();
         var writer = new AdoWikiWriter(new[] { docItem }, DotDocEngineOptions.Default("test.sln"),
             new TestFsModel(outputText), _logger);

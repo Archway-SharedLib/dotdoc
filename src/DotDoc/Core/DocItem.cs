@@ -17,15 +17,17 @@ namespace DotDoc.Core
     public abstract class DocItem: IDocItem
     {
         private readonly ISymbol _symbol;
+        private readonly Compilation _compilation;
 
-        protected DocItem(ISymbol symbol)
+        protected DocItem(ISymbol symbol, Compilation compilation)
         {
             _symbol = symbol;
+            _compilation = compilation;
             Id = SymbolUtil.GetSymbolId(symbol);
             Name = symbol.Name;
             DisplayName = symbol.ToDisplayString();
             MetadataName = symbol.MetadataName;
-            XmlDocInfo = XmlDocParser.Parse(symbol.GetDocumentationCommentXml());
+            XmlDocInfo = XmlDocParser.Parse(symbol, compilation);
             Accessiblity = SymbolUtil.MapAccessibility(symbol.DeclaredAccessibility);
         }
 
@@ -39,6 +41,10 @@ namespace DotDoc.Core
 
         public XmlDocInfo? XmlDocInfo { get; protected set; }
 
+        protected ISymbol Symbol => _symbol;
+        
+        protected Compilation Compilation => _compilation;
+
         public virtual IEnumerable<IDocItem> Items { get; } = Enumerable.Empty<IDocItem>();
 
         public Accessibility Accessiblity { get; protected set; } = Accessibility.Unknown;
@@ -49,7 +55,7 @@ namespace DotDoc.Core
 
     public class AssemblyDocItem : DocItem
     {
-        public AssemblyDocItem(IAssemblySymbol symbol) : base(symbol)
+        public AssemblyDocItem(IAssemblySymbol symbol, Compilation compilation) : base(symbol, compilation)
         {
             DisplayName = symbol.Name;
         }
@@ -63,7 +69,7 @@ namespace DotDoc.Core
 
     public class NamespaceDocItem : DocItem
     {
-        public NamespaceDocItem(INamespaceSymbol symbol) : base(symbol)
+        public NamespaceDocItem(INamespaceSymbol symbol, Compilation compilation) : base(symbol, compilation)
         {
             AssemblyId = SymbolUtil.GetSymbolId(symbol.ContainingAssembly);
         }
@@ -79,7 +85,7 @@ namespace DotDoc.Core
 
     public abstract class TypeDocItem : DocItem
     {
-        public TypeDocItem(INamedTypeSymbol symbol) : base(symbol)
+        public TypeDocItem(INamedTypeSymbol symbol, Compilation compilation) : base(symbol, compilation)
         {
             DisplayName = symbol.ToDisplayString()
                 .Substring(symbol.ContainingNamespace.ToDisplayString().Length + 1);
@@ -88,7 +94,7 @@ namespace DotDoc.Core
             BaseType = symbol.BaseType is not null ? symbol.BaseType.ToTypeInfo() : null;
             Interfaces = symbol.Interfaces.OrEmpty().Select(i => i.ToTypeInfo()).ToList();
         }
-
+        
         public List<IMemberDocItem> Members { get; } = new();
 
         public string? AssemblyId { get; protected set; }
@@ -105,12 +111,12 @@ namespace DotDoc.Core
 
     public class ClassDocItem : TypeDocItem
     {
-        public ClassDocItem(INamedTypeSymbol symbol) : base(symbol)
+        public ClassDocItem(INamedTypeSymbol symbol, Compilation compilation) : base(symbol, compilation)
         {
             IsSealed = symbol.IsSealed;
             IsAbstract = symbol.IsAbstract;
             IsStatic = symbol.IsStatic;
-            TypeParameters.AddRange( SymbolUtil.RetrieveTypeParameters(symbol.TypeParameters, XmlDocInfo));
+            TypeParameters.AddRange( SymbolUtil.RetrieveTypeParameters(symbol.TypeParameters, XmlDocInfo, compilation));
         }
 
         public List<TypeParameterDocItem> TypeParameters { get; } = new ();
@@ -127,9 +133,9 @@ namespace DotDoc.Core
 
     public class InterfaceDocItem : TypeDocItem
     {
-        public InterfaceDocItem(INamedTypeSymbol symbol) : base(symbol)
+        public InterfaceDocItem(INamedTypeSymbol symbol, Compilation compilation) : base(symbol, compilation)
         {
-            TypeParameters.AddRange( SymbolUtil.RetrieveTypeParameters(symbol.TypeParameters, XmlDocInfo));
+            TypeParameters.AddRange( SymbolUtil.RetrieveTypeParameters(symbol.TypeParameters, XmlDocInfo, compilation));
         }
 
         public List<TypeParameterDocItem> TypeParameters { get; } = new();
@@ -141,7 +147,7 @@ namespace DotDoc.Core
 
     public class EnumDocItem : TypeDocItem
     {
-        public EnumDocItem(INamedTypeSymbol symbol) : base(symbol)
+        public EnumDocItem(INamedTypeSymbol symbol, Compilation compilation) : base(symbol, compilation)
         {
         }
         public override string ToDeclareCSharpCode() =>
@@ -150,9 +156,9 @@ namespace DotDoc.Core
 
     public class StructDocItem : TypeDocItem
     {
-        public StructDocItem(INamedTypeSymbol symbol) : base(symbol)
+        public StructDocItem(INamedTypeSymbol symbol, Compilation compilation) : base(symbol, compilation)
         {
-            TypeParameters.AddRange( SymbolUtil.RetrieveTypeParameters(symbol.TypeParameters, XmlDocInfo));
+            TypeParameters.AddRange( SymbolUtil.RetrieveTypeParameters(symbol.TypeParameters, XmlDocInfo, compilation));
         }
 
         public List<TypeParameterDocItem> TypeParameters { get; } = new();
@@ -163,11 +169,11 @@ namespace DotDoc.Core
 
     public class DelegateDocItem : TypeDocItem
     {
-        public DelegateDocItem(INamedTypeSymbol symbol) : base(symbol)
+        public DelegateDocItem(INamedTypeSymbol symbol, Compilation compilation) : base(symbol, compilation)
         {
-            TypeParameters.AddRange( SymbolUtil.RetrieveTypeParameters(symbol.TypeParameters, XmlDocInfo));
+            TypeParameters.AddRange( SymbolUtil.RetrieveTypeParameters(symbol.TypeParameters, XmlDocInfo, compilation));
             var delegMethod = symbol.DelegateInvokeMethod!;
-            Parameters.AddRange(SymbolUtil.RetrieveParameters(delegMethod.Parameters, XmlDocInfo));
+            Parameters.AddRange(SymbolUtil.RetrieveParameters(delegMethod.Parameters, XmlDocInfo, compilation));
             ReturnValue = delegMethod.ReturnsVoid
                 ? null
                 : new ReturnItem(delegMethod);
@@ -196,7 +202,7 @@ namespace DotDoc.Core
     
     public abstract class MemberDocItem : DocItem, IMemberDocItem
     {
-        protected MemberDocItem(ISymbol symbol) : base(symbol)
+        protected MemberDocItem(ISymbol symbol, Compilation compilation) : base(symbol, compilation)
         {
             NamespaceId = SymbolUtil.GetSymbolId(symbol.ContainingNamespace);
             AssemblyId = SymbolUtil.GetSymbolId(symbol.ContainingAssembly);
@@ -213,10 +219,10 @@ namespace DotDoc.Core
 
     public class ConstructorDocItem : MemberDocItem
     {
-        public ConstructorDocItem(IMethodSymbol symbol) : base(symbol)
+        public ConstructorDocItem(IMethodSymbol symbol, Compilation compilation) : base(symbol, compilation)
         {
             CSharpConstructorName = symbol.ContainingType.Name;
-            Parameters.AddRange(SymbolUtil.RetrieveParameters(symbol.Parameters, XmlDocInfo));
+            Parameters.AddRange(SymbolUtil.RetrieveParameters(symbol.Parameters, XmlDocInfo, compilation));
         }
 
         public List<ParameterDocItem> Parameters { get; } = new();
@@ -236,7 +242,7 @@ namespace DotDoc.Core
 
     public class FieldDocItem : MemberDocItem
     {
-        public FieldDocItem(IFieldSymbol symbol) : base(symbol)
+        public FieldDocItem(IFieldSymbol symbol, Compilation compilation) : base(symbol, compilation)
         {
             ConstantValue = symbol.ConstantValue;
             IsStatic = symbol.IsStatic;
@@ -278,7 +284,7 @@ namespace DotDoc.Core
     
     public class PropertyDocItem : MemberDocItem
     {
-        public PropertyDocItem(IPropertySymbol symbol) : base(symbol)
+        public PropertyDocItem(IPropertySymbol symbol, Compilation compilation) : base(symbol, compilation)
         {
             TypeInfo = symbol.Type.ToTypeInfo();
             HasGet = symbol.GetMethod is not null;
@@ -323,7 +329,7 @@ namespace DotDoc.Core
 
     public class MethodDocItem : MemberDocItem
     {
-        public MethodDocItem(IMethodSymbol symbol) : base(symbol)
+        public MethodDocItem(IMethodSymbol symbol, Compilation compilation) : base(symbol, compilation)
         {
             ReturnValue = symbol.ReturnsVoid
                 ? null
@@ -333,8 +339,10 @@ namespace DotDoc.Core
             IsOverride = symbol.IsOverride;
             IsVirtual = symbol.IsVirtual;
             
-            TypeParameters.AddRange( SymbolUtil.RetrieveTypeParameters(symbol.TypeParameters, XmlDocInfo));
-            Parameters.AddRange(SymbolUtil.RetrieveParameters(symbol.Parameters, XmlDocInfo));
+            TypeParameters.AddRange( SymbolUtil.RetrieveTypeParameters(symbol.TypeParameters, XmlDocInfo, compilation));
+            Parameters.AddRange(SymbolUtil.RetrieveParameters(symbol.Parameters, XmlDocInfo, compilation));
+            
+            
         }
 
         public List<ParameterDocItem> Parameters { get; } = new();
@@ -374,7 +382,7 @@ namespace DotDoc.Core
 
     public class EventDocItem : MemberDocItem
     {
-        public EventDocItem(IEventSymbol symbol) : base(symbol)
+        public EventDocItem(IEventSymbol symbol, Compilation compilation) : base(symbol, compilation)
         {
         }
         
@@ -383,7 +391,7 @@ namespace DotDoc.Core
 
     public class ParameterDocItem: DocItem
     {
-        public ParameterDocItem(IParameterSymbol symbol, XmlDocInfo docInfo) : base(symbol)
+        public ParameterDocItem(IParameterSymbol symbol, XmlDocInfo docInfo, Compilation compilation) : base(symbol, compilation)
         {
             DisplayName = symbol.Name;
             TypeInfo = symbol.Type.ToTypeInfo();
@@ -417,9 +425,6 @@ namespace DotDoc.Core
         }
         
         public TypeInfo TypeInfo { get; }
-        
-        
-        public string? XmlDocText { get; }
 
         public ValueRefKind RefKind { get; }
 
@@ -433,7 +438,7 @@ namespace DotDoc.Core
 
     public class TypeParameterDocItem : DocItem
     {
-        public TypeParameterDocItem(ITypeParameterSymbol symbol, XmlDocInfo docInfo) : base(symbol)
+        public TypeParameterDocItem(ITypeParameterSymbol symbol, XmlDocInfo docInfo, Compilation compilation) : base(symbol, compilation)
         {
             XmlDocText = docInfo?.TypeParameters.OrEmpty().FirstOrDefault(p => p.Name == symbol.Name)?.Text;
         }
@@ -458,6 +463,7 @@ namespace DotDoc.Core
         }
 
         public string? Id { get; }
+    
         public string? DisplayName { get; }
 
         public string? AssemblyId { get; set; }
@@ -488,9 +494,9 @@ namespace DotDoc.Core
         }
 
         public string? Id { get; }
-        public string? DisplayName { get; }
-       
 
+        public string? DisplayName { get; }
+        
         public IEnumerable<IDocItem>? Items { get; } = new List<IDocItem>();
         
         public IEnumerable<ConstructorDocItem> Constructors { get; }

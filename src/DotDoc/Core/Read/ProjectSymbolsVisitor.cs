@@ -6,15 +6,17 @@ namespace DotDoc.Core.Read;
 public class ProjectSymbolsVisitor : SymbolVisitor<IDocItem>
 {
     private readonly IFilter _filter;
+    private readonly Compilation _compilation;
 
-    public ProjectSymbolsVisitor(IFilter filter)
+    public ProjectSymbolsVisitor(IFilter filter, Compilation compilation)
     {
         _filter = filter;
+        _compilation = compilation;
     }
     
     public override IDocItem? VisitAssembly(IAssemblySymbol symbol)
     {
-        var item = new AssemblyDocItem(symbol);
+        var item = new AssemblyDocItem(symbol, _compilation);
         if (_filter.Exclude(symbol, item.Id)) return null;
         
         var namespaces = VisitDescendants(
@@ -29,7 +31,7 @@ public class ProjectSymbolsVisitor : SymbolVisitor<IDocItem>
 
     public override IDocItem? VisitNamespace(INamespaceSymbol symbol)
     {
-        var item = new NamespaceDocItem(symbol);
+        var item = new NamespaceDocItem(symbol, _compilation);
         if (_filter.Exclude(symbol, item.Id)) return null;
         
         var types = VisitDescendants(
@@ -66,31 +68,31 @@ public class ProjectSymbolsVisitor : SymbolVisitor<IDocItem>
         
         if (symbol.TypeKind == TypeKind.Class)
         {
-            var item = new ClassDocItem(symbol);
+            var item = new ClassDocItem(symbol, _compilation);
             item.Members.AddRange(GetMembers());
             return item;
         }
         if (symbol.TypeKind == TypeKind.Interface)
         {
-            var item = new InterfaceDocItem(symbol);
+            var item = new InterfaceDocItem(symbol, _compilation);
             item.Members.AddRange(GetMembers());
             return item;
         }
         if (symbol.TypeKind == TypeKind.Enum) 
         {
-            var item = new EnumDocItem(symbol);
+            var item = new EnumDocItem(symbol, _compilation);
             item.Members.AddRange(GetMembers());
             return item;
         }
         if (symbol.TypeKind == TypeKind.Struct)
         {
-            var item = new StructDocItem(symbol);
+            var item = new StructDocItem(symbol, _compilation);
             item.Members.AddRange(GetMembers());
             return item;
         }
         if (symbol.TypeKind == TypeKind.Delegate) 
         {
-            var item = new DelegateDocItem(symbol);
+            var item = new DelegateDocItem(symbol, _compilation);
             return item;
         };
         return null;
@@ -98,14 +100,14 @@ public class ProjectSymbolsVisitor : SymbolVisitor<IDocItem>
 
     public override IDocItem? VisitField(IFieldSymbol symbol)
     {
-        var item = new FieldDocItem(symbol);
+        var item = new FieldDocItem(symbol, _compilation);
         if (_filter.Exclude(symbol, item.Id)) return null;
         return item;
     }
 
     public override IDocItem? VisitProperty(IPropertySymbol symbol)
     {
-        var item = new PropertyDocItem(symbol);
+        var item = new PropertyDocItem(symbol, _compilation);
         if (_filter.Exclude(symbol, item.Id)) return null;
         return item;
     }
@@ -130,19 +132,19 @@ public class ProjectSymbolsVisitor : SymbolVisitor<IDocItem>
 
     private IDocItem VisitPlaneMethod(IMethodSymbol symbol)
     {
-        var item = new MethodDocItem(symbol);
+        var item = new MethodDocItem(symbol, _compilation);
         return item;
     }
 
     private IDocItem VisitConstructor(IMethodSymbol symbol)
     {
-        var item = new ConstructorDocItem(symbol);
+        var item = new ConstructorDocItem(symbol, _compilation);
         return item;
     }
     
     public override IDocItem? VisitEvent(IEventSymbol symbol)
     {
-        var item = new EventDocItem(symbol);
+        var item = new EventDocItem(symbol, _compilation);
         if (_filter.Exclude(symbol, item.Id)) return null;
         return item;
     }
