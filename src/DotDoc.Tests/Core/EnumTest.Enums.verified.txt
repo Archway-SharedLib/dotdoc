@@ -30,7 +30,7 @@ namespace Test;
 | Name | Summary |
 |------|---------|
 | [NormalEnum](./Test/NormalEnum.md) | 通常のEnumです。 |
-| [FlagsEnum](./Test/FlagsEnum.md) | FlagsAttribute付きのEnumです。 |
+| [FlagsEnum](./Test/FlagsEnum.md) | [System\.FlagsAttribute](https://docs.microsoft.com/ja-jp/dotnet/api/System.FlagsAttribute)付きのEnumです。 |
 | [ShortEnum](./Test/ShortEnum.md) | [System\.Int16](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int16) を元にしている Enum です。 |
 
 
@@ -50,7 +50,7 @@ assembly: [Test](../../Test.md)
 public enum NormalEnum;
 ```
 
-Inheritance: [System\.Enum](https://docs.microsoft.com/ja-jp/dotnet/api/System.Enum) > NormalEnum
+Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > [System\.ValueType](https://docs.microsoft.com/ja-jp/dotnet/api/System.ValueType) > [System\.Enum](https://docs.microsoft.com/ja-jp/dotnet/api/System.Enum) > NormalEnum
 
 ## Fields
 
@@ -70,13 +70,13 @@ file name ./output/Test/Test/FlagsEnum.md
 namespace: [Test](../Test.md)<br />
 assembly: [Test](../../Test.md)
 
-FlagsAttribute付きのEnumです。
+[System\.FlagsAttribute](https://docs.microsoft.com/ja-jp/dotnet/api/System.FlagsAttribute)付きのEnumです。
 
 ```csharp
 public enum FlagsEnum;
 ```
 
-Inheritance: [System\.Enum](https://docs.microsoft.com/ja-jp/dotnet/api/System.Enum) > FlagsEnum
+Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > [System\.ValueType](https://docs.microsoft.com/ja-jp/dotnet/api/System.ValueType) > [System\.Enum](https://docs.microsoft.com/ja-jp/dotnet/api/System.Enum) > FlagsEnum
 
 ## Fields
 
@@ -104,7 +104,7 @@ assembly: [Test](../../Test.md)
 public enum ShortEnum;
 ```
 
-Inheritance: [System\.Enum](https://docs.microsoft.com/ja-jp/dotnet/api/System.Enum) > ShortEnum
+Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > [System\.ValueType](https://docs.microsoft.com/ja-jp/dotnet/api/System.ValueType) > [System\.Enum](https://docs.microsoft.com/ja-jp/dotnet/api/System.Enum) > ShortEnum
 
 ## Fields
 

@@ -23,6 +23,9 @@ public class EnumTest
     public async Task Enums()
     {
         var tree = CSharpSyntaxTree.ParseText(@"
+using System;
+using System.Collections.Generic;
+
 namespace Test;
 
 /// <summary>

@@ -23,6 +23,9 @@ public class CtorTest
     public async Task DefaultTest()
     {
         var tree = CSharpSyntaxTree.ParseText(@"
+using System;
+using System.Collections.Generic;
+
 namespace Test;
 
 /// <summary>NormalClassです。</summary>

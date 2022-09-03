@@ -23,6 +23,9 @@ public class TypesTest
     public async Task Types()
     {
         var tree = CSharpSyntaxTree.ParseText(@"
+using System;
+using System.Collections.Generic;
+
 namespace Test;
 
 /// <summary>Classです。</summary>

@@ -49,7 +49,7 @@ assembly: [Test](../../Test.md)
 public abstract class BaseMethodVariation;
 ```
 
-Inheritance: [System\.Object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > BaseMethodVariation
+Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > BaseMethodVariation
 
 ## Methods
 
@@ -127,7 +127,7 @@ assembly: [Test](../../Test.md)
 public class MethodVariation;
 ```
 
-Inheritance: [System\.Object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > [BaseMethodVariation](../../Test/Test/BaseMethodVariation.md) > MethodVariation
+Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > [Test\.BaseMethodVariation](../../Test/Test/BaseMethodVariation.md) > MethodVariation
 
 ## Methods
 
@@ -177,7 +177,7 @@ public string ReturnStringNoParam();
 
 ## Return Value
 
-[System\.String](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
 
 文字列の [System\.String](https://docs.microsoft.com/ja-jp/dotnet/api/System.String) を返します。
 
@@ -231,7 +231,7 @@ public int ReturnIntWithParam(string param1 ,int param2);
 
 ## Return Value
 
-[System\.Int32](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
+[int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
 
 数字の [System\.Int32](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32) を返します。
 

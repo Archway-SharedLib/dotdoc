@@ -48,7 +48,7 @@ NormalClassです。
 public class FieldClass;
 ```
 
-Inheritance: [System\.Object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > FieldClass
+Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > FieldClass
 
 ## Fields
 

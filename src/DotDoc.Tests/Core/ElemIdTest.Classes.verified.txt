@@ -48,7 +48,7 @@ NormalClassです。
 public class NormalClass;
 ```
 
-Inheritance: [System\.Object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > NormalClass
+Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > NormalClass
 
 ## Properties
 
@@ -114,11 +114,11 @@ assembly: [Assem](../../../Assem.md)
 List\{T\}です。
 
 ```csharp
-public List<List<string>> NamesList { get; set; };
+public System.Collections.Generic.List<System.Collections.Generic.List<string>> NamesList { get; set; };
 ```
 
 ## Property Value
 
-List\<\>
+[System\.Collections\.Generic\.List\<System\.Collections\.Generic\.List\<string\>\>](https://docs.microsoft.com/ja-jp/dotnet/api/System.Collections.Generic.List-1)
 
 

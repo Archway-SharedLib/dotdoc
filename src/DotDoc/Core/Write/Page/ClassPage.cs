@@ -127,27 +127,22 @@ public class ClassPage: IPage
 
     private void AppendInheritAndImplements(StringBuilder sb)
     {
-        if (!string.IsNullOrEmpty(_item.BaseTypeId))
+        if (_item.BaseType is not null)
         {
-            var bases = new List<string>();
-            var baseId = _item.BaseTypeId;
-            while (!string.IsNullOrEmpty(baseId))
+            var bases = new List<TypeInfo>();
+            var baseType = _item.BaseType;
+            while (baseType is not null)
             {
-                bases.Add(baseId);
-                var baseDocItem = _itemContainer.Get(baseId);
-                baseId = null;
-                if (baseDocItem is TypeDocItem baseTypeDoc)
-                {
-                    baseId = baseTypeDoc.BaseTypeId;
-                }
+                bases.Add(baseType);
+                baseType = baseType.BaseType;
             }
 
-            var links = bases.AsEnumerable().Reverse().Select(id => _transform.ToMdLink(_item, id));
+            var links = bases.AsEnumerable().Reverse().Select(b => _transform.ToMdLink(_item, b.GetLinkTypeInfo().TypeId, b.GetLinkTypeInfo().DisplayName));
             sb.AppendLine("Inheritance: " + string.Join(" > ", links.Append(_item.DisplayName))).AppendLine();
         }
-        if (_item.InterfaceIds.OrEmpty().Any())
+        if (_item.Interfaces.OrEmpty().Any())
         {
-            sb.AppendLine("Implements: " + string.Join(", ", _item.InterfaceIds.Select(id => _transform.ToMdLink(_item, id)))).AppendLine();    
+            sb.AppendLine("Implements: " + string.Join(", ", _item.Interfaces.Select(i => _transform.ToMdLink(_item, i.GetLinkTypeInfo().TypeId, i.GetLinkTypeInfo().DisplayName)))).AppendLine();    
         }
     }
 }

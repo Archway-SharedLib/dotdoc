@@ -245,4 +245,32 @@ public class MethodOverload
 
         await Verify(outputText.ToString());
     }
+    
+    [Fact]
+    public async Task ReturnTuple()
+    {
+        var tree = CSharpSyntaxTree.ParseText(@"
+using System;
+using System.Collections.Generic;
+
+namespace Test;
+
+public class ReturnTuple
+{
+    public (T2, string) OverloadMethod<T, T2>(T num, T2 str) => (str, string.Empty());
+}");
+
+        var assems = AppDomain.CurrentDomain.GetAssemblies()
+            .Where(a => a.GetName().Name.StartsWith("system", StringComparison.InvariantCultureIgnoreCase) || a.GetName().Name == "netstandard")
+            .Select(a => MetadataReference.CreateFromFile(a.Location));
+        
+        var compilation = CSharpCompilation.Create("Test", new[] { tree }, assems);
+        var docItem = compilation.Assembly.Accept(new ProjectSymbolsVisitor(new DefaultFilter(DotDocEngineOptions.Default(""))));
+        var outputText = new StringBuilder();
+        var writer = new AdoWikiWriter(new[] { docItem }, DotDocEngineOptions.Default("test.sln"),
+            new TestFsModel(outputText), _logger);
+        await writer.WriteAsync();
+
+        await Verify(outputText.ToString());
+    }
 }

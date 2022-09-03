@@ -85,14 +85,16 @@ public class ConstructorPage: IPage
     
     private void AppendParameterList(StringBuilder sb, IEnumerable<ParameterDocItem> parameters, int depth = 2)
     {
-        if(parameters.Any())
+        var paramList = parameters.ToList();
+        if(paramList.Any())
         {
             AppendTitle(sb, "Parameters", depth);
             sb.AppendLine("| Type | Name | Summary |");
             sb.AppendLine("|------|------|---------|");
-            foreach(var param in parameters)
+            foreach(var param in paramList)
             {
-                sb.AppendLine($@"| {_transform.ToMdLink(_item,  param.TypeInfo.TypeId, param.TypeInfo.DisplayName)} | {_transform.EscapeMdText(param.DisplayName)} | {_transform.ToMdText(_item, param, t => t.XmlDocText, true)} |");
+                var linkType = param.TypeInfo.GetLinkTypeInfo();
+                sb.AppendLine($@"| {_transform.ToMdLink(_item,  linkType.TypeId, linkType.DisplayName)} | {_transform.EscapeMdText(param.DisplayName)} | {_transform.ToMdText(_item, param, t => t.XmlDocText, true)} |");
             }
             sb.AppendLine();
         }

@@ -78,9 +78,9 @@ assembly: [Assem](../../Assem.md)
 public class Source;
 ```
 
-Inheritance: [System\.Object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > Source
+Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > Source
 
-Implements: [ISource](../../Assem/Test/ISource.md)
+Implements: [Test\.ISource](../../Assem/Test/ISource.md)
 
 
 
@@ -99,9 +99,9 @@ assembly: [Assem](../../Assem.md)
 public class BaseSource;
 ```
 
-Inheritance: [System\.Object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > BaseSource
+Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > BaseSource
 
-Implements: [ISource](../../Assem/Test/ISource.md)
+Implements: [Test\.ISource](../../Assem/Test/ISource.md)
 
 
 
@@ -120,7 +120,7 @@ assembly: [Assem](../../Assem.md)
 public class InheritBaseSource;
 ```
 
-Inheritance: [System\.Object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > [BaseSource](../../Assem/Test/BaseSource.md) > InheritBaseSource
+Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > [Test\.BaseSource](../../Assem/Test/BaseSource.md) > InheritBaseSource
 
 
 
@@ -139,9 +139,9 @@ assembly: [Assem](../../Assem.md)
 public class OverwriteSource;
 ```
 
-Inheritance: [System\.Object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > OverwriteSource
+Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > OverwriteSource
 
-Implements: [ISource](../../Assem/Test/ISource.md)
+Implements: [Test\.ISource](../../Assem/Test/ISource.md)
 
 
 
@@ -160,7 +160,7 @@ assembly: [Assem](../../Assem.md)
 public class InheritanceOverwriteSource;
 ```
 
-Inheritance: [System\.Object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > [OverwriteSource](../../Assem/Test/OverwriteSource.md) > InheritanceOverwriteSource
+Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > [Test\.OverwriteSource](../../Assem/Test/OverwriteSource.md) > InheritanceOverwriteSource
 
 
 
@@ -196,9 +196,9 @@ assembly: [Assem](../../Assem.md)
 public class MixSource;
 ```
 
-Inheritance: [System\.Object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > MixSource
+Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > MixSource
 
-Implements: [ISource](../../Assem/Test/ISource.md), [ISecondSource](../../Assem/Test/ISecondSource.md)
+Implements: [Test\.ISource](../../Assem/Test/ISource.md), [Test\.ISecondSource](../../Assem/Test/ISecondSource.md)
 
 
 
@@ -217,8 +217,8 @@ assembly: [Assem](../../Assem.md)
 public class MixSource2;
 ```
 
-Inheritance: [System\.Object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > MixSource2
+Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > MixSource2
 
-Implements: [ISource](../../Assem/Test/ISource.md), [ISecondSource](../../Assem/Test/ISecondSource.md)
+Implements: [Test\.ISource](../../Assem/Test/ISource.md), [Test\.ISecondSource](../../Assem/Test/ISecondSource.md)
 
 

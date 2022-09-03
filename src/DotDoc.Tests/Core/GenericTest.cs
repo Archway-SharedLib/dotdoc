@@ -65,4 +65,30 @@ public class GenericClass<T> where T: new()
         await Verify(outputText.ToString());
     }    
     
+    [Fact]
+    public async Task GenericParamTest()
+    {
+        var tree = CSharpSyntaxTree.ParseText(@"
+using System.Collections.Generic;
+
+namespace Test;
+
+public class Dic
+{
+    public List<int> Method(Dictionary<string, List<int>> arg) => arg.Values.First();
+}");
+        var assems = AppDomain.CurrentDomain.GetAssemblies()
+            .Where(a => a.GetName().Name.StartsWith("system", StringComparison.InvariantCultureIgnoreCase) || a.GetName().Name == "netstandard")
+            .Select(a => MetadataReference.CreateFromFile(a.Location));
+        
+        var compilation = CSharpCompilation.Create("Assem", new[] { tree }, assems);
+        var docItem = compilation.Assembly.Accept(new ProjectSymbolsVisitor(new DefaultFilter(DotDocEngineOptions.Default(""))));
+        var outputText = new StringBuilder();
+        var writer = new AdoWikiWriter(new[] { docItem }, DotDocEngineOptions.Default("test.sln"),
+            new TestFsModel(outputText), _logger);
+        await writer.WriteAsync();
+
+        await Verify(outputText.ToString());
+    }    
+
 }

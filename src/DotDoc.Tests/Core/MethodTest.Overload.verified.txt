@@ -48,7 +48,7 @@ assembly: [Test](../../Test.md)
 public class MethodOverload;
 ```
 
-Inheritance: [System\.Object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > MethodOverload
+Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > MethodOverload
 
 ## Methods
 
@@ -137,7 +137,7 @@ public string OverloadMethod(int num ,string str);
 
 ### Return Value
 
-[System\.String](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
 
 strです
 
@@ -159,12 +159,12 @@ public string OverloadMethod<T>(T num ,string str);
 
 | Type | Name | Summary |
 |------|------|---------|
-| [T](V:Test.MethodOverload.OverloadMethod<T>(T, string)+T) | num | Numです。 |
+| T | num | Numです。 |
 | [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String) | str | Strです。 |
 
 ### Return Value
 
-[System\.String](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
 
 strです
 
@@ -187,12 +187,12 @@ public T2 OverloadMethod<T ,T2>(T num ,T2 str);
 
 | Type | Name | Summary |
 |------|------|---------|
-| [T](V:Test.MethodOverload.OverloadMethod<T, T2>(T, T2)+T) | num | Numです。 |
-| [T2](V:Test.MethodOverload.OverloadMethod<T, T2>(T, T2)+T2) | str | Strです。 |
+| T | num | Numです。 |
+| T2 | str | Strです。 |
 
 ### Return Value
 
-[V:Test\.MethodOverload\.OverloadMethod\<T, T2\>\(T, T2\)\+T2](V:Test.MethodOverload.OverloadMethod<T, T2>(T, T2)+T2)
+T2
 
 T2です
 

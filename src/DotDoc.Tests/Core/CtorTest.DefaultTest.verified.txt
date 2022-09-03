@@ -49,7 +49,7 @@ NormalClassです。
 public class NormalClass<T>;
 ```
 
-Inheritance: [System\.Object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > NormalClass<T>
+Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > NormalClass<T>
 
 ## Constructors
 
@@ -103,7 +103,7 @@ OverloadClassです。
 public class OverloadClass<T>;
 ```
 
-Inheritance: [System\.Object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > OverloadClass<T>
+Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > OverloadClass<T>
 
 ## Constructors
 

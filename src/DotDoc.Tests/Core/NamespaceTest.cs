@@ -23,6 +23,9 @@ public class NamespaceTest
     public async Task Namespace()
     {
         var tree = CSharpSyntaxTree.ParseText(@"
+using System;
+using System.Collections.Generic;
+
 namespace Test.Test1{
 }
 ");

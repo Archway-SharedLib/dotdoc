@@ -26,7 +26,9 @@ public class PropertyPage: IPage
         AppendDeclareCode(sb);
 
         AppendTitle(sb, "Property Value", 2);
-        sb.AppendLine($"{_transform.ToMdLink(_item, _item.TypeInfo.GetLinkTypeInfo().TypeId, _item.TypeInfo.GetLinkTypeInfo().DisplayName)}").AppendLine();
+        
+        var linkType = _item.TypeInfo.GetLinkTypeInfo();
+        sb.AppendLine($"{_transform.ToMdLink(_item, linkType.TypeId, linkType.DisplayName)}").AppendLine();
         if (!string.IsNullOrEmpty(_item.XmlDocInfo?.Value))
         {
             sb.AppendLine(_transform.ToMdText(_item, _item, t => t.XmlDocInfo?.Value)).AppendLine();

@@ -85,8 +85,8 @@ namespace DotDoc.Core
                 .Substring(symbol.ContainingNamespace.ToDisplayString().Length + 1);
             NamespaceId = SymbolUtil.GetSymbolId(symbol.ContainingNamespace);
             AssemblyId = SymbolUtil.GetSymbolId(symbol.ContainingAssembly);
-            BaseTypeId = symbol.BaseType is not null ? SymbolUtil.GetSymbolId(symbol.BaseType) : null;
-            InterfaceIds = symbol.Interfaces.OrEmpty().Select(i => SymbolUtil.GetSymbolId(i)).ToList();
+            BaseType = symbol.BaseType is not null ? symbol.BaseType.ToTypeInfo() : null;
+            Interfaces = symbol.Interfaces.OrEmpty().Select(i => i.ToTypeInfo()).ToList();
         }
 
         public List<IMemberDocItem> Members { get; } = new();
@@ -97,9 +97,9 @@ namespace DotDoc.Core
         
         public override IEnumerable<IDocItem> Items => Members;
         
-        public string? BaseTypeId { get; protected set; }
+        public TypeInfo BaseType { get; protected set; }
 
-        public List<string> InterfaceIds { get; }
+        public List<TypeInfo> Interfaces { get; }
 
     }
 
@@ -506,13 +506,41 @@ namespace DotDoc.Core
 
     public class TypeInfo
     {
-        public string TypeId { get; set; }
+        public TypeInfo(ITypeSymbol symbol)
+        {
+            TypeId = SymbolUtil.GetSymbolId(symbol);
+            DisplayName = symbol.ToDisplayString();
+            Name = symbol.Name;
 
-        public string Name { get; set; }
+            if (symbol is IArrayTypeSymbol arrayType)
+            {
+                LinkType = arrayType.ElementType.ToTypeInfo();
+            } 
+            else if (symbol is INamedTypeSymbol { IsGenericType: true } namedType)
+                //namedType が Type{`N} の場合は型が束縛されていないとContainingType が Type{`N} になる
+                // if (namedType.IsGenericType && namedType.TypeArguments[0].ContainingType is null)
+            {
+                if (namedType != namedType.OriginalDefinition)
+                {
+                    LinkType = namedType.OriginalDefinition.ToTypeInfo();
+                    LinkType.DisplayName = namedType.ToDisplayString();
+                }
+            }
+
+            if (symbol != symbol.BaseType)
+            {
+                BaseType = symbol.BaseType?.ToTypeInfo();    
+            }
+        }
+        public string TypeId { get; }
+
+        public string Name { get;  }
         
-        public string DisplayName { get; set; }
-        
-        public TypeInfo LinkType { get; set; }
+        public string DisplayName { get; private set; }
+
+        public TypeInfo? LinkType { get; } = null;
+
+        public TypeInfo? BaseType { get; } = null;
     }
 
     public enum ValueRefKind

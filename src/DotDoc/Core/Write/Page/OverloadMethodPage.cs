@@ -96,7 +96,8 @@ public class OverloadMethodPage: IPage
             sb.AppendLine("|------|------|---------|");
             foreach(var param in parameters)
             {
-                sb.AppendLine($@"| {_transform.ToMdLink(_item,  param.TypeInfo.TypeId, param.TypeInfo.DisplayName)} | {_transform.EscapeMdText(param.DisplayName)} | {_transform.ToMdText(_item, param, t => t.XmlDocText, true)} |");
+                var linkType = param.TypeInfo.GetLinkTypeInfo();
+                sb.AppendLine($@"| {_transform.ToMdLink(_item,  linkType.TypeId, linkType.DisplayName)} | {_transform.EscapeMdText(param.DisplayName)} | {_transform.ToMdText(_item, param, t => t.XmlDocText, true)} |");
             }
             sb.AppendLine();
         }
@@ -107,7 +108,8 @@ public class OverloadMethodPage: IPage
         if (item.ReturnValue?.TypeInfo is null) return;
             
         AppendTitle(sb, "Return Value", depth);
-        sb.AppendLine(_transform.ToMdLink(item,  item.ReturnValue.TypeInfo.GetLinkTypeInfo().TypeId)).AppendLine();
+        var linkType = item.ReturnValue.TypeInfo.GetLinkTypeInfo();
+        sb.AppendLine(_transform.ToMdLink(item,  linkType.TypeId, linkType.DisplayName)).AppendLine();
         sb.AppendLine(_transform.ToMdText(item, item, t => t.XmlDocInfo?.Returns)).AppendLine();
     }
 }

@@ -23,6 +23,9 @@ public class DelegateTest
     public async Task Delegates()
     {
         var tree = CSharpSyntaxTree.ParseText(@"
+using System;
+using System.Collections.Generic;
+
 namespace Test;
 
 /// <summary>

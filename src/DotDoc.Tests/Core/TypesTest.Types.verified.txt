@@ -73,7 +73,7 @@ Classです。
 public class ClassType;
 ```
 
-Inheritance: [System\.Object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > ClassType
+Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > ClassType
 
 
 
@@ -92,7 +92,7 @@ Enumです。
 public enum EnumType;
 ```
 
-Inheritance: [System\.Enum](https://docs.microsoft.com/ja-jp/dotnet/api/System.Enum) > EnumType
+Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > [System\.ValueType](https://docs.microsoft.com/ja-jp/dotnet/api/System.ValueType) > [System\.Enum](https://docs.microsoft.com/ja-jp/dotnet/api/System.Enum) > EnumType
 
 
 
@@ -128,7 +128,7 @@ Structです。
 public struct StructType;
 ```
 
-Inheritance: [System\.ValueType](https://docs.microsoft.com/ja-jp/dotnet/api/System.ValueType) > StructType
+Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > [System\.ValueType](https://docs.microsoft.com/ja-jp/dotnet/api/System.ValueType) > StructType
 
 
 
@@ -147,7 +147,7 @@ Delegateです。
 public delegate void DelegateType();
 ```
 
-Inheritance: [System\.MulticastDelegate](https://docs.microsoft.com/ja-jp/dotnet/api/System.MulticastDelegate) > DelegateType
+Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > [System\.Delegate](https://docs.microsoft.com/ja-jp/dotnet/api/System.Delegate) > [System\.MulticastDelegate](https://docs.microsoft.com/ja-jp/dotnet/api/System.MulticastDelegate) > DelegateType
 
 
 
@@ -166,8 +166,8 @@ Recordです。
 public class RecordType;
 ```
 
-Inheritance: [System\.Object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > RecordType
+Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > RecordType
 
-Implements: [System\.IEquatable\{Test\.RecordType\}](https://docs.microsoft.com/ja-jp/dotnet/api/System.IEquatable{Test.RecordType})
+Implements: [System\.IEquatable\<Test\.RecordType\>](https://docs.microsoft.com/ja-jp/dotnet/api/System.IEquatable-1)
 
 

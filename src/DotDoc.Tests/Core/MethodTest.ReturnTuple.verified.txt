@@ -1,0 +1,96 @@
+﻿
+---------------------
+file name ./output/Test.md
+---------------------
+
+# Test Assembly
+
+## Namespaces
+
+| Name | Summary |
+|------|---------|
+| [Test](./Test/Test.md) |  |
+
+
+
+---------------------
+file name ./output/Test/Test.md
+---------------------
+
+# Test Namespace
+
+assembly: [Test](../Test.md)
+
+```csharp
+namespace Test;
+```
+
+## Classes
+
+| Name | Summary |
+|------|---------|
+| [ReturnTuple](./Test/ReturnTuple.md) |  |
+
+
+
+---------------------
+file name ./output/Test/Test/ReturnTuple.md
+---------------------
+
+# ReturnTuple Class
+
+namespace: [Test](../Test.md)<br />
+assembly: [Test](../../Test.md)
+
+
+
+```csharp
+public class ReturnTuple;
+```
+
+Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > ReturnTuple
+
+## Methods
+
+| Name | Summary |
+|------|---------|
+| [OverloadMethod\<T, T2\>\(T, T2\)](./ReturnTuple/OverloadMethod.md) |  |
+
+
+
+---------------------
+file name ./output/Test/Test/ReturnTuple/OverloadMethod.md
+---------------------
+
+# OverloadMethod\<T, T2\>\(T, T2\) Method
+
+namespace: [Test](../../Test.md)<br />
+assembly: [Test](../../../Test.md)
+
+
+
+```csharp
+public (T2, string) OverloadMethod<T ,T2>(T num ,T2 str);
+```
+
+## Type Parameters
+
+| Name | Summary |
+|------|---------|
+| T |  |
+| T2 |  |
+
+## Parameters
+
+| Type | Name | Summary |
+|------|------|---------|
+| T | num |  |
+| T2 | str |  |
+
+## Return Value
+
+[\(T2, string\)](https://docs.microsoft.com/ja-jp/dotnet/api/System.ValueTuple-2)
+
+
+
+

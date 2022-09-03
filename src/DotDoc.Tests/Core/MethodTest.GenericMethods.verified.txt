@@ -48,7 +48,7 @@ assembly: [Test](../../Test.md)
 public class GenericMethod;
 ```
 
-Inheritance: [System\.Object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > GenericMethod
+Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > GenericMethod
 
 ## Methods
 
@@ -109,7 +109,7 @@ public string DoubleMethod<TArg ,TVal>();
 
 ## Return Value
 
-[System\.String](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
 
 
 
@@ -141,11 +141,11 @@ public TVal DoubleMethodWithParam<TArg ,TVal>(TArg arg);
 
 | Type | Name | Summary |
 |------|------|---------|
-| [TArg](V:Test.GenericMethod.DoubleMethodWithParam<TArg, TVal>(TArg)+TArg) | arg |  |
+| TArg | arg |  |
 
 ## Return Value
 
-[V:Test\.GenericMethod\.DoubleMethodWithParam\<TArg, TVal\>\(TArg\)\+TVal](V:Test.GenericMethod.DoubleMethodWithParam<TArg, TVal>(TArg)+TVal)
+TVal
 
 
 
@@ -176,7 +176,7 @@ public int ReturnIntWithParam(in string param1 ,ref int param2 ,out int param3);
 
 ## Return Value
 
-[System\.Int32](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
+[int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
 
 数字の [System\.Int32](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32) を返します。
 
@@ -205,7 +205,7 @@ public ref readonly int ReturnRefReadOnly(in int v);
 
 ## Return Value
 
-[System\.Int32](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
+[int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
 
 
 

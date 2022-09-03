@@ -55,37 +55,33 @@ public class TextTransform
     public string ToMdLink(IDocItem baseItem, string key, string? display = null)
     //public string ToMdLink()
     {
-        // DocItem baseItem = null;
-        // string key = null;
-        // string? display = null;
         if (key is null)
         {
             _logger.Trace($"{nameof(ToMdLink)}: key is null : {baseItem.Id}");
             return EscapeMdText(display ?? "!no value!");
         }
+
+        if (_items.TryGet(key, out var destItem))
+        {
+            return $"[{EscapeMdText(display ?? destItem.DisplayName)}]({_fileSystemOperation.GetRelativeLink(baseItem, destItem)})";
+        }
+        
         if (key.StartsWith("!:", StringComparison.InvariantCultureIgnoreCase))
         {
             return EscapeMdText(display ?? key.Substring(2));
         }
         
-        var linkText = key;
-        var displayText = display ?? key;
-
-        if (_items.TryGet(key, out var destItem))
-        {
-            linkText = _fileSystemOperation.GetRelativeLink(baseItem, destItem);
-            displayText = display ?? destItem.DisplayName;
-        }
         if(key.StartsWith("T:Microsoft.", StringComparison.InvariantCultureIgnoreCase) || 
            key.StartsWith("T:System.", StringComparison.InvariantCultureIgnoreCase) ||
            key.StartsWith("N:Microsoft.", StringComparison.InvariantCultureIgnoreCase) ||
             key.StartsWith("N:System.", StringComparison.InvariantCultureIgnoreCase))
         {
             var linkKey = key.Substring(2);
-            displayText = display ?? linkKey;
-            linkText = $"https://docs.microsoft.com/ja-jp/dotnet/api/{linkKey}";
+            var linkText = $"https://docs.microsoft.com/ja-jp/dotnet/api/{linkKey.Replace("`", "-").Replace("{", "").Replace("}", "")}";
+            // var linkText = $"https://docs.microsoft.com/ja-jp/dotnet/api/{linkKey}";
+            return $"[{EscapeMdText(display ?? linkKey)}]({linkText})";
         }
 
-        return $"[{EscapeMdText(displayText)}]({linkText})";
+        return EscapeMdText(display ?? key.Substring(2));
     }
 }

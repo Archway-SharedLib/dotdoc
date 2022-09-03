@@ -49,7 +49,7 @@ assembly: [Test](../../Test.md)
 public abstract class BasePropertyVariation;
 ```
 
-Inheritance: [System\.Object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > BasePropertyVariation
+Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > BasePropertyVariation
 
 ## Properties
 
@@ -139,7 +139,7 @@ assembly: [Test](../../Test.md)
 public class PropertyVariation;
 ```
 
-Inheritance: [System\.Object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > [BasePropertyVariation](../../Test/Test/BasePropertyVariation.md) > PropertyVariation
+Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > [Test\.BasePropertyVariation](../../Test/Test/BasePropertyVariation.md) > PropertyVariation
 
 ## Properties
 

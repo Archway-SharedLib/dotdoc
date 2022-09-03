@@ -24,6 +24,9 @@ public class PropertyTest
     public async Task Properties()
     {
         var tree = CSharpSyntaxTree.ParseText(@"
+using System;
+using System.Collections.Generic;
+
 namespace Test;
 
 /// <summary>

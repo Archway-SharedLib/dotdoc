@@ -23,6 +23,9 @@ public class FieldTest
     public async Task Fields()
     {
         var tree = CSharpSyntaxTree.ParseText(@"
+using System;
+using System.Collections.Generic;
+
 namespace Test;
 
 /// <summary>NormalClassです。</summary>

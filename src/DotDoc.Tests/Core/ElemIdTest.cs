@@ -23,6 +23,9 @@ public class ElemIdTest
     public async Task Classes()
     {
         var tree = CSharpSyntaxTree.ParseText(@"
+using System;
+using System.Collections.Generic;
+
 namespace Test;
 
 /// <summary>NormalClassです。</summary>
