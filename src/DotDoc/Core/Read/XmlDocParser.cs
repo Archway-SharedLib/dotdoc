@@ -74,23 +74,16 @@ namespace DotDoc.Core.Read
                 return inheritSource;
             }
 
+            
+
             if (source is INamedTypeSymbol namedTypeSymbol)
             {
-                if (namedTypeSymbol.Interfaces.Length > 1)
-                {
-                    return null;
-                }
-
                 var hasExplicitBaseType = HasExplicitBaseType(namedTypeSymbol);
-                if (hasExplicitBaseType && namedTypeSymbol.Interfaces.Any())
-                {
-                    return null;
-                }
                 if (hasExplicitBaseType)
                 {
                     return namedTypeSymbol.BaseType;
                 }
-                if (namedTypeSymbol.Interfaces.Any())
+                if (namedTypeSymbol.Interfaces.Length == 1)
                 {
                     return namedTypeSymbol.Interfaces.First();
                 }
@@ -100,6 +93,7 @@ namespace DotDoc.Core.Read
 
             if (source is IMethodSymbol methodSymbol) return methodSymbol.OverriddenMethod ?? ExplicitOrImplicitInterfaceImplementations(methodSymbol).FirstOrDefault();
             if (source is IPropertySymbol propertySymbol) return propertySymbol.OverriddenProperty ?? ExplicitOrImplicitInterfaceImplementations(propertySymbol).FirstOrDefault();
+            if (source is IEventSymbol eventSymbol) return eventSymbol.OverriddenEvent ?? ExplicitOrImplicitInterfaceImplementations(eventSymbol).FirstOrDefault();
 
             return null;
         }
