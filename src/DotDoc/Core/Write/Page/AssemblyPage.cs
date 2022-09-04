@@ -41,7 +41,7 @@ public class AssemblyPage: IPage
             var nameCellValue = 
                 $"[{_transform.EscapeMdText(item.DisplayName)}](./{_item.ToFileName()}/{item.ToFileName()}.md)";
 
-            sb.AppendLine($@"| {nameCellValue} | {_transform.ToMdText(_item, item, t => t.XmlDocInfo?.Summary, true)} |");
+            sb.AppendLine($@"| {nameCellValue} | {_transform.ToMdText(_item, item, t => t.XmlDocInfo?.Summary, true).Replace("\n", "<br />").Replace("\r", "")} |");
         }
 
         sb.AppendLine();

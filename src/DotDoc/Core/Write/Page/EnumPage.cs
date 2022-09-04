@@ -49,7 +49,7 @@ public class EnumPage: IPage
         {
             var nameCellValue = _transform.EscapeMdText(item.DisplayName);
 
-            sb.AppendLine($@"| {nameCellValue} | {GetConstantValueDisplayText(item) } | {_transform.ToMdText(_item, item, t => t.XmlDocInfo?.Summary, true)} |");
+            sb.AppendLine($@"| {nameCellValue} | {GetConstantValueDisplayText(item) } | {_transform.ToMdText(_item, item, t => t.XmlDocInfo?.Summary, true).Replace("\n", "<br />").Replace("\r", "")} |");
         }
 
         sb.AppendLine();

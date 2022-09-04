@@ -17,7 +17,7 @@ public interface BaseInterface
 public class BaseType
 {
     /// <summary>
-    /// <see cref="BaseType"/> の <see cref="M"/> のサマリです。
+    /// <see cref="BaseType"/> の <see cref="M"/> のサマリです <paramref name="b" />。
     /// </summary>
     /// <param name="a">BaseType a 引数です</param>
     /// <param name="b">Baseype b 引数です</param>

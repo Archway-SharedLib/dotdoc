@@ -1,16 +1,12 @@
-using System.Data;
-using System.Text.RegularExpressions;
-using System.Collections.Immutable;
 using System.Net;
 using System.Text;
-using System.Text.Encodings.Web;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace DotDoc.Core.Write;
 
 public class TextTransform
 {
-    private readonly static Regex toMdTextRegex = new (@"(?<see>\<see\s+?cref\s*?=\s*?""(?<seecref>.+?)""\s*?/\>)|(?<c>\<c\>(.*?)\<\/c\>)|(?<text>.+?)", 
-        RegexOptions.Compiled | RegexOptions.Multiline | RegexOptions.ExplicitCapture | RegexOptions.IgnoreCase);
     private readonly DocItemContainer _items;
     private readonly IFileSystemOperation _fileSystemOperation;
     private readonly ILogger _logger;
@@ -24,28 +20,60 @@ public class TextTransform
 
     public string ToMdText<T>(IDocItem rootItem, T targetItem, Func<T, string> getText, bool removeNewLine = false) where T : IDocItem
     {
-        var text = TrimEachLine(getText(targetItem), removeNewLine);
-
-        return toMdTextRegex.Replace(text ?? string.Empty, m =>
+        var text = $"<doc>{TrimEachLine(getText(targetItem), removeNewLine)}</doc>";
+        var root = XElement.Parse(text);
+        var sb = new StringBuilder();
+        var node = root.FirstNode;
+        while (node is not null)
         {
-            var result = m.Value;
-            if (m.Groups["see"].Success)
+            if (node.NodeType == XmlNodeType.Text)
             {
-                var seecrefGroup = m.Groups["seecref"];
-                if (!seecrefGroup.Success) return result;
+                sb.Append(EscapeMdText(WebUtility.HtmlDecode(node.ToString())));
+            }
+            if (node.NodeType == XmlNodeType.Element)
+            {
+                var elem = (XElement)node;
+                if(elem is null) continue;
+                var elemName = elem.Name.LocalName.ToLowerInvariant();
+                if (elemName is "typeparamref" or "paramref")
+                {
+                    sb.Append($"`{elem.Attribute("name")?.Value}`");
+                }
                 
-                var text = WebUtility.HtmlDecode(seecrefGroup.Value);
-                // TODO: touri
-                return ToMdLink(rootItem, text);
-            }
+                if (elemName is "para")
+                {
+                    if (node.PreviousNode is not { NodeType: XmlNodeType.Element } ||
+                        ((XElement)node.PreviousNode).Name != "para")
+                    {
+                        sb.AppendLine();
+                        sb.AppendLine();
+                    }
 
-            var cGroup = m.Groups["c"];
-            if (cGroup.Success)
-            {
-                return $"`{cGroup.ValueSpan[3..^4]}`";
+                    sb.AppendLine(elem.Value);
+                    sb.AppendLine();
+                }
+                if (elemName is "c")
+                {
+                    sb.Append($"`{elem.Value}`");
+                }
+                if (elemName is "see")
+                {
+                    // var cref = elem.Attribute("cref")?.Value;
+                    if(elem.Attribute("cref")?.Value is { } cref)
+                    {
+                        var disp = elem.Value;
+                        sb.Append(ToMdLink(rootItem, cref, display: string.IsNullOrWhiteSpace(disp) ? null : disp));
+                    } 
+                    else if(elem.Attribute("langword")?.Value is {} langword)
+                    {
+                        sb.Append($"`{langword}`");
+                    }
+                }
             }
-            return EscapeMdText(result);
-        });
+            node = node.NextNode;
+        }
+
+        return sb.ToString();
     }
 
     private string TrimEachLine(string text, bool removeNewLine)
@@ -63,7 +91,6 @@ public class TextTransform
         });
 
     public string ToMdLink(IDocItem baseItem, string key, string? display = null, bool toCodeIfNoLink = true)
-    //public string ToMdLink()
     {
         if (key is null)
         {
@@ -84,7 +111,7 @@ public class TextTransform
         if(key.StartsWith("T:Microsoft.", StringComparison.InvariantCultureIgnoreCase) || 
            key.StartsWith("T:System.", StringComparison.InvariantCultureIgnoreCase) ||
            key.StartsWith("N:Microsoft.", StringComparison.InvariantCultureIgnoreCase) ||
-            key.StartsWith("N:System.", StringComparison.InvariantCultureIgnoreCase))
+           key.StartsWith("N:System.", StringComparison.InvariantCultureIgnoreCase))
         {
             var linkKey = key.Substring(2);
             var linkText = $"https://docs.microsoft.com/ja-jp/dotnet/api/{linkKey.Replace("`", "-").Replace("{", "").Replace("}", "")}";

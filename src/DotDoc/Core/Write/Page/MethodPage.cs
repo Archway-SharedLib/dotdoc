@@ -61,7 +61,7 @@ public class MethodPage: IPage
             sb.AppendLine("|------|---------|");
             foreach(var param in typeParameters)
             {
-                sb.AppendLine($@"| {_transform.EscapeMdText(param.DisplayName)} | {_transform.ToMdText(_item, param, t => t.XmlDocText, true)} |");
+                sb.AppendLine($@"| {_transform.EscapeMdText(param.DisplayName)} | {_transform.ToMdText(_item, param, t => t.XmlDocText, true).Replace("\n", "<br />").Replace("\r", "")} |");
             }
             sb.AppendLine();
         }
@@ -77,7 +77,7 @@ public class MethodPage: IPage
             foreach(var param in parameters)
             {
                 var linkType = param.TypeInfo.GetLinkTypeInfo();
-                sb.AppendLine($@"| {_transform.ToMdLink(_item,  linkType.TypeId, linkType.DisplayName)} | {_transform.EscapeMdText(param.DisplayName)} | {_transform.ToMdText(_item, param, t => t.XmlDocText, true)} |");
+                sb.AppendLine($@"| {_transform.ToMdLink(_item,  linkType.TypeId, linkType.DisplayName)} | {_transform.EscapeMdText(param.DisplayName)} | {_transform.ToMdText(_item, param, t => t.XmlDocText, true).Replace("\n", "<br />").Replace("\r", "")} |");
             }
             sb.AppendLine();
         }

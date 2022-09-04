@@ -1,0 +1,59 @@
+﻿
+---------------------
+file name ./output/Assem.md
+---------------------
+
+# Assem Assembly
+
+## Namespaces
+
+| Name | Summary |
+|------|---------|
+| [Test](./Assem/Test.md) |  |
+
+
+
+---------------------
+file name ./output/Assem/Test.md
+---------------------
+
+# Test Namespace
+
+assembly: [Assem](../Assem.md)
+
+```csharp
+namespace Test;
+```
+
+## Classes
+
+| Name | Summary |
+|------|---------|
+| [NormalClass\<T\>](./Test/NormalClass`1.md) | 型パラメーター`T`をもつ |
+
+
+
+---------------------
+file name ./output/Assem/Test/NormalClass`1.md
+---------------------
+
+# NormalClass\<T\> Class
+
+namespace: [Test](../Test.md)<br />
+assembly: [Assem](../../Assem.md)
+
+型パラメーター`T`をもつ
+
+```csharp
+public class NormalClass<T>;
+```
+
+Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > NormalClass<T>
+
+## Type Parameters
+
+| Name | Summary |
+|------|---------|
+| T | 型 |
+
+

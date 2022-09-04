@@ -1,0 +1,63 @@
+﻿
+---------------------
+file name ./output/Assem.md
+---------------------
+
+# Assem Assembly
+
+## Namespaces
+
+| Name | Summary |
+|------|---------|
+| [Test](./Assem/Test.md) |  |
+
+
+
+---------------------
+file name ./output/Assem/Test.md
+---------------------
+
+# Test Namespace
+
+assembly: [Assem](../Assem.md)
+
+```csharp
+namespace Test;
+```
+
+## Classes
+
+| Name | Summary |
+|------|---------|
+| [NormalClass](./Test/NormalClass.md) | パラム1パラム2<br /><br />パラム3<br /><br />パラム4<br /><br />パラム5パラム6 |
+
+
+
+---------------------
+file name ./output/Assem/Test/NormalClass.md
+---------------------
+
+# NormalClass Class
+
+namespace: [Test](../Test.md)<br />
+assembly: [Assem](../../Assem.md)
+
+パラム1
+パラム2
+
+
+パラム3
+
+パラム4
+
+
+パラム5
+パラム6
+
+```csharp
+public class NormalClass;
+```
+
+Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > NormalClass
+
+

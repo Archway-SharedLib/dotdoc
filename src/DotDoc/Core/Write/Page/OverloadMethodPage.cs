@@ -33,7 +33,7 @@ public class OverloadMethodPage: IPage
             var nameCellValue = 
                 $"{_transform.EscapeMdText(childItem.DisplayName)}";
 
-            sb.AppendLine($@"| {nameCellValue} | {_transform.ToMdText(childItem, childItem, t => t.XmlDocInfo?.Summary, true)} |");
+            sb.AppendLine($@"| {nameCellValue} | {_transform.ToMdText(childItem, childItem, t => t.XmlDocInfo?.Summary, true).Replace("\n", "<br />").Replace("\r", "")} |");
         }
 
         foreach (var memberDocItem in _item.Methods)
@@ -81,7 +81,7 @@ public class OverloadMethodPage: IPage
             sb.AppendLine("|------|---------|");
             foreach(var param in typeParameters)
             {
-                sb.AppendLine($@"| {_transform.EscapeMdText(param.DisplayName)} | {_transform.ToMdText(_item, param, t => t.XmlDocText, true)} |");
+                sb.AppendLine($@"| {_transform.EscapeMdText(param.DisplayName)} | {_transform.ToMdText(_item, param, t => t.XmlDocText, true).Replace("\n", "<br />").Replace("\r", "")} |");
             }
             sb.AppendLine();
         }
@@ -97,7 +97,7 @@ public class OverloadMethodPage: IPage
             foreach(var param in parameters)
             {
                 var linkType = param.TypeInfo.GetLinkTypeInfo();
-                sb.AppendLine($@"| {_transform.ToMdLink(_item,  linkType.TypeId, linkType.DisplayName)} | {_transform.EscapeMdText(param.DisplayName)} | {_transform.ToMdText(_item, param, t => t.XmlDocText, true)} |");
+                sb.AppendLine($@"| {_transform.ToMdLink(_item,  linkType.TypeId, linkType.DisplayName)} | {_transform.EscapeMdText(param.DisplayName)} | {_transform.ToMdText(_item, param, t => t.XmlDocText, true).Replace("\n", "<br />").Replace("\r", "")} |");
             }
             sb.AppendLine();
         }

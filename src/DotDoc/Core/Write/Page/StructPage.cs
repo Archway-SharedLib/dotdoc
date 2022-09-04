@@ -56,7 +56,7 @@ public class StructPage: IPage
             var nameCellValue = 
                 $"[{_transform.EscapeMdText(item.DisplayName)}](./{_item.ToFileName()}/{item.ToFileName()}.md)";
 
-            sb.AppendLine($@"| {nameCellValue} | {_transform.ToMdText(_item, item, t => t.XmlDocInfo?.Summary, true)} |");
+            sb.AppendLine($@"| {nameCellValue} | {_transform.ToMdText(_item, item, t => t.XmlDocInfo?.Summary, true).Replace("\n", "<br />").Replace("\r", "")} |");
         }
 
         sb.AppendLine();
@@ -77,7 +77,7 @@ public class StructPage: IPage
             var nameCellValue = 
                 $"[{_transform.EscapeMdText(item.DisplayName)}](./{_item.ToFileName()}/{item.ToFileName()})";
 
-            sb.AppendLine($@"| {nameCellValue} | {GetConstantValueDisplayText(item) } | {_transform.ToMdText(_item, item, t => t.XmlDocInfo?.Summary, true)} |");
+            sb.AppendLine($@"| {nameCellValue} | {GetConstantValueDisplayText(item) } | {_transform.ToMdText(_item, item, t => t.XmlDocInfo?.Summary, true).Replace("\n", "<br />").Replace("\r", "")} |");
         }
 
         sb.AppendLine();
@@ -92,7 +92,7 @@ public class StructPage: IPage
             sb.AppendLine("|------|---------|");
             foreach(var param in typeParameters)
             {
-                sb.AppendLine($@"| {_transform.EscapeMdText(param.DisplayName)} | {_transform.ToMdText(_item, param, t => t.XmlDocText, true)} |");
+                sb.AppendLine($@"| {_transform.EscapeMdText(param.DisplayName)} | {_transform.ToMdText(_item, param, t => t.XmlDocText, true).Replace("\n", "<br />").Replace("\r", "")} |");
             }
             sb.AppendLine();
         }
