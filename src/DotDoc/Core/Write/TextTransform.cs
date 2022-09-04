@@ -1,13 +1,15 @@
 using System.Data;
 using System.Text.RegularExpressions;
 using System.Collections.Immutable;
+using System.Net;
 using System.Text;
+using System.Text.Encodings.Web;
 
 namespace DotDoc.Core.Write;
 
 public class TextTransform
 {
-    private readonly static Regex toMdTextRegex = new (@"(?<see>\<see\s+?cref\s*?=\s*?""(?<seecref>.+?)""\s*?/\>)|(?<text>.+?)", 
+    private readonly static Regex toMdTextRegex = new (@"(?<see>\<see\s+?cref\s*?=\s*?""(?<seecref>.+?)""\s*?/\>)|(?<c>\<c\>(.*?)\<\/c\>)|(?<text>.+?)", 
         RegexOptions.Compiled | RegexOptions.Multiline | RegexOptions.ExplicitCapture | RegexOptions.IgnoreCase);
     private readonly DocItemContainer _items;
     private readonly IFileSystemOperation _fileSystemOperation;
@@ -31,8 +33,16 @@ public class TextTransform
             {
                 var seecrefGroup = m.Groups["seecref"];
                 if (!seecrefGroup.Success) return result;
+                
+                var text = WebUtility.HtmlDecode(seecrefGroup.Value);
                 // TODO: touri
-                return ToMdLink(rootItem, seecrefGroup.Value);
+                return ToMdLink(rootItem, text);
+            }
+
+            var cGroup = m.Groups["c"];
+            if (cGroup.Success)
+            {
+                return $"`{cGroup.ValueSpan[3..^4]}`";
             }
             return EscapeMdText(result);
         });
@@ -52,13 +62,13 @@ public class TextTransform
             return newText.Replace(val, "\\" + val);
         });
 
-    public string ToMdLink(IDocItem baseItem, string key, string? display = null)
+    public string ToMdLink(IDocItem baseItem, string key, string? display = null, bool toCodeIfNoLink = true)
     //public string ToMdLink()
     {
         if (key is null)
         {
             _logger.Trace($"{nameof(ToMdLink)}: key is null : {baseItem.Id}");
-            return EscapeMdText(display ?? "!no value!");
+            return EscapeOrWrapBackquoteIfNeeded( toCodeIfNoLink, display ?? "!no value!");
         }
 
         if (_items.TryGet(key, out var destItem))
@@ -68,7 +78,7 @@ public class TextTransform
         
         if (key.StartsWith("!:", StringComparison.InvariantCultureIgnoreCase))
         {
-            return EscapeMdText(display ?? key.Substring(2));
+            return EscapeOrWrapBackquoteIfNeeded(toCodeIfNoLink, display ?? key.Substring(2));
         }
         
         if(key.StartsWith("T:Microsoft.", StringComparison.InvariantCultureIgnoreCase) || 
@@ -82,6 +92,9 @@ public class TextTransform
             return $"[{EscapeMdText(display ?? linkKey)}]({linkText})";
         }
 
-        return EscapeMdText(display ?? key.Substring(2));
+        return EscapeOrWrapBackquoteIfNeeded(toCodeIfNoLink, display ?? key.Substring(2));
     }
+
+    private string EscapeOrWrapBackquoteIfNeeded(bool wrap, string value)
+        => wrap ? $"`{value}`" : EscapeMdText(value);
 }

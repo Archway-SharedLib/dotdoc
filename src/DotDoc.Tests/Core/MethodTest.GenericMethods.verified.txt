@@ -141,11 +141,11 @@ public TVal DoubleMethodWithParam<TArg ,TVal>(TArg arg);
 
 | Type | Name | Summary |
 |------|------|---------|
-| TArg | arg |  |
+| `TArg` | arg |  |
 
 ## Return Value
 
-TVal
+`TVal`
 
 
 

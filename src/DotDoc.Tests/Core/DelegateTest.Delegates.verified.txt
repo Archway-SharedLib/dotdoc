@@ -92,11 +92,11 @@ Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object)
 
 | Type | Name | Summary |
 |------|------|---------|
-| T | value | 引数です。 |
+| `T` | value | 引数です。 |
 
 ## Return Value
 
-T
+`T`
 
 戻り値です
 

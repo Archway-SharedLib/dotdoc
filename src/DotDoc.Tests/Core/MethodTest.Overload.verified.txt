@@ -159,7 +159,7 @@ public string OverloadMethod<T>(T num ,string str);
 
 | Type | Name | Summary |
 |------|------|---------|
-| T | num | Numです。 |
+| `T` | num | Numです。 |
 | [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String) | str | Strです。 |
 
 ### Return Value
@@ -187,12 +187,12 @@ public T2 OverloadMethod<T ,T2>(T num ,T2 str);
 
 | Type | Name | Summary |
 |------|------|---------|
-| T | num | Numです。 |
-| T2 | str | Strです。 |
+| `T` | num | Numです。 |
+| `T2` | str | Strです。 |
 
 ### Return Value
 
-T2
+`T2`
 
 T2です
 

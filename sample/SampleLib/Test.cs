@@ -36,6 +36,9 @@ public class NoInheritDoc
     public string M(string a, int b) => a;
 }
 
+/// <summary>
+/// <c>null</c>
+/// </summary>
 public class BaseImplDoc: BaseInterface
 {
     /// <inheritdoc />

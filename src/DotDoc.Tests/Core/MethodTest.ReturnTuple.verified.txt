@@ -84,8 +84,8 @@ public (T2, string) OverloadMethod<T ,T2>(T num ,T2 str);
 
 | Type | Name | Summary |
 |------|------|---------|
-| T | num |  |
-| T2 | str |  |
+| `T` | num |  |
+| `T2` | str |  |
 
 ## Return Value
 

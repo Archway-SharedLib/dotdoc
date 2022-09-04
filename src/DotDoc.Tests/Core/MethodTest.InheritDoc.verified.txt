@@ -84,7 +84,7 @@ public abstract int IM(DateTime a);
 
 | Type | Name | Summary |
 |------|------|---------|
-| DateTime | a | BaseInterface a 引数です |
+| `DateTime` | a | BaseInterface a 引数です |
 
 ## Return Value
 
@@ -305,7 +305,7 @@ public int IM(DateTime a);
 
 | Type | Name | Summary |
 |------|------|---------|
-| DateTime | a | BaseInterface a 引数です |
+| `DateTime` | a | BaseInterface a 引数です |
 
 ## Return Value
 

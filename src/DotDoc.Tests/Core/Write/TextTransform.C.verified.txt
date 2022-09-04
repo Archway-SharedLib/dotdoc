@@ -1,0 +1,53 @@
+﻿
+---------------------
+file name ./output/Assem.md
+---------------------
+
+# Assem Assembly
+
+## Namespaces
+
+| Name | Summary |
+|------|---------|
+| [Test](./Assem/Test.md) |  |
+
+
+
+---------------------
+file name ./output/Assem/Test.md
+---------------------
+
+# Test Namespace
+
+assembly: [Assem](../Assem.md)
+
+```csharp
+namespace Test;
+```
+
+## Classes
+
+| Name | Summary |
+|------|---------|
+| [NormalClass](./Test/NormalClass.md) | `null` です。 `foo = "bar"` です。 `これは？`からの場合のテスト ``です。 |
+
+
+
+---------------------
+file name ./output/Assem/Test/NormalClass.md
+---------------------
+
+# NormalClass Class
+
+namespace: [Test](../Test.md)<br />
+assembly: [Assem](../../Assem.md)
+
+`null` です。 `foo = "bar"` です。 `これは？`からの場合のテスト ``です。
+
+```csharp
+public class NormalClass;
+```
+
+Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > NormalClass
+
+
