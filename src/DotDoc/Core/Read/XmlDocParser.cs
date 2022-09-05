@@ -12,31 +12,9 @@ namespace DotDoc.Core.Read
         public static XmlDocInfo? Parse(ISymbol symbol, Compilation compilation)
         {
             var xmlText = symbol.GetDocumentationCommentXml();
-            if (string.IsNullOrEmpty(xmlText)) return null;
-            if (xmlText.StartsWith("<!-- Badly formed XML comment ignored for member")) return null;
-            XDocument xdoc;
-            try
-            {
-                xdoc = XDocument.Parse(xmlText);
-            }
-            catch
-            {
-                return null;
-            }
-            var nav = xdoc.CreateNavigator();
-
-            var result = new XmlDocInfo()
-            {
-                // RawXml = xmlText,
-                Summary = GetNodeValue(nav, "/member/summary")?.Trim(),
-                Remarks = GetNodeValue(nav, "/member/remarks")?.Trim(),
-                Example = GetNodeValue(nav, "/member/example")?.Trim(),
-                Value = GetNodeValue(nav, "/member/value")?.Trim(),
-                Returns = GetNodeValue(nav, "/member/returns")?.Trim(),
-                Parameters = GetNameTextInfo(nav, "/member/param"),
-                TypeParameters = GetNameTextInfo(nav,"/member/typeparam"),
-                // Inheritdoc = GetInheritdoc(nav)
-            };
+            var (result, nav) = ParseStringInternal(xmlText);
+            if (result is null || nav is null) return null;
+            
             var inheritdoc = GetInheritdoc(nav);
 
             if (inheritdoc is not null)
@@ -60,6 +38,40 @@ namespace DotDoc.Core.Read
             }
             
             return result;
+        }
+
+        public static XmlDocInfo? ParseString(string? xmlText)
+            => ParseStringInternal(xmlText).result;
+
+        private static (XmlDocInfo? result, XPathNavigator? nav) ParseStringInternal(string? xmlText)
+        {
+            if (string.IsNullOrEmpty(xmlText)) return (null, null);
+            if (xmlText.StartsWith("<!-- Badly formed XML comment ignored for member")) return (null, null);
+            XDocument xdoc;
+            try
+            {
+                xdoc = XDocument.Parse(xmlText);
+            }
+            catch
+            {
+                return (null, null);
+            }
+            var nav = xdoc.CreateNavigator();
+
+            var result = new XmlDocInfo()
+            {
+                // RawXml = xmlText,
+                Summary = GetNodeValue(nav, "/member/summary")?.Trim(),
+                Remarks = GetNodeValue(nav, "/member/remarks")?.Trim(),
+                Example = GetNodeValue(nav, "/member/example")?.Trim(),
+                Value = GetNodeValue(nav, "/member/value")?.Trim(),
+                Returns = GetNodeValue(nav, "/member/returns")?.Trim(),
+                Parameters = GetNameTextInfo(nav, "/member/param"),
+                TypeParameters = GetNameTextInfo(nav,"/member/typeparam"),
+                // Inheritdoc = GetInheritdoc(nav)
+            };
+
+            return (result, nav);
         }
 
         private static ISymbol? GetBaseDocSymbol(ISymbol source, XmlDocInheritdocInfo inheritInfo, Compilation compilation)

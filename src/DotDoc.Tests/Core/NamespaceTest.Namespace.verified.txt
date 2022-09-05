@@ -1,43 +1,57 @@
 ﻿
 ---------------------
-file name ./output/Test.md
+file name /Test.md
 ---------------------
 
 # Test Assembly
+
+
 
 ## Namespaces
 
 | Name | Summary |
 |------|---------|
-| [Test](./Test/Test.md) |  |
-| [Test\.Test1](./Test/Test.Test1.md) |  |
+| [Test\.Test2](./Test/Test.Test2.md) | Test\.Test2の名前空間ドキュメントです |
 
 
 
 ---------------------
-file name ./output/Test/Test.md
+file name /Test/Test.Test2.md
 ---------------------
 
-# Test Namespace
+# Test\.Test2 Namespace
 
 assembly: [Test](../Test.md)
 
+Test\.Test2の名前空間ドキュメントです
+
 ```csharp
-namespace Test;
+namespace Test.Test2;
 ```
+
+## Classes
+
+| Name | Summary |
+|------|---------|
+| [Test3](./Test.Test2/Test3.md) |  |
 
 
 
 ---------------------
-file name ./output/Test/Test.Test1.md
+file name /Test/Test.Test2/Test3.md
 ---------------------
 
-# Test\.Test1 Namespace
+# Test3 Class
 
-assembly: [Test](../Test.md)
+namespace: [Test\.Test2](../Test.Test2.md)<br />
+assembly: [Test](../../Test.md)
+
+
 
 ```csharp
-namespace Test.Test1;
+public class Test3;
 ```
+
+Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > Test3
 
 

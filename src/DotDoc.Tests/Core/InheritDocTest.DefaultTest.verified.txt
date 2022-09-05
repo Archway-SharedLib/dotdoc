@@ -5,6 +5,8 @@ file name ./output/Assem.md
 
 # Assem Assembly
 
+
+
 ## Namespaces
 
 | Name | Summary |
@@ -20,6 +22,8 @@ file name ./output/Assem/Test.md
 # Test Namespace
 
 assembly: [Assem](../Assem.md)
+
+
 
 ```csharp
 namespace Test;

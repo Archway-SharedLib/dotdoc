@@ -22,6 +22,8 @@ public class NamespacePage: IPage
         AppendTitle(sb, $"{_item.DisplayName} Namespace");
         AppendAssemblyInformation(sb);
 
+        sb.AppendLine(_transform.ToMdText(_item, _item, t => t.XmlDocInfo?.Summary)).AppendLine();
+        
         AppendDeclareCode(sb);
             
         AppendItemList<ClassDocItem>(sb,"Classes", _item.Types);

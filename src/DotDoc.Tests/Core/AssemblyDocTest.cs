@@ -11,55 +11,49 @@ using Accessibility = DotDoc.Core.Accessibility;
 namespace DotDoc.Tests.Core;
 
 [UsesVerify]
-public class NamespaceTest
+public class AssemblyDocTest
 {
     private readonly ILogger _logger;
 
-    public NamespaceTest(ITestOutputHelper output)
+    public AssemblyDocTest(ITestOutputHelper output)
     {
         _logger = new XUnitLogger(output);
     }
-    
+
     [Fact]
-    public async Task Namespace()
+    public async Task Default()
     {
-        var tree = CSharpSyntaxTree.ParseText(@"
+        var md = await CreateMd(@"
 using System;
-using System.Collections.Generic;
+// using System.Collections.Generic;
 
-namespace Test{
-    /// <summary>名前空間ドキュメントです</summary>
-    internal class NamespaceDoc{
-    }
+namespace Assem;
+
+/// <summary>アセンブリドキュメントです</summary>
+internal class AssemblyDoc {
 }
 
-namespace Test.Test2{
-    public class Test3{
-    }
-
-    /// <summary>Test.Test2の名前空間ドキュメントです</summary>
-    internal class NamespaceDoc{
-    }
-}
 ");
+        await Verify(md);
+    }
+
+    private async Task<string> CreateMd(string code)
+    {
+        var tree = CSharpSyntaxTree.ParseText(code);
         var assems = AppDomain.CurrentDomain.GetAssemblies()
             .Where(a => a.GetName().Name.StartsWith("system", StringComparison.InvariantCultureIgnoreCase) || a.GetName().Name == "netstandard")
             .Select(a => MetadataReference.CreateFromFile(a.Location));
         
-        var compilation = CSharpCompilation.Create("Test", new[] { tree }, assems);
-
+        var compilation = CSharpCompilation.Create("Assem", new[] { tree }, assems);
         var options = new DotDocEngineOptions()
         {
-            IgnoreEmptyNamespace = true,
             Accessibility = new[] { Accessibility.Public, Accessibility.Protected }
         };
-        
         var docItem = compilation.Assembly.Accept(new ProjectSymbolsVisitor(new DefaultFilter(options), compilation));
         var outputText = new StringBuilder();
         var writer = new AdoWikiWriter(new[] { docItem }, options,
             new TestFsModel(outputText), _logger);
         await writer.WriteAsync();
-
-        await Verify(outputText.ToString());
-    }    
+        return outputText.ToString();
+    }
 }

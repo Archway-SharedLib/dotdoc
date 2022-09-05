@@ -35,7 +35,7 @@ namespace DotDoc.Core.Write
 
         private async Task WriteAssemblyAsync(IDirectoryModel rootDir, AssemblyDocItem assemDocItem)
         {
-            var pageMd = new AssemblyPage(assemDocItem, _textTransform).Write();
+            var pageMd = new AssemblyPage(assemDocItem, _textTransform, _options).Write();
             
             var safeName = assemDocItem.ToFileName();
             var file = _fsModel.CreateFileModel(_fsModel.PathJoin(rootDir.GetFullName(), safeName + ".md"));
@@ -52,6 +52,11 @@ namespace DotDoc.Core.Write
         {
             assemDir.CreateIfNotExists();
 
+            if (_options.IgnoreEmptyNamespace && !nsDocItem.Types.Any())
+            {
+                return;
+            }
+            
             var pageMd = new NamespacePage(nsDocItem, _textTransform, _docItemContainer).Write();
             
             var safeName = SafeFileOrDirectoryName(nsDocItem.ToFileName());

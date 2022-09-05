@@ -30,6 +30,8 @@ namespace DotDoc.Core
         public bool RemoveOutputDir { get; init; } = false;
 
         public LogLevel LogLevel { get; init; } = LogLevel.Info;
+
+        public bool IgnoreEmptyNamespace { get; init; } = true;
         
         // public Func<IFsModel> CreateFsModel { get; init; } = () => new PhysicalFsModel();
 

@@ -58,6 +58,11 @@ namespace DotDoc.Core
         public AssemblyDocItem(IAssemblySymbol symbol, Compilation compilation) : base(symbol, compilation)
         {
             DisplayName = symbol.Name;
+            var docSymbol = DocumentationCommentId.GetSymbolsForDeclarationId($"T:{symbol.Name}.AssemblyDoc", compilation).FirstOrDefault();
+            if (docSymbol is { DeclaredAccessibility: Microsoft.CodeAnalysis.Accessibility.Internal })
+            {
+                XmlDocInfo = XmlDocParser.ParseString(docSymbol.GetDocumentationCommentXml());
+            }
         }
 
         public List<NamespaceDocItem> Namespaces { get; } = new();
@@ -72,6 +77,12 @@ namespace DotDoc.Core
         public NamespaceDocItem(INamespaceSymbol symbol, Compilation compilation) : base(symbol, compilation)
         {
             AssemblyId = SymbolUtil.GetSymbolId(symbol.ContainingAssembly);
+            
+            var docSymbol = DocumentationCommentId.GetSymbolsForDeclarationId($"T:{symbol.ToDisplayString()}.NamespaceDoc", compilation).FirstOrDefault();
+            if (docSymbol is { DeclaredAccessibility: Microsoft.CodeAnalysis.Accessibility.Internal })
+            {
+                XmlDocInfo = XmlDocParser.ParseString(docSymbol.GetDocumentationCommentXml());
+            }
         }
 
         public List<TypeDocItem> Types { get; } = new();
