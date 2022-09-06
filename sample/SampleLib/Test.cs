@@ -3,44 +3,36 @@ using System.Collections.Generic;
 
 namespace Test;
 
-public interface BaseInterface
+public static class ParameterCheck
 {
-    /// <summary>
-    /// <see cref="BaseInterface"/> の <see cref="IM"/> のサマリです。
-    /// </summary>
-    /// <param name="a">BaseInterface a 引数です</param>
-    /// <returns><see cref="int"/> </returns>
-    /// <returns><see cref="int"/> です。</returns>
-    int IM(DateTime a);
-}
 
-public class BaseType
-{
-    /// <summary>
-    /// <see cref="BaseType"/> の <see cref="M"/> のサマリです <paramref name="b" />。
-    /// </summary>
-    /// <param name="a">BaseType a 引数です</param>
-    /// <param name="b">Baseype b 引数です</param>
-    /// <returns><see cref="BaseType"/> の <see cref="M"/> の戻り値です。</returns>
-    public virtual string M(string a, int b) => a;
-}
+    public static void M1(this int n) 
+    {
+    }
 
-public class InheritDoc: BaseType
-{
-    public override string M(string a, int b) => a;
-}
+    public static void M2(params int[] values)
+    {
+    }
 
-public class NoInheritDoc
-{
-    /// <inheritdoc cref="BaseType.M"/>
-    public string M(string a, int b) => a;
-}
+    public static void M3(in int param = 1)
+    {
+    }
 
-/// <summary>
-/// <c>null</c>
-/// </summary>
-public class BaseImplDoc: BaseInterface
-{
-    /// <inheritdoc />
-    public int IM(DateTime a) => a.Millisecond;
+    public static void M4(out int param)
+    {
+        param = 1;
+    }
+    
+    public static void M5(ref int param)
+    {
+        param = 1;
+    }
+
+    public static void M6(int v = 1)
+    {
+    }
+    
+    public static void M6(int? v)
+    {
+    }
 }

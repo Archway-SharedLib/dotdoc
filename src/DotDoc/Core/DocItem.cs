@@ -58,7 +58,7 @@ namespace DotDoc.Core
         public AssemblyDocItem(IAssemblySymbol symbol, Compilation compilation) : base(symbol, compilation)
         {
             DisplayName = symbol.Name;
-            var docSymbol = DocumentationCommentId.GetSymbolsForDeclarationId($"T:{symbol.Name}.AssemblyDoc", compilation).FirstOrDefault();
+            var docSymbol = DocumentationCommentId.GetSymbolsForDeclarationId($"T:{symbol.Name}.{Constants.AssemblyDocumentClassName}", compilation).FirstOrDefault();
             if (docSymbol is { DeclaredAccessibility: Microsoft.CodeAnalysis.Accessibility.Internal })
             {
                 XmlDocInfo = XmlDocParser.ParseString(docSymbol.GetDocumentationCommentXml());
@@ -78,7 +78,7 @@ namespace DotDoc.Core
         {
             AssemblyId = SymbolUtil.GetSymbolId(symbol.ContainingAssembly);
             
-            var docSymbol = DocumentationCommentId.GetSymbolsForDeclarationId($"T:{symbol.ToDisplayString()}.NamespaceDoc", compilation).FirstOrDefault();
+            var docSymbol = DocumentationCommentId.GetSymbolsForDeclarationId($"T:{symbol.ToDisplayString()}.{Constants.NamespaceDocumentClassName}", compilation).FirstOrDefault();
             if (docSymbol is { DeclaredAccessibility: Microsoft.CodeAnalysis.Accessibility.Internal })
             {
                 XmlDocInfo = XmlDocParser.ParseString(docSymbol.GetDocumentationCommentXml());
@@ -352,8 +352,6 @@ namespace DotDoc.Core
             
             TypeParameters.AddRange( SymbolUtil.RetrieveTypeParameters(symbol.TypeParameters, XmlDocInfo, compilation));
             Parameters.AddRange(SymbolUtil.RetrieveParameters(symbol.Parameters, XmlDocInfo, compilation));
-            
-            
         }
 
         public List<ParameterDocItem> Parameters { get; } = new();
@@ -411,19 +409,39 @@ namespace DotDoc.Core
                 symbol.RefKind == Microsoft.CodeAnalysis.RefKind.Out ? ValueRefKind.Out :
                 symbol.RefKind == Microsoft.CodeAnalysis.RefKind.None ? ValueRefKind.None :
                 symbol.RefKind == Microsoft.CodeAnalysis.RefKind.Ref ? ValueRefKind.Ref : ValueRefKind.RefReadoly;
+            HasThis = IsExtensionParameter(symbol);
+            IsParams = symbol.IsParams;
+            HasDefaultValue = symbol.HasExplicitDefaultValue;
+            DefaultValue = symbol.HasExplicitDefaultValue ? symbol.ExplicitDefaultValue : null;
         }
-        
+
+        private bool IsExtensionParameter(IParameterSymbol symbol)
+         => symbol.ContainingSymbol is IMethodSymbol {IsExtensionMethod:true} methodSymbol && methodSymbol.Parameters[0] == symbol;
+
         public TypeInfo TypeInfo { get; }
         public string? XmlDocText { get; }
-
+        public bool HasThis { get; }
+        public bool IsParams { get; }
         public ValueRefKind RefKind { get; }
+        public bool HasDefaultValue { get; }
+        
+        public object? DefaultValue { get; }
 
         public override string ToDeclareCSharpCode()
         {
             var refKindString = (RefKind == ValueRefKind.RefReadoly || RefKind == ValueRefKind.None)
                 ? string.Empty
                 : (RefKind.ToString().ToLower() + " ");
-            return $"{refKindString}{TypeInfo.DisplayName} {Name}";
+            var thisString = HasThis ? "this " : string.Empty;
+            var paramsString = IsParams ? "params " : string.Empty;
+            return $"{refKindString}{thisString}{paramsString}{TypeInfo.DisplayName} {Name}{(HasDefaultValue ? " = " + GetConstantValueDisplayText(DefaultValue) : "")}";
+        }
+        
+        private string GetConstantValueDisplayText(object? value)
+        {
+            if (value is null) return "null";
+            return value is char ? $"'{value}'" :
+                value is string ? $"\"{value}\"" : value.ToString();
         }
     }
     

@@ -36,6 +36,8 @@ public class OverloadMethodPage: IPage
             sb.AppendLine($@"| {nameCellValue} | {_transform.ToMdText(childItem, childItem, t => t.XmlDocInfo?.Summary, true).Replace("\n", "<br />").Replace("\r", "")} |");
         }
 
+        sb.AppendLine();
+
         foreach (var memberDocItem in _item.Methods)
         {
             AppendTitle(sb, memberDocItem.DisplayName, 2);

@@ -11,15 +11,17 @@ namespace DotDoc.Core.Read
 {
     internal class DefaultFilter : IFilter
     {
+        private readonly DotDocEngineOptions _options;
         private readonly List<Regex> _excludeIdRegexs;
         private readonly List<Microsoft.CodeAnalysis.Accessibility> _includeAccessibilities;
         public DefaultFilter(DotDocEngineOptions options)
         {
-            _excludeIdRegexs = (options?.ExcludeIdPatterns ?? Enumerable.Empty<string>())
+            _options = options ?? throw new ArgumentNullException(nameof(options));
+            _excludeIdRegexs = _options.ExcludeIdPatterns.OrEmpty()
                 .Select(Regex.Escape)
                 .Select(ConvertToRegexPattern)
                 .Select(p => new Regex(p)).ToList();
-            _includeAccessibilities = (options?.Accessibility ?? Enumerable.Empty<Accessibility>())
+            _includeAccessibilities = _options.Accessibility.OrEmpty()
                 .Where(a => a is not Accessibility.Unknown)
                 .Select(a =>
                 {
@@ -45,16 +47,24 @@ namespace DotDoc.Core.Read
             {
                 return false;
             }
-
+            
             // コンパイラが生成したものは Exclude
             if (symbol.IsImplicitlyDeclared) return true;
 
-            if (_includeAccessibilities.Any(a => a == symbol.DeclaredAccessibility)) return false;
+            if (!_includeAccessibilities.Contains(symbol.DeclaredAccessibility)) return true;
             
-            return true;
+            if (_options.ExcludeDocumentClass)
+            {
+                if (symbol is INamedTypeSymbol { DeclaredAccessibility: Microsoft.CodeAnalysis.Accessibility.Internal } typeSymbol)
+                {
+                    if (id.EndsWith($".{Constants.NamespaceDocumentClassName}")) return true;
+                    if (id == $"T:{typeSymbol.ContainingAssembly.Name}.{Constants.AssemblyDocumentClassName}")
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
-
-        
-        
     }
 }

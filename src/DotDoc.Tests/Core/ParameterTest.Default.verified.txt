@@ -1,0 +1,230 @@
+﻿
+---------------------
+file name /Assem.md
+---------------------
+
+# Assem Assembly
+
+
+
+## Namespaces
+
+| Name | Summary |
+|------|---------|
+| [Test](./Assem/Test.md) |  |
+
+
+
+---------------------
+file name /Assem/Test.md
+---------------------
+
+# Test Namespace
+
+assembly: [Assem](../Assem.md)
+
+
+
+```csharp
+namespace Test;
+```
+
+## Classes
+
+| Name | Summary |
+|------|---------|
+| [ParameterCheck](./Test/ParameterCheck.md) |  |
+
+
+
+---------------------
+file name /Assem/Test/ParameterCheck.md
+---------------------
+
+# ParameterCheck Class
+
+namespace: [Test](../Test.md)<br />
+assembly: [Assem](../../Assem.md)
+
+
+
+```csharp
+public static class ParameterCheck;
+```
+
+Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > ParameterCheck
+
+## Methods
+
+| Name | Summary |
+|------|---------|
+| [M1\(int\)](./ParameterCheck/M1.md) |  |
+| [M2\(params int\[\]\)](./ParameterCheck/M2.md) |  |
+| [M3\(in int\)](./ParameterCheck/M3.md) |  |
+| [M4\(out int\)](./ParameterCheck/M4.md) |  |
+| [M5\(ref int\)](./ParameterCheck/M5.md) |  |
+| [M6\(int\)](./ParameterCheck/M6.md) |  |
+| [M7\(int?\)](./ParameterCheck/M7.md) |  |
+
+
+
+---------------------
+file name /Assem/Test/ParameterCheck/M1.md
+---------------------
+
+# M1\(int\) Method
+
+namespace: [Test](../../Test.md)<br />
+assembly: [Assem](../../../Assem.md)
+
+
+
+```csharp
+public static void M1(this int n);
+```
+
+## Parameters
+
+| Type | Name | Summary |
+|------|------|---------|
+| [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32) | n |  |
+
+
+
+---------------------
+file name /Assem/Test/ParameterCheck/M2.md
+---------------------
+
+# M2\(params int\[\]\) Method
+
+namespace: [Test](../../Test.md)<br />
+assembly: [Assem](../../../Assem.md)
+
+
+
+```csharp
+public static void M2(params int[] values);
+```
+
+## Parameters
+
+| Type | Name | Summary |
+|------|------|---------|
+| [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32) | values |  |
+
+
+
+---------------------
+file name /Assem/Test/ParameterCheck/M3.md
+---------------------
+
+# M3\(in int\) Method
+
+namespace: [Test](../../Test.md)<br />
+assembly: [Assem](../../../Assem.md)
+
+
+
+```csharp
+public static void M3(in int param = 1);
+```
+
+## Parameters
+
+| Type | Name | Summary |
+|------|------|---------|
+| [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32) | param |  |
+
+
+
+---------------------
+file name /Assem/Test/ParameterCheck/M4.md
+---------------------
+
+# M4\(out int\) Method
+
+namespace: [Test](../../Test.md)<br />
+assembly: [Assem](../../../Assem.md)
+
+
+
+```csharp
+public static void M4(out int param);
+```
+
+## Parameters
+
+| Type | Name | Summary |
+|------|------|---------|
+| [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32) | param |  |
+
+
+
+---------------------
+file name /Assem/Test/ParameterCheck/M5.md
+---------------------
+
+# M5\(ref int\) Method
+
+namespace: [Test](../../Test.md)<br />
+assembly: [Assem](../../../Assem.md)
+
+
+
+```csharp
+public static void M5(ref int param);
+```
+
+## Parameters
+
+| Type | Name | Summary |
+|------|------|---------|
+| [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32) | param |  |
+
+
+
+---------------------
+file name /Assem/Test/ParameterCheck/M6.md
+---------------------
+
+# M6\(int\) Method
+
+namespace: [Test](../../Test.md)<br />
+assembly: [Assem](../../../Assem.md)
+
+
+
+```csharp
+public static void M6(int v = 1);
+```
+
+## Parameters
+
+| Type | Name | Summary |
+|------|------|---------|
+| [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32) | v |  |
+
+
+
+---------------------
+file name /Assem/Test/ParameterCheck/M7.md
+---------------------
+
+# M7\(int?\) Method
+
+namespace: [Test](../../Test.md)<br />
+assembly: [Assem](../../../Assem.md)
+
+
+
+```csharp
+public static void M7(int? v);
+```
+
+## Parameters
+
+| Type | Name | Summary |
+|------|------|---------|
+| [int?](https://docs.microsoft.com/ja-jp/dotnet/api/System.Nullable-1) | v |  |
+
+

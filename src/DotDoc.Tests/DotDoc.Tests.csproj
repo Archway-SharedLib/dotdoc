@@ -40,6 +40,10 @@
       <None Update="Core\DelegateTest.Delegates.verified.txt">
         <DependentUpon>DelegateTest.cs</DependentUpon>
       </None>
+      <None Update="Core\ParameterTest.Default.verified.txt">
+        <ParentFile>AssemblyDocTest</ParentFile>
+        <DependentUpon>ParameterTest.cs</DependentUpon>
+      </None>
     </ItemGroup>
 
 </Project>
