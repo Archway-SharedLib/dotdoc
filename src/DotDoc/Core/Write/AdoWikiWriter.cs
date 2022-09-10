@@ -1,5 +1,6 @@
 ﻿using System.Collections.Immutable;
 using System.Text;
+using DotDoc.Core.Models;
 using DotDoc.Core.Read;
 using DotDoc.Core.Write.Page;
 
@@ -35,7 +36,9 @@ namespace DotDoc.Core.Write
 
         private async Task WriteAssemblyAsync(IDirectoryModel rootDir, AssemblyDocItem assemDocItem)
         {
-            var pageMd = new AssemblyPage(assemDocItem, _textTransform, _options).Write();
+            _logger.Info($"Write assembly: {assemDocItem.DisplayName}");
+            
+            var pageMd = new AssemblyPage(assemDocItem, _textTransform, _docItemContainer, _options).Write();
             
             var safeName = assemDocItem.ToFileName();
             var file = _fsModel.CreateFileModel(_fsModel.PathJoin(rootDir.GetFullName(), safeName + ".md"));
@@ -56,6 +59,8 @@ namespace DotDoc.Core.Write
             {
                 return;
             }
+            
+            _logger.Trace($"Write namespace: {nsDocItem.DisplayName}");
             
             var pageMd = new NamespacePage(nsDocItem, _textTransform, _docItemContainer).Write();
             
@@ -84,6 +89,8 @@ namespace DotDoc.Core.Write
                 _ => null
             };
             if (page is null) return;
+            
+            _logger.Trace($"Write type: {typeDocItem.DisplayName}");
             
             var typeDirOrFile = _fsModel.PathJoin(nsDir.GetFullName(), SafeFileOrDirectoryName(typeDocItem.ToFileName()));
             _fsModel.CreateFileModel(typeDirOrFile + ".md").WriteText(page.Write());
@@ -157,6 +164,9 @@ namespace DotDoc.Core.Write
             if (sb is null) return;
 
             typeDir.CreateIfNotExists();
+            
+            _logger.Trace($"Write member: {memberDocItem.DisplayName}");
+
             _fsModel.CreateFileModel(_fsModel.PathJoin(typeDir.GetFullName(), SafeFileOrDirectoryName(memberDocItem.ToFileName())) + ".md").WriteText(sb.ToString());
         }
         

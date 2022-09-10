@@ -33,7 +33,7 @@ namespace Test;
 
 | Name | Summary |
 |------|---------|
-| [NormalClass](./Test/NormalClass.md) | `string` 参照です。`RefClass` RefClassです。`List{T}` |
+| [NormalClass](./Test/NormalClass.md) | `string` 参照です。`RefClass` RefClassです。`List{T}`　`` |
 | [RefClass](./Test/RefClass.md) | 参照です。`Test.NormalClass` RefClassです。`String.IsNullOrEmpty` |
 
 
@@ -47,7 +47,7 @@ file name ./output/Assem/Test/NormalClass.md
 namespace: [Test](../Test.md)<br />
 assembly: [Assem](../../Assem.md)
 
-`string` 参照です。`RefClass` RefClassです。`List{T}`
+`string` 参照です。`RefClass` RefClassです。`List{T}`　``
 
 ```csharp
 public class NormalClass;

@@ -1,3 +1,5 @@
+using DotDoc.Core.Models;
+
 namespace DotDoc.Core.Write;
 
 public interface IFileSystemOperation

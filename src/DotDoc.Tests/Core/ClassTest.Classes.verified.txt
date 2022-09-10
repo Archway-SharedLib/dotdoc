@@ -58,6 +58,32 @@ public class NormalClass;
 
 Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > NormalClass
 
+## Example
+
+使用例です。
+
+``` cs
+new NormalClass();
+```
+
+
+呼び出しです。
+
+``` cs
+var a = "aaa";
+```
+
+
+
+## Remarks
+
+このクラスは特に何も処理をおこないません。
+
+
+パラグラフです。
+
+
+
 
 
 ---------------------

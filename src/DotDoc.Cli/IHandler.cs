@@ -1,6 +1,8 @@
+using DotDoc.Core;
+
 namespace DotDoc.Cli;
 
 public interface IHandler
 {
-    public ValueTask Handle();
+    public ValueTask Handle(ILogger logger);
 }

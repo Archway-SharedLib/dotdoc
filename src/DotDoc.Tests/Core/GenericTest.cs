@@ -32,6 +32,9 @@ namespace Test;
 /// <typeparam name=""T"">Tの型です。</typeparam>
 public class GenericClass<T> where T: new()
 {
+    /// <overloads>
+    /// GenericMethodです。
+    /// </overloads>
     /// <summary>
     /// T1です。
     /// </summary>

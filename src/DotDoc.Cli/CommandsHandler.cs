@@ -1,8 +1,10 @@
+using DotDoc.Core;
+
 namespace DotDoc.Cli;
 
 public class CommandsHandler : IHandler
 {
-    public ValueTask Handle()
+    public ValueTask Handle(ILogger _)
     {
         Console.WriteLine("commands");
         Console.WriteLine("  init   : Crete configuration file to current directory.");

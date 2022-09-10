@@ -78,7 +78,7 @@ file name ./output/Assem/Test/GenericClass`1/GenericMethod.md
 namespace: [Test](../../Test.md)<br />
 assembly: [Assem](../../../Assem.md)
 
-T1です。
+GenericMethodです。
 
 ## Overloads
 

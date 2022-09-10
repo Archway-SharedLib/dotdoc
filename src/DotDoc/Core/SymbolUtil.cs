@@ -1,4 +1,5 @@
-﻿using DotDoc.Core.Read;
+﻿using DotDoc.Core.Models;
+using DotDoc.Core.Read;
 using Microsoft.CodeAnalysis;
 
 namespace DotDoc.Core

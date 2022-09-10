@@ -8,23 +8,23 @@ namespace DotDoc.Cli;
 
 public class InitHandler: IHandler
 {
-    public async ValueTask Handle()
+    public async ValueTask Handle(ILogger logger)
     {
         var currDir = Directory.GetCurrentDirectory();
         var slnFileName = Directory.GetFiles(currDir, "*.sln", SearchOption.AllDirectories).FirstOrDefault();
         var inputFile = slnFileName is not null ? Path.GetRelativePath(currDir, slnFileName) : string.Empty;
+        if (!string.IsNullOrEmpty(inputFile))
+        {
+            logger.Trace($"Found {inputFile}.");
+        }
         var options = new DotDocEngineOptions()
         {
             OutputDir = "./apidocs",
-            Accessibility = new[]
-            {
-                Accessibility.Public,
-                Accessibility.Protected
-            },
             InputFileName = inputFile,
             ExcludeIdPatterns = Array.Empty<string>()
         };
-        using var stream = File.Open("./.dotdoc", FileMode.Create);
+        var dotdocFile = Path.GetFullPath("./.dotdoc");
+        using var stream = File.Open(dotdocFile, FileMode.Create);
 
         var serializerOptions = new JsonSerializerOptions()
         { 
@@ -32,5 +32,6 @@ public class InitHandler: IHandler
         };
         serializerOptions.Converters.Add(new JsonStringEnumConverter());
         await JsonSerializer.SerializeAsync(stream, options, serializerOptions);
+        logger.Info($"Create dotdoc file. ${dotdocFile}");
     }
 }

@@ -68,8 +68,25 @@ namespace DotDoc.Core.Read
                 Returns = GetNodeValue(nav, "/member/returns")?.Trim(),
                 Parameters = GetNameTextInfo(nav, "/member/param"),
                 TypeParameters = GetNameTextInfo(nav,"/member/typeparam"),
-                // Inheritdoc = GetInheritdoc(nav)
+                // Inheritdoc = GetInheritdoc(nav),
             };
+
+            var overloadsText = GetNodeValue(nav, "/member/overloads")?.Trim();
+            if (!string.IsNullOrEmpty(overloadsText))
+            {
+                var overloadsElem = XDocument.Parse($"<member>{overloadsText}</member>").Root;
+                if (overloadsElem.FirstNode.NodeType == XmlNodeType.Text)
+                {
+                    result.Overloads = new XmlDocInfo()
+                    {
+                        Summary = overloadsElem.Value
+                    };
+                }
+                else
+                {
+                    result.Overloads = ParseStringInternal($"<member>{overloadsText}</member>").result;
+                }
+            }
 
             return (result, nav);
         }

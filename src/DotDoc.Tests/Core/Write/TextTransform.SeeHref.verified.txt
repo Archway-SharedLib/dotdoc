@@ -1,0 +1,57 @@
+﻿
+---------------------
+file name ./output/Assem.md
+---------------------
+
+# Assem Assembly
+
+
+
+## Namespaces
+
+| Name | Summary |
+|------|---------|
+| [Test](./Assem/Test.md) |  |
+
+
+
+---------------------
+file name ./output/Assem/Test.md
+---------------------
+
+# Test Namespace
+
+assembly: [Assem](../Assem.md)
+
+
+
+```csharp
+namespace Test;
+```
+
+## Classes
+
+| Name | Summary |
+|------|---------|
+| [NormalClass](./Test/NormalClass.md) | https://www.microsoft.com[](https://www.microsoft.com) 参照です。[Mi\[cr'oso\\ft](https://www.microsoft.com) RefClassです。 |
+
+
+
+---------------------
+file name ./output/Assem/Test/NormalClass.md
+---------------------
+
+# NormalClass Class
+
+namespace: [Test](../Test.md)<br />
+assembly: [Assem](../../Assem.md)
+
+https://www.microsoft.com[](https://www.microsoft.com) 参照です。[Mi\[cr'oso\\ft](https://www.microsoft.com) RefClassです。
+
+```csharp
+public class NormalClass;
+```
+
+Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > NormalClass
+
+

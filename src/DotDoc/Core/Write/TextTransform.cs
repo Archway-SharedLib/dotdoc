@@ -2,6 +2,7 @@ using System.Net;
 using System.Text;
 using System.Xml;
 using System.Xml.Linq;
+using DotDoc.Core.Models;
 
 namespace DotDoc.Core.Write;
 
@@ -18,62 +19,45 @@ public class TextTransform
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
 
-    public string ToMdText<T>(IDocItem rootItem, T targetItem, Func<T, string> getText, bool removeNewLine = false) where T : IDocItem
+    public string ToMdText<T>(IDocItem rootItem, T targetItem, Func<T, string> getText, bool singleLine = false)
+        where T : IDocItem
     {
-        var text = $"<doc>{TrimEachLine(getText(targetItem), removeNewLine)}</doc>";
+
+        var text = $"<doc>{TrimEachLine(getText(targetItem), singleLine)}</doc>";
         var root = XElement.Parse(text);
+
         var sb = new StringBuilder();
+        WriteNodes(sb, root, rootItem, singleLine);
+
+        return sb.ToString();
+    }
+
+    private void WriteNodes(StringBuilder sb, XElement? root, IDocItem rootItem, bool singleLine = false)
+    {
+        if (root is null) return;
         var node = root.FirstNode;
         while (node is not null)
         {
-            if (node.NodeType == XmlNodeType.Text)
-            {
-                sb.Append(EscapeMdText(WebUtility.HtmlDecode(node.ToString())));
-            }
+            WriteTextNode(sb, node);
             if (node.NodeType == XmlNodeType.Element)
             {
                 var elem = (XElement)node;
-                if(elem is null) continue;
+                if (elem is null) continue;
                 var elemName = elem.Name.LocalName.ToLowerInvariant();
-                if (elemName is "typeparamref" or "paramref")
-                {
-                    sb.Append($"`{elem.Attribute("name")?.Value}`");
-                }
-                
-                if (elemName is "para")
-                {
-                    if (node.PreviousNode is not { NodeType: XmlNodeType.Element } ||
-                        ((XElement)node.PreviousNode).Name != "para")
-                    {
-                        sb.AppendLine();
-                        sb.AppendLine();
-                    }
 
-                    sb.AppendLine(elem.Value);
-                    sb.AppendLine();
-                }
-                if (elemName is "c")
+                WriteTypeParamRef(sb, elem, elemName);
+                WriteParamRef(sb, elem, elemName);
+                WriteC(sb, elem, elemName);
+                WriteSee(sb, elem, elemName, rootItem);
+                if (!singleLine)
                 {
-                    sb.Append($"`{elem.Value}`");
-                }
-                if (elemName is "see")
-                {
-                    // var cref = elem.Attribute("cref")?.Value;
-                    if(elem.Attribute("cref")?.Value is { } cref)
-                    {
-                        var disp = elem.Value;
-                        sb.Append(ToMdLink(rootItem, cref, display: string.IsNullOrWhiteSpace(disp) ? null : disp));
-                    } 
-                    else if(elem.Attribute("langword")?.Value is {} langword)
-                    {
-                        sb.Append($"`{langword}`");
-                    }
+                    WritePara(sb, elem, elemName, rootItem);
+                    WriteList(sb, elem, elemName, rootItem);
+                    WriteCode(sb, elem, elemName, rootItem);
                 }
             }
             node = node.NextNode;
         }
-
-        return sb.ToString();
     }
 
     private string TrimEachLine(string text, bool removeNewLine)
@@ -124,4 +108,159 @@ public class TextTransform
 
     private string EscapeOrWrapBackquoteIfNeeded(bool wrap, string value)
         => wrap ? $"`{value}`" : EscapeMdText(value);
+
+    private void WriteTextNode(StringBuilder sb, XNode node)
+    {
+        if (node.NodeType == XmlNodeType.Text)
+        {
+            sb.Append(EscapeMdText(WebUtility.HtmlDecode(node.ToString())));
+        }
+    }
+    private void WriteTypeParamRef(StringBuilder sb, XElement elem, string elementName)
+    {
+        if (elementName == "typeparamref")
+        {
+            sb.Append($"`{elem.Attribute("name")?.Value}`");
+        }
+    }
+    
+    private void WriteParamRef(StringBuilder sb, XElement elem, string elementName)
+    {
+        if (elementName == "paramref")
+        {
+            sb.Append($"`{elem.Attribute("name")?.Value}`");
+        }
+    }
+
+    private void WriteC(StringBuilder sb, XElement elem, string elementName)
+    {
+        if (elementName == "c")
+        {
+            var text = elem.FirstNode is { NodeType: XmlNodeType.Text } ? elem.FirstNode.ToString().Trim() : string.Empty;
+            sb.Append($"`{text}`");
+        }
+    }
+    
+    private void WriteSee(StringBuilder sb, XElement elem, string elementName, IDocItem rootItem)
+    {
+        if (elementName != "see")
+        {
+            return;
+        }
+
+        // var cref = elem.Attribute("cref")?.Value;
+        if(elem.Attribute("cref")?.Value is { } cref)
+        {
+            var disp = elem.FirstNode is { NodeType: XmlNodeType.Text } ? elem.FirstNode.ToString().Trim() : string.Empty;
+            sb.Append(ToMdLink(rootItem, cref, display: string.IsNullOrWhiteSpace(disp) ? null : disp));
+            return;
+        } 
+        if(elem.Attribute("langword")?.Value is {} langword)
+        {
+            sb.Append($"`{langword}`");
+            return;
+        }
+        if(elem.Attribute("href")?.Value is {} href)
+        {
+            var disp = elem.FirstNode is { NodeType: XmlNodeType.Text } ? elem.FirstNode.ToString().Trim() : string.Empty;
+            if (string.IsNullOrEmpty(disp))
+            {
+                sb.Append($"{href}");
+            }
+            sb.Append($"[{EscapeMdText(disp)}]({href})");
+            return;
+        }
+    }
+    
+    private void WritePara(StringBuilder sb, XElement elem, string elementName, IDocItem rootItem)
+    {
+        if (elementName == "para")
+        {
+            sb.AppendLine();
+            WriteNodes(sb, elem, rootItem, false);
+            sb.AppendLine();
+        }
+    }
+    
+    private void WriteList(StringBuilder sb, XElement elem, string elementName, IDocItem rootItem)
+    {
+        if (elementName != "list")
+        {
+            return;
+        }
+
+        var type = elem.Attribute("type").Value ?? "def";
+        if (type == "table") WriteListTable(sb, elem, rootItem);
+        if (type == "bullet") WriteListBullet(sb, elem, rootItem);
+        if (type == "number") WriteListNumber(sb, elem, rootItem);
+    }
+    
+    private void WriteListTable(StringBuilder sb, XElement elem, IDocItem rootItem)
+    {
+        var headerElem = elem.Element("listheader");
+
+        var sb2 = new StringBuilder();
+
+        sb.AppendLine("");
+        sb.Append("| ");
+        WriteNodes(sb, headerElem?.Element("term"), rootItem, true);
+        sb.Append(" | ");
+        WriteNodes(sb, headerElem?.Element("description"), rootItem, true);
+        sb.AppendLine(" |");
+        
+        sb.AppendLine($"|--------------|--------------|");
+
+        foreach (var itemElem in elem.Elements("item"))
+        {
+            sb.Append("| ");
+            WriteNodes(sb, itemElem?.Element("term"), rootItem, true);
+            sb.Append(" | ");
+            WriteNodes(sb, itemElem?.Element("description"), rootItem, true);
+            sb.AppendLine(" |");
+        }
+
+        sb.AppendLine();
+    }
+    
+    private void WriteListBullet(StringBuilder sb, XElement elem, IDocItem rootItem)
+    {
+        sb.AppendLine();
+        foreach (var itemElem in elem.Elements("item"))
+        {
+            sb.Append("- ");
+            WriteNodes(sb, itemElem?.Element("description"), rootItem, true);
+            sb.AppendLine();
+        }
+        sb.AppendLine();
+    }
+    
+    private void WriteListNumber(StringBuilder sb, XElement elem, IDocItem rootItem)
+    {
+        sb.AppendLine();
+        foreach (var itemElem in elem.Elements("item"))
+        {
+            sb.Append("1. ");
+            WriteNodes(sb, itemElem?.Element("description"), rootItem, true);
+            sb.AppendLine();
+        }
+        sb.AppendLine();
+    }
+    
+    private void WriteCode(StringBuilder sb, XElement elem, string elementName, IDocItem rootItem)
+    {
+        if (elementName != "code")
+        {
+            return;
+        }
+
+        var lang = elem.Attribute("language")?.Value ?? "cs";
+        var codeValue = elem.FirstNode is { NodeType: XmlNodeType.Text } ? elem.FirstNode.ToString().Trim() : string.Empty;
+        // var codeValue = elem.Value?.Trim();
+        
+        sb.AppendLine();
+        sb.AppendLine($"``` {lang}");
+        sb.AppendLine(codeValue);
+        sb.AppendLine("```");
+        sb.AppendLine();
+    }
 }

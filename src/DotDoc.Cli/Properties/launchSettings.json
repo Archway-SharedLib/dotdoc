@@ -6,7 +6,12 @@
       "commandLineArgs": "run",
       "workingDirectory": "/Users/kmaru/work/archway/kmaru-mediatr-arch-spike",
       "environmentVariables": {
-        
+      }
+    },
+    "Init": {
+      "commandName": "Project",
+      "commandLineArgs": "init",
+      "environmentVariables": {
       }
     }
   }

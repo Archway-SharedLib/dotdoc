@@ -1,14 +1,15 @@
 using System.Text;
+using DotDoc.Core.Models;
 
 namespace DotDoc.Core.Write.Page;
 
-public class ConstructorPage: IPage
+public class ConstructorPage: BasePage, IPage
 {
     private readonly OverloadConstructorDocItem _item;
     private readonly TextTransform _transform;
     private readonly DocItemContainer _itemContainer;
 
-    public ConstructorPage(OverloadConstructorDocItem item, TextTransform transform, DocItemContainer itemContainer)
+    public ConstructorPage(OverloadConstructorDocItem item, TextTransform transform, DocItemContainer itemContainer) : base(item, transform, itemContainer)
     {
         _item = item ?? throw new ArgumentNullException(nameof(item));
         _transform = transform ?? throw new ArgumentNullException(nameof(transform));
@@ -20,7 +21,7 @@ public class ConstructorPage: IPage
         var sb = new StringBuilder();
         AppendTitle(sb,$"{_itemContainer.Get(_item.TypeId).DisplayName} Constructor");
             
-        AppendNamespaceAssemblyInformation(sb);
+        AppendNamespaceAssemblyInformation(sb, _item.AssemblyId, _item.NamespaceId, 2);
             
         if (_item.Constructors.Count() == 1)
         {
@@ -62,41 +63,12 @@ public class ConstructorPage: IPage
 
         return sb.ToString();
     }
-    
-    private void AppendTitle(StringBuilder sb, string title, int depth = 1) =>
-        sb.AppendLine($"{string.Concat(Enumerable.Repeat("#", depth))} {_transform.EscapeMdText(title)}").AppendLine();
 
-    private void AppendNamespaceAssemblyInformation(StringBuilder sb)
-    {
-        var assemDocItem = _itemContainer.Get(_item.AssemblyId);
-        var nsDocItem = _itemContainer.Get(_item.NamespaceId);
-        
-        sb.AppendLine($"namespace: [{_transform.EscapeMdText(nsDocItem?.DisplayName)}](../../{nsDocItem.ToFileName()}.md)<br />");
-        sb.AppendLine($"assembly: [{_transform.EscapeMdText(assemDocItem.DisplayName)}](../../../{assemDocItem.ToFileName()}.md)").AppendLine();
-    }
-    
     private void AppendDeclareCode(StringBuilder sb, ConstructorDocItem item)
     {
         sb.AppendLine("```csharp");
         sb.AppendLine(item.ToDeclareCSharpCode());
         sb.AppendLine("```");
         sb.AppendLine();
-    }
-    
-    private void AppendParameterList(StringBuilder sb, IEnumerable<ParameterDocItem> parameters, int depth = 2)
-    {
-        var paramList = parameters.ToList();
-        if(paramList.Any())
-        {
-            AppendTitle(sb, "Parameters", depth);
-            sb.AppendLine("| Type | Name | Summary |");
-            sb.AppendLine("|------|------|---------|");
-            foreach(var param in paramList)
-            {
-                var linkType = param.TypeInfo.GetLinkTypeInfo();
-                sb.AppendLine($@"| {_transform.ToMdLink(_item,  linkType.TypeId, linkType.DisplayName)} | {_transform.EscapeMdText(param.DisplayName)} | {_transform.ToMdText(_item, param, t => t.XmlDocText, true).Replace("\n", "<br />").Replace("\r", "")} |");
-            }
-            sb.AppendLine();
-        }
     }
 }

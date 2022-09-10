@@ -8,11 +8,11 @@ namespace DotDoc.Cli;
 
 public class RunHandler : IHandler
 {
-    public async ValueTask Handle()
+    public async ValueTask Handle(ILogger logger)
     {
         if (!File.Exists(".dotdoc"))
         {
-            Console.WriteLine("Cannot find `.dotdoc` file. Please run `dotdoc init` command.");
+            logger.Error("Cannot find `.dotdoc` file. Please run `dotdoc init` command.");
             return;
         }
 
@@ -25,7 +25,7 @@ public class RunHandler : IHandler
         var options = await JsonSerializer.DeserializeAsync<DotDocEngineOptions>(stream, serializerOptions);
         if (options is null)
         {
-            Console.WriteLine("Cannot read `.dotdoc` file. Please check it.");
+            logger.Error("Cannot read `.dotdoc` file. Please check it.");
             return;
         }
 

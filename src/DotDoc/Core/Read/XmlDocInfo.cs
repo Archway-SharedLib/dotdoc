@@ -24,6 +24,8 @@ namespace DotDoc.Core.Read
         
         public List<XmlDocNameTextInfo>? TypeParameters { get; set; }
         
+        public XmlDocInfo? Overloads { get; set; }
+        
         // public XmlDocInheritdocInfo? Inheritdoc { get; set; }
         
     }

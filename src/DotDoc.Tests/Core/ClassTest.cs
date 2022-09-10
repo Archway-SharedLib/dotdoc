@@ -26,6 +26,22 @@ public class ClassTest
 namespace Test;
 
 /// <summary>NormalClassです。</summary>
+/// <remarks>
+/// このクラスは特に何も処理をおこないません。
+/// <para>
+/// パラグラフです。
+/// </para>
+/// </remarks>
+/// <example>
+/// 使用例です。
+/// <code>
+/// new NormalClass();
+/// </code>
+/// 呼び出しです。
+/// <code>
+/// var a = ""aaa"";
+/// </code>
+/// </example>
 public class NormalClass {
 }
 

@@ -1,4 +1,5 @@
 using System.Collections.Immutable;
+using DotDoc.Core.Models;
 using Microsoft.CodeAnalysis;
 
 namespace DotDoc.Core.Read;

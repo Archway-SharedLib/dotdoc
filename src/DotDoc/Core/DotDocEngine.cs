@@ -1,4 +1,5 @@
-﻿using DotDoc.Core.Read;
+﻿using DotDoc.Core.Models;
+using DotDoc.Core.Read;
 using DotDoc.Core.Write;
 using Microsoft.Build.Locator;
 using Microsoft.CodeAnalysis;
@@ -55,7 +56,7 @@ public class DotDocEngine
         
         if (!ValidateWriteOptions(options)) return;
 
-        _logger.Info($"write to {options.OutputDir}");
+        _logger.Info($"Start writing to `{options.OutputDir}`");
 
         var dirModel = fsModel.CreateDirectoryModel(options.OutputDir);
         if (options.RemoveOutputDir)
@@ -67,6 +68,8 @@ public class DotDocEngine
         
         var writer = new AdoWikiWriter(docItems, options, fsModel, _logger);
         await writer.WriteAsync();
+        
+        _logger.Info($"Writing to the `{options.OutputDir}` is completed.");
     }
 
     private async Task<IEnumerable<IDocItem>> ReadSolutionFile(MSBuildWorkspace workspace, DotDocEngineOptions options)

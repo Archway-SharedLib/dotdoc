@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using DotDoc.Core.Models;
 
 namespace DotDoc.Core.Write;
 

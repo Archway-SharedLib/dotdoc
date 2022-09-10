@@ -1,4 +1,5 @@
 using Microsoft.CodeAnalysis;
+using TypeInfo = DotDoc.Core.Models.TypeInfo;
 
 namespace DotDoc.Core.Read;
 

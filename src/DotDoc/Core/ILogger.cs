@@ -20,11 +20,12 @@ namespace DotDoc.Core
 
     public enum LogLevel
     {
-        None = 0,
+        All = 0,
         Trace = 1,
         Info = 2,
         Warn = 3,
-        Error = 4
+        Error = 4,
+        None = 99
     }
 
     public abstract class BaseLogger : ILogger
@@ -38,7 +39,7 @@ namespace DotDoc.Core
 
         private void Write(LogLevel targetLevel, string message, Action<string> writer)
         {
-            if (_level >= targetLevel)
+            if (_level <= targetLevel)
             {
                 writer(message);
             }
