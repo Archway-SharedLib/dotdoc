@@ -67,14 +67,14 @@ public class TextTransform
         return string.Join(removeNewLine ? string.Empty : Environment.NewLine, trimedLines);
     }
     
-    public string EscapeMdText(string text)
-        => new[] { "*", "_", "\\", "`", "#", "+", "-", ".", "!", "{", "}", "[", "]", "(", ")", "<", ">" }.Aggregate(text, (curr, val) =>
+    public string EscapeMdText(string? text)
+        => new[] { "*", "_", "\\", "`", "#", "+", "-", ".", "!", "{", "}", "[", "]", "(", ")", "<", ">" }.Aggregate(text ?? string.Empty, (curr, val) =>
         {
             var newText = curr ?? string.Empty;
             return newText.Replace(val, "\\" + val);
         });
 
-    public string ToMdLink(IDocItem baseItem, string key, string? display = null, bool toCodeIfNoLink = true)
+    public string ToMdLink(IDocItem baseItem, string? key, string? display = null, bool toCodeIfNoLink = true)
     {
         if (key is null)
         {

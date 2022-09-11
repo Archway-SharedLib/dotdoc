@@ -23,7 +23,7 @@ public abstract class TypeDocItem : DocItem
         
     public override IEnumerable<IDocItem> Items => Members;
         
-    public TypeInfo BaseType { get; protected set; }
+    public TypeInfo? BaseType { get; protected set; }
 
     public List<TypeInfo> Interfaces { get; }
 
