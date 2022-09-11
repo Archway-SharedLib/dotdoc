@@ -1,12 +1,10 @@
 bin/
 obj/
 
-.DotSettings.user
-
 .vs/
 .csproj.user
 .idea/
 
 .DS_Store
 
-docfx/docfx.console
+*.DotSettings.user
