@@ -4,7 +4,6 @@
     "DotDoc.Cli": {
       "commandName": "Project",
       "commandLineArgs": "run",
-      "workingDirectory": "/Users/kmaru/work/archway/kmaru-mediatr-arch-spike",
       "environmentVariables": {
       }
     },
