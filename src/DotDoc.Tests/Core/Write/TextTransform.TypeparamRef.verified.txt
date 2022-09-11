@@ -56,8 +56,8 @@ Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object)
 
 ## Type Parameters
 
-| Name | Summary |
-|------|---------|
-| T | 型 |
+__T__
+
+型
 
 

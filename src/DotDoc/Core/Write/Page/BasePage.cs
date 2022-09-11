@@ -97,13 +97,23 @@ public abstract class BasePage
         if(typeParameters.Any())
         {
             AppendTitle(sb,"Type Parameters", depth);
-            sb.AppendLine("| Name | Summary |");
-            sb.AppendLine("|------|---------|");
+            
             foreach(var param in typeParameters)
             {
-                sb.AppendLine($@"| {_transform.EscapeMdText(param.DisplayName)} | {_transform.ToMdText(_docItem, param, t => t.XmlDocText, true).Replace("\n", "<br />").Replace("\r", "")} |");
+                sb.AppendLine($@"__{_transform.EscapeMdText(param.DisplayName)}__")
+                    .AppendLine()
+                    .AppendLine(
+                        $"{_transform.ToMdText(_docItem, param, t => t.XmlDocText)}")
+                    .AppendLine();
             }
-            sb.AppendLine();
+            
+            // sb.AppendLine("| Name | Summary |");
+            // sb.AppendLine("|------|---------|");
+            // foreach(var param in typeParameters)
+            // {
+            //     sb.AppendLine($@"| {_transform.EscapeMdText(param.DisplayName)} | {_transform.ToMdText(_docItem, param, t => t.XmlDocText, true).Replace("\n", "<br />").Replace("\r", "")} |");
+            // }
+            // sb.AppendLine();
         }
     }
     
@@ -156,14 +166,26 @@ public abstract class BasePage
         if(paramList.Any())
         {
             AppendTitle(sb, "Parameters", depth);
-            sb.AppendLine("| Type | Name | Summary |");
-            sb.AppendLine("|------|------|---------|");
+            
             foreach(var param in paramList)
             {
                 var linkType = param.TypeInfo.GetLinkTypeInfo();
-                sb.AppendLine($@"| {_transform.ToMdLink(_docItem,  linkType.TypeId, linkType.DisplayName)} | {_transform.EscapeMdText(param.DisplayName)} | {_transform.ToMdText(_docItem, param, t => t.XmlDocText, true).Replace("\n", "<br />").Replace("\r", "")} |");
+                sb.AppendLine($@"__{_transform.EscapeMdText(param.DisplayName)}__ : {_transform.ToMdLink(_docItem,  linkType.TypeId, linkType.DisplayName)}")
+                    .AppendLine()
+                    .AppendLine($"{_transform.ToMdText(_docItem, param, t => t.XmlDocText)}")
+                    .AppendLine();
             }
-            sb.AppendLine();
+            
+            // sb.AppendLine("| Type | Name | Summary |");
+            // sb.AppendLine("|------|------|---------|");
+            // foreach(var param in paramList)
+            // {
+            //     var linkType = param.TypeInfo.GetLinkTypeInfo();
+            //     sb.AppendLine($@"| {_transform.ToMdLink(_docItem,  linkType.TypeId, linkType.DisplayName)} | {_transform.EscapeMdText(param.DisplayName)} | {_transform.ToMdText(_docItem, param, t => t.XmlDocText, true).Replace("\n", "<br />").Replace("\r", "")} |");
+            // }
+            // sb.AppendLine();
+            
+            
         }
     }
     

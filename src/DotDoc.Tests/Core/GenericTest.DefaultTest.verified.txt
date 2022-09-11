@@ -63,9 +63,9 @@ Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object)
 
 ## Type Parameters
 
-| Name | Summary |
-|------|---------|
-| T | Tの型です。 |
+__T__
+
+Tの型です。
 
 
 
@@ -97,15 +97,15 @@ public T GenericMethod<T1>(T arg);
 
 ### Type Parameters
 
-| Name | Summary |
-|------|---------|
-| T1 | 型です |
+__T1__
+
+型です
 
 ### Parameters
 
-| Type | Name | Summary |
-|------|------|---------|
-| `T` | arg | `T` |
+__arg__ : `T`
+
+`T`
 
 ### Return Value
 
@@ -123,17 +123,23 @@ public T3 GenericMethod<T1 ,T2 ,T3>(T arg);
 
 ### Type Parameters
 
-| Name | Summary |
-|------|---------|
-| T1 |  |
-| T2 |  |
-| T3 |  |
+__T1__
+
+
+
+__T2__
+
+
+
+__T3__
+
+
 
 ### Parameters
 
-| Type | Name | Summary |
-|------|------|---------|
-| `T` | arg |  |
+__arg__ : `T`
+
+
 
 ### Return Value
 

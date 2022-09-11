@@ -57,9 +57,9 @@ Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object)
 
 ## Parameters
 
-| Type | Name | Summary |
-|------|------|---------|
-| [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String) | value | 引数です。 |
+__value__ : [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+
+引数です。
 
 ## Return Value
 
@@ -88,15 +88,15 @@ Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object)
 
 ## Type Parameters
 
-| Name | Summary |
-|------|---------|
-| T | Tです |
+__T__
+
+Tです
 
 ## Parameters
 
-| Type | Name | Summary |
-|------|------|---------|
-| `T` | value | 引数です。 |
+__value__ : `T`
+
+引数です。
 
 ## Return Value
 

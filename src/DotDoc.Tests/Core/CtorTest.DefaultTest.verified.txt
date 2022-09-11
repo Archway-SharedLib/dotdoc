@@ -63,9 +63,9 @@ Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object)
 
 ## Type Parameters
 
-| Name | Summary |
-|------|---------|
-| T |  |
+__T__
+
+
 
 
 
@@ -86,9 +86,9 @@ public NormalClass(string name);
 
 ## Parameters
 
-| Type | Name | Summary |
-|------|------|---------|
-| [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String) | name |  |
+__name__ : [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+
+
 
 
 
@@ -119,9 +119,9 @@ Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object)
 
 ## Type Parameters
 
-| Name | Summary |
-|------|---------|
-| T |  |
+__T__
+
+
 
 
 
@@ -162,9 +162,9 @@ public OverloadClass(string name);
 
 ### Parameters
 
-| Type | Name | Summary |
-|------|------|---------|
-| [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String) | name |  |
+__name__ : [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+
+
 
 ## OverloadClass\(string, int\)
 
@@ -176,9 +176,12 @@ public OverloadClass(string name ,int age);
 
 ### Parameters
 
-| Type | Name | Summary |
-|------|------|---------|
-| [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String) | name |  |
-| [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32) | age |  |
+__name__ : [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+
+
+
+__age__ : [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
+
+
 
 

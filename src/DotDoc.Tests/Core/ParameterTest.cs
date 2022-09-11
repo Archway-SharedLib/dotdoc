@@ -31,7 +31,6 @@ namespace Test;
 
 public static class ParameterCheck
 {
-
     public static void M1(this int n) 
     {
     }
@@ -59,6 +58,21 @@ public static class ParameterCheck
     }
     
     public static void M7(int? v)
+    {
+    }
+
+    /// <param name=""p"">
+    /// パラメーターのコメントです。
+    /// <para>パラグラフです。</para>
+    /// リストです。
+    /// <list type=""number"">
+    /// <item><description>１つ目です。</description></item>
+    /// <item><description>２つ目です。</description></item>
+    /// <item><description>３つ目です。</description></item>
+    /// <item><description>４つ目です。</description></item>
+    /// </list>
+    /// </param>
+    public static void MultilineParameterComment(string p)
     {
     }
 }

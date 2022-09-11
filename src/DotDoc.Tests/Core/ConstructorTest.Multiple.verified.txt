@@ -99,8 +99,8 @@ public Ctor(string a);
 
 ### Parameters
 
-| Type | Name | Summary |
-|------|------|---------|
-| [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String) | a |  |
+__a__ : [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+
+
 
 

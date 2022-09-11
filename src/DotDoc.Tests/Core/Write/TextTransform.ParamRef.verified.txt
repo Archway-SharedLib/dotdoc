@@ -79,9 +79,9 @@ public string M(string name);
 
 ## Parameters
 
-| Type | Name | Summary |
-|------|------|---------|
-| [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String) | name | 名前引数 |
+__name__ : [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+
+名前引数
 
 ## Return Value
 

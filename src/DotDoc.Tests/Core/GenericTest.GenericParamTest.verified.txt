@@ -79,9 +79,9 @@ public System.Collections.Generic.List<int> Method(System.Collections.Generic.Di
 
 ## Parameters
 
-| Type | Name | Summary |
-|------|------|---------|
-| [System\.Collections\.Generic\.Dictionary\<string, System\.Collections\.Generic\.List\<int\>\>](https://docs.microsoft.com/ja-jp/dotnet/api/System.Collections.Generic.Dictionary-2) | arg |  |
+__arg__ : [System\.Collections\.Generic\.Dictionary\<string, System\.Collections\.Generic\.List\<int\>\>](https://docs.microsoft.com/ja-jp/dotnet/api/System.Collections.Generic.Dictionary-2)
+
+
 
 ## Return Value
 

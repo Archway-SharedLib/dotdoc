@@ -204,10 +204,13 @@ public void ReturnVoidWithParam(string param1 ,int param2);
 
 ## Parameters
 
-| Type | Name | Summary |
-|------|------|---------|
-| [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String) | param1 | 文字列の [System\.String](https://docs.microsoft.com/ja-jp/dotnet/api/System.String) です |
-| [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32) | param2 | 数字の [System\.Int32](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32) です |
+__param1__ : [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+
+文字列の [System\.String](https://docs.microsoft.com/ja-jp/dotnet/api/System.String) です
+
+__param2__ : [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
+
+数字の [System\.Int32](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32) です
 
 
 
@@ -228,10 +231,13 @@ public int ReturnIntWithParam(string param1 ,int param2);
 
 ## Parameters
 
-| Type | Name | Summary |
-|------|------|---------|
-| [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String) | param1 | 文字列の [System\.String](https://docs.microsoft.com/ja-jp/dotnet/api/System.String) です |
-| [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32) | param2 | 数字の [System\.Int32](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32) です |
+__param1__ : [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+
+文字列の [System\.String](https://docs.microsoft.com/ja-jp/dotnet/api/System.String) です
+
+__param2__ : [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
+
+数字の [System\.Int32](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32) です
 
 ## Return Value
 

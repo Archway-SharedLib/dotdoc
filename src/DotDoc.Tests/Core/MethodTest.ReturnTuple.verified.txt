@@ -79,17 +79,23 @@ public (T2, string) OverloadMethod<T ,T2>(T num ,T2 str);
 
 ## Type Parameters
 
-| Name | Summary |
-|------|---------|
-| T |  |
-| T2 |  |
+__T__
+
+
+
+__T2__
+
+
 
 ## Parameters
 
-| Type | Name | Summary |
-|------|------|---------|
-| `T` | num |  |
-| `T2` | str |  |
+__num__ : `T`
+
+
+
+__str__ : `T2`
+
+
 
 ## Return Value
 

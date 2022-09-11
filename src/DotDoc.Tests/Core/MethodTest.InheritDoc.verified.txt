@@ -86,9 +86,9 @@ public abstract int IM(DateTime a);
 
 ## Parameters
 
-| Type | Name | Summary |
-|------|------|---------|
-| `DateTime` | a | BaseInterface a 引数です |
+__a__ : `DateTime`
+
+BaseInterface a 引数です
 
 ## Return Value
 
@@ -140,10 +140,13 @@ public virtual string M(string a ,int b);
 
 ## Parameters
 
-| Type | Name | Summary |
-|------|------|---------|
-| [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String) | a | BaseType a 引数です |
-| [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32) | b | Baseype b 引数です |
+__a__ : [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+
+BaseType a 引数です
+
+__b__ : [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
+
+Baseype b 引数です
 
 ## Return Value
 
@@ -195,10 +198,13 @@ public override string M(string a ,int b);
 
 ## Parameters
 
-| Type | Name | Summary |
-|------|------|---------|
-| [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String) | a | BaseType a 引数です |
-| [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32) | b | Baseype b 引数です |
+__a__ : [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+
+BaseType a 引数です
+
+__b__ : [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
+
+Baseype b 引数です
 
 ## Return Value
 
@@ -250,10 +256,13 @@ public string M(string a ,int b);
 
 ## Parameters
 
-| Type | Name | Summary |
-|------|------|---------|
-| [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String) | a | BaseType a 引数です |
-| [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32) | b | Baseype b 引数です |
+__a__ : [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+
+BaseType a 引数です
+
+__b__ : [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
+
+Baseype b 引数です
 
 ## Return Value
 
@@ -307,9 +316,9 @@ public int IM(DateTime a);
 
 ## Parameters
 
-| Type | Name | Summary |
-|------|------|---------|
-| `DateTime` | a | BaseInterface a 引数です |
+__a__ : `DateTime`
+
+BaseInterface a 引数です
 
 ## Return Value
 
