@@ -9,7 +9,7 @@ assembly: [DotDoc](../../DotDoc.md)
 public class DelegatePage;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > [DotDoc\.Core\.Write\.Page\.BasePage](../../DotDoc/DotDoc.Core.Write.Page/BasePage.md) > DelegatePage
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [DotDoc\.Core\.Write\.Page\.BasePage](../../DotDoc/DotDoc.Core.Write.Page/BasePage.md) > DelegatePage
 
 Implements: [DotDoc\.Core\.Write\.Page\.IPage](../../DotDoc/DotDoc.Core.Write.Page/IPage.md)
 

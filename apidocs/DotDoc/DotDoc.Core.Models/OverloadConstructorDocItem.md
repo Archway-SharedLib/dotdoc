@@ -9,7 +9,7 @@ assembly: [DotDoc](../../DotDoc.md)
 public class OverloadConstructorDocItem;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > OverloadConstructorDocItem
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > OverloadConstructorDocItem
 
 Implements: [DotDoc\.Core\.Models\.IMemberDocItem](../../DotDoc/DotDoc.Core.Models/IMemberDocItem.md)
 

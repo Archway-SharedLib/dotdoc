@@ -11,11 +11,11 @@ public PropertyDocItem(Microsoft.CodeAnalysis.IPropertySymbol symbol ,Microsoft.
 
 ## Parameters
 
-__symbol__ : [Microsoft\.CodeAnalysis\.IPropertySymbol](https://docs.microsoft.com/ja-jp/dotnet/api/Microsoft.CodeAnalysis.IPropertySymbol)
+__symbol__ : [Microsoft\.CodeAnalysis\.IPropertySymbol](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.IPropertySymbol)
 
 
 
-__compilation__ : [Microsoft\.CodeAnalysis\.Compilation](https://docs.microsoft.com/ja-jp/dotnet/api/Microsoft.CodeAnalysis.Compilation)
+__compilation__ : [Microsoft\.CodeAnalysis\.Compilation](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.Compilation)
 
 
 

@@ -11,11 +11,11 @@ public FieldDocItem(Microsoft.CodeAnalysis.IFieldSymbol symbol ,Microsoft.CodeAn
 
 ## Parameters
 
-__symbol__ : [Microsoft\.CodeAnalysis\.IFieldSymbol](https://docs.microsoft.com/ja-jp/dotnet/api/Microsoft.CodeAnalysis.IFieldSymbol)
+__symbol__ : [Microsoft\.CodeAnalysis\.IFieldSymbol](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.IFieldSymbol)
 
 
 
-__compilation__ : [Microsoft\.CodeAnalysis\.Compilation](https://docs.microsoft.com/ja-jp/dotnet/api/Microsoft.CodeAnalysis.Compilation)
+__compilation__ : [Microsoft\.CodeAnalysis\.Compilation](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.Compilation)
 
 
 

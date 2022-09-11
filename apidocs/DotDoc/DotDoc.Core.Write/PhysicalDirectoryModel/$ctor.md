@@ -11,7 +11,7 @@ public PhysicalDirectoryModel(System.IO.DirectoryInfo directoryInfo);
 
 ## Parameters
 
-__directoryInfo__ : [System\.IO\.DirectoryInfo](https://docs.microsoft.com/ja-jp/dotnet/api/System.IO.DirectoryInfo)
+__directoryInfo__ : [System\.IO\.DirectoryInfo](https://docs.microsoft.com/dotnet/api/System.IO.DirectoryInfo)
 
 
 

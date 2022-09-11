@@ -11,5 +11,5 @@ public System.Collections.Generic.List<DotDoc.Core.Models.TypeInfo> Interfaces {
 
 ## Property Value
 
-[System\.Collections\.Generic\.List\<DotDoc\.Core\.Models\.TypeInfo\>](https://docs.microsoft.com/ja-jp/dotnet/api/System.Collections.Generic.List-1)
+[System\.Collections\.Generic\.List\<DotDoc\.Core\.Models\.TypeInfo\>](https://docs.microsoft.com/dotnet/api/System.Collections.Generic.List-1)
 

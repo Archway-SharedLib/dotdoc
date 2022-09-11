@@ -11,7 +11,7 @@ public override DotDoc.Core.Models.IDocItem? VisitProperty(Microsoft.CodeAnalysi
 
 ## Parameters
 
-__symbol__ : [Microsoft\.CodeAnalysis\.IPropertySymbol](https://docs.microsoft.com/ja-jp/dotnet/api/Microsoft.CodeAnalysis.IPropertySymbol)
+__symbol__ : [Microsoft\.CodeAnalysis\.IPropertySymbol](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.IPropertySymbol)
 
 
 

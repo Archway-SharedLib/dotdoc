@@ -11,5 +11,5 @@ public bool IsStatic { get; };
 
 ## Property Value
 
-[bool](https://docs.microsoft.com/ja-jp/dotnet/api/System.Boolean)
+[bool](https://docs.microsoft.com/dotnet/api/System.Boolean)
 

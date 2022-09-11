@@ -9,7 +9,7 @@ assembly: [DotDoc](../../DotDoc.md)
 public enum LogLevel;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > [System\.ValueType](https://docs.microsoft.com/ja-jp/dotnet/api/System.ValueType) > [System\.Enum](https://docs.microsoft.com/ja-jp/dotnet/api/System.Enum) > LogLevel
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [System\.ValueType](https://docs.microsoft.com/dotnet/api/System.ValueType) > [System\.Enum](https://docs.microsoft.com/dotnet/api/System.Enum) > LogLevel
 
 ## Fields
 

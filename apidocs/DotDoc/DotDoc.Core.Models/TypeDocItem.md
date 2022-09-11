@@ -9,7 +9,7 @@ assembly: [DotDoc](../../DotDoc.md)
 public abstract class TypeDocItem;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > [DotDoc\.Core\.Models\.DocItem](../../DotDoc/DotDoc.Core.Models/DocItem.md) > TypeDocItem
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [DotDoc\.Core\.Models\.DocItem](../../DotDoc/DotDoc.Core.Models/DocItem.md) > TypeDocItem
 
 ## Constructors
 

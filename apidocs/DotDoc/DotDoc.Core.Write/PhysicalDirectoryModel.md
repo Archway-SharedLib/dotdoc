@@ -9,7 +9,7 @@ assembly: [DotDoc](../../DotDoc.md)
 public class PhysicalDirectoryModel;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > PhysicalDirectoryModel
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > PhysicalDirectoryModel
 
 Implements: [DotDoc\.Core\.Write\.IDirectoryModel](../../DotDoc/DotDoc.Core.Write/IDirectoryModel.md)
 

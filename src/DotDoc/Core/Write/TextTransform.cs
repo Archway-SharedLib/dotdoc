@@ -98,7 +98,7 @@ public class TextTransform
            key.StartsWith("N:System.", StringComparison.InvariantCultureIgnoreCase))
         {
             var linkKey = key.Substring(2);
-            var linkText = $"https://docs.microsoft.com/ja-jp/dotnet/api/{linkKey.Replace("`", "-").Replace("{", "").Replace("}", "")}";
+            var linkText = $"https://docs.microsoft.com/dotnet/api/{linkKey.Replace("`", "-").Replace("{", "").Replace("}", "")}";
             // var linkText = $"https://docs.microsoft.com/ja-jp/dotnet/api/{linkKey}";
             return $"[{EscapeMdText(display ?? linkKey)}]({linkText})";
         }

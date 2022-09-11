@@ -11,11 +11,11 @@ public DelegateDocItem(Microsoft.CodeAnalysis.INamedTypeSymbol symbol ,Microsoft
 
 ## Parameters
 
-__symbol__ : [Microsoft\.CodeAnalysis\.INamedTypeSymbol](https://docs.microsoft.com/ja-jp/dotnet/api/Microsoft.CodeAnalysis.INamedTypeSymbol)
+__symbol__ : [Microsoft\.CodeAnalysis\.INamedTypeSymbol](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.INamedTypeSymbol)
 
 
 
-__compilation__ : [Microsoft\.CodeAnalysis\.Compilation](https://docs.microsoft.com/ja-jp/dotnet/api/Microsoft.CodeAnalysis.Compilation)
+__compilation__ : [Microsoft\.CodeAnalysis\.Compilation](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.Compilation)
 
 
 

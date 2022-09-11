@@ -11,7 +11,7 @@ public TypeParameterDocItem(Microsoft.CodeAnalysis.ITypeParameterSymbol symbol ,
 
 ## Parameters
 
-__symbol__ : [Microsoft\.CodeAnalysis\.ITypeParameterSymbol](https://docs.microsoft.com/ja-jp/dotnet/api/Microsoft.CodeAnalysis.ITypeParameterSymbol)
+__symbol__ : [Microsoft\.CodeAnalysis\.ITypeParameterSymbol](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.ITypeParameterSymbol)
 
 
 
@@ -19,7 +19,7 @@ __docInfo__ : [DotDoc\.Core\.Read\.XmlDocInfo](../../../DotDoc/DotDoc.Core.Read/
 
 
 
-__compilation__ : [Microsoft\.CodeAnalysis\.Compilation](https://docs.microsoft.com/ja-jp/dotnet/api/Microsoft.CodeAnalysis.Compilation)
+__compilation__ : [Microsoft\.CodeAnalysis\.Compilation](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.Compilation)
 
 
 

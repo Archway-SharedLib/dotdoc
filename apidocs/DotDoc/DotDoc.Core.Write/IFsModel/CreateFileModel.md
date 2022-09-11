@@ -11,7 +11,7 @@ public abstract DotDoc.Core.Write.IFileModel CreateFileModel(string fileName);
 
 ## Parameters
 
-__fileName__ : [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+__fileName__ : [string](https://docs.microsoft.com/dotnet/api/System.String)
 
 
 

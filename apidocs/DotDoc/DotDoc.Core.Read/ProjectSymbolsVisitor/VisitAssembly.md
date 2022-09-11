@@ -11,7 +11,7 @@ public override DotDoc.Core.Models.IDocItem? VisitAssembly(Microsoft.CodeAnalysi
 
 ## Parameters
 
-__symbol__ : [Microsoft\.CodeAnalysis\.IAssemblySymbol](https://docs.microsoft.com/ja-jp/dotnet/api/Microsoft.CodeAnalysis.IAssemblySymbol)
+__symbol__ : [Microsoft\.CodeAnalysis\.IAssemblySymbol](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.IAssemblySymbol)
 
 
 

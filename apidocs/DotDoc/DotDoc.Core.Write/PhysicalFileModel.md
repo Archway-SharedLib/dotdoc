@@ -9,7 +9,7 @@ assembly: [DotDoc](../../DotDoc.md)
 public class PhysicalFileModel;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > PhysicalFileModel
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > PhysicalFileModel
 
 Implements: [DotDoc\.Core\.Write\.IFileModel](../../DotDoc/DotDoc.Core.Write/IFileModel.md)
 

@@ -11,11 +11,11 @@ public EventDocItem(Microsoft.CodeAnalysis.IEventSymbol symbol ,Microsoft.CodeAn
 
 ## Parameters
 
-__symbol__ : [Microsoft\.CodeAnalysis\.IEventSymbol](https://docs.microsoft.com/ja-jp/dotnet/api/Microsoft.CodeAnalysis.IEventSymbol)
+__symbol__ : [Microsoft\.CodeAnalysis\.IEventSymbol](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.IEventSymbol)
 
 
 
-__compilation__ : [Microsoft\.CodeAnalysis\.Compilation](https://docs.microsoft.com/ja-jp/dotnet/api/Microsoft.CodeAnalysis.Compilation)
+__compilation__ : [Microsoft\.CodeAnalysis\.Compilation](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.Compilation)
 
 
 

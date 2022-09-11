@@ -11,7 +11,7 @@ protected virtual void AppendInheritAndImplements(System.Text.StringBuilder sb ,
 
 ## Parameters
 
-__sb__ : [System\.Text\.StringBuilder](https://docs.microsoft.com/ja-jp/dotnet/api/System.Text.StringBuilder)
+__sb__ : [System\.Text\.StringBuilder](https://docs.microsoft.com/dotnet/api/System.Text.StringBuilder)
 
 
 

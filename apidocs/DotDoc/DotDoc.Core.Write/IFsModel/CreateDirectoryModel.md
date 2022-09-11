@@ -11,7 +11,7 @@ public abstract DotDoc.Core.Write.IDirectoryModel CreateDirectoryModel(string pa
 
 ## Parameters
 
-__path__ : [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+__path__ : [string](https://docs.microsoft.com/dotnet/api/System.String)
 
 
 

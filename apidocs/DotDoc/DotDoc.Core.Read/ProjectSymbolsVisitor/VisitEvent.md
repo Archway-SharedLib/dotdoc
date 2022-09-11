@@ -11,7 +11,7 @@ public override DotDoc.Core.Models.IDocItem? VisitEvent(Microsoft.CodeAnalysis.I
 
 ## Parameters
 
-__symbol__ : [Microsoft\.CodeAnalysis\.IEventSymbol](https://docs.microsoft.com/ja-jp/dotnet/api/Microsoft.CodeAnalysis.IEventSymbol)
+__symbol__ : [Microsoft\.CodeAnalysis\.IEventSymbol](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.IEventSymbol)
 
 
 

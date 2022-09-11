@@ -9,7 +9,7 @@ assembly: [DotDoc](../../DotDoc.md)
 public class PhysicalFsModel;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > PhysicalFsModel
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > PhysicalFsModel
 
 Implements: [DotDoc\.Core\.Write\.IFsModel](../../DotDoc/DotDoc.Core.Write/IFsModel.md)
 

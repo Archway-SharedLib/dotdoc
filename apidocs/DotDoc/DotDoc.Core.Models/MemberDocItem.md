@@ -9,7 +9,7 @@ assembly: [DotDoc](../../DotDoc.md)
 public abstract class MemberDocItem;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > [DotDoc\.Core\.Models\.DocItem](../../DotDoc/DotDoc.Core.Models/DocItem.md) > MemberDocItem
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [DotDoc\.Core\.Models\.DocItem](../../DotDoc/DotDoc.Core.Models/DocItem.md) > MemberDocItem
 
 Implements: [DotDoc\.Core\.Models\.IMemberDocItem](../../DotDoc/DotDoc.Core.Models/IMemberDocItem.md)
 

@@ -11,7 +11,7 @@ public TypeInfo(Microsoft.CodeAnalysis.ITypeSymbol symbol);
 
 ## Parameters
 
-__symbol__ : [Microsoft\.CodeAnalysis\.ITypeSymbol](https://docs.microsoft.com/ja-jp/dotnet/api/Microsoft.CodeAnalysis.ITypeSymbol)
+__symbol__ : [Microsoft\.CodeAnalysis\.ITypeSymbol](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.ITypeSymbol)
 
 
 

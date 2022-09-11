@@ -9,7 +9,7 @@ assembly: [DotDoc](../../DotDoc.md)
 public class DelegateDocItem;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > [DotDoc\.Core\.Models\.DocItem](../../DotDoc/DotDoc.Core.Models/DocItem.md) > [DotDoc\.Core\.Models\.TypeDocItem](../../DotDoc/DotDoc.Core.Models/TypeDocItem.md) > DelegateDocItem
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [DotDoc\.Core\.Models\.DocItem](../../DotDoc/DotDoc.Core.Models/DocItem.md) > [DotDoc\.Core\.Models\.TypeDocItem](../../DotDoc/DotDoc.Core.Models/TypeDocItem.md) > DelegateDocItem
 
 ## Constructors
 

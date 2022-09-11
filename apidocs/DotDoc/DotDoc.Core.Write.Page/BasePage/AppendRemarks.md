@@ -11,7 +11,7 @@ protected virtual void AppendRemarks(System.Text.StringBuilder sb ,DotDoc.Core.M
 
 ## Parameters
 
-__sb__ : [System\.Text\.StringBuilder](https://docs.microsoft.com/ja-jp/dotnet/api/System.Text.StringBuilder)
+__sb__ : [System\.Text\.StringBuilder](https://docs.microsoft.com/dotnet/api/System.Text.StringBuilder)
 
 
 
@@ -23,7 +23,7 @@ __target__ : [DotDoc\.Core\.Models\.IDocItem](../../../DotDoc/DotDoc.Core.Models
 
 
 
-__depth__ : [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
+__depth__ : [int](https://docs.microsoft.com/dotnet/api/System.Int32)
 
 
 

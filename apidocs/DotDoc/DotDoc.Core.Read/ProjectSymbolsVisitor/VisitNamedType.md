@@ -11,7 +11,7 @@ public override DotDoc.Core.Models.IDocItem? VisitNamedType(Microsoft.CodeAnalys
 
 ## Parameters
 
-__symbol__ : [Microsoft\.CodeAnalysis\.INamedTypeSymbol](https://docs.microsoft.com/ja-jp/dotnet/api/Microsoft.CodeAnalysis.INamedTypeSymbol)
+__symbol__ : [Microsoft\.CodeAnalysis\.INamedTypeSymbol](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.INamedTypeSymbol)
 
 
 

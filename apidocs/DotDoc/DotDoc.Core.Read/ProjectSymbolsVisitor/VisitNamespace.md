@@ -11,7 +11,7 @@ public override DotDoc.Core.Models.IDocItem? VisitNamespace(Microsoft.CodeAnalys
 
 ## Parameters
 
-__symbol__ : [Microsoft\.CodeAnalysis\.INamespaceSymbol](https://docs.microsoft.com/ja-jp/dotnet/api/Microsoft.CodeAnalysis.INamespaceSymbol)
+__symbol__ : [Microsoft\.CodeAnalysis\.INamespaceSymbol](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.INamespaceSymbol)
 
 
 

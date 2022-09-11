@@ -11,11 +11,11 @@ public MethodDocItem(Microsoft.CodeAnalysis.IMethodSymbol symbol ,Microsoft.Code
 
 ## Parameters
 
-__symbol__ : [Microsoft\.CodeAnalysis\.IMethodSymbol](https://docs.microsoft.com/ja-jp/dotnet/api/Microsoft.CodeAnalysis.IMethodSymbol)
+__symbol__ : [Microsoft\.CodeAnalysis\.IMethodSymbol](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.IMethodSymbol)
 
 
 
-__compilation__ : [Microsoft\.CodeAnalysis\.Compilation](https://docs.microsoft.com/ja-jp/dotnet/api/Microsoft.CodeAnalysis.Compilation)
+__compilation__ : [Microsoft\.CodeAnalysis\.Compilation](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.Compilation)
 
 
 

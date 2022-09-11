@@ -9,7 +9,7 @@ assembly: [DotDoc](../../DotDoc.md)
 public class OverloadMethodDocItem;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > OverloadMethodDocItem
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > OverloadMethodDocItem
 
 Implements: [DotDoc\.Core\.Models\.IMemberDocItem](../../DotDoc/DotDoc.Core.Models/IMemberDocItem.md)
 

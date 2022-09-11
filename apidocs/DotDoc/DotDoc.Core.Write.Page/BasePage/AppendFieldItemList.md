@@ -11,19 +11,19 @@ protected virtual void AppendFieldItemList(System.Text.StringBuilder sb ,System.
 
 ## Parameters
 
-__sb__ : [System\.Text\.StringBuilder](https://docs.microsoft.com/ja-jp/dotnet/api/System.Text.StringBuilder)
+__sb__ : [System\.Text\.StringBuilder](https://docs.microsoft.com/dotnet/api/System.Text.StringBuilder)
 
 
 
-__docItems__ : [System\.Collections\.Generic\.IEnumerable\<DotDoc\.Core\.Models\.IDocItem\>](https://docs.microsoft.com/ja-jp/dotnet/api/System.Collections.Generic.IEnumerable-1)
+__docItems__ : [System\.Collections\.Generic\.IEnumerable\<DotDoc\.Core\.Models\.IDocItem\>](https://docs.microsoft.com/dotnet/api/System.Collections.Generic.IEnumerable-1)
 
 
 
-__depth__ : [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
+__depth__ : [int](https://docs.microsoft.com/dotnet/api/System.Int32)
 
 
 
-__needFieldLInk__ : [bool](https://docs.microsoft.com/ja-jp/dotnet/api/System.Boolean)
+__needFieldLInk__ : [bool](https://docs.microsoft.com/dotnet/api/System.Boolean)
 
 
 

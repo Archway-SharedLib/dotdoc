@@ -11,7 +11,7 @@ public System.Threading.Tasks.Task WriteAsync(System.Collections.Generic.IEnumer
 
 ## Parameters
 
-__docItems__ : [System\.Collections\.Generic\.IEnumerable\<DotDoc\.Core\.Models\.IDocItem\>](https://docs.microsoft.com/ja-jp/dotnet/api/System.Collections.Generic.IEnumerable-1)
+__docItems__ : [System\.Collections\.Generic\.IEnumerable\<DotDoc\.Core\.Models\.IDocItem\>](https://docs.microsoft.com/dotnet/api/System.Collections.Generic.IEnumerable-1)
 
 
 
@@ -25,7 +25,7 @@ __fsModel__ : [DotDoc\.Core\.Write\.IFsModel](../../../DotDoc/DotDoc.Core.Write/
 
 ## Return Value
 
-[System\.Threading\.Tasks\.Task](https://docs.microsoft.com/ja-jp/dotnet/api/System.Threading.Tasks.Task)
+[System\.Threading\.Tasks\.Task](https://docs.microsoft.com/dotnet/api/System.Threading.Tasks.Task)
 
 
 

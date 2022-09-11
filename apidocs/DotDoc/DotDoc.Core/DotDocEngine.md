@@ -9,7 +9,7 @@ assembly: [DotDoc](../../DotDoc.md)
 public class DotDocEngine;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > DotDocEngine
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > DotDocEngine
 
 ## Constructors
 

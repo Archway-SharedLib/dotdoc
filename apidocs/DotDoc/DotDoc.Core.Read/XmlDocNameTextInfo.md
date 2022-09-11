@@ -9,7 +9,7 @@ assembly: [DotDoc](../../DotDoc.md)
 public class XmlDocNameTextInfo;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > XmlDocNameTextInfo
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > XmlDocNameTextInfo
 
 ## Properties
 

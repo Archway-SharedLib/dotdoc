@@ -21,7 +21,7 @@ __fsModel__ : [DotDoc\.Core\.Write\.IFsModel](../../../DotDoc/DotDoc.Core.Write/
 
 ## Return Value
 
-[System\.Threading\.Tasks\.Task\<System\.Collections\.Generic\.IEnumerable\<DotDoc\.Core\.Models\.IDocItem\>\>](https://docs.microsoft.com/ja-jp/dotnet/api/System.Threading.Tasks.Task-1)
+[System\.Threading\.Tasks\.Task\<System\.Collections\.Generic\.IEnumerable\<DotDoc\.Core\.Models\.IDocItem\>\>](https://docs.microsoft.com/dotnet/api/System.Threading.Tasks.Task-1)
 
 
 

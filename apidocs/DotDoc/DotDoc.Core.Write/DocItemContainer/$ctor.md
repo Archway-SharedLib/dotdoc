@@ -11,7 +11,7 @@ public DocItemContainer(System.Collections.Generic.IEnumerable<DotDoc.Core.Model
 
 ## Parameters
 
-__docItems__ : [System\.Collections\.Generic\.IEnumerable\<DotDoc\.Core\.Models\.IDocItem\>](https://docs.microsoft.com/ja-jp/dotnet/api/System.Collections.Generic.IEnumerable-1)
+__docItems__ : [System\.Collections\.Generic\.IEnumerable\<DotDoc\.Core\.Models\.IDocItem\>](https://docs.microsoft.com/dotnet/api/System.Collections.Generic.IEnumerable-1)
 
 
 

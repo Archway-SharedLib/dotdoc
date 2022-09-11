@@ -21,7 +21,7 @@ __dest__ : [DotDoc\.Core\.Models\.IDocItem](../../../DotDoc/DotDoc.Core.Models/I
 
 ## Return Value
 
-[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+[string](https://docs.microsoft.com/dotnet/api/System.String)
 
 
 

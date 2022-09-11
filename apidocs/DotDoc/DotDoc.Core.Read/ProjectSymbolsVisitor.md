@@ -9,7 +9,7 @@ assembly: [DotDoc](../../DotDoc.md)
 public class ProjectSymbolsVisitor;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > [Microsoft\.CodeAnalysis\.SymbolVisitor\<DotDoc\.Core\.Models\.IDocItem\>](https://docs.microsoft.com/ja-jp/dotnet/api/Microsoft.CodeAnalysis.SymbolVisitor-1) > ProjectSymbolsVisitor
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [Microsoft\.CodeAnalysis\.SymbolVisitor\<DotDoc\.Core\.Models\.IDocItem\>](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.SymbolVisitor-1) > ProjectSymbolsVisitor
 
 ## Constructors
 

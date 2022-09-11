@@ -11,5 +11,5 @@ public System.Collections.Generic.IList<DotDoc.Core.Models.TypeInfo> ConstraintT
 
 ## Property Value
 
-[System\.Collections\.Generic\.IList\<DotDoc\.Core\.Models\.TypeInfo\>](https://docs.microsoft.com/ja-jp/dotnet/api/System.Collections.Generic.IList-1)
+[System\.Collections\.Generic\.IList\<DotDoc\.Core\.Models\.TypeInfo\>](https://docs.microsoft.com/dotnet/api/System.Collections.Generic.IList-1)
 

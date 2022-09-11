@@ -9,7 +9,7 @@ assembly: [DotDoc](../../DotDoc.md)
 public class ClassPage;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > [DotDoc\.Core\.Write\.Page\.BasePage](../../DotDoc/DotDoc.Core.Write.Page/BasePage.md) > ClassPage
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [DotDoc\.Core\.Write\.Page\.BasePage](../../DotDoc/DotDoc.Core.Write.Page/BasePage.md) > ClassPage
 
 Implements: [DotDoc\.Core\.Write\.Page\.IPage](../../DotDoc/DotDoc.Core.Write.Page/IPage.md)
 

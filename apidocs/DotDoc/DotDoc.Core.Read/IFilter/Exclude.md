@@ -11,17 +11,17 @@ public abstract bool Exclude(Microsoft.CodeAnalysis.ISymbol symbol ,string id);
 
 ## Parameters
 
-__symbol__ : [Microsoft\.CodeAnalysis\.ISymbol](https://docs.microsoft.com/ja-jp/dotnet/api/Microsoft.CodeAnalysis.ISymbol)
+__symbol__ : [Microsoft\.CodeAnalysis\.ISymbol](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.ISymbol)
 
 
 
-__id__ : [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+__id__ : [string](https://docs.microsoft.com/dotnet/api/System.String)
 
 
 
 ## Return Value
 
-[bool](https://docs.microsoft.com/ja-jp/dotnet/api/System.Boolean)
+[bool](https://docs.microsoft.com/dotnet/api/System.Boolean)
 
 
 

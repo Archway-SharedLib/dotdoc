@@ -9,5 +9,5 @@ assembly: [DotDoc](../../DotDoc.md)
 public static class WriteUtil;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > WriteUtil
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > WriteUtil
 

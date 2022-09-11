@@ -11,13 +11,13 @@ public abstract string SafeFileOrDirectoryName(string sourceName);
 
 ## Parameters
 
-__sourceName__ : [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+__sourceName__ : [string](https://docs.microsoft.com/dotnet/api/System.String)
 
 
 
 ## Return Value
 
-[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+[string](https://docs.microsoft.com/dotnet/api/System.String)
 
 
 

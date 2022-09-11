@@ -9,7 +9,7 @@ assembly: [DotDoc](../../DotDoc.md)
 public static class Extensions;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > Extensions
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > Extensions
 
 ## Methods
 

@@ -11,5 +11,5 @@ public System.Collections.Generic.IEnumerable<DotDoc.Core.Accessibility> Accessi
 
 ## Property Value
 
-[System\.Collections\.Generic\.IEnumerable\<DotDoc\.Core\.Accessibility\>](https://docs.microsoft.com/ja-jp/dotnet/api/System.Collections.Generic.IEnumerable-1)
+[System\.Collections\.Generic\.IEnumerable\<DotDoc\.Core\.Accessibility\>](https://docs.microsoft.com/dotnet/api/System.Collections.Generic.IEnumerable-1)
 

@@ -9,7 +9,7 @@ assembly: [DotDoc](../../DotDoc.md)
 public abstract class BaseLogger;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > BaseLogger
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > BaseLogger
 
 Implements: [DotDoc\.Core\.ILogger](../../DotDoc/DotDoc.Core/ILogger.md)
 

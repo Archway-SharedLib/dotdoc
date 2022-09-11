@@ -11,5 +11,5 @@ protected Microsoft.CodeAnalysis.ISymbol Symbol { get; };
 
 ## Property Value
 
-[Microsoft\.CodeAnalysis\.ISymbol](https://docs.microsoft.com/ja-jp/dotnet/api/Microsoft.CodeAnalysis.ISymbol)
+[Microsoft\.CodeAnalysis\.ISymbol](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.ISymbol)
 

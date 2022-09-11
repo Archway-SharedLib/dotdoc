@@ -11,7 +11,7 @@ public abstract void Info(string message);
 
 ## Parameters
 
-__message__ : [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+__message__ : [string](https://docs.microsoft.com/dotnet/api/System.String)
 
 
 

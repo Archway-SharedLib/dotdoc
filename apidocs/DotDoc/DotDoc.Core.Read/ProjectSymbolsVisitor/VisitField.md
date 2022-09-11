@@ -11,7 +11,7 @@ public override DotDoc.Core.Models.IDocItem? VisitField(Microsoft.CodeAnalysis.I
 
 ## Parameters
 
-__symbol__ : [Microsoft\.CodeAnalysis\.IFieldSymbol](https://docs.microsoft.com/ja-jp/dotnet/api/Microsoft.CodeAnalysis.IFieldSymbol)
+__symbol__ : [Microsoft\.CodeAnalysis\.IFieldSymbol](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.IFieldSymbol)
 
 
 

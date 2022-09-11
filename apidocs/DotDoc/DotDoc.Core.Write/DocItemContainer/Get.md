@@ -22,7 +22,7 @@ public DotDoc.Core.Models.IDocItem? Get(string id);
 
 ### Parameters
 
-__id__ : [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+__id__ : [string](https://docs.microsoft.com/dotnet/api/System.String)
 
 
 
@@ -42,11 +42,11 @@ public DotDoc.Core.Models.IDocItem? Get(string assemblyId ,string id);
 
 ### Parameters
 
-__assemblyId__ : [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+__assemblyId__ : [string](https://docs.microsoft.com/dotnet/api/System.String)
 
 
 
-__id__ : [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+__id__ : [string](https://docs.microsoft.com/dotnet/api/System.String)
 
 
 

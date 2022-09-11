@@ -11,7 +11,7 @@ protected virtual void AppendReturnValue(System.Text.StringBuilder sb ,DotDoc.Co
 
 ## Parameters
 
-__sb__ : [System\.Text\.StringBuilder](https://docs.microsoft.com/ja-jp/dotnet/api/System.Text.StringBuilder)
+__sb__ : [System\.Text\.StringBuilder](https://docs.microsoft.com/dotnet/api/System.Text.StringBuilder)
 
 
 
@@ -19,7 +19,7 @@ __returnItem__ : [DotDoc\.Core\.Models\.ReturnItem](../../../DotDoc/DotDoc.Core.
 
 
 
-__depth__ : [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
+__depth__ : [int](https://docs.microsoft.com/dotnet/api/System.Int32)
 
 
 

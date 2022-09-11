@@ -9,7 +9,7 @@ assembly: [DotDoc](../../DotDoc.md)
 public abstract class DocItem;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > DocItem
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > DocItem
 
 Implements: [DotDoc\.Core\.Models\.IDocItem](../../DotDoc/DotDoc.Core.Models/IDocItem.md)
 

@@ -11,7 +11,7 @@ public ParameterDocItem(Microsoft.CodeAnalysis.IParameterSymbol symbol ,DotDoc.C
 
 ## Parameters
 
-__symbol__ : [Microsoft\.CodeAnalysis\.IParameterSymbol](https://docs.microsoft.com/ja-jp/dotnet/api/Microsoft.CodeAnalysis.IParameterSymbol)
+__symbol__ : [Microsoft\.CodeAnalysis\.IParameterSymbol](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.IParameterSymbol)
 
 
 
@@ -19,7 +19,7 @@ __docInfo__ : [DotDoc\.Core\.Read\.XmlDocInfo](../../../DotDoc/DotDoc.Core.Read/
 
 
 
-__compilation__ : [Microsoft\.CodeAnalysis\.Compilation](https://docs.microsoft.com/ja-jp/dotnet/api/Microsoft.CodeAnalysis.Compilation)
+__compilation__ : [Microsoft\.CodeAnalysis\.Compilation](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.Compilation)
 
 
 

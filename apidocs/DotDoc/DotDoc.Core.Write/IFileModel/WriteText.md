@@ -11,7 +11,7 @@ public abstract void WriteText(string text);
 
 ## Parameters
 
-__text__ : [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+__text__ : [string](https://docs.microsoft.com/dotnet/api/System.String)
 
 
 

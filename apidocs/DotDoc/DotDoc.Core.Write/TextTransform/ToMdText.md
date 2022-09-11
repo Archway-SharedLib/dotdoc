@@ -25,17 +25,17 @@ __targetItem__ : `T`
 
 
 
-__getText__ : [System\.Func\<T, string\>](https://docs.microsoft.com/ja-jp/dotnet/api/System.Func-2)
+__getText__ : [System\.Func\<T, string\>](https://docs.microsoft.com/dotnet/api/System.Func-2)
 
 
 
-__singleLine__ : [bool](https://docs.microsoft.com/ja-jp/dotnet/api/System.Boolean)
+__singleLine__ : [bool](https://docs.microsoft.com/dotnet/api/System.Boolean)
 
 
 
 ## Return Value
 
-[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+[string](https://docs.microsoft.com/dotnet/api/System.String)
 
 
 

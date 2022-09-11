@@ -11,7 +11,7 @@ public static DotDoc.Core.DotDocEngineOptions Default(string inputFileName);
 
 ## Parameters
 
-__inputFileName__ : [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+__inputFileName__ : [string](https://docs.microsoft.com/dotnet/api/System.String)
 
 
 

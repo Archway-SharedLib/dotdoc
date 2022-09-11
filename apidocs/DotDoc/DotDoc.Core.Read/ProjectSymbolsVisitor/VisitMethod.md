@@ -11,7 +11,7 @@ public override DotDoc.Core.Models.IDocItem? VisitMethod(Microsoft.CodeAnalysis.
 
 ## Parameters
 
-__symbol__ : [Microsoft\.CodeAnalysis\.IMethodSymbol](https://docs.microsoft.com/ja-jp/dotnet/api/Microsoft.CodeAnalysis.IMethodSymbol)
+__symbol__ : [Microsoft\.CodeAnalysis\.IMethodSymbol](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.IMethodSymbol)
 
 
 

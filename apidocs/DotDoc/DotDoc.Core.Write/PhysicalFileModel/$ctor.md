@@ -11,7 +11,7 @@ public PhysicalFileModel(System.IO.FileInfo fileInfo);
 
 ## Parameters
 
-__fileInfo__ : [System\.IO\.FileInfo](https://docs.microsoft.com/ja-jp/dotnet/api/System.IO.FileInfo)
+__fileInfo__ : [System\.IO\.FileInfo](https://docs.microsoft.com/dotnet/api/System.IO.FileInfo)
 
 
 

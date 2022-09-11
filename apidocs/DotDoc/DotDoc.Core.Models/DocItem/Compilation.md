@@ -11,5 +11,5 @@ protected Microsoft.CodeAnalysis.Compilation Compilation { get; };
 
 ## Property Value
 
-[Microsoft\.CodeAnalysis\.Compilation](https://docs.microsoft.com/ja-jp/dotnet/api/Microsoft.CodeAnalysis.Compilation)
+[Microsoft\.CodeAnalysis\.Compilation](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.Compilation)
 

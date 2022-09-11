@@ -11,7 +11,7 @@ public static DotDoc.Core.Models.TypeInfo ToTypeInfo(this Microsoft.CodeAnalysis
 
 ## Parameters
 
-__source__ : [Microsoft\.CodeAnalysis\.ITypeSymbol](https://docs.microsoft.com/ja-jp/dotnet/api/Microsoft.CodeAnalysis.ITypeSymbol)
+__source__ : [Microsoft\.CodeAnalysis\.ITypeSymbol](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.ITypeSymbol)
 
 
 

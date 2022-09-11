@@ -11,15 +11,15 @@ protected virtual void AppendTitle(System.Text.StringBuilder sb ,string title ,i
 
 ## Parameters
 
-__sb__ : [System\.Text\.StringBuilder](https://docs.microsoft.com/ja-jp/dotnet/api/System.Text.StringBuilder)
+__sb__ : [System\.Text\.StringBuilder](https://docs.microsoft.com/dotnet/api/System.Text.StringBuilder)
 
 
 
-__title__ : [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+__title__ : [string](https://docs.microsoft.com/dotnet/api/System.String)
 
 
 
-__depth__ : [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
+__depth__ : [int](https://docs.microsoft.com/dotnet/api/System.Int32)
 
 
 

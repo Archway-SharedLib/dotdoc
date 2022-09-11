@@ -9,7 +9,7 @@ assembly: [DotDoc](../../DotDoc.md)
 public abstract class BasePage;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > BasePage
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > BasePage
 
 ## Constructors
 

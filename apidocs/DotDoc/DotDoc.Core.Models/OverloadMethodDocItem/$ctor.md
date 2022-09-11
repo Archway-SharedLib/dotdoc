@@ -11,7 +11,7 @@ public OverloadMethodDocItem(System.Collections.Generic.IList<DotDoc.Core.Models
 
 ## Parameters
 
-__docItems__ : [System\.Collections\.Generic\.IList\<DotDoc\.Core\.Models\.MethodDocItem\>](https://docs.microsoft.com/ja-jp/dotnet/api/System.Collections.Generic.IList-1)
+__docItems__ : [System\.Collections\.Generic\.IList\<DotDoc\.Core\.Models\.MethodDocItem\>](https://docs.microsoft.com/dotnet/api/System.Collections.Generic.IList-1)
 
 
 

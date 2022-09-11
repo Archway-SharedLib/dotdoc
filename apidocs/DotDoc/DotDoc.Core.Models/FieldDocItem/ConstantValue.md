@@ -11,5 +11,5 @@ public object? ConstantValue { get; };
 
 ## Property Value
 
-[object?](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object)
+[object?](https://docs.microsoft.com/dotnet/api/System.Object)
 
