@@ -81,14 +81,14 @@ assembly: [Test](../../Test.md)
 パブリックなTをもつデリゲートです。
 
 ```csharp
-public delegate T PublicDelegate<T>(in T value);
+public delegate T PublicDelegate<T>(in T value) where T : class;
 ```
 
 Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > [System\.Delegate](https://docs.microsoft.com/ja-jp/dotnet/api/System.Delegate) > [System\.MulticastDelegate](https://docs.microsoft.com/ja-jp/dotnet/api/System.MulticastDelegate) > PublicDelegate<T>
 
 ## Type Parameters
 
-__T__
+__T__ : `class`
 
 Tです
 

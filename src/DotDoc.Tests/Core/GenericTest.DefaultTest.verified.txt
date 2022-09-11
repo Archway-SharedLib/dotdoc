@@ -49,7 +49,7 @@ assembly: [Assem](../../Assem.md)
 Genericクラスです。
 
 ```csharp
-public class GenericClass<T>;
+public class GenericClass<T> where T : new();
 ```
 
 Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > GenericClass<T>
@@ -63,7 +63,7 @@ Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object)
 
 ## Type Parameters
 
-__T__
+__T__ : `new()`
 
 Tの型です。
 
@@ -97,7 +97,7 @@ public T GenericMethod<T1>(T arg);
 
 ### Type Parameters
 
-__T1__
+__T1__ : `T`
 
 型です
 
@@ -118,7 +118,7 @@ Tです
 T３つです。
 
 ```csharp
-public T3 GenericMethod<T1 ,T2 ,T3>(T arg);
+public T3 GenericMethod<T1 ,T2 ,T3>(T arg) where T3 : new();
 ```
 
 ### Type Parameters
@@ -131,7 +131,7 @@ __T2__
 
 
 
-__T3__
+__T3__ : `new()`
 
 
 

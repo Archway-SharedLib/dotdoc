@@ -49,6 +49,10 @@ public class MethodDocItem : MemberDocItem
         var paramsText = Parameters.OrEmpty().Select(p => p.ToDeclareCSharpCode())
             .ConcatWith(" ,");
 
-        return $"{Accessiblity.ToCSharpText()} {string.Join("", modifiersText)}{returnValueText} {Name}{typeParamsText}({paramsText});";
+        var result = $"{Accessiblity.ToCSharpText()} {string.Join("", modifiersText)}{returnValueText} {Name}{typeParamsText}({paramsText})";
+        
+        var typeParam = string.Join(" ", TypeParameters.Select(tp => tp.ToDeclareCSharpCode())).Trim();
+        
+        return $"{result}{(!string.IsNullOrEmpty(typeParam) ? " " + typeParam : "")};";
     }
 }

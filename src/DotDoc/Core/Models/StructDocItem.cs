@@ -10,7 +10,11 @@ public class StructDocItem : TypeDocItem
     }
 
     public List<TypeParameterDocItem> TypeParameters { get; } = new();
-        
-    public override string ToDeclareCSharpCode() =>
-        $"{Accessiblity.ToCSharpText()} struct {DisplayName};";
+
+    public override string ToDeclareCSharpCode()
+    {
+        var result = $"{Accessiblity.ToCSharpText()} struct {DisplayName}";
+        var typeParam = string.Join(" ", TypeParameters.Select(tp => tp.ToDeclareCSharpCode())).Trim();
+        return $"{result}{(!string.IsNullOrEmpty(typeParam) ? " " + typeParam : "")};";
+    }
 }

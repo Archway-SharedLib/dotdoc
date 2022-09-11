@@ -1,0 +1,67 @@
+﻿
+---------------------
+file name ./output/Assem.md
+---------------------
+
+# Assem Assembly
+
+
+
+## Namespaces
+
+| Name | Summary |
+|------|---------|
+| [Test](./Assem/Test.md) |  |
+
+
+
+---------------------
+file name ./output/Assem/Test.md
+---------------------
+
+# Test Namespace
+
+assembly: [Assem](../Assem.md)
+
+
+
+```csharp
+namespace Test;
+```
+
+## Classes
+
+| Name | Summary |
+|------|---------|
+| [Dic\<T, T2\>](./Test/Dic`2.md) |  |
+
+
+
+---------------------
+file name ./output/Assem/Test/Dic`2.md
+---------------------
+
+# Dic\<T, T2\> Class
+
+namespace: [Test](../Test.md)<br />
+assembly: [Assem](../../Assem.md)
+
+
+
+```csharp
+public class Dic<T, T2> where T : System.Collections.Generic.IList<string>, class? where T2 : T, new();
+```
+
+Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > Dic<T, T2>
+
+## Type Parameters
+
+__T__ : [System\.Collections\.Generic\.IList\<string\>](https://docs.microsoft.com/ja-jp/dotnet/api/System.Collections.Generic.IList-1), `class?`
+
+
+
+__T2__ : `T`, `new()`
+
+
+
+

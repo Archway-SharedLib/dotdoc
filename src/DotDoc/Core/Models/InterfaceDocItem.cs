@@ -10,8 +10,12 @@ public class InterfaceDocItem : TypeDocItem
     }
 
     public List<TypeParameterDocItem> TypeParameters { get; } = new();
-        
-    public override string ToDeclareCSharpCode() =>
-        $"{Accessiblity.ToCSharpText()} interface {DisplayName};";
 
+    public override string ToDeclareCSharpCode()
+    {
+        var result = $"{Accessiblity.ToCSharpText()} interface {DisplayName}";
+        var typeParam = string.Join(" ", TypeParameters.Select(tp => tp.ToDeclareCSharpCode())).Trim();
+        return $"{result}{(!string.IsNullOrEmpty(typeParam) ? " " + typeParam : "")};";
+    }
+        
 }

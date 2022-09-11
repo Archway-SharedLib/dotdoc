@@ -19,8 +19,12 @@ public class DelegateDocItem : TypeDocItem
     public List<ParameterDocItem> Parameters { get; } = new();
 
     public ReturnItem? ReturnValue { get; }
-        
-    public override string ToDeclareCSharpCode() =>
-        $"{Accessiblity.ToCSharpText()} delegate {ReturnValue?.ToDeclareCSharpCode() ?? "void"} {DisplayName}({string.Join(", ", Parameters.OrEmpty().Select(p => p.ToDeclareCSharpCode()))});";
+
+    public override string ToDeclareCSharpCode()
+    {
+        var result = $"{Accessiblity.ToCSharpText()} delegate {ReturnValue?.ToDeclareCSharpCode() ?? "void"} {DisplayName}({string.Join(", ", Parameters.OrEmpty().Select(p => p.ToDeclareCSharpCode()))})";
+        var typeParam = string.Join(" ", TypeParameters.Select(tp => tp.ToDeclareCSharpCode())).Trim();
+        return $"{result}{(!string.IsNullOrEmpty(typeParam) ? " " + typeParam : "")};";
+    }
 
 }

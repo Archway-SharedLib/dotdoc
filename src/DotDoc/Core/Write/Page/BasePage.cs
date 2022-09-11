@@ -100,7 +100,13 @@ public abstract class BasePage
             
             foreach(var param in typeParameters)
             {
-                sb.AppendLine($@"__{_transform.EscapeMdText(param.DisplayName)}__")
+                var constraints = TypeParameterConstraintsMd(param);
+                sb.Append($@"__{_transform.EscapeMdText(param.DisplayName)}__");
+                if (constraints.Any())
+                {
+                    sb.Append(" : ").AppendJoin(", ", TypeParameterConstraintsMd(param));
+                }
+                sb.AppendLine()
                     .AppendLine()
                     .AppendLine(
                         $"{_transform.ToMdText(_docItem, param, t => t.XmlDocText)}")
@@ -115,6 +121,22 @@ public abstract class BasePage
             // }
             // sb.AppendLine();
         }
+    }
+
+    private List<string> TypeParameterConstraintsMd(TypeParameterDocItem typeParam)
+    {
+        var result = typeParam.ConstraintTypes.Select(t =>
+            _transform.ToMdLink(_docItem, t.GetLinkTypeInfo().TypeId, t.GetLinkTypeInfo().DisplayName)).ToList();
+
+        if(typeParam.HasConstructorConstraint) result.Add("`new()`");
+        if(typeParam.HasReferenceTypeConstraint) result.Add($"`class{(typeParam.HasReferenceTypeConstraintNullableAnnotation ? "?" : "")}`");
+        if(typeParam.HasValueTypeConstraint) result.Add($"`struct`");
+        if(typeParam.HasNotNullConstraint) result.Add($"`notnull`");
+        if(typeParam.HasUnmanagedTypeConstraint) result.Add($"`unmanaged`");
+
+        return result;
+        
+        return result;
     }
     
     protected virtual void AppendDeclareCode(StringBuilder sb)

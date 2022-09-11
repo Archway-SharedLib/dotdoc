@@ -6,6 +6,7 @@ using DotDoc.Tests.Helper;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Xunit.Abstractions;
+using Accessibility = DotDoc.Core.Accessibility;
 
 namespace DotDoc.Tests.Core;
 
@@ -22,7 +23,7 @@ public class GenericTest
     [Fact]
     public async Task DefaultTest()
     {
-        var tree = CSharpSyntaxTree.ParseText(@"
+        var md = await CreateMd(@"
 namespace Test;
 
 
@@ -54,24 +55,13 @@ public class GenericClass<T> where T: new()
     public T3 GenericMethod<T1, T2, T3>(T arg) where T3 : new() => new T3();
 
 }");
-        var assems = AppDomain.CurrentDomain.GetAssemblies()
-            .Where(a => a.GetName().Name.StartsWith("system", StringComparison.InvariantCultureIgnoreCase) || a.GetName().Name == "netstandard")
-            .Select(a => MetadataReference.CreateFromFile(a.Location));
-        
-        var compilation = CSharpCompilation.Create("Assem", new[] { tree }, assems);
-        var docItem = compilation.Assembly.Accept(new ProjectSymbolsVisitor(new DefaultFilter(DotDocEngineOptions.Default("")), compilation));
-        var outputText = new StringBuilder();
-        var writer = new AdoWikiWriter(new[] { docItem }, DotDocEngineOptions.Default("test.sln"),
-            new TestFsModel(outputText), _logger);
-        await writer.WriteAsync();
-
-        await Verify(outputText.ToString());
+        await Verify(md);
     }    
     
     [Fact]
     public async Task GenericParamTest()
     {
-        var tree = CSharpSyntaxTree.ParseText(@"
+        var md = await CreateMd(@"
 using System.Collections.Generic;
 
 namespace Test;
@@ -80,18 +70,41 @@ public class Dic
 {
     public List<int> Method(Dictionary<string, List<int>> arg) => arg.Values.First();
 }");
+        await Verify(md);
+    }
+    
+    [Fact]
+    public async Task ConstraintTest()
+    {
+        var md = await CreateMd(@"
+using System.Collections.Generic;
+
+namespace Test;
+
+public class Dic<T, T2> where T : IList<string>, class? where T2: T, new()
+{
+}");
+        await Verify(md);
+    }
+
+    private async Task<string> CreateMd(string code)
+    {
+        var tree = CSharpSyntaxTree.ParseText(code);
         var assems = AppDomain.CurrentDomain.GetAssemblies()
             .Where(a => a.GetName().Name.StartsWith("system", StringComparison.InvariantCultureIgnoreCase) || a.GetName().Name == "netstandard")
             .Select(a => MetadataReference.CreateFromFile(a.Location));
         
         var compilation = CSharpCompilation.Create("Assem", new[] { tree }, assems);
-        var docItem = compilation.Assembly.Accept(new ProjectSymbolsVisitor(new DefaultFilter(DotDocEngineOptions.Default("")), compilation));
+        var options = new DotDocEngineOptions()
+        {
+            Accessibility = new[] { Accessibility.Public, Accessibility.Protected },
+            OutputDir = "./output"
+        };
+        var docItem = compilation.Assembly.Accept(new ProjectSymbolsVisitor(new DefaultFilter(options), compilation));
         var outputText = new StringBuilder();
-        var writer = new AdoWikiWriter(new[] { docItem }, DotDocEngineOptions.Default("test.sln"),
+        var writer = new AdoWikiWriter(new[] { docItem }, options,
             new TestFsModel(outputText), _logger);
         await writer.WriteAsync();
-
-        await Verify(outputText.ToString());
-    }    
-
+        return outputText.ToString();
+    }
 }

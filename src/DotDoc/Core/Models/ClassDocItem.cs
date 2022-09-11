@@ -20,6 +20,13 @@ public class ClassDocItem : TypeDocItem
         
     public bool IsStatic { get; }
 
-    public override string ToDeclareCSharpCode() =>
-        $"{Accessiblity.ToCSharpText()} {(IsStatic ? "static " : string.Empty)}{(IsSealed ? "sealed " : string.Empty)}{(IsAbstract ? "abstract " : string.Empty)}class {DisplayName};";
+    public override string ToDeclareCSharpCode()
+    {
+        var result =
+            $"{Accessiblity.ToCSharpText()} {(IsStatic ? "static " : string.Empty)}{(IsSealed ? "sealed " : string.Empty)}{(IsAbstract ? "abstract " : string.Empty)}class {DisplayName}";
+        var typeParam = string.Join(" ", TypeParameters.Select(tp => tp.ToDeclareCSharpCode())).Trim();
+        
+        return $"{result}{(!string.IsNullOrEmpty(typeParam) ? " " + typeParam : "")};";
+    }
+        
 }
