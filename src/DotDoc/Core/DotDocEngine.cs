@@ -75,16 +75,23 @@ public class DotDocEngine
     private async Task<IEnumerable<IDocItem>> ReadSolutionFile(MSBuildWorkspace workspace, DotDocEngineOptions options)
     {
         var solution = await workspace.OpenSolutionAsync(options.InputFileName!);
+        
         _logger.Info($"Read solution: {solution.Id}");
 
+        var readProjFiles = new List<string>();
         var results = new List<IDocItem>();
         foreach (var proj in solution.Projects)
         {
+            if (readProjFiles.Contains(proj.FilePath))
+            {
+                continue;
+            }
             var result = await ReadProject(proj, options);
             if (result is not null)
             {
                 results.Add(result);
             }
+            readProjFiles.Add(proj.FilePath);
         }
         return results;
     }

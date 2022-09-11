@@ -4,6 +4,7 @@
     "DotDoc.Cli": {
       "commandName": "Project",
       "commandLineArgs": "run",
+      "workingDirectory": "$(SolutionDir)",
       "environmentVariables": {
       }
     },

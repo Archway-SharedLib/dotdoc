@@ -1,0 +1,17 @@
+{
+  "InputFileName": "dotdoc.sln",
+  "ExcludeIdPatterns": [
+    "A:*.Tests",
+    "A:DotDoc.Cli"
+  ],
+  "Accessibility": [
+    "Protected",
+    "Public",
+    "ProtectedInternal"
+  ],
+  "OutputDir": "./apidocs",
+  "RemoveOutputDir": true,
+  "LogLevel": "Info",
+  "IgnoreEmptyNamespace": true,
+  "ExcludeDocumentClass": true
+}

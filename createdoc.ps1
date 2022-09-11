@@ -1,0 +1,1 @@
+dotnet run --project ./src/DotDoc.Cli/DotDoc.Cli.csproj --framework net6.0 run
