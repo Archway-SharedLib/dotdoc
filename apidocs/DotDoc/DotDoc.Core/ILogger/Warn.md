@@ -3,7 +3,7 @@
 namespace: [DotDoc\.Core](../../DotDoc.Core.md)<br />
 assembly: [DotDoc](../../../DotDoc.md)
 
-
+警告レベルのログを出力します。
 
 ```csharp
 public abstract void Warn(string message);
@@ -13,5 +13,5 @@ public abstract void Warn(string message);
 
 __message__ : [string](https://docs.microsoft.com/dotnet/api/System.String)
 
-
+出力するメッセージ
 

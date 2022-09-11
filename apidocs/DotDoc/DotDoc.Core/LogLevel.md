@@ -3,7 +3,7 @@
 namespace: [DotDoc\.Core](../DotDoc.Core.md)<br />
 assembly: [DotDoc](../../DotDoc.md)
 
-
+ログのレベルを定義します。
 
 ```csharp
 public enum LogLevel;
@@ -15,10 +15,10 @@ Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [Sy
 
 | Name | Value | Summary |
 |------|-------|---------|
-| All | 0 |  |
-| Trace | 1 |  |
-| Info | 2 |  |
-| Warn | 3 |  |
-| Error | 4 |  |
-| None | 99 |  |
+| All | 0 | すべてのレベル |
+| Trace | 1 | トレースレベル |
+| Info | 2 | インフォメーションレベル |
+| Warn | 3 | 警告レベル |
+| Error | 4 | エラーレベル |
+| None | 99 | レベル指定なし |
 

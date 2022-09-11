@@ -14,18 +14,18 @@ namespace DotDoc.Core;
 |------|---------|
 | [DotDocEngine](./DotDoc.Core/DotDocEngine.md) |  |
 | [DotDocEngineOptions](./DotDoc.Core/DotDocEngineOptions.md) |  |
-| [BaseLogger](./DotDoc.Core/BaseLogger.md) |  |
+| [BaseLogger](./DotDoc.Core/BaseLogger.md) | ログを出力する基本機能を実装します。 |
 
 ## Interfaces
 
 | Name | Summary |
 |------|---------|
-| [ILogger](./DotDoc.Core/ILogger.md) |  |
+| [ILogger](./DotDoc.Core/ILogger.md) | ログ出力するインターフェイスを定義します。 |
 
 ## Enums
 
 | Name | Summary |
 |------|---------|
 | [Accessibility](./DotDoc.Core/Accessibility.md) |  |
-| [LogLevel](./DotDoc.Core/LogLevel.md) |  |
+| [LogLevel](./DotDoc.Core/LogLevel.md) | ログのレベルを定義します。 |
 

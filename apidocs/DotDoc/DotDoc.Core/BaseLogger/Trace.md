@@ -3,7 +3,7 @@
 namespace: [DotDoc\.Core](../../DotDoc.Core.md)<br />
 assembly: [DotDoc](../../../DotDoc.md)
 
-
+トレースレベルのログを出力します。
 
 ```csharp
 public void Trace(string message);
@@ -13,5 +13,5 @@ public void Trace(string message);
 
 __message__ : [string](https://docs.microsoft.com/dotnet/api/System.String)
 
-
+出力するメッセージ
 

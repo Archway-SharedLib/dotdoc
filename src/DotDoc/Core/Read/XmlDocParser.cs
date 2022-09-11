@@ -102,9 +102,7 @@ namespace DotDoc.Core.Read
                 }
                 return inheritSource;
             }
-
             
-
             if (source is INamedTypeSymbol namedTypeSymbol)
             {
                 var hasExplicitBaseType = HasExplicitBaseType(namedTypeSymbol);
