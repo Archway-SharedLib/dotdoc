@@ -1,4 +1,4 @@
-﻿# Exclude\(Microsoft\.CodeAnalysis\.ISymbol, string\) Method
+﻿# Exclude\(ISymbol, string\) Method
 
 namespace: [DotDoc\.Core\.Read](../../DotDoc.Core.Read.md)<br />
 assembly: [DotDoc](../../../DotDoc.md)

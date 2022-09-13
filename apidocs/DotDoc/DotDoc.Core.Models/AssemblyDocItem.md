@@ -15,7 +15,7 @@ Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [Do
 
 | Name | Summary |
 |------|---------|
-| [AssemblyDocItem\(Microsoft\.CodeAnalysis\.IAssemblySymbol, Microsoft\.CodeAnalysis\.Compilation\)](./AssemblyDocItem/$ctor.md) |  |
+| [AssemblyDocItem\(IAssemblySymbol, Compilation\)](./AssemblyDocItem/$ctor.md) |  |
 
 ## Methods
 

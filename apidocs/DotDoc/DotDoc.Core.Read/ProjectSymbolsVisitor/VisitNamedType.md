@@ -1,4 +1,4 @@
-﻿# VisitNamedType\(Microsoft\.CodeAnalysis\.INamedTypeSymbol\) Method
+﻿# VisitNamedType\(INamedTypeSymbol\) Method
 
 namespace: [DotDoc\.Core\.Read](../../DotDoc.Core.Read.md)<br />
 assembly: [DotDoc](../../../DotDoc.md)

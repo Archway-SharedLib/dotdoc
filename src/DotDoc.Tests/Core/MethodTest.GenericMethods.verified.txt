@@ -52,7 +52,7 @@ assembly: [Test](../../Test.md)
 public class GenericMethod;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > GenericMethod
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > GenericMethod
 
 ## Methods
 
@@ -116,7 +116,7 @@ TValです
 
 ## Return Value
 
-[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+[string](https://docs.microsoft.com/dotnet/api/System.String)
 
 
 
@@ -178,23 +178,23 @@ public int ReturnIntWithParam(in string param1 ,ref int param2 ,out int param3);
 
 ## Parameters
 
-__param1__ : [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+__param1__ : [string](https://docs.microsoft.com/dotnet/api/System.String)
 
-文字列の [System\.String](https://docs.microsoft.com/ja-jp/dotnet/api/System.String) です
+文字列の [System\.String](https://docs.microsoft.com/dotnet/api/System.String) です
 
-__param2__ : [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
+__param2__ : [int](https://docs.microsoft.com/dotnet/api/System.Int32)
 
-数字の [System\.Int32](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32) です
+数字の [System\.Int32](https://docs.microsoft.com/dotnet/api/System.Int32) です
 
-__param3__ : [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
+__param3__ : [int](https://docs.microsoft.com/dotnet/api/System.Int32)
 
 
 
 ## Return Value
 
-[int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
+[int](https://docs.microsoft.com/dotnet/api/System.Int32)
 
-数字の [System\.Int32](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32) を返します。
+数字の [System\.Int32](https://docs.microsoft.com/dotnet/api/System.Int32) を返します。
 
 
 
@@ -215,13 +215,13 @@ public ref readonly int ReturnRefReadOnly(in int v);
 
 ## Parameters
 
-__v__ : [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
+__v__ : [int](https://docs.microsoft.com/dotnet/api/System.Int32)
 
 
 
 ## Return Value
 
-[int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
+[int](https://docs.microsoft.com/dotnet/api/System.Int32)
 
 
 

@@ -1,4 +1,4 @@
-﻿# ToMdText\<T\>\(DotDoc\.Core\.Models\.IDocItem, T, System\.Func\<T, string\>, bool\) Method
+﻿# ToMdText\<T\>\(IDocItem, T, Func\<T, string\>, bool\) Method
 
 namespace: [DotDoc\.Core\.Write](../../DotDoc.Core.Write.md)<br />
 assembly: [DotDoc](../../../DotDoc.md)

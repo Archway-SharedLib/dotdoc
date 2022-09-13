@@ -1,4 +1,4 @@
-﻿# AppendInheritAndImplements\(System\.Text\.StringBuilder, DotDoc\.Core\.Models\.TypeDocItem\) Method
+﻿# AppendInheritAndImplements\(StringBuilder, TypeDocItem\) Method
 
 namespace: [DotDoc\.Core\.Write\.Page](../../DotDoc.Core.Write.Page.md)<br />
 assembly: [DotDoc](../../../DotDoc.md)

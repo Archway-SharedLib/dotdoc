@@ -15,7 +15,7 @@ Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > Ext
 
 | Name | Summary |
 |------|---------|
-| [ToFileName\(DotDoc\.Core\.Models\.IDocItem\)](./Extensions/ToFileName.md) |  |
+| [ToFileName\(IDocItem\)](./Extensions/ToFileName.md) |  |
 | [SafeFileOrDirectoryName\(string?\)](./Extensions/SafeFileOrDirectoryName.md) |  |
-| [GetLinkTypeInfo\(DotDoc\.Core\.Models\.TypeInfo\)](./Extensions/GetLinkTypeInfo.md) |  |
+| [GetLinkTypeInfo\(TypeInfo\)](./Extensions/GetLinkTypeInfo.md) |  |
 

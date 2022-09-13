@@ -52,12 +52,12 @@ assembly: [Assem](../../Assem.md)
 public class NormalClass<T>;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > NormalClass<T>
-
 ## Type Parameters
 
 __T__
 
 型
+
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > NormalClass<T>
 
 

@@ -15,7 +15,7 @@ Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > Typ
 
 | Name | Summary |
 |------|---------|
-| [TypeInfo\(Microsoft\.CodeAnalysis\.ITypeSymbol\)](./TypeInfo/$ctor.md) |  |
+| [TypeInfo\(ITypeSymbol\)](./TypeInfo/$ctor.md) |  |
 
 ## Properties
 

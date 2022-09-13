@@ -17,7 +17,7 @@ Implements: [DotDoc\.Core\.Write\.Page\.IPage](../../DotDoc/DotDoc.Core.Write.Pa
 
 | Name | Summary |
 |------|---------|
-| [OverloadMethodPage\(DotDoc\.Core\.Models\.OverloadMethodDocItem, DotDoc\.Core\.Write\.TextTransform, DotDoc\.Core\.Write\.DocItemContainer\)](./OverloadMethodPage/$ctor.md) |  |
+| [OverloadMethodPage\(OverloadMethodDocItem, TextTransform, DocItemContainer\)](./OverloadMethodPage/$ctor.md) |  |
 
 ## Methods
 

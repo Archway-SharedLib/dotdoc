@@ -15,7 +15,7 @@ Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [Do
 
 | Name | Summary |
 |------|---------|
-| [EnumDocItem\(Microsoft\.CodeAnalysis\.INamedTypeSymbol, Microsoft\.CodeAnalysis\.Compilation\)](./EnumDocItem/$ctor.md) |  |
+| [EnumDocItem\(INamedTypeSymbol, Compilation\)](./EnumDocItem/$ctor.md) |  |
 
 ## Methods
 

@@ -52,7 +52,7 @@ NormalClassです。
 public class FieldClass;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > FieldClass
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > FieldClass
 
 ## Fields
 
@@ -86,7 +86,7 @@ public string StringField;
 
 ## Field Value
 
-[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+[string](https://docs.microsoft.com/dotnet/api/System.String)
 
 
 
@@ -107,7 +107,7 @@ public const string ConstStringField = "文字列";
 
 ## Field Value
 
-[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+[string](https://docs.microsoft.com/dotnet/api/System.String)
 
 
 
@@ -128,7 +128,7 @@ public const int ConstIntField = 123;
 
 ## Field Value
 
-[int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
+[int](https://docs.microsoft.com/dotnet/api/System.Int32)
 
 
 
@@ -149,7 +149,7 @@ public readonly double ReadonlyDoubleField;
 
 ## Field Value
 
-[double](https://docs.microsoft.com/ja-jp/dotnet/api/System.Double)
+[double](https://docs.microsoft.com/dotnet/api/System.Double)
 
 
 
@@ -170,7 +170,7 @@ public static string StaticStringField;
 
 ## Field Value
 
-[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+[string](https://docs.microsoft.com/dotnet/api/System.String)
 
 
 
@@ -191,7 +191,7 @@ public static readonly double StaticReadonlyDoubleField;
 
 ## Field Value
 
-[double](https://docs.microsoft.com/ja-jp/dotnet/api/System.Double)
+[double](https://docs.microsoft.com/dotnet/api/System.Double)
 
 
 
@@ -212,7 +212,7 @@ public volatile object VolatileFied;
 
 ## Field Value
 
-[object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object)
+[object](https://docs.microsoft.com/dotnet/api/System.Object)
 
 
 

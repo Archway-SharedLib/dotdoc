@@ -1,4 +1,4 @@
-﻿# AppendItemList\<T\>\(System\.Text\.StringBuilder, string, System\.Collections\.Generic\.IEnumerable\<DotDoc\.Core\.Models\.IDocItem\>, int\) Method
+﻿# AppendItemList\<T\>\(StringBuilder, string, IEnumerable\<IDocItem\>, int\) Method
 
 namespace: [DotDoc\.Core\.Write\.Page](../../DotDoc.Core.Write.Page.md)<br />
 assembly: [DotDoc](../../../DotDoc.md)

@@ -15,5 +15,5 @@ Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > Ext
 
 | Name | Summary |
 |------|---------|
-| [ToTypeInfo\(Microsoft\.CodeAnalysis\.ITypeSymbol\)](./Extensions/ToTypeInfo.md) |  |
+| [ToTypeInfo\(ITypeSymbol\)](./Extensions/ToTypeInfo.md) |  |
 

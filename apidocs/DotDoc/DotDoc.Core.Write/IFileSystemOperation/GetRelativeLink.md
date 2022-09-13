@@ -1,4 +1,4 @@
-﻿# GetRelativeLink\(DotDoc\.Core\.Models\.IDocItem, DotDoc\.Core\.Models\.IDocItem\) Method
+﻿# GetRelativeLink\(IDocItem, IDocItem\) Method
 
 namespace: [DotDoc\.Core\.Write](../../DotDoc.Core.Write.md)<br />
 assembly: [DotDoc](../../../DotDoc.md)

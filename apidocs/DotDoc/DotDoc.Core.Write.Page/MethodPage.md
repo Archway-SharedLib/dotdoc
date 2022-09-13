@@ -17,7 +17,7 @@ Implements: [DotDoc\.Core\.Write\.Page\.IPage](../../DotDoc/DotDoc.Core.Write.Pa
 
 | Name | Summary |
 |------|---------|
-| [MethodPage\(DotDoc\.Core\.Models\.MethodDocItem, DotDoc\.Core\.Write\.TextTransform, DotDoc\.Core\.Write\.DocItemContainer\)](./MethodPage/$ctor.md) |  |
+| [MethodPage\(MethodDocItem, TextTransform, DocItemContainer\)](./MethodPage/$ctor.md) |  |
 
 ## Methods
 

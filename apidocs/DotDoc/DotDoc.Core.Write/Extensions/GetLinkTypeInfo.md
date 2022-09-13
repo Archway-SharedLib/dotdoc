@@ -1,4 +1,4 @@
-﻿# GetLinkTypeInfo\(DotDoc\.Core\.Models\.TypeInfo\) Method
+﻿# GetLinkTypeInfo\(TypeInfo\) Method
 
 namespace: [DotDoc\.Core\.Write](../../DotDoc.Core.Write.md)<br />
 assembly: [DotDoc](../../../DotDoc.md)

@@ -52,7 +52,7 @@ NormalClassです。
 public class NormalClass;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > NormalClass
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > NormalClass
 
 ## Properties
 
@@ -81,7 +81,7 @@ public string[] Names { get; set; };
 
 ## Property Value
 
-[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+[string](https://docs.microsoft.com/dotnet/api/System.String)
 
 
 
@@ -102,7 +102,7 @@ public string[][] NamesArray { get; set; };
 
 ## Property Value
 
-[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+[string](https://docs.microsoft.com/dotnet/api/System.String)
 
 
 
@@ -123,6 +123,6 @@ public System.Collections.Generic.List<System.Collections.Generic.List<string>> 
 
 ## Property Value
 
-[System\.Collections\.Generic\.List\<System\.Collections\.Generic\.List\<string\>\>](https://docs.microsoft.com/ja-jp/dotnet/api/System.Collections.Generic.List-1)
+[System\.Collections\.Generic\.List\<System\.Collections\.Generic\.List\<string\>\>](https://docs.microsoft.com/dotnet/api/System.Collections.Generic.List-1)
 
 

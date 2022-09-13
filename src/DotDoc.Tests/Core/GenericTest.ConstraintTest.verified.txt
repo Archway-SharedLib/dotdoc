@@ -52,16 +52,16 @@ assembly: [Assem](../../Assem.md)
 public class Dic<T, T2> where T : System.Collections.Generic.IList<string>, class? where T2 : T, new();
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > Dic<T, T2>
-
 ## Type Parameters
 
-__T__ : [System\.Collections\.Generic\.IList\<string\>](https://docs.microsoft.com/ja-jp/dotnet/api/System.Collections.Generic.IList-1), `class?`
+__T__ : [System\.Collections\.Generic\.IList\<string\>](https://docs.microsoft.com/dotnet/api/System.Collections.Generic.IList-1), `class?`
 
 
 
 __T2__ : `T`, `new()`
 
 
+
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > Dic<T, T2>
 
 

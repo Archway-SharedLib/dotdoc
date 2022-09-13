@@ -17,7 +17,7 @@ Implements: [DotDoc\.Core\.Write\.IDirectoryModel](../../DotDoc/DotDoc.Core.Writ
 
 | Name | Summary |
 |------|---------|
-| [PhysicalDirectoryModel\(System\.IO\.DirectoryInfo\)](./PhysicalDirectoryModel/$ctor.md) |  |
+| [PhysicalDirectoryModel\(DirectoryInfo\)](./PhysicalDirectoryModel/$ctor.md) |  |
 
 ## Methods
 

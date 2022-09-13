@@ -1,4 +1,4 @@
-﻿# ReadAsync\(DotDoc\.Core\.DotDocEngineOptions, DotDoc\.Core\.Write\.IFsModel\) Method
+﻿# ReadAsync\(DotDocEngineOptions, IFsModel\) Method
 
 namespace: [DotDoc\.Core](../../DotDoc.Core.md)<br />
 assembly: [DotDoc](../../../DotDoc.md)

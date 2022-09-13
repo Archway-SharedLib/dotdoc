@@ -15,7 +15,7 @@ Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [Do
 
 | Name | Summary |
 |------|---------|
-| [ConstructorDocItem\(Microsoft\.CodeAnalysis\.IMethodSymbol, Microsoft\.CodeAnalysis\.Compilation\)](./ConstructorDocItem/$ctor.md) |  |
+| [ConstructorDocItem\(IMethodSymbol, Compilation\)](./ConstructorDocItem/$ctor.md) |  |
 
 ## Methods
 

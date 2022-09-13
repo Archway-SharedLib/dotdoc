@@ -17,12 +17,12 @@ Implements: [DotDoc\.Core\.Write\.Page\.IPage](../../DotDoc/DotDoc.Core.Write.Pa
 
 | Name | Summary |
 |------|---------|
-| [AssemblyPage\(DotDoc\.Core\.Models\.AssemblyDocItem, DotDoc\.Core\.Write\.TextTransform, DotDoc\.Core\.Write\.DocItemContainer, DotDoc\.Core\.DotDocEngineOptions\)](./AssemblyPage/$ctor.md) |  |
+| [AssemblyPage\(AssemblyDocItem, TextTransform, DocItemContainer, DotDocEngineOptions\)](./AssemblyPage/$ctor.md) |  |
 
 ## Methods
 
 | Name | Summary |
 |------|---------|
 | [Write\(\)](./AssemblyPage/Write.md) |  |
-| [AppendItemList\<T\>\(System\.Text\.StringBuilder, string, System\.Collections\.Generic\.IEnumerable\<DotDoc\.Core\.Models\.IDocItem\>, int\)](./AssemblyPage/AppendItemList.md) |  |
+| [AppendItemList\<T\>\(StringBuilder, string, IEnumerable\<IDocItem\>, int\)](./AssemblyPage/AppendItemList.md) |  |
 

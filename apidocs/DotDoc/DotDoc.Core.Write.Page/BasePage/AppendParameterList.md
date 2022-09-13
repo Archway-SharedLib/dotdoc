@@ -1,4 +1,4 @@
-﻿# AppendParameterList\(System\.Text\.StringBuilder, System\.Collections\.Generic\.IEnumerable\<DotDoc\.Core\.Models\.ParameterDocItem\>, int\) Method
+﻿# AppendParameterList\(StringBuilder, IEnumerable\<ParameterDocItem\>, int\) Method
 
 namespace: [DotDoc\.Core\.Write\.Page](../../DotDoc.Core.Write.Page.md)<br />
 assembly: [DotDoc](../../../DotDoc.md)

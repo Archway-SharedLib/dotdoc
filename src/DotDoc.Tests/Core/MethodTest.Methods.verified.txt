@@ -53,7 +53,7 @@ assembly: [Test](../../Test.md)
 public abstract class BaseMethodVariation;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > BaseMethodVariation
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > BaseMethodVariation
 
 ## Methods
 
@@ -131,7 +131,7 @@ assembly: [Test](../../Test.md)
 public class MethodVariation;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > [Test\.BaseMethodVariation](../../Test/Test/BaseMethodVariation.md) > MethodVariation
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [Test\.BaseMethodVariation](../../Test/Test/BaseMethodVariation.md) > MethodVariation
 
 ## Methods
 
@@ -181,9 +181,9 @@ public string ReturnStringNoParam();
 
 ## Return Value
 
-[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+[string](https://docs.microsoft.com/dotnet/api/System.String)
 
-文字列の [System\.String](https://docs.microsoft.com/ja-jp/dotnet/api/System.String) を返します。
+文字列の [System\.String](https://docs.microsoft.com/dotnet/api/System.String) を返します。
 
 
 
@@ -204,13 +204,13 @@ public void ReturnVoidWithParam(string param1 ,int param2);
 
 ## Parameters
 
-__param1__ : [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+__param1__ : [string](https://docs.microsoft.com/dotnet/api/System.String)
 
-文字列の [System\.String](https://docs.microsoft.com/ja-jp/dotnet/api/System.String) です
+文字列の [System\.String](https://docs.microsoft.com/dotnet/api/System.String) です
 
-__param2__ : [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
+__param2__ : [int](https://docs.microsoft.com/dotnet/api/System.Int32)
 
-数字の [System\.Int32](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32) です
+数字の [System\.Int32](https://docs.microsoft.com/dotnet/api/System.Int32) です
 
 
 
@@ -231,19 +231,19 @@ public int ReturnIntWithParam(string param1 ,int param2);
 
 ## Parameters
 
-__param1__ : [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+__param1__ : [string](https://docs.microsoft.com/dotnet/api/System.String)
 
-文字列の [System\.String](https://docs.microsoft.com/ja-jp/dotnet/api/System.String) です
+文字列の [System\.String](https://docs.microsoft.com/dotnet/api/System.String) です
 
-__param2__ : [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
+__param2__ : [int](https://docs.microsoft.com/dotnet/api/System.Int32)
 
-数字の [System\.Int32](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32) です
+数字の [System\.Int32](https://docs.microsoft.com/dotnet/api/System.Int32) です
 
 ## Return Value
 
-[int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
+[int](https://docs.microsoft.com/dotnet/api/System.Int32)
 
-数字の [System\.Int32](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32) を返します。
+数字の [System\.Int32](https://docs.microsoft.com/dotnet/api/System.Int32) を返します。
 
 
 

@@ -1,4 +1,4 @@
-﻿# VisitProperty\(Microsoft\.CodeAnalysis\.IPropertySymbol\) Method
+﻿# VisitProperty\(IPropertySymbol\) Method
 
 namespace: [DotDoc\.Core\.Read](../../DotDoc.Core.Read.md)<br />
 assembly: [DotDoc](../../../DotDoc.md)

@@ -15,17 +15,17 @@ Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [Mi
 
 | Name | Summary |
 |------|---------|
-| [ProjectSymbolsVisitor\(DotDoc\.Core\.Read\.IFilter, Microsoft\.CodeAnalysis\.Compilation\)](./ProjectSymbolsVisitor/$ctor.md) |  |
+| [ProjectSymbolsVisitor\(IFilter, Compilation\)](./ProjectSymbolsVisitor/$ctor.md) |  |
 
 ## Methods
 
 | Name | Summary |
 |------|---------|
-| [VisitAssembly\(Microsoft\.CodeAnalysis\.IAssemblySymbol\)](./ProjectSymbolsVisitor/VisitAssembly.md) |  |
-| [VisitNamespace\(Microsoft\.CodeAnalysis\.INamespaceSymbol\)](./ProjectSymbolsVisitor/VisitNamespace.md) |  |
-| [VisitNamedType\(Microsoft\.CodeAnalysis\.INamedTypeSymbol\)](./ProjectSymbolsVisitor/VisitNamedType.md) |  |
-| [VisitField\(Microsoft\.CodeAnalysis\.IFieldSymbol\)](./ProjectSymbolsVisitor/VisitField.md) |  |
-| [VisitProperty\(Microsoft\.CodeAnalysis\.IPropertySymbol\)](./ProjectSymbolsVisitor/VisitProperty.md) |  |
-| [VisitMethod\(Microsoft\.CodeAnalysis\.IMethodSymbol\)](./ProjectSymbolsVisitor/VisitMethod.md) |  |
-| [VisitEvent\(Microsoft\.CodeAnalysis\.IEventSymbol\)](./ProjectSymbolsVisitor/VisitEvent.md) |  |
+| [VisitAssembly\(IAssemblySymbol\)](./ProjectSymbolsVisitor/VisitAssembly.md) |  |
+| [VisitNamespace\(INamespaceSymbol\)](./ProjectSymbolsVisitor/VisitNamespace.md) |  |
+| [VisitNamedType\(INamedTypeSymbol\)](./ProjectSymbolsVisitor/VisitNamedType.md) |  |
+| [VisitField\(IFieldSymbol\)](./ProjectSymbolsVisitor/VisitField.md) |  |
+| [VisitProperty\(IPropertySymbol\)](./ProjectSymbolsVisitor/VisitProperty.md) |  |
+| [VisitMethod\(IMethodSymbol\)](./ProjectSymbolsVisitor/VisitMethod.md) |  |
+| [VisitEvent\(IEventSymbol\)](./ProjectSymbolsVisitor/VisitEvent.md) |  |
 

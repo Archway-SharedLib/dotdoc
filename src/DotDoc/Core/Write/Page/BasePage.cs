@@ -135,8 +135,6 @@ public abstract class BasePage
         if(typeParam.HasUnmanagedTypeConstraint) result.Add($"`unmanaged`");
 
         return result;
-        
-        return result;
     }
     
     protected virtual void AppendDeclareCode(StringBuilder sb)

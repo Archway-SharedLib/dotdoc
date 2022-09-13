@@ -24,18 +24,19 @@ public class ClassPage: BasePage, IPage
         sb.AppendLine(_transform.ToMdText(_item, _item, t => t.XmlDocInfo?.Summary)).AppendLine();
         
         AppendDeclareCode(sb);
-        AppendInheritAndImplements(sb, _item);
 
+        AppendTypeParameterList(sb, _item.TypeParameters);
+        
+        AppendInheritAndImplements(sb, _item);
+        
         AppendExample(sb, _item, _item);
         AppendRemarks(sb, _item, _item);
-
+        
         AppendItemList<ConstructorDocItem>(sb,"Constructors", _item.Members);
         AppendItemList<MethodDocItem>(sb,"Methods", _item.Members);
         AppendItemList<PropertyDocItem>(sb,"Properties", _item.Members);
         AppendFieldItemList(sb, _item.Members);
         AppendItemList<EventDocItem>(sb,"Events", _item.Members);
-
-        AppendTypeParameterList(sb, _item.TypeParameters);
         
         return sb.ToString();
     }

@@ -1,4 +1,4 @@
-﻿# AppendNamespaceAssemblyInformation\(System\.Text\.StringBuilder, string, string, int\) Method
+﻿# AppendNamespaceAssemblyInformation\(StringBuilder, string, string, int\) Method
 
 namespace: [DotDoc\.Core\.Write\.Page](../../DotDoc.Core.Write.Page.md)<br />
 assembly: [DotDoc](../../../DotDoc.md)

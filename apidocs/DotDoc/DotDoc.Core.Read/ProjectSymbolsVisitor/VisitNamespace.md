@@ -1,4 +1,4 @@
-﻿# VisitNamespace\(Microsoft\.CodeAnalysis\.INamespaceSymbol\) Method
+﻿# VisitNamespace\(INamespaceSymbol\) Method
 
 namespace: [DotDoc\.Core\.Read](../../DotDoc.Core.Read.md)<br />
 assembly: [DotDoc](../../../DotDoc.md)

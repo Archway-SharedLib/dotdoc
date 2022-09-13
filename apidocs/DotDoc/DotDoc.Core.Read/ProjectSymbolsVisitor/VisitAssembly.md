@@ -1,4 +1,4 @@
-﻿# VisitAssembly\(Microsoft\.CodeAnalysis\.IAssemblySymbol\) Method
+﻿# VisitAssembly\(IAssemblySymbol\) Method
 
 namespace: [DotDoc\.Core\.Read](../../DotDoc.Core.Read.md)<br />
 assembly: [DotDoc](../../../DotDoc.md)

@@ -15,7 +15,7 @@ Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [Do
 
 | Name | Summary |
 |------|---------|
-| [NamespaceDocItem\(Microsoft\.CodeAnalysis\.INamespaceSymbol, Microsoft\.CodeAnalysis\.Compilation\)](./NamespaceDocItem/$ctor.md) |  |
+| [NamespaceDocItem\(INamespaceSymbol, Compilation\)](./NamespaceDocItem/$ctor.md) |  |
 
 ## Methods
 

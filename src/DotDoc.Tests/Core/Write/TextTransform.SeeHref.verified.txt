@@ -52,6 +52,6 @@ https://www.microsoft.com[](https://www.microsoft.com) 参照です。[Mi\[cr'os
 public class NormalClass;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > NormalClass
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > NormalClass
 
 

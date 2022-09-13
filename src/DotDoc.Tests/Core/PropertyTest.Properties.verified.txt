@@ -53,7 +53,7 @@ assembly: [Test](../../Test.md)
 public abstract class BasePropertyVariation;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > BasePropertyVariation
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > BasePropertyVariation
 
 ## Properties
 
@@ -82,7 +82,7 @@ protected string BaseProtected { get; };
 
 ## Property Value
 
-[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+[string](https://docs.microsoft.com/dotnet/api/System.String)
 
 
 
@@ -103,7 +103,7 @@ protected virtual string BaseVirtual { get; };
 
 ## Property Value
 
-[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+[string](https://docs.microsoft.com/dotnet/api/System.String)
 
 
 
@@ -124,7 +124,7 @@ protected abstract string BaseAbstract { get; init; };
 
 ## Property Value
 
-[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+[string](https://docs.microsoft.com/dotnet/api/System.String)
 
 
 
@@ -143,7 +143,7 @@ assembly: [Test](../../Test.md)
 public class PropertyVariation;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > [Test\.BasePropertyVariation](../../Test/Test/BasePropertyVariation.md) > PropertyVariation
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [Test\.BasePropertyVariation](../../Test/Test/BasePropertyVariation.md) > PropertyVariation
 
 ## Properties
 
@@ -178,9 +178,9 @@ public string ReadWrite { get; set; };
 
 ## Property Value
 
-[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+[string](https://docs.microsoft.com/dotnet/api/System.String)
 
-[System\.String](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+[System\.String](https://docs.microsoft.com/dotnet/api/System.String)
 
 
 
@@ -201,7 +201,7 @@ public string Read { get; };
 
 ## Property Value
 
-[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+[string](https://docs.microsoft.com/dotnet/api/System.String)
 
 
 
@@ -222,7 +222,7 @@ public string Write { set; };
 
 ## Property Value
 
-[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+[string](https://docs.microsoft.com/dotnet/api/System.String)
 
 
 
@@ -243,7 +243,7 @@ public string InitWrite { init; };
 
 ## Property Value
 
-[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+[string](https://docs.microsoft.com/dotnet/api/System.String)
 
 
 
@@ -264,7 +264,7 @@ public string ReadInit { get; init; };
 
 ## Property Value
 
-[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+[string](https://docs.microsoft.com/dotnet/api/System.String)
 
 
 
@@ -285,7 +285,7 @@ public static string StaticProp { get; set; };
 
 ## Property Value
 
-[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+[string](https://docs.microsoft.com/dotnet/api/System.String)
 
 
 
@@ -306,7 +306,7 @@ protected string BaseProtected { get; };
 
 ## Property Value
 
-[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+[string](https://docs.microsoft.com/dotnet/api/System.String)
 
 
 
@@ -327,7 +327,7 @@ protected override string BaseVirtual { get; };
 
 ## Property Value
 
-[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+[string](https://docs.microsoft.com/dotnet/api/System.String)
 
 
 
@@ -348,6 +348,6 @@ protected override string BaseAbstract { get; init; };
 
 ## Property Value
 
-[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+[string](https://docs.microsoft.com/dotnet/api/System.String)
 
 

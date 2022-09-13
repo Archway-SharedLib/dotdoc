@@ -1,4 +1,4 @@
-﻿# ToTypeInfo\(Microsoft\.CodeAnalysis\.ITypeSymbol\) Method
+﻿# ToTypeInfo\(ITypeSymbol\) Method
 
 namespace: [DotDoc\.Core\.Read](../../DotDoc.Core.Read.md)<br />
 assembly: [DotDoc](../../../DotDoc.md)

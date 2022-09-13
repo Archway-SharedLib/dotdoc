@@ -53,19 +53,19 @@ NormalClassです。
 public class NormalClass<T>;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > NormalClass<T>
+## Type Parameters
+
+__T__
+
+
+
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > NormalClass<T>
 
 ## Constructors
 
 | Name | Summary |
 |------|---------|
 | [NormalClass\(string\)](./NormalClass`1/$ctor.md) | インスタンスを初期化します。 |
-
-## Type Parameters
-
-__T__
-
-
 
 
 
@@ -86,7 +86,7 @@ public NormalClass(string name);
 
 ## Parameters
 
-__name__ : [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+__name__ : [string](https://docs.microsoft.com/dotnet/api/System.String)
 
 
 
@@ -107,7 +107,13 @@ OverloadClassです。
 public class OverloadClass<T>;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > OverloadClass<T>
+## Type Parameters
+
+__T__
+
+
+
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > OverloadClass<T>
 
 ## Constructors
 
@@ -116,12 +122,6 @@ Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object)
 | [OverloadClass\(\)](./OverloadClass`1/$ctor.md) | インスタンスを初期化します。 |
 | [OverloadClass\(string\)](./OverloadClass`1/$ctor.md) | インスタンスを初期化します。 |
 | [OverloadClass\(string, int\)](./OverloadClass`1/$ctor.md) | インスタンスを初期化します。 |
-
-## Type Parameters
-
-__T__
-
-
 
 
 
@@ -162,7 +162,7 @@ public OverloadClass(string name);
 
 ### Parameters
 
-__name__ : [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+__name__ : [string](https://docs.microsoft.com/dotnet/api/System.String)
 
 
 
@@ -176,11 +176,11 @@ public OverloadClass(string name ,int age);
 
 ### Parameters
 
-__name__ : [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+__name__ : [string](https://docs.microsoft.com/dotnet/api/System.String)
 
 
 
-__age__ : [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
+__age__ : [int](https://docs.microsoft.com/dotnet/api/System.Int32)
 
 
 

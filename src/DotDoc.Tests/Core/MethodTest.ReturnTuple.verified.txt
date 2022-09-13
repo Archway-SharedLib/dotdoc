@@ -52,7 +52,7 @@ assembly: [Test](../../Test.md)
 public class ReturnTuple;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > ReturnTuple
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > ReturnTuple
 
 ## Methods
 
@@ -99,7 +99,7 @@ __str__ : `T2`
 
 ## Return Value
 
-[\(T2, string\)](https://docs.microsoft.com/ja-jp/dotnet/api/System.ValueTuple-2)
+[\(T2, string\)](https://docs.microsoft.com/dotnet/api/System.ValueTuple-2)
 
 
 

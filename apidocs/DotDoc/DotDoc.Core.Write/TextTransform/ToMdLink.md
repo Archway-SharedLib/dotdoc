@@ -1,4 +1,4 @@
-﻿# ToMdLink\(DotDoc\.Core\.Models\.IDocItem, string?, string?, bool\) Method
+﻿# ToMdLink\(IDocItem, string?, string?, bool\) Method
 
 namespace: [DotDoc\.Core\.Write](../../DotDoc.Core.Write.md)<br />
 assembly: [DotDoc](../../../DotDoc.md)

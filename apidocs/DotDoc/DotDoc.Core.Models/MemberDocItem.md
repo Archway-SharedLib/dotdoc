@@ -17,7 +17,7 @@ Implements: [DotDoc\.Core\.Models\.IMemberDocItem](../../DotDoc/DotDoc.Core.Mode
 
 | Name | Summary |
 |------|---------|
-| [MemberDocItem\(Microsoft\.CodeAnalysis\.ISymbol, Microsoft\.CodeAnalysis\.Compilation\)](./MemberDocItem/$ctor.md) |  |
+| [MemberDocItem\(ISymbol, Compilation\)](./MemberDocItem/$ctor.md) |  |
 
 ## Properties
 

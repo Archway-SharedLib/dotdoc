@@ -17,13 +17,13 @@ Implements: `DotDoc.Core.Write.IWriter`, [DotDoc\.Core\.Write\.IFileSystemOperat
 
 | Name | Summary |
 |------|---------|
-| [AdoWikiWriter\(System\.Collections\.Generic\.IEnumerable\<DotDoc\.Core\.Models\.IDocItem\>, DotDoc\.Core\.DotDocEngineOptions, DotDoc\.Core\.Write\.IFsModel, DotDoc\.Core\.ILogger\)](./AdoWikiWriter/$ctor.md) |  |
+| [AdoWikiWriter\(IEnumerable\<IDocItem\>, DotDocEngineOptions, IFsModel, ILogger\)](./AdoWikiWriter/$ctor.md) |  |
 
 ## Methods
 
 | Name | Summary |
 |------|---------|
 | [WriteAsync\(\)](./AdoWikiWriter/WriteAsync.md) |  |
-| [GetRelativeLink\(DotDoc\.Core\.Models\.IDocItem, DotDoc\.Core\.Models\.IDocItem\)](./AdoWikiWriter/GetRelativeLink.md) |  |
+| [GetRelativeLink\(IDocItem, IDocItem\)](./AdoWikiWriter/GetRelativeLink.md) |  |
 | [SafeFileOrDirectoryName\(string?\)](./AdoWikiWriter/SafeFileOrDirectoryName.md) |  |
 

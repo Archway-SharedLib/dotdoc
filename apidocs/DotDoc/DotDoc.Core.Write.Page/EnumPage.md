@@ -17,7 +17,7 @@ Implements: [DotDoc\.Core\.Write\.Page\.IPage](../../DotDoc/DotDoc.Core.Write.Pa
 
 | Name | Summary |
 |------|---------|
-| [EnumPage\(DotDoc\.Core\.Models\.EnumDocItem, DotDoc\.Core\.Write\.TextTransform, DotDoc\.Core\.Write\.DocItemContainer\)](./EnumPage/$ctor.md) |  |
+| [EnumPage\(EnumDocItem, TextTransform, DocItemContainer\)](./EnumPage/$ctor.md) |  |
 
 ## Methods
 

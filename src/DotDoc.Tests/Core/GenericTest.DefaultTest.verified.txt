@@ -52,7 +52,13 @@ Genericクラスです。
 public class GenericClass<T> where T : new();
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > GenericClass<T>
+## Type Parameters
+
+__T__ : `new()`
+
+Tの型です。
+
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > GenericClass<T>
 
 ## Methods
 
@@ -60,12 +66,6 @@ Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object)
 |------|---------|
 | [GenericMethod\<T1\>\(T\)](./GenericClass`1/GenericMethod.md) | T1です。 |
 | [GenericMethod\<T1, T2, T3\>\(T\)](./GenericClass`1/GenericMethod.md) | T３つです。 |
-
-## Type Parameters
-
-__T__ : `new()`
-
-Tの型です。
 
 
 

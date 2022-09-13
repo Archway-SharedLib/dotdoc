@@ -17,7 +17,7 @@ Implements: [DotDoc\.Core\.Models\.IDocItem](../../DotDoc/DotDoc.Core.Models/IDo
 
 | Name | Summary |
 |------|---------|
-| [DocItem\(Microsoft\.CodeAnalysis\.ISymbol, Microsoft\.CodeAnalysis\.Compilation\)](./DocItem/$ctor.md) |  |
+| [DocItem\(ISymbol, Compilation\)](./DocItem/$ctor.md) |  |
 
 ## Methods
 

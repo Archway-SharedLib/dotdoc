@@ -15,12 +15,12 @@ Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > Dot
 
 | Name | Summary |
 |------|---------|
-| [DotDocEngine\(DotDoc\.Core\.ILogger\)](./DotDocEngine/$ctor.md) |  |
+| [DotDocEngine\(ILogger\)](./DotDocEngine/$ctor.md) |  |
 
 ## Methods
 
 | Name | Summary |
 |------|---------|
-| [ReadAsync\(DotDoc\.Core\.DotDocEngineOptions, DotDoc\.Core\.Write\.IFsModel\)](./DotDocEngine/ReadAsync.md) |  |
-| [WriteAsync\(System\.Collections\.Generic\.IEnumerable\<DotDoc\.Core\.Models\.IDocItem\>, DotDoc\.Core\.DotDocEngineOptions, DotDoc\.Core\.Write\.IFsModel\)](./DotDocEngine/WriteAsync.md) |  |
+| [ReadAsync\(DotDocEngineOptions, IFsModel\)](./DotDocEngine/ReadAsync.md) |  |
+| [WriteAsync\(IEnumerable\<IDocItem\>, DotDocEngineOptions, IFsModel\)](./DotDocEngine/WriteAsync.md) |  |
 

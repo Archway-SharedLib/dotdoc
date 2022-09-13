@@ -17,7 +17,7 @@ Implements: [DotDoc\.Core\.Write\.IFileModel](../../DotDoc/DotDoc.Core.Write/IFi
 
 | Name | Summary |
 |------|---------|
-| [PhysicalFileModel\(System\.IO\.FileInfo\)](./PhysicalFileModel/$ctor.md) |  |
+| [PhysicalFileModel\(FileInfo\)](./PhysicalFileModel/$ctor.md) |  |
 
 ## Methods
 

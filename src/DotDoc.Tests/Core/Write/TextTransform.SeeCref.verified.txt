@@ -33,7 +33,7 @@ namespace Test;
 
 | Name | Summary |
 |------|---------|
-| [NormalClass](./Test/NormalClass.md) | [System\.String](https://docs.microsoft.com/ja-jp/dotnet/api/System.String) 参照です。[RefClass](../Assem/Test/RefClass.md) RefClassです。`List<T>` |
+| [NormalClass](./Test/NormalClass.md) | [System\.String](https://docs.microsoft.com/dotnet/api/System.String) 参照です。[RefClass](../Assem/Test/RefClass.md) RefClassです。`List<T>` |
 | [RefClass](./Test/RefClass.md) | 参照です。[NormalClass](../Assem/Test/NormalClass.md) RefClassです。`System.String.IsNullOrEmpty(System.String)` |
 
 
@@ -47,13 +47,13 @@ file name ./output/Assem/Test/NormalClass.md
 namespace: [Test](../Test.md)<br />
 assembly: [Assem](../../Assem.md)
 
-[System\.String](https://docs.microsoft.com/ja-jp/dotnet/api/System.String) 参照です。[RefClass](../../Assem/Test/RefClass.md) RefClassです。`List<T>`
+[System\.String](https://docs.microsoft.com/dotnet/api/System.String) 参照です。[RefClass](../../Assem/Test/RefClass.md) RefClassです。`List<T>`
 
 ```csharp
 public class NormalClass;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > NormalClass
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > NormalClass
 
 
 
@@ -72,6 +72,6 @@ assembly: [Assem](../../Assem.md)
 public class RefClass;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > RefClass
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > RefClass
 
 

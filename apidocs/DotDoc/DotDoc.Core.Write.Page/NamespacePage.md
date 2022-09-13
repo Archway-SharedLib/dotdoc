@@ -17,7 +17,7 @@ Implements: [DotDoc\.Core\.Write\.Page\.IPage](../../DotDoc/DotDoc.Core.Write.Pa
 
 | Name | Summary |
 |------|---------|
-| [NamespacePage\(DotDoc\.Core\.Models\.NamespaceDocItem, DotDoc\.Core\.Write\.TextTransform, DotDoc\.Core\.Write\.DocItemContainer\)](./NamespacePage/$ctor.md) |  |
+| [NamespacePage\(NamespaceDocItem, TextTransform, DocItemContainer\)](./NamespacePage/$ctor.md) |  |
 
 ## Methods
 

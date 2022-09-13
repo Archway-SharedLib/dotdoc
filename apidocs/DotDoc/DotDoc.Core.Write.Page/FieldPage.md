@@ -17,7 +17,7 @@ Implements: [DotDoc\.Core\.Write\.Page\.IPage](../../DotDoc/DotDoc.Core.Write.Pa
 
 | Name | Summary |
 |------|---------|
-| [FieldPage\(DotDoc\.Core\.Models\.FieldDocItem, DotDoc\.Core\.Write\.TextTransform, DotDoc\.Core\.Write\.DocItemContainer\)](./FieldPage/$ctor.md) |  |
+| [FieldPage\(FieldDocItem, TextTransform, DocItemContainer\)](./FieldPage/$ctor.md) |  |
 
 ## Methods
 

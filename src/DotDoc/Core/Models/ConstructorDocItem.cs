@@ -8,6 +8,8 @@ public class ConstructorDocItem : MemberDocItem
     {
         CSharpConstructorName = symbol.ContainingType.Name;
         Parameters.AddRange(SymbolUtil.RetrieveParameters(symbol.Parameters, XmlDocInfo, compilation));
+        
+        DisplayName = symbol.ToDisplayString(SymbolDisplayFormats.MethodDisplayNameFormat);
     }
 
     public List<ParameterDocItem> Parameters { get; } = new();

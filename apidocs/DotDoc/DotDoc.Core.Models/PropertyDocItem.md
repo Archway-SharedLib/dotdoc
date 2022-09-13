@@ -15,7 +15,7 @@ Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [Do
 
 | Name | Summary |
 |------|---------|
-| [PropertyDocItem\(Microsoft\.CodeAnalysis\.IPropertySymbol, Microsoft\.CodeAnalysis\.Compilation\)](./PropertyDocItem/$ctor.md) |  |
+| [PropertyDocItem\(IPropertySymbol, Compilation\)](./PropertyDocItem/$ctor.md) |  |
 
 ## Methods
 

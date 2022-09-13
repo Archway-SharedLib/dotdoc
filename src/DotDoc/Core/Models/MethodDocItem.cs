@@ -1,4 +1,6 @@
+using System.Text;
 using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
 
 namespace DotDoc.Core.Models;
 
@@ -16,6 +18,8 @@ public class MethodDocItem : MemberDocItem
             
         TypeParameters.AddRange( SymbolUtil.RetrieveTypeParameters(symbol.TypeParameters, XmlDocInfo, compilation));
         Parameters.AddRange(SymbolUtil.RetrieveParameters(symbol.Parameters, XmlDocInfo, compilation));
+        
+        DisplayName = symbol.ToDisplayString(SymbolDisplayFormats.MethodDisplayNameFormat);
     }
 
     public List<ParameterDocItem> Parameters { get; } = new();

@@ -33,7 +33,7 @@ namespace Test;
 
 | Name | Summary |
 |------|---------|
-| [NormalClass](./Test/NormalClass.md) | [System\.String](https://docs.microsoft.com/ja-jp/dotnet/api/System.String) 参照です。`RefClass` RefClassです。`List<T>` |
+| [NormalClass](./Test/NormalClass.md) | [System\.String](https://docs.microsoft.com/dotnet/api/System.String) 参照です。`RefClass` RefClassです。`List<T>` |
 
 
 
@@ -46,13 +46,13 @@ file name ./output/Assem/Test/NormalClass.md
 namespace: [Test](../Test.md)<br />
 assembly: [Assem](../../Assem.md)
 
-[System\.String](https://docs.microsoft.com/ja-jp/dotnet/api/System.String) 参照です。`RefClass` RefClassです。`List<T>`
+[System\.String](https://docs.microsoft.com/dotnet/api/System.String) 参照です。`RefClass` RefClassです。`List<T>`
 
 ```csharp
 public class NormalClass;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > NormalClass
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > NormalClass
 
 ## Methods
 
@@ -79,13 +79,13 @@ public string M(string name);
 
 ## Parameters
 
-__name__ : [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+__name__ : [string](https://docs.microsoft.com/dotnet/api/System.String)
 
 名前引数
 
 ## Return Value
 
-[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+[string](https://docs.microsoft.com/dotnet/api/System.String)
 
 
 

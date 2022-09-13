@@ -52,6 +52,6 @@ assembly: [Test](../../Test.md)
 public class Test3;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > Test3
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > Test3
 
 

@@ -17,7 +17,7 @@ Implements: [DotDoc\.Core\.ILogger](../../DotDoc/DotDoc.Core/ILogger.md)
 
 | Name | Summary |
 |------|---------|
-| [BaseLogger\(DotDoc\.Core\.LogLevel\)](./BaseLogger/$ctor.md) | 出力するログレベルを指定してインスタンスを生成します。 |
+| [BaseLogger\(LogLevel\)](./BaseLogger/$ctor.md) | 出力するログレベルを指定してインスタンスを生成します。 |
 
 ## Methods
 

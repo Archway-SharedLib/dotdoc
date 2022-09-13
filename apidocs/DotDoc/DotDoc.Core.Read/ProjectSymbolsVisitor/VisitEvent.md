@@ -1,4 +1,4 @@
-﻿# VisitEvent\(Microsoft\.CodeAnalysis\.IEventSymbol\) Method
+﻿# VisitEvent\(IEventSymbol\) Method
 
 namespace: [DotDoc\.Core\.Read](../../DotDoc.Core.Read.md)<br />
 assembly: [DotDoc](../../../DotDoc.md)

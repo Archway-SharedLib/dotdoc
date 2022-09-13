@@ -15,7 +15,7 @@ Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [Do
 
 | Name | Summary |
 |------|---------|
-| [FieldDocItem\(Microsoft\.CodeAnalysis\.IFieldSymbol, Microsoft\.CodeAnalysis\.Compilation\)](./FieldDocItem/$ctor.md) |  |
+| [FieldDocItem\(IFieldSymbol, Compilation\)](./FieldDocItem/$ctor.md) |  |
 
 ## Methods
 

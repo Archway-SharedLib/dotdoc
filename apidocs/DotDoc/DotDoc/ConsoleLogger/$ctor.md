@@ -10,7 +10,7 @@ assembly: [DotDoc](../../../DotDoc.md)
 | Name | Summary |
 |------|---------|
 | ConsoleLogger\(\) | デフォルトのログレベルを利用してインスタンスを初期化します。 |
-| ConsoleLogger\(DotDoc\.Core\.LogLevel\) | 出力するログレベルを指定してインスタンスを生成します。 |
+| ConsoleLogger\(LogLevel\) | 出力するログレベルを指定してインスタンスを生成します。 |
 
 ## ConsoleLogger\(\)
 
@@ -20,7 +20,7 @@ assembly: [DotDoc](../../../DotDoc.md)
 public ConsoleLogger();
 ```
 
-## ConsoleLogger\(DotDoc\.Core\.LogLevel\)
+## ConsoleLogger\(LogLevel\)
 
 出力するログレベルを指定してインスタンスを生成します。
 

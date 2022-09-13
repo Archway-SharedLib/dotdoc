@@ -15,7 +15,7 @@ Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [Do
 
 | Name | Summary |
 |------|---------|
-| [DelegateDocItem\(Microsoft\.CodeAnalysis\.INamedTypeSymbol, Microsoft\.CodeAnalysis\.Compilation\)](./DelegateDocItem/$ctor.md) |  |
+| [DelegateDocItem\(INamedTypeSymbol, Compilation\)](./DelegateDocItem/$ctor.md) |  |
 
 ## Methods
 

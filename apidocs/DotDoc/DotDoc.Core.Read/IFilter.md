@@ -13,5 +13,5 @@ public interface IFilter;
 
 | Name | Summary |
 |------|---------|
-| [Exclude\(Microsoft\.CodeAnalysis\.ISymbol, string\)](./IFilter/Exclude.md) |  |
+| [Exclude\(ISymbol, string\)](./IFilter/Exclude.md) |  |
 

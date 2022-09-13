@@ -17,7 +17,7 @@ Implements: [DotDoc\.Core\.Write\.Page\.IPage](../../DotDoc/DotDoc.Core.Write.Pa
 
 | Name | Summary |
 |------|---------|
-| [DelegatePage\(DotDoc\.Core\.Models\.DelegateDocItem, DotDoc\.Core\.Write\.TextTransform, DotDoc\.Core\.Write\.DocItemContainer\)](./DelegatePage/$ctor.md) |  |
+| [DelegatePage\(DelegateDocItem, TextTransform, DocItemContainer\)](./DelegatePage/$ctor.md) |  |
 
 ## Methods
 

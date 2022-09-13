@@ -15,7 +15,7 @@ Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [Do
 
 | Name | Summary |
 |------|---------|
-| [InterfaceDocItem\(Microsoft\.CodeAnalysis\.INamedTypeSymbol, Microsoft\.CodeAnalysis\.Compilation\)](./InterfaceDocItem/$ctor.md) |  |
+| [InterfaceDocItem\(INamedTypeSymbol, Compilation\)](./InterfaceDocItem/$ctor.md) |  |
 
 ## Methods
 

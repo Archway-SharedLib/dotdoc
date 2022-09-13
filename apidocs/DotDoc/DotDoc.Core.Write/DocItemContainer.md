@@ -15,7 +15,7 @@ Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > Doc
 
 | Name | Summary |
 |------|---------|
-| [DocItemContainer\(System\.Collections\.Generic\.IEnumerable\<DotDoc\.Core\.Models\.IDocItem\>, DotDoc\.Core\.ILogger\)](./DocItemContainer/$ctor.md) |  |
+| [DocItemContainer\(IEnumerable\<IDocItem\>, ILogger\)](./DocItemContainer/$ctor.md) |  |
 
 ## Methods
 
@@ -23,6 +23,6 @@ Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > Doc
 |------|---------|
 | [Get\(string\)](./DocItemContainer/Get.md) |  |
 | [Get\(string, string\)](./DocItemContainer/Get.md) |  |
-| [TryGet\(string, out DotDoc\.Core\.Models\.IDocItem?\)](./DocItemContainer/TryGet.md) |  |
-| [TryGet\(string, string, out DotDoc\.Core\.Models\.IDocItem?\)](./DocItemContainer/TryGet.md) |  |
+| [TryGet\(string, out IDocItem?\)](./DocItemContainer/TryGet.md) |  |
+| [TryGet\(string, string, out IDocItem?\)](./DocItemContainer/TryGet.md) |  |
 

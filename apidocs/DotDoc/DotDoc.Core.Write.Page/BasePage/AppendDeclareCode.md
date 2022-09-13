@@ -1,4 +1,4 @@
-﻿# AppendDeclareCode\(System\.Text\.StringBuilder\) Method
+﻿# AppendDeclareCode\(StringBuilder\) Method
 
 namespace: [DotDoc\.Core\.Write\.Page](../../DotDoc.Core.Write.Page.md)<br />
 assembly: [DotDoc](../../../DotDoc.md)

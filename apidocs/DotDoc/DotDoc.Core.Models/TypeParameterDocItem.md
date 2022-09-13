@@ -15,7 +15,7 @@ Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [Do
 
 | Name | Summary |
 |------|---------|
-| [TypeParameterDocItem\(Microsoft\.CodeAnalysis\.ITypeParameterSymbol, DotDoc\.Core\.Read\.XmlDocInfo, Microsoft\.CodeAnalysis\.Compilation\)](./TypeParameterDocItem/$ctor.md) |  |
+| [TypeParameterDocItem\(ITypeParameterSymbol, XmlDocInfo, Compilation\)](./TypeParameterDocItem/$ctor.md) |  |
 
 ## Methods
 

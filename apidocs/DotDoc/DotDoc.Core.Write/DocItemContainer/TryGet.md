@@ -9,10 +9,10 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 | Name | Summary |
 |------|---------|
-| TryGet\(string, out DotDoc\.Core\.Models\.IDocItem?\) |  |
-| TryGet\(string, string, out DotDoc\.Core\.Models\.IDocItem?\) |  |
+| TryGet\(string, out IDocItem?\) |  |
+| TryGet\(string, string, out IDocItem?\) |  |
 
-## TryGet\(string, out DotDoc\.Core\.Models\.IDocItem?\)
+## TryGet\(string, out IDocItem?\)
 
 
 
@@ -36,7 +36,7 @@ __item__ : [DotDoc\.Core\.Models\.IDocItem?](../../../DotDoc/DotDoc.Core.Models/
 
 
 
-## TryGet\(string, string, out DotDoc\.Core\.Models\.IDocItem?\)
+## TryGet\(string, string, out IDocItem?\)
 
 
 

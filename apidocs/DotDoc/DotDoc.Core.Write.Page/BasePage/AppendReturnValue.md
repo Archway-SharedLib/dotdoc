@@ -1,4 +1,4 @@
-﻿# AppendReturnValue\(System\.Text\.StringBuilder, DotDoc\.Core\.Models\.ReturnItem, int\) Method
+﻿# AppendReturnValue\(StringBuilder, ReturnItem, int\) Method
 
 namespace: [DotDoc\.Core\.Write\.Page](../../DotDoc.Core.Write.Page.md)<br />
 assembly: [DotDoc](../../../DotDoc.md)

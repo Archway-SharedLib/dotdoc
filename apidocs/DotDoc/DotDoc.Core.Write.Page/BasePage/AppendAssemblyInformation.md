@@ -1,4 +1,4 @@
-﻿# AppendAssemblyInformation\(System\.Text\.StringBuilder, string, int\) Method
+﻿# AppendAssemblyInformation\(StringBuilder, string, int\) Method
 
 namespace: [DotDoc\.Core\.Write\.Page](../../DotDoc.Core.Write.Page.md)<br />
 assembly: [DotDoc](../../../DotDoc.md)

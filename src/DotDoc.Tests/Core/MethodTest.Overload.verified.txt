@@ -52,7 +52,7 @@ assembly: [Test](../../Test.md)
 public class MethodOverload;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > MethodOverload
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > MethodOverload
 
 ## Methods
 
@@ -107,7 +107,7 @@ public void OverloadMethod(string str);
 
 ### Parameters
 
-__str__ : [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+__str__ : [string](https://docs.microsoft.com/dotnet/api/System.String)
 
 Strです。
 
@@ -121,7 +121,7 @@ public void OverloadMethod(int num);
 
 ### Parameters
 
-__num__ : [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
+__num__ : [int](https://docs.microsoft.com/dotnet/api/System.Int32)
 
 Numです。
 
@@ -135,17 +135,17 @@ public string OverloadMethod(int num ,string str);
 
 ### Parameters
 
-__num__ : [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
+__num__ : [int](https://docs.microsoft.com/dotnet/api/System.Int32)
 
 Numです。
 
-__str__ : [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+__str__ : [string](https://docs.microsoft.com/dotnet/api/System.String)
 
 Strです。
 
 ### Return Value
 
-[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+[string](https://docs.microsoft.com/dotnet/api/System.String)
 
 strです
 
@@ -169,13 +169,13 @@ __num__ : `T`
 
 Numです。
 
-__str__ : [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+__str__ : [string](https://docs.microsoft.com/dotnet/api/System.String)
 
 Strです。
 
 ### Return Value
 
-[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+[string](https://docs.microsoft.com/dotnet/api/System.String)
 
 strです
 

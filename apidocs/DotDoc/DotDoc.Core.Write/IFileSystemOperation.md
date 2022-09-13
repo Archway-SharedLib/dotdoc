@@ -14,5 +14,5 @@ public interface IFileSystemOperation;
 | Name | Summary |
 |------|---------|
 | [SafeFileOrDirectoryName\(string\)](./IFileSystemOperation/SafeFileOrDirectoryName.md) |  |
-| [GetRelativeLink\(DotDoc\.Core\.Models\.IDocItem, DotDoc\.Core\.Models\.IDocItem\)](./IFileSystemOperation/GetRelativeLink.md) |  |
+| [GetRelativeLink\(IDocItem, IDocItem\)](./IFileSystemOperation/GetRelativeLink.md) |  |
 

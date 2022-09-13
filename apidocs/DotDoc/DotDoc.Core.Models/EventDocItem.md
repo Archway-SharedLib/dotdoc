@@ -15,7 +15,7 @@ Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [Do
 
 | Name | Summary |
 |------|---------|
-| [EventDocItem\(Microsoft\.CodeAnalysis\.IEventSymbol, Microsoft\.CodeAnalysis\.Compilation\)](./EventDocItem/$ctor.md) |  |
+| [EventDocItem\(IEventSymbol, Compilation\)](./EventDocItem/$ctor.md) |  |
 
 ## Methods
 

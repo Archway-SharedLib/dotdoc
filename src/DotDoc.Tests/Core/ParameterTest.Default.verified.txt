@@ -52,7 +52,7 @@ assembly: [Assem](../../Assem.md)
 public static class ParameterCheck;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > ParameterCheck
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > ParameterCheck
 
 ## Methods
 
@@ -86,7 +86,7 @@ public static void M1(this int n);
 
 ## Parameters
 
-__n__ : [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
+__n__ : [int](https://docs.microsoft.com/dotnet/api/System.Int32)
 
 
 
@@ -109,7 +109,7 @@ public static void M2(params int[] values);
 
 ## Parameters
 
-__values__ : [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
+__values__ : [int](https://docs.microsoft.com/dotnet/api/System.Int32)
 
 
 
@@ -132,7 +132,7 @@ public static void M3(in int param = 1);
 
 ## Parameters
 
-__param__ : [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
+__param__ : [int](https://docs.microsoft.com/dotnet/api/System.Int32)
 
 
 
@@ -155,7 +155,7 @@ public static void M4(out int param);
 
 ## Parameters
 
-__param__ : [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
+__param__ : [int](https://docs.microsoft.com/dotnet/api/System.Int32)
 
 
 
@@ -178,7 +178,7 @@ public static void M5(ref int param);
 
 ## Parameters
 
-__param__ : [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
+__param__ : [int](https://docs.microsoft.com/dotnet/api/System.Int32)
 
 
 
@@ -201,7 +201,7 @@ public static void M6(int v = 1);
 
 ## Parameters
 
-__v__ : [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
+__v__ : [int](https://docs.microsoft.com/dotnet/api/System.Int32)
 
 
 
@@ -224,7 +224,7 @@ public static void M7(int? v);
 
 ## Parameters
 
-__v__ : [int?](https://docs.microsoft.com/ja-jp/dotnet/api/System.Nullable-1)
+__v__ : [int?](https://docs.microsoft.com/dotnet/api/System.Nullable-1)
 
 
 
@@ -247,7 +247,7 @@ public static void MultilineParameterComment(string p);
 
 ## Parameters
 
-__p__ : [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+__p__ : [string](https://docs.microsoft.com/dotnet/api/System.String)
 
 パラメーターのコメントです。
 

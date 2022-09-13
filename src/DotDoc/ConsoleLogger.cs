@@ -10,6 +10,31 @@ namespace DotDoc
     /// <summary>
     /// コンソールにログを出力します。
     /// </summary>
+    /// <remarks>
+    /// 通常、このクラスは直接インスタンス化せず、 <see cref="ILogger" /> 型を経由して利用します。
+    /// <para>
+    /// このクラスから出力されたメッセージの先頭にはログレベルが付与されます。
+    /// <code language="cs">
+    /// <![CDATA[
+    /// logger.Info("インフォメーションメッセージです。");
+    /// ]]>
+    /// </code>
+    /// <code language="">
+    /// <![CDATA[
+    /// Info: インフォメーションメッセージです。
+    /// ]]>
+    /// </code>
+    /// </para>
+    /// </remarks>
+    /// <example>
+    /// ログを出力するコード例を記載します。
+    /// <code language="cs">
+    /// <![CDATA[
+    /// var logger = new ConsoleLogger(LogLevel.Error);
+    /// logger.Info("インフォメーションメッセージ");
+    /// ]]>
+    /// </code>
+    /// </example>
     public class ConsoleLogger : BaseLogger
     {
         /// <summary>

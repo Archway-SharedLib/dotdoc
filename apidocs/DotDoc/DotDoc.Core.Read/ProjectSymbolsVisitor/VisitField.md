@@ -1,4 +1,4 @@
-﻿# VisitField\(Microsoft\.CodeAnalysis\.IFieldSymbol\) Method
+﻿# VisitField\(IFieldSymbol\) Method
 
 namespace: [DotDoc\.Core\.Read](../../DotDoc.Core.Read.md)<br />
 assembly: [DotDoc](../../../DotDoc.md)

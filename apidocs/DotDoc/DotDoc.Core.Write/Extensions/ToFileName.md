@@ -1,4 +1,4 @@
-﻿# ToFileName\(DotDoc\.Core\.Models\.IDocItem\) Method
+﻿# ToFileName\(IDocItem\) Method
 
 namespace: [DotDoc\.Core\.Write](../../DotDoc.Core.Write.md)<br />
 assembly: [DotDoc](../../../DotDoc.md)

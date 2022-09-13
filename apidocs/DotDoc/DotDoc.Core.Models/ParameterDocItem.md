@@ -15,7 +15,7 @@ Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [Do
 
 | Name | Summary |
 |------|---------|
-| [ParameterDocItem\(Microsoft\.CodeAnalysis\.IParameterSymbol, DotDoc\.Core\.Read\.XmlDocInfo, Microsoft\.CodeAnalysis\.Compilation\)](./ParameterDocItem/$ctor.md) |  |
+| [ParameterDocItem\(IParameterSymbol, XmlDocInfo, Compilation\)](./ParameterDocItem/$ctor.md) |  |
 
 ## Methods
 

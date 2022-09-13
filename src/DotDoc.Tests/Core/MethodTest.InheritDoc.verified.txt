@@ -92,9 +92,9 @@ BaseInterface a 引数です
 
 ## Return Value
 
-[int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
+[int](https://docs.microsoft.com/dotnet/api/System.Int32)
 
-[System\.Int32](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
+[System\.Int32](https://docs.microsoft.com/dotnet/api/System.Int32)
 
 
 
@@ -113,7 +113,7 @@ assembly: [Test](../../Test.md)
 public class BaseType;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > BaseType
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > BaseType
 
 ## Methods
 
@@ -140,17 +140,17 @@ public virtual string M(string a ,int b);
 
 ## Parameters
 
-__a__ : [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+__a__ : [string](https://docs.microsoft.com/dotnet/api/System.String)
 
 BaseType a 引数です
 
-__b__ : [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
+__b__ : [int](https://docs.microsoft.com/dotnet/api/System.Int32)
 
 Baseype b 引数です
 
 ## Return Value
 
-[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+[string](https://docs.microsoft.com/dotnet/api/System.String)
 
 [BaseType](../../../Test/Test/BaseType.md) の [M\(string, int\)](../../../Test/Test/BaseType/M.md) の戻り値です。
 
@@ -171,7 +171,7 @@ assembly: [Test](../../Test.md)
 public class InheritDoc;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > [Test\.BaseType](../../Test/Test/BaseType.md) > InheritDoc
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [Test\.BaseType](../../Test/Test/BaseType.md) > InheritDoc
 
 ## Methods
 
@@ -198,17 +198,17 @@ public override string M(string a ,int b);
 
 ## Parameters
 
-__a__ : [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+__a__ : [string](https://docs.microsoft.com/dotnet/api/System.String)
 
 BaseType a 引数です
 
-__b__ : [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
+__b__ : [int](https://docs.microsoft.com/dotnet/api/System.Int32)
 
 Baseype b 引数です
 
 ## Return Value
 
-[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+[string](https://docs.microsoft.com/dotnet/api/System.String)
 
 [BaseType](../../../Test/Test/BaseType.md) の [M\(string, int\)](../../../Test/Test/BaseType/M.md) の戻り値です。
 
@@ -229,7 +229,7 @@ assembly: [Test](../../Test.md)
 public class NoInheritDoc;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > NoInheritDoc
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > NoInheritDoc
 
 ## Methods
 
@@ -256,17 +256,17 @@ public string M(string a ,int b);
 
 ## Parameters
 
-__a__ : [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+__a__ : [string](https://docs.microsoft.com/dotnet/api/System.String)
 
 BaseType a 引数です
 
-__b__ : [int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
+__b__ : [int](https://docs.microsoft.com/dotnet/api/System.Int32)
 
 Baseype b 引数です
 
 ## Return Value
 
-[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+[string](https://docs.microsoft.com/dotnet/api/System.String)
 
 [BaseType](../../../Test/Test/BaseType.md) の [M\(string, int\)](../../../Test/Test/BaseType/M.md) の戻り値です。
 
@@ -287,7 +287,7 @@ assembly: [Test](../../Test.md)
 public class BaseImplDoc;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > BaseImplDoc
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > BaseImplDoc
 
 Implements: [Test\.BaseInterface](../../Test/Test/BaseInterface.md)
 
@@ -322,8 +322,8 @@ BaseInterface a 引数です
 
 ## Return Value
 
-[int](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
+[int](https://docs.microsoft.com/dotnet/api/System.Int32)
 
-[System\.Int32](https://docs.microsoft.com/ja-jp/dotnet/api/System.Int32)
+[System\.Int32](https://docs.microsoft.com/dotnet/api/System.Int32)
 
 

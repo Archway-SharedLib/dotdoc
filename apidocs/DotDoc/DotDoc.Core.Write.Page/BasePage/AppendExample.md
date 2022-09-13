@@ -1,4 +1,4 @@
-﻿# AppendExample\(System\.Text\.StringBuilder, DotDoc\.Core\.Models\.IDocItem, DotDoc\.Core\.Models\.IDocItem, int\) Method
+﻿# AppendExample\(StringBuilder, IDocItem, IDocItem, int\) Method
 
 namespace: [DotDoc\.Core\.Write\.Page](../../DotDoc.Core.Write.Page.md)<br />
 assembly: [DotDoc](../../../DotDoc.md)

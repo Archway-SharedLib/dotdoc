@@ -56,7 +56,7 @@ NormalClassです。
 public class NormalClass;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > NormalClass
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > NormalClass
 
 ## Example
 
@@ -101,7 +101,7 @@ StaticなClassです。
 public static class StaticClass;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > StaticClass
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > StaticClass
 
 
 
@@ -120,7 +120,7 @@ AbstractなClassです。
 public abstract class AbstractClass;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > AbstractClass
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > AbstractClass
 
 
 
@@ -139,7 +139,7 @@ SealedなClassです。
 public sealed class SealedClass;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > SealedClass
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > SealedClass
 
 
 
@@ -158,6 +158,6 @@ assembly: [Assem](../../Assem.md)
 public class InheritClass;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > [Test\.AbstractClass](../../Assem/Test/AbstractClass.md) > InheritClass
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [Test\.AbstractClass](../../Assem/Test/AbstractClass.md) > InheritClass
 
 

@@ -17,7 +17,7 @@ Implements: [DotDoc\.Core\.Models\.IMemberDocItem](../../DotDoc/DotDoc.Core.Mode
 
 | Name | Summary |
 |------|---------|
-| [OverloadMethodDocItem\(System\.Collections\.Generic\.IList\<DotDoc\.Core\.Models\.MethodDocItem\>\)](./OverloadMethodDocItem/$ctor.md) |  |
+| [OverloadMethodDocItem\(IList\<MethodDocItem\>\)](./OverloadMethodDocItem/$ctor.md) |  |
 
 ## Methods
 

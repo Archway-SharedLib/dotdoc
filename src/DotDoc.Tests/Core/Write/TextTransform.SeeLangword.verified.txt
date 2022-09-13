@@ -53,7 +53,7 @@ assembly: [Assem](../../Assem.md)
 public class NormalClass;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > NormalClass
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > NormalClass
 
 
 
@@ -72,6 +72,6 @@ assembly: [Assem](../../Assem.md)
 public class RefClass;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > RefClass
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > RefClass
 
 

@@ -1,4 +1,4 @@
-﻿# AppendFieldItemList\(System\.Text\.StringBuilder, System\.Collections\.Generic\.IEnumerable\<DotDoc\.Core\.Models\.IDocItem\>, int, bool\) Method
+﻿# AppendFieldItemList\(StringBuilder, IEnumerable\<IDocItem\>, int, bool\) Method
 
 namespace: [DotDoc\.Core\.Write\.Page](../../DotDoc.Core.Write.Page.md)<br />
 assembly: [DotDoc](../../../DotDoc.md)

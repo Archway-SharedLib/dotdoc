@@ -53,17 +53,17 @@ assembly: [Test](../../Test.md)
 public delegate string PublicDelegate(string value);
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > [System\.Delegate](https://docs.microsoft.com/ja-jp/dotnet/api/System.Delegate) > [System\.MulticastDelegate](https://docs.microsoft.com/ja-jp/dotnet/api/System.MulticastDelegate) > PublicDelegate
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [System\.Delegate](https://docs.microsoft.com/dotnet/api/System.Delegate) > [System\.MulticastDelegate](https://docs.microsoft.com/dotnet/api/System.MulticastDelegate) > PublicDelegate
 
 ## Parameters
 
-__value__ : [string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+__value__ : [string](https://docs.microsoft.com/dotnet/api/System.String)
 
 引数です。
 
 ## Return Value
 
-[string](https://docs.microsoft.com/ja-jp/dotnet/api/System.String)
+[string](https://docs.microsoft.com/dotnet/api/System.String)
 
 戻り値です
 
@@ -84,7 +84,7 @@ assembly: [Test](../../Test.md)
 public delegate T PublicDelegate<T>(in T value) where T : class;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/ja-jp/dotnet/api/System.Object) > [System\.Delegate](https://docs.microsoft.com/ja-jp/dotnet/api/System.Delegate) > [System\.MulticastDelegate](https://docs.microsoft.com/ja-jp/dotnet/api/System.MulticastDelegate) > PublicDelegate<T>
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [System\.Delegate](https://docs.microsoft.com/dotnet/api/System.Delegate) > [System\.MulticastDelegate](https://docs.microsoft.com/dotnet/api/System.MulticastDelegate) > PublicDelegate<T>
 
 ## Type Parameters
 

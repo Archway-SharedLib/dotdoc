@@ -17,7 +17,7 @@ Implements: [DotDoc\.Core\.Write\.Page\.IPage](../../DotDoc/DotDoc.Core.Write.Pa
 
 | Name | Summary |
 |------|---------|
-| [ConstructorPage\(DotDoc\.Core\.Models\.OverloadConstructorDocItem, DotDoc\.Core\.Write\.TextTransform, DotDoc\.Core\.Write\.DocItemContainer\)](./ConstructorPage/$ctor.md) |  |
+| [ConstructorPage\(OverloadConstructorDocItem, TextTransform, DocItemContainer\)](./ConstructorPage/$ctor.md) |  |
 
 ## Methods
 

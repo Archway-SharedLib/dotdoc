@@ -15,7 +15,7 @@ Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > Ret
 
 | Name | Summary |
 |------|---------|
-| [ReturnItem\(Microsoft\.CodeAnalysis\.IMethodSymbol\)](./ReturnItem/$ctor.md) |  |
+| [ReturnItem\(IMethodSymbol\)](./ReturnItem/$ctor.md) |  |
 
 ## Methods
 
