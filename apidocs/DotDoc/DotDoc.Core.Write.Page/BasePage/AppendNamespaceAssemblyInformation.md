@@ -6,12 +6,12 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-protected virtual void AppendNamespaceAssemblyInformation(System.Text.StringBuilder sb ,string assemblyId ,string namespaceId ,int indent = 1);
+protected virtual void AppendNamespaceAssemblyInformation(StringBuilder sb ,string assemblyId ,string namespaceId ,int indent = 1);
 ```
 
 ## Parameters
 
-__sb__ : [System\.Text\.StringBuilder](https://docs.microsoft.com/dotnet/api/System.Text.StringBuilder)
+__sb__ : [StringBuilder](https://docs.microsoft.com/dotnet/api/System.Text.StringBuilder)
 
 
 

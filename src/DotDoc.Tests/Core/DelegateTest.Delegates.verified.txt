@@ -53,7 +53,7 @@ assembly: [Test](../../Test.md)
 public delegate string PublicDelegate(string value);
 ```
 
-Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [System\.Delegate](https://docs.microsoft.com/dotnet/api/System.Delegate) > [System\.MulticastDelegate](https://docs.microsoft.com/dotnet/api/System.MulticastDelegate) > PublicDelegate
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [Delegate](https://docs.microsoft.com/dotnet/api/System.Delegate) > [MulticastDelegate](https://docs.microsoft.com/dotnet/api/System.MulticastDelegate) > PublicDelegate
 
 ## Parameters
 
@@ -84,7 +84,7 @@ assembly: [Test](../../Test.md)
 public delegate T PublicDelegate<T>(in T value) where T : class;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [System\.Delegate](https://docs.microsoft.com/dotnet/api/System.Delegate) > [System\.MulticastDelegate](https://docs.microsoft.com/dotnet/api/System.MulticastDelegate) > PublicDelegate<T>
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [Delegate](https://docs.microsoft.com/dotnet/api/System.Delegate) > [MulticastDelegate](https://docs.microsoft.com/dotnet/api/System.MulticastDelegate) > PublicDelegate<T>
 
 ## Type Parameters
 

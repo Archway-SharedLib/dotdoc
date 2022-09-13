@@ -6,10 +6,10 @@ assembly: [DotDoc](../../../DotDoc.md)
 ログレベルを指定します。
 
 ```csharp
-public DotDoc.Core.LogLevel LogLevel { get; init; };
+public LogLevel LogLevel { get; init; };
 ```
 
 ## Property Value
 
-[DotDoc\.Core\.LogLevel](../../../DotDoc/DotDoc.Core/LogLevel.md)
+[LogLevel](../../../DotDoc/DotDoc.Core/LogLevel.md)
 

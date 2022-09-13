@@ -6,10 +6,10 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-public System.Collections.Generic.IEnumerable<DotDoc.Core.Models.ConstructorDocItem> Constructors { get; };
+public IEnumerable<ConstructorDocItem> Constructors { get; };
 ```
 
 ## Property Value
 
-[System\.Collections\.Generic\.IEnumerable\<DotDoc\.Core\.Models\.ConstructorDocItem\>](https://docs.microsoft.com/dotnet/api/System.Collections.Generic.IEnumerable-1)
+[IEnumerable\<ConstructorDocItem\>](https://docs.microsoft.com/dotnet/api/System.Collections.Generic.IEnumerable-1)
 

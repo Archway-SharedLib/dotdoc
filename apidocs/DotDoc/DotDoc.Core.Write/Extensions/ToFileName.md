@@ -6,12 +6,12 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-public static string? ToFileName(this DotDoc.Core.Models.IDocItem source);
+public static string? ToFileName(this IDocItem source);
 ```
 
 ## Parameters
 
-__source__ : [DotDoc\.Core\.Models\.IDocItem](../../../DotDoc/DotDoc.Core.Models/IDocItem.md)
+__source__ : [IDocItem](../../../DotDoc/DotDoc.Core.Models/IDocItem.md)
 
 
 

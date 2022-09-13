@@ -6,12 +6,12 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-protected virtual void AppendAssemblyInformation(System.Text.StringBuilder sb ,string assemblyId ,int indent = 1);
+protected virtual void AppendAssemblyInformation(StringBuilder sb ,string assemblyId ,int indent = 1);
 ```
 
 ## Parameters
 
-__sb__ : [System\.Text\.StringBuilder](https://docs.microsoft.com/dotnet/api/System.Text.StringBuilder)
+__sb__ : [StringBuilder](https://docs.microsoft.com/dotnet/api/System.Text.StringBuilder)
 
 
 

@@ -6,10 +6,10 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-public DotDoc.Core.Accessibility Accessiblity { get; set; };
+public Accessibility Accessiblity { get; set; };
 ```
 
 ## Property Value
 
-[DotDoc\.Core\.Accessibility](../../../DotDoc/DotDoc.Core/Accessibility.md)
+[Accessibility](../../../DotDoc/DotDoc.Core/Accessibility.md)
 

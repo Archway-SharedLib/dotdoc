@@ -6,16 +6,16 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-public NamespaceDocItem(Microsoft.CodeAnalysis.INamespaceSymbol symbol ,Microsoft.CodeAnalysis.Compilation compilation);
+public NamespaceDocItem(INamespaceSymbol symbol ,Compilation compilation);
 ```
 
 ## Parameters
 
-__symbol__ : [Microsoft\.CodeAnalysis\.INamespaceSymbol](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.INamespaceSymbol)
+__symbol__ : [INamespaceSymbol](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.INamespaceSymbol)
 
 
 
-__compilation__ : [Microsoft\.CodeAnalysis\.Compilation](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.Compilation)
+__compilation__ : [Compilation](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.Compilation)
 
 
 

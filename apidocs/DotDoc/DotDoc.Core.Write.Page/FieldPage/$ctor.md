@@ -6,20 +6,20 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-public FieldPage(DotDoc.Core.Models.FieldDocItem item ,DotDoc.Core.Write.TextTransform transform ,DotDoc.Core.Write.DocItemContainer itemContainer);
+public FieldPage(FieldDocItem item ,TextTransform transform ,DocItemContainer itemContainer);
 ```
 
 ## Parameters
 
-__item__ : [DotDoc\.Core\.Models\.FieldDocItem](../../../DotDoc/DotDoc.Core.Models/FieldDocItem.md)
+__item__ : [FieldDocItem](../../../DotDoc/DotDoc.Core.Models/FieldDocItem.md)
 
 
 
-__transform__ : [DotDoc\.Core\.Write\.TextTransform](../../../DotDoc/DotDoc.Core.Write/TextTransform.md)
+__transform__ : [TextTransform](../../../DotDoc/DotDoc.Core.Write/TextTransform.md)
 
 
 
-__itemContainer__ : [DotDoc\.Core\.Write\.DocItemContainer](../../../DotDoc/DotDoc.Core.Write/DocItemContainer.md)
+__itemContainer__ : [DocItemContainer](../../../DotDoc/DotDoc.Core.Write/DocItemContainer.md)
 
 
 

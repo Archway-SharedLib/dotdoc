@@ -118,11 +118,11 @@ assembly: [Assem](../../../Assem.md)
 List\{T\}です。
 
 ```csharp
-public System.Collections.Generic.List<System.Collections.Generic.List<string>> NamesList { get; set; };
+public List<List<string>> NamesList { get; set; };
 ```
 
 ## Property Value
 
-[System\.Collections\.Generic\.List\<System\.Collections\.Generic\.List\<string\>\>](https://docs.microsoft.com/dotnet/api/System.Collections.Generic.List-1)
+[List\<List\<string\>\>](https://docs.microsoft.com/dotnet/api/System.Collections.Generic.List-1)
 
 

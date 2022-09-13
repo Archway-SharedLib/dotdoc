@@ -6,10 +6,10 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-public System.Collections.Generic.List<DotDoc.Core.Read.XmlDocNameTextInfo>? Parameters { get; set; };
+public List<XmlDocNameTextInfo>? Parameters { get; set; };
 ```
 
 ## Property Value
 
-[System\.Collections\.Generic\.List\<DotDoc\.Core\.Read\.XmlDocNameTextInfo\>?](https://docs.microsoft.com/dotnet/api/System.Collections.Generic.List-1)
+[List\<XmlDocNameTextInfo\>?](https://docs.microsoft.com/dotnet/api/System.Collections.Generic.List-1)
 

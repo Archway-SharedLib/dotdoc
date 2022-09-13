@@ -6,10 +6,10 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-protected Microsoft.CodeAnalysis.Compilation Compilation { get; };
+protected Compilation Compilation { get; };
 ```
 
 ## Property Value
 
-[Microsoft\.CodeAnalysis\.Compilation](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.Compilation)
+[Compilation](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.Compilation)
 

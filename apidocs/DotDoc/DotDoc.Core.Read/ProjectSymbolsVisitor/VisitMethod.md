@@ -6,18 +6,18 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-public override DotDoc.Core.Models.IDocItem? VisitMethod(Microsoft.CodeAnalysis.IMethodSymbol symbol);
+public override IDocItem? VisitMethod(IMethodSymbol symbol);
 ```
 
 ## Parameters
 
-__symbol__ : [Microsoft\.CodeAnalysis\.IMethodSymbol](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.IMethodSymbol)
+__symbol__ : [IMethodSymbol](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.IMethodSymbol)
 
 
 
 ## Return Value
 
-[DotDoc\.Core\.Models\.IDocItem?](../../../DotDoc/DotDoc.Core.Models/IDocItem.md)
+[IDocItem?](../../../DotDoc/DotDoc.Core.Models/IDocItem.md)
 
 
 

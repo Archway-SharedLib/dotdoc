@@ -6,10 +6,10 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-public System.Collections.Generic.List<DotDoc.Core.Models.TypeParameterDocItem> TypeParameters { get; };
+public List<TypeParameterDocItem> TypeParameters { get; };
 ```
 
 ## Property Value
 
-[System\.Collections\.Generic\.List\<DotDoc\.Core\.Models\.TypeParameterDocItem\>](https://docs.microsoft.com/dotnet/api/System.Collections.Generic.List-1)
+[List\<TypeParameterDocItem\>](https://docs.microsoft.com/dotnet/api/System.Collections.Generic.List-1)
 

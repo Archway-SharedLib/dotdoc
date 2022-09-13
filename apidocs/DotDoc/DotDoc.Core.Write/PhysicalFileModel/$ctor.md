@@ -6,12 +6,12 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-public PhysicalFileModel(System.IO.FileInfo fileInfo);
+public PhysicalFileModel(FileInfo fileInfo);
 ```
 
 ## Parameters
 
-__fileInfo__ : [System\.IO\.FileInfo](https://docs.microsoft.com/dotnet/api/System.IO.FileInfo)
+__fileInfo__ : [FileInfo](https://docs.microsoft.com/dotnet/api/System.IO.FileInfo)
 
 
 

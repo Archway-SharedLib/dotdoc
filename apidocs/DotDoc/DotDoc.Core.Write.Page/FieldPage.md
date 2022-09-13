@@ -9,9 +9,9 @@ assembly: [DotDoc](../../DotDoc.md)
 public class FieldPage;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [DotDoc\.Core\.Write\.Page\.BasePage](../../DotDoc/DotDoc.Core.Write.Page/BasePage.md) > FieldPage
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [BasePage](../../DotDoc/DotDoc.Core.Write.Page/BasePage.md) > FieldPage
 
-Implements: [DotDoc\.Core\.Write\.Page\.IPage](../../DotDoc/DotDoc.Core.Write.Page/IPage.md)
+Implements: [IPage](../../DotDoc/DotDoc.Core.Write.Page/IPage.md)
 
 ## Constructors
 

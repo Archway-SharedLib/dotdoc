@@ -6,10 +6,10 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-public System.Collections.Generic.IList<DotDoc.Core.Models.TypeInfo> ConstraintTypes { get; };
+public IList<TypeInfo> ConstraintTypes { get; };
 ```
 
 ## Property Value
 
-[System\.Collections\.Generic\.IList\<DotDoc\.Core\.Models\.TypeInfo\>](https://docs.microsoft.com/dotnet/api/System.Collections.Generic.IList-1)
+[IList\<TypeInfo\>](https://docs.microsoft.com/dotnet/api/System.Collections.Generic.IList-1)
 

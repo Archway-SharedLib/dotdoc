@@ -6,12 +6,12 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-public ReturnItem(Microsoft.CodeAnalysis.IMethodSymbol symbol);
+public ReturnItem(IMethodSymbol symbol);
 ```
 
 ## Parameters
 
-__symbol__ : [Microsoft\.CodeAnalysis\.IMethodSymbol](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.IMethodSymbol)
+__symbol__ : [IMethodSymbol](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.IMethodSymbol)
 
 
 

@@ -6,20 +6,20 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-public EnumPage(DotDoc.Core.Models.EnumDocItem item ,DotDoc.Core.Write.TextTransform transform ,DotDoc.Core.Write.DocItemContainer itemContainer);
+public EnumPage(EnumDocItem item ,TextTransform transform ,DocItemContainer itemContainer);
 ```
 
 ## Parameters
 
-__item__ : [DotDoc\.Core\.Models\.EnumDocItem](../../../DotDoc/DotDoc.Core.Models/EnumDocItem.md)
+__item__ : [EnumDocItem](../../../DotDoc/DotDoc.Core.Models/EnumDocItem.md)
 
 
 
-__transform__ : [DotDoc\.Core\.Write\.TextTransform](../../../DotDoc/DotDoc.Core.Write/TextTransform.md)
+__transform__ : [TextTransform](../../../DotDoc/DotDoc.Core.Write/TextTransform.md)
 
 
 
-__itemContainer__ : [DotDoc\.Core\.Write\.DocItemContainer](../../../DotDoc/DotDoc.Core.Write/DocItemContainer.md)
+__itemContainer__ : [DocItemContainer](../../../DotDoc/DotDoc.Core.Write/DocItemContainer.md)
 
 
 

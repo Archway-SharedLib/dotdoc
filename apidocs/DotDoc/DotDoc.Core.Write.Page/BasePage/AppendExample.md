@@ -6,20 +6,20 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-protected virtual void AppendExample(System.Text.StringBuilder sb ,DotDoc.Core.Models.IDocItem root ,DotDoc.Core.Models.IDocItem target ,int depth = 2);
+protected virtual void AppendExample(StringBuilder sb ,IDocItem root ,IDocItem target ,int depth = 2);
 ```
 
 ## Parameters
 
-__sb__ : [System\.Text\.StringBuilder](https://docs.microsoft.com/dotnet/api/System.Text.StringBuilder)
+__sb__ : [StringBuilder](https://docs.microsoft.com/dotnet/api/System.Text.StringBuilder)
 
 
 
-__root__ : [DotDoc\.Core\.Models\.IDocItem](../../../DotDoc/DotDoc.Core.Models/IDocItem.md)
+__root__ : [IDocItem](../../../DotDoc/DotDoc.Core.Models/IDocItem.md)
 
 
 
-__target__ : [DotDoc\.Core\.Models\.IDocItem](../../../DotDoc/DotDoc.Core.Models/IDocItem.md)
+__target__ : [IDocItem](../../../DotDoc/DotDoc.Core.Models/IDocItem.md)
 
 
 

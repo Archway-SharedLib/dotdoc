@@ -6,10 +6,10 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-public System.Collections.Generic.List<DotDoc.Core.Models.NamespaceDocItem> Namespaces { get; };
+public List<NamespaceDocItem> Namespaces { get; };
 ```
 
 ## Property Value
 
-[System\.Collections\.Generic\.List\<DotDoc\.Core\.Models\.NamespaceDocItem\>](https://docs.microsoft.com/dotnet/api/System.Collections.Generic.List-1)
+[List\<NamespaceDocItem\>](https://docs.microsoft.com/dotnet/api/System.Collections.Generic.List-1)
 

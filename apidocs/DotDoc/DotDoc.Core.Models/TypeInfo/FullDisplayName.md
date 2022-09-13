@@ -1,4 +1,4 @@
-﻿# ReturnValue Property
+﻿# FullDisplayName Property
 
 namespace: [DotDoc\.Core\.Models](../../DotDoc.Core.Models.md)<br />
 assembly: [DotDoc](../../../DotDoc.md)
@@ -6,10 +6,10 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-public ReturnItem? ReturnValue { get; };
+public string FullDisplayName { get; set; };
 ```
 
 ## Property Value
 
-[ReturnItem?](../../../DotDoc/DotDoc.Core.Models/ReturnItem.md)
+[string](https://docs.microsoft.com/dotnet/api/System.String)
 

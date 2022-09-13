@@ -6,16 +6,16 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-protected virtual void AppendFieldItemList(System.Text.StringBuilder sb ,System.Collections.Generic.IEnumerable<DotDoc.Core.Models.IDocItem> docItems ,int depth = 2 ,bool needFieldLInk = True);
+protected virtual void AppendFieldItemList(StringBuilder sb ,IEnumerable<IDocItem> docItems ,int depth = 2 ,bool needFieldLInk = True);
 ```
 
 ## Parameters
 
-__sb__ : [System\.Text\.StringBuilder](https://docs.microsoft.com/dotnet/api/System.Text.StringBuilder)
+__sb__ : [StringBuilder](https://docs.microsoft.com/dotnet/api/System.Text.StringBuilder)
 
 
 
-__docItems__ : [System\.Collections\.Generic\.IEnumerable\<DotDoc\.Core\.Models\.IDocItem\>](https://docs.microsoft.com/dotnet/api/System.Collections.Generic.IEnumerable-1)
+__docItems__ : [IEnumerable\<IDocItem\>](https://docs.microsoft.com/dotnet/api/System.Collections.Generic.IEnumerable-1)
 
 
 

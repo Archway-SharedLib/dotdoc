@@ -6,16 +6,16 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-public string GetRelativeLink(DotDoc.Core.Models.IDocItem source ,DotDoc.Core.Models.IDocItem dest);
+public string GetRelativeLink(IDocItem source ,IDocItem dest);
 ```
 
 ## Parameters
 
-__source__ : [DotDoc\.Core\.Models\.IDocItem](../../../DotDoc/DotDoc.Core.Models/IDocItem.md)
+__source__ : [IDocItem](../../../DotDoc/DotDoc.Core.Models/IDocItem.md)
 
 
 
-__dest__ : [DotDoc\.Core\.Models\.IDocItem](../../../DotDoc/DotDoc.Core.Models/IDocItem.md)
+__dest__ : [IDocItem](../../../DotDoc/DotDoc.Core.Models/IDocItem.md)
 
 
 

@@ -6,7 +6,7 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-public static DotDoc.Core.DotDocEngineOptions Default(string inputFileName);
+public static DotDocEngineOptions Default(string inputFileName);
 ```
 
 ## Parameters
@@ -17,7 +17,7 @@ __inputFileName__ : [string](https://docs.microsoft.com/dotnet/api/System.String
 
 ## Return Value
 
-[DotDoc\.Core\.DotDocEngineOptions](../../../DotDoc/DotDoc.Core/DotDocEngineOptions.md)
+[DotDocEngineOptions](../../../DotDoc/DotDoc.Core/DotDocEngineOptions.md)
 
 
 

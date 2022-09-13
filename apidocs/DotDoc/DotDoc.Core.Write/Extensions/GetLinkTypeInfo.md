@@ -6,18 +6,18 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-public static DotDoc.Core.Models.TypeInfo GetLinkTypeInfo(this DotDoc.Core.Models.TypeInfo info);
+public static TypeInfo GetLinkTypeInfo(this TypeInfo info);
 ```
 
 ## Parameters
 
-__info__ : [DotDoc\.Core\.Models\.TypeInfo](../../../DotDoc/DotDoc.Core.Models/TypeInfo.md)
+__info__ : [TypeInfo](../../../DotDoc/DotDoc.Core.Models/TypeInfo.md)
 
 
 
 ## Return Value
 
-[DotDoc\.Core\.Models\.TypeInfo](../../../DotDoc/DotDoc.Core.Models/TypeInfo.md)
+[TypeInfo](../../../DotDoc/DotDoc.Core.Models/TypeInfo.md)
 
 
 

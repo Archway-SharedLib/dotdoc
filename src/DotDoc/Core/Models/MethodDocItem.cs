@@ -45,14 +45,14 @@ public class MethodDocItem : MemberDocItem
         if(IsStatic) modifiersText.Add("static ");
         if(IsOverride) modifiersText.Add("override ");
         if(IsVirtual) modifiersText.Add("virtual ");
-
+        
         var returnValueText = ReturnValue is not null ? ReturnValue.ToDeclareCSharpCode() : "void";
         var typeParamsText = TypeParameters.OrEmpty().Select(p => p.Name)
             .ConcatWith(" ,")
             .SurroundsWith("<", ">", v => !string.IsNullOrEmpty(v));
         var paramsText = Parameters.OrEmpty().Select(p => p.ToDeclareCSharpCode())
             .ConcatWith(" ,");
-
+        
         var result = $"{Accessiblity.ToCSharpText()} {string.Join("", modifiersText)}{returnValueText} {Name}{typeParamsText}({paramsText})";
         
         var typeParam = string.Join(" ", TypeParameters.Select(tp => tp.ToDeclareCSharpCode())).Trim();

@@ -6,18 +6,18 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-public override DotDoc.Core.Models.IDocItem? VisitField(Microsoft.CodeAnalysis.IFieldSymbol symbol);
+public override IDocItem? VisitField(IFieldSymbol symbol);
 ```
 
 ## Parameters
 
-__symbol__ : [Microsoft\.CodeAnalysis\.IFieldSymbol](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.IFieldSymbol)
+__symbol__ : [IFieldSymbol](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.IFieldSymbol)
 
 
 
 ## Return Value
 
-[DotDoc\.Core\.Models\.IDocItem?](../../../DotDoc/DotDoc.Core.Models/IDocItem.md)
+[IDocItem?](../../../DotDoc/DotDoc.Core.Models/IDocItem.md)
 
 
 

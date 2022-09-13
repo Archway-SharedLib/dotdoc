@@ -6,18 +6,18 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-protected virtual void AppendItemList<T>(System.Text.StringBuilder sb ,string title ,System.Collections.Generic.IEnumerable<DotDoc.Core.Models.IDocItem> docItems ,int depth = 2);
+protected virtual void AppendItemList<T>(StringBuilder sb ,string title ,IEnumerable<IDocItem> docItems ,int depth = 2);
 ```
 
 ## Type Parameters
 
-__T__ : [DotDoc\.Core\.Models\.IDocItem](../../../DotDoc/DotDoc.Core.Models/IDocItem.md)
+__T__ : [IDocItem](../../../DotDoc/DotDoc.Core.Models/IDocItem.md)
 
 
 
 ## Parameters
 
-__sb__ : [System\.Text\.StringBuilder](https://docs.microsoft.com/dotnet/api/System.Text.StringBuilder)
+__sb__ : [StringBuilder](https://docs.microsoft.com/dotnet/api/System.Text.StringBuilder)
 
 
 
@@ -25,7 +25,7 @@ __title__ : [string](https://docs.microsoft.com/dotnet/api/System.String)
 
 
 
-__docItems__ : [System\.Collections\.Generic\.IEnumerable\<DotDoc\.Core\.Models\.IDocItem\>](https://docs.microsoft.com/dotnet/api/System.Collections.Generic.IEnumerable-1)
+__docItems__ : [IEnumerable\<IDocItem\>](https://docs.microsoft.com/dotnet/api/System.Collections.Generic.IEnumerable-1)
 
 
 

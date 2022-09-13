@@ -11,7 +11,7 @@ public abstract class DocItem;
 
 Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > DocItem
 
-Implements: [DotDoc\.Core\.Models\.IDocItem](../../DotDoc/DotDoc.Core.Models/IDocItem.md)
+Implements: [IDocItem](../../DotDoc/DotDoc.Core.Models/IDocItem.md)
 
 ## Constructors
 

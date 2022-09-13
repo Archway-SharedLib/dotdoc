@@ -6,12 +6,12 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-public PhysicalDirectoryModel(System.IO.DirectoryInfo directoryInfo);
+public PhysicalDirectoryModel(DirectoryInfo directoryInfo);
 ```
 
 ## Parameters
 
-__directoryInfo__ : [System\.IO\.DirectoryInfo](https://docs.microsoft.com/dotnet/api/System.IO.DirectoryInfo)
+__directoryInfo__ : [DirectoryInfo](https://docs.microsoft.com/dotnet/api/System.IO.DirectoryInfo)
 
 
 

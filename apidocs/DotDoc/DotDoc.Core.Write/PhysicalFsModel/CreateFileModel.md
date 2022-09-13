@@ -6,7 +6,7 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-public DotDoc.Core.Write.IFileModel CreateFileModel(string fileName);
+public IFileModel CreateFileModel(string fileName);
 ```
 
 ## Parameters
@@ -17,7 +17,7 @@ __fileName__ : [string](https://docs.microsoft.com/dotnet/api/System.String)
 
 ## Return Value
 
-[DotDoc\.Core\.Write\.IFileModel](../../../DotDoc/DotDoc.Core.Write/IFileModel.md)
+[IFileModel](../../../DotDoc/DotDoc.Core.Write/IFileModel.md)
 
 
 

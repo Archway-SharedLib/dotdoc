@@ -6,10 +6,10 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-public DotDoc.Core.Models.ReturnItem? ReturnValue { get; };
+public ReturnItem? ReturnValue { get; };
 ```
 
 ## Property Value
 
-[DotDoc\.Core\.Models\.ReturnItem?](../../../DotDoc/DotDoc.Core.Models/ReturnItem.md)
+[ReturnItem?](../../../DotDoc/DotDoc.Core.Models/ReturnItem.md)
 

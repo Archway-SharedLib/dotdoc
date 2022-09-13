@@ -9,7 +9,7 @@ assembly: [DotDoc](../../DotDoc.md)
 public class ClassDocItem;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [DotDoc\.Core\.Models\.DocItem](../../DotDoc/DotDoc.Core.Models/DocItem.md) > [DotDoc\.Core\.Models\.TypeDocItem](../../DotDoc/DotDoc.Core.Models/TypeDocItem.md) > ClassDocItem
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [DocItem](../../DotDoc/DotDoc.Core.Models/DocItem.md) > [TypeDocItem](../../DotDoc/DotDoc.Core.Models/TypeDocItem.md) > ClassDocItem
 
 ## Constructors
 

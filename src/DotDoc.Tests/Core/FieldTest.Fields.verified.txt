@@ -228,11 +228,11 @@ assembly: [Test](../../../Test.md)
 nullな定数フィールドです。
 
 ```csharp
-public const Test.FieldClass NullFiled = null;
+public const FieldClass NullFiled = null;
 ```
 
 ## Field Value
 
-[Test\.FieldClass](../../../Test/Test/FieldClass.md)
+[FieldClass](../../../Test/Test/FieldClass.md)
 
 

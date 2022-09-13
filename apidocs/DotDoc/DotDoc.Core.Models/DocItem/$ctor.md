@@ -6,16 +6,16 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-protected DocItem(Microsoft.CodeAnalysis.ISymbol symbol ,Microsoft.CodeAnalysis.Compilation compilation);
+protected DocItem(ISymbol symbol ,Compilation compilation);
 ```
 
 ## Parameters
 
-__symbol__ : [Microsoft\.CodeAnalysis\.ISymbol](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.ISymbol)
+__symbol__ : [ISymbol](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.ISymbol)
 
 
 
-__compilation__ : [Microsoft\.CodeAnalysis\.Compilation](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.Compilation)
+__compilation__ : [Compilation](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.Compilation)
 
 
 

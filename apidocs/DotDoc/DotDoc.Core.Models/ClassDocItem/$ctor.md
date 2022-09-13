@@ -6,16 +6,16 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-public ClassDocItem(Microsoft.CodeAnalysis.INamedTypeSymbol symbol ,Microsoft.CodeAnalysis.Compilation compilation);
+public ClassDocItem(INamedTypeSymbol symbol ,Compilation compilation);
 ```
 
 ## Parameters
 
-__symbol__ : [Microsoft\.CodeAnalysis\.INamedTypeSymbol](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.INamedTypeSymbol)
+__symbol__ : [INamedTypeSymbol](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.INamedTypeSymbol)
 
 
 
-__compilation__ : [Microsoft\.CodeAnalysis\.Compilation](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.Compilation)
+__compilation__ : [Compilation](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.Compilation)
 
 
 

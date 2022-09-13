@@ -6,10 +6,10 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-public DotDoc.Core.Read.XmlDocInfo? XmlDocInfo { get; };
+public XmlDocInfo? XmlDocInfo { get; };
 ```
 
 ## Property Value
 
-[DotDoc\.Core\.Read\.XmlDocInfo?](../../../DotDoc/DotDoc.Core.Read/XmlDocInfo.md)
+[XmlDocInfo?](../../../DotDoc/DotDoc.Core.Read/XmlDocInfo.md)
 

@@ -6,10 +6,10 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-public System.Collections.Generic.IEnumerable<DotDoc.Core.Models.MethodDocItem> Methods { get; };
+public IEnumerable<MethodDocItem> Methods { get; };
 ```
 
 ## Property Value
 
-[System\.Collections\.Generic\.IEnumerable\<DotDoc\.Core\.Models\.MethodDocItem\>](https://docs.microsoft.com/dotnet/api/System.Collections.Generic.IEnumerable-1)
+[IEnumerable\<MethodDocItem\>](https://docs.microsoft.com/dotnet/api/System.Collections.Generic.IEnumerable-1)
 

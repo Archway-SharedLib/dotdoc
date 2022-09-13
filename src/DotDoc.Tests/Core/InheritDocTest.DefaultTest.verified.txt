@@ -84,7 +84,7 @@ public class Source;
 
 Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > Source
 
-Implements: [Test\.ISource](../../Assem/Test/ISource.md)
+Implements: [ISource](../../Assem/Test/ISource.md)
 
 
 
@@ -105,7 +105,7 @@ public class BaseSource;
 
 Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > BaseSource
 
-Implements: [Test\.ISource](../../Assem/Test/ISource.md)
+Implements: [ISource](../../Assem/Test/ISource.md)
 
 
 
@@ -124,7 +124,7 @@ assembly: [Assem](../../Assem.md)
 public class InheritBaseSource;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [Test\.BaseSource](../../Assem/Test/BaseSource.md) > InheritBaseSource
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [BaseSource](../../Assem/Test/BaseSource.md) > InheritBaseSource
 
 
 
@@ -145,7 +145,7 @@ public class OverwriteSource;
 
 Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > OverwriteSource
 
-Implements: [Test\.ISource](../../Assem/Test/ISource.md)
+Implements: [ISource](../../Assem/Test/ISource.md)
 
 
 
@@ -164,7 +164,7 @@ assembly: [Assem](../../Assem.md)
 public class InheritanceOverwriteSource;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [Test\.OverwriteSource](../../Assem/Test/OverwriteSource.md) > InheritanceOverwriteSource
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [OverwriteSource](../../Assem/Test/OverwriteSource.md) > InheritanceOverwriteSource
 
 
 
@@ -202,7 +202,7 @@ public class MixSource;
 
 Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > MixSource
 
-Implements: [Test\.ISource](../../Assem/Test/ISource.md), [Test\.ISecondSource](../../Assem/Test/ISecondSource.md)
+Implements: [ISource](../../Assem/Test/ISource.md), [ISecondSource](../../Assem/Test/ISecondSource.md)
 
 
 
@@ -223,6 +223,6 @@ public class MixSource2;
 
 Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > MixSource2
 
-Implements: [Test\.ISource](../../Assem/Test/ISource.md), [Test\.ISecondSource](../../Assem/Test/ISecondSource.md)
+Implements: [ISource](../../Assem/Test/ISource.md), [ISecondSource](../../Assem/Test/ISecondSource.md)
 
 

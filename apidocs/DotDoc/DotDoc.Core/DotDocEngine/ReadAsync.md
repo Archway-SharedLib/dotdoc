@@ -6,22 +6,22 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-public System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<DotDoc.Core.Models.IDocItem>> ReadAsync(DotDoc.Core.DotDocEngineOptions options ,DotDoc.Core.Write.IFsModel fsModel);
+public Task<IEnumerable<IDocItem>> ReadAsync(DotDocEngineOptions options ,IFsModel fsModel);
 ```
 
 ## Parameters
 
-__options__ : [DotDoc\.Core\.DotDocEngineOptions](../../../DotDoc/DotDoc.Core/DotDocEngineOptions.md)
+__options__ : [DotDocEngineOptions](../../../DotDoc/DotDoc.Core/DotDocEngineOptions.md)
 
 
 
-__fsModel__ : [DotDoc\.Core\.Write\.IFsModel](../../../DotDoc/DotDoc.Core.Write/IFsModel.md)
+__fsModel__ : [IFsModel](../../../DotDoc/DotDoc.Core.Write/IFsModel.md)
 
 
 
 ## Return Value
 
-[System\.Threading\.Tasks\.Task\<System\.Collections\.Generic\.IEnumerable\<DotDoc\.Core\.Models\.IDocItem\>\>](https://docs.microsoft.com/dotnet/api/System.Threading.Tasks.Task-1)
+[Task\<IEnumerable\<IDocItem\>\>](https://docs.microsoft.com/dotnet/api/System.Threading.Tasks.Task-1)
 
 
 

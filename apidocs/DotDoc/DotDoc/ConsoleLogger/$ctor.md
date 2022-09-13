@@ -25,12 +25,12 @@ public ConsoleLogger();
 出力するログレベルを指定してインスタンスを生成します。
 
 ```csharp
-public ConsoleLogger(DotDoc.Core.LogLevel level);
+public ConsoleLogger(LogLevel level);
 ```
 
 ### Parameters
 
-__level__ : [DotDoc\.Core\.LogLevel](../../../DotDoc/DotDoc.Core/LogLevel.md)
+__level__ : [LogLevel](../../../DotDoc/DotDoc.Core/LogLevel.md)
 
 出力するログレベル
 

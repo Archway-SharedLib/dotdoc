@@ -54,7 +54,7 @@ assembly: [Test](../../Test.md)
 public enum NormalEnum;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [System\.ValueType](https://docs.microsoft.com/dotnet/api/System.ValueType) > [System\.Enum](https://docs.microsoft.com/dotnet/api/System.Enum) > NormalEnum
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [ValueType](https://docs.microsoft.com/dotnet/api/System.ValueType) > [Enum](https://docs.microsoft.com/dotnet/api/System.Enum) > NormalEnum
 
 ## Fields
 
@@ -80,7 +80,7 @@ assembly: [Test](../../Test.md)
 public enum FlagsEnum;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [System\.ValueType](https://docs.microsoft.com/dotnet/api/System.ValueType) > [System\.Enum](https://docs.microsoft.com/dotnet/api/System.Enum) > FlagsEnum
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [ValueType](https://docs.microsoft.com/dotnet/api/System.ValueType) > [Enum](https://docs.microsoft.com/dotnet/api/System.Enum) > FlagsEnum
 
 ## Fields
 
@@ -108,7 +108,7 @@ assembly: [Test](../../Test.md)
 public enum ShortEnum;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [System\.ValueType](https://docs.microsoft.com/dotnet/api/System.ValueType) > [System\.Enum](https://docs.microsoft.com/dotnet/api/System.Enum) > ShortEnum
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [ValueType](https://docs.microsoft.com/dotnet/api/System.ValueType) > [Enum](https://docs.microsoft.com/dotnet/api/System.Enum) > ShortEnum
 
 ## Fields
 

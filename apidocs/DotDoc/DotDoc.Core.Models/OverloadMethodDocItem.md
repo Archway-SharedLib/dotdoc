@@ -11,7 +11,7 @@ public class OverloadMethodDocItem;
 
 Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > OverloadMethodDocItem
 
-Implements: [DotDoc\.Core\.Models\.IMemberDocItem](../../DotDoc/DotDoc.Core.Models/IMemberDocItem.md)
+Implements: [IMemberDocItem](../../DotDoc/DotDoc.Core.Models/IMemberDocItem.md)
 
 ## Constructors
 

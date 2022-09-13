@@ -11,7 +11,7 @@ public class PhysicalFileModel;
 
 Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > PhysicalFileModel
 
-Implements: [DotDoc\.Core\.Write\.IFileModel](../../DotDoc/DotDoc.Core.Write/IFileModel.md)
+Implements: [IFileModel](../../DotDoc/DotDoc.Core.Write/IFileModel.md)
 
 ## Constructors
 

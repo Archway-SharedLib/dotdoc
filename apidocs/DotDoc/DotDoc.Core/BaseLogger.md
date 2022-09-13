@@ -11,7 +11,7 @@ public abstract class BaseLogger;
 
 Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > BaseLogger
 
-Implements: [DotDoc\.Core\.ILogger](../../DotDoc/DotDoc.Core/ILogger.md)
+Implements: [ILogger](../../DotDoc/DotDoc.Core/ILogger.md)
 
 ## Constructors
 

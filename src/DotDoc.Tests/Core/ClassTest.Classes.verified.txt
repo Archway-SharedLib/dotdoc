@@ -158,6 +158,6 @@ assembly: [Assem](../../Assem.md)
 public class InheritClass;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [Test\.AbstractClass](../../Assem/Test/AbstractClass.md) > InheritClass
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [AbstractClass](../../Assem/Test/AbstractClass.md) > InheritClass
 
 

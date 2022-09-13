@@ -6,20 +6,20 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-public OverloadMethodPage(DotDoc.Core.Models.OverloadMethodDocItem item ,DotDoc.Core.Write.TextTransform transform ,DotDoc.Core.Write.DocItemContainer itemContainer);
+public OverloadMethodPage(OverloadMethodDocItem item ,TextTransform transform ,DocItemContainer itemContainer);
 ```
 
 ## Parameters
 
-__item__ : [DotDoc\.Core\.Models\.OverloadMethodDocItem](../../../DotDoc/DotDoc.Core.Models/OverloadMethodDocItem.md)
+__item__ : [OverloadMethodDocItem](../../../DotDoc/DotDoc.Core.Models/OverloadMethodDocItem.md)
 
 
 
-__transform__ : [DotDoc\.Core\.Write\.TextTransform](../../../DotDoc/DotDoc.Core.Write/TextTransform.md)
+__transform__ : [TextTransform](../../../DotDoc/DotDoc.Core.Write/TextTransform.md)
 
 
 
-__itemContainer__ : [DotDoc\.Core\.Write\.DocItemContainer](../../../DotDoc/DotDoc.Core.Write/DocItemContainer.md)
+__itemContainer__ : [DocItemContainer](../../../DotDoc/DotDoc.Core.Write/DocItemContainer.md)
 
 
 

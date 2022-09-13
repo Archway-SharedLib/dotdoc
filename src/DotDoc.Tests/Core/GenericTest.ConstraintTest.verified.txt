@@ -49,12 +49,12 @@ assembly: [Assem](../../Assem.md)
 
 
 ```csharp
-public class Dic<T, T2> where T : System.Collections.Generic.IList<string>, class? where T2 : T, new();
+public class Dic<T, T2> where T : IList<string>, class? where T2 : T, new();
 ```
 
 ## Type Parameters
 
-__T__ : [System\.Collections\.Generic\.IList\<string\>](https://docs.microsoft.com/dotnet/api/System.Collections.Generic.IList-1), `class?`
+__T__ : [IList\<string\>](https://docs.microsoft.com/dotnet/api/System.Collections.Generic.IList-1), `class?`
 
 
 

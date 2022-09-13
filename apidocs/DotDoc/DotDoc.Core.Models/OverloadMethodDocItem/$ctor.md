@@ -6,12 +6,12 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-public OverloadMethodDocItem(System.Collections.Generic.IList<DotDoc.Core.Models.MethodDocItem> docItems);
+public OverloadMethodDocItem(IList<MethodDocItem> docItems);
 ```
 
 ## Parameters
 
-__docItems__ : [System\.Collections\.Generic\.IList\<DotDoc\.Core\.Models\.MethodDocItem\>](https://docs.microsoft.com/dotnet/api/System.Collections.Generic.IList-1)
+__docItems__ : [IList\<MethodDocItem\>](https://docs.microsoft.com/dotnet/api/System.Collections.Generic.IList-1)
 
 
 

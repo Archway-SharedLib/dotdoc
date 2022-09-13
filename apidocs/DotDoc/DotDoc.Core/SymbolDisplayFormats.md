@@ -16,4 +16,5 @@ Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > Sym
 | Name | Summary |
 |------|---------|
 | [MethodDisplayNameFormat](./SymbolDisplayFormats/MethodDisplayNameFormat.md) | メソッドの `DisplayName` プロパティのフォーマットを定義します。 |
+| [TypeDisplayNameFormat](./SymbolDisplayFormats/TypeDisplayNameFormat.md) | タイプの `DisplayName` プロパティのフォーマットを定義します。 |
 

@@ -6,16 +6,16 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-public PropertyDocItem(Microsoft.CodeAnalysis.IPropertySymbol symbol ,Microsoft.CodeAnalysis.Compilation compilation);
+public PropertyDocItem(IPropertySymbol symbol ,Compilation compilation);
 ```
 
 ## Parameters
 
-__symbol__ : [Microsoft\.CodeAnalysis\.IPropertySymbol](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.IPropertySymbol)
+__symbol__ : [IPropertySymbol](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.IPropertySymbol)
 
 
 
-__compilation__ : [Microsoft\.CodeAnalysis\.Compilation](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.Compilation)
+__compilation__ : [Compilation](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.Compilation)
 
 
 

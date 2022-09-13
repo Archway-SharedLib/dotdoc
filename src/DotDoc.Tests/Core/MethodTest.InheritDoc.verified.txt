@@ -171,7 +171,7 @@ assembly: [Test](../../Test.md)
 public class InheritDoc;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [Test\.BaseType](../../Test/Test/BaseType.md) > InheritDoc
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [BaseType](../../Test/Test/BaseType.md) > InheritDoc
 
 ## Methods
 
@@ -289,7 +289,7 @@ public class BaseImplDoc;
 
 Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > BaseImplDoc
 
-Implements: [Test\.BaseInterface](../../Test/Test/BaseInterface.md)
+Implements: [BaseInterface](../../Test/Test/BaseInterface.md)
 
 ## Methods
 

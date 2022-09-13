@@ -6,16 +6,16 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-protected virtual void AppendReturnValue(System.Text.StringBuilder sb ,DotDoc.Core.Models.ReturnItem returnItem ,int depth = 2);
+protected virtual void AppendReturnValue(StringBuilder sb ,ReturnItem returnItem ,int depth = 2);
 ```
 
 ## Parameters
 
-__sb__ : [System\.Text\.StringBuilder](https://docs.microsoft.com/dotnet/api/System.Text.StringBuilder)
+__sb__ : [StringBuilder](https://docs.microsoft.com/dotnet/api/System.Text.StringBuilder)
 
 
 
-__returnItem__ : [DotDoc\.Core\.Models\.ReturnItem](../../../DotDoc/DotDoc.Core.Models/ReturnItem.md)
+__returnItem__ : [ReturnItem](../../../DotDoc/DotDoc.Core.Models/ReturnItem.md)
 
 
 

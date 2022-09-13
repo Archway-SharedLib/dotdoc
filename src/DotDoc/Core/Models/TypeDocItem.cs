@@ -7,8 +7,7 @@ public abstract class TypeDocItem : DocItem
 {
     public TypeDocItem(INamedTypeSymbol symbol, Compilation compilation) : base(symbol, compilation)
     {
-        DisplayName = symbol.ToDisplayString()
-            .Substring(symbol.ContainingNamespace.ToDisplayString().Length + 1);
+        DisplayName = symbol.ToDisplayString(SymbolDisplayFormats.TypeDisplayNameFormat);
         NamespaceId = SymbolUtil.GetSymbolId(symbol.ContainingNamespace);
         AssemblyId = SymbolUtil.GetSymbolId(symbol.ContainingAssembly);
         BaseType = symbol.BaseType is not null ? symbol.BaseType.ToTypeInfo() : null;

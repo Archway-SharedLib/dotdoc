@@ -11,7 +11,7 @@ public class AdoWikiWriter;
 
 Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > AdoWikiWriter
 
-Implements: `DotDoc.Core.Write.IWriter`, [DotDoc\.Core\.Write\.IFileSystemOperation](../../DotDoc/DotDoc.Core.Write/IFileSystemOperation.md)
+Implements: `IWriter`, [IFileSystemOperation](../../DotDoc/DotDoc.Core.Write/IFileSystemOperation.md)
 
 ## Constructors
 

@@ -6,12 +6,12 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-public string ToMdLink(DotDoc.Core.Models.IDocItem baseItem ,string? key ,string? display = null ,bool toCodeIfNoLink = True);
+public string ToMdLink(IDocItem baseItem ,string? key ,string? display = null ,bool toCodeIfNoLink = True);
 ```
 
 ## Parameters
 
-__baseItem__ : [DotDoc\.Core\.Models\.IDocItem](../../../DotDoc/DotDoc.Core.Models/IDocItem.md)
+__baseItem__ : [IDocItem](../../../DotDoc/DotDoc.Core.Models/IDocItem.md)
 
 
 

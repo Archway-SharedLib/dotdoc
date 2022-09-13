@@ -6,20 +6,20 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-public ParameterDocItem(Microsoft.CodeAnalysis.IParameterSymbol symbol ,DotDoc.Core.Read.XmlDocInfo docInfo ,Microsoft.CodeAnalysis.Compilation compilation);
+public ParameterDocItem(IParameterSymbol symbol ,XmlDocInfo docInfo ,Compilation compilation);
 ```
 
 ## Parameters
 
-__symbol__ : [Microsoft\.CodeAnalysis\.IParameterSymbol](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.IParameterSymbol)
+__symbol__ : [IParameterSymbol](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.IParameterSymbol)
 
 
 
-__docInfo__ : [DotDoc\.Core\.Read\.XmlDocInfo](../../../DotDoc/DotDoc.Core.Read/XmlDocInfo.md)
+__docInfo__ : [XmlDocInfo](../../../DotDoc/DotDoc.Core.Read/XmlDocInfo.md)
 
 
 
-__compilation__ : [Microsoft\.CodeAnalysis\.Compilation](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.Compilation)
+__compilation__ : [Compilation](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.Compilation)
 
 
 

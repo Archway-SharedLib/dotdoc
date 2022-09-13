@@ -6,24 +6,24 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-public AdoWikiWriter(System.Collections.Generic.IEnumerable<DotDoc.Core.Models.IDocItem> docItems ,DotDoc.Core.DotDocEngineOptions options ,DotDoc.Core.Write.IFsModel fsModel ,DotDoc.Core.ILogger logger);
+public AdoWikiWriter(IEnumerable<IDocItem> docItems ,DotDocEngineOptions options ,IFsModel fsModel ,ILogger logger);
 ```
 
 ## Parameters
 
-__docItems__ : [System\.Collections\.Generic\.IEnumerable\<DotDoc\.Core\.Models\.IDocItem\>](https://docs.microsoft.com/dotnet/api/System.Collections.Generic.IEnumerable-1)
+__docItems__ : [IEnumerable\<IDocItem\>](https://docs.microsoft.com/dotnet/api/System.Collections.Generic.IEnumerable-1)
 
 
 
-__options__ : [DotDoc\.Core\.DotDocEngineOptions](../../../DotDoc/DotDoc.Core/DotDocEngineOptions.md)
+__options__ : [DotDocEngineOptions](../../../DotDoc/DotDoc.Core/DotDocEngineOptions.md)
 
 
 
-__fsModel__ : [DotDoc\.Core\.Write\.IFsModel](../../../DotDoc/DotDoc.Core.Write/IFsModel.md)
+__fsModel__ : [IFsModel](../../../DotDoc/DotDoc.Core.Write/IFsModel.md)
 
 
 
-__logger__ : [DotDoc\.Core\.ILogger](../../../DotDoc/DotDoc.Core/ILogger.md)
+__logger__ : [ILogger](../../../DotDoc/DotDoc.Core/ILogger.md)
 
 
 

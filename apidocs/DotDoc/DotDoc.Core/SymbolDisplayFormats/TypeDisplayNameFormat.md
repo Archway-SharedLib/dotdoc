@@ -1,12 +1,12 @@
-﻿# MethodDisplayNameFormat Property
+﻿# TypeDisplayNameFormat Property
 
 namespace: [DotDoc\.Core](../../DotDoc.Core.md)<br />
 assembly: [DotDoc](../../../DotDoc.md)
 
-メソッドの `DisplayName` プロパティのフォーマットを定義します。
+タイプの `DisplayName` プロパティのフォーマットを定義します。
 
 ```csharp
-public static SymbolDisplayFormat MethodDisplayNameFormat { get; };
+public static SymbolDisplayFormat TypeDisplayNameFormat { get; };
 ```
 
 ## Property Value

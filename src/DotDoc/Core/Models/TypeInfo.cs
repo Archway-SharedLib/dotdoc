@@ -8,7 +8,8 @@ public class TypeInfo
     public TypeInfo(ITypeSymbol symbol)
     {
         TypeId = SymbolUtil.GetSymbolId(symbol);
-        DisplayName = symbol.ToDisplayString();
+        FullDisplayName = symbol.ToDisplayString();
+        DisplayName = symbol.ToDisplayString(SymbolDisplayFormats.TypeDisplayNameFormat);
         Name = symbol.Name;
 
         if (symbol is IArrayTypeSymbol arrayType)
@@ -22,7 +23,9 @@ public class TypeInfo
             if (namedType != namedType.OriginalDefinition)
             {
                 LinkType = namedType.OriginalDefinition.ToTypeInfo();
-                LinkType.DisplayName = namedType.ToDisplayString();
+                LinkType.FullDisplayName = namedType.ToDisplayString();
+                LinkType.DisplayName = namedType.ToDisplayString(SymbolDisplayFormats.TypeDisplayNameFormat);
+                
             }
         }
 
@@ -36,6 +39,9 @@ public class TypeInfo
     public string Name { get;  }
         
     public string DisplayName { get; private set; }
+    
+    public string FullDisplayName { get; private set; }
+
 
     public TypeInfo? LinkType { get; } = null;
 

@@ -6,18 +6,18 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-public static DotDoc.Core.Models.TypeInfo ToTypeInfo(this Microsoft.CodeAnalysis.ITypeSymbol source);
+public static TypeInfo ToTypeInfo(this ITypeSymbol source);
 ```
 
 ## Parameters
 
-__source__ : [Microsoft\.CodeAnalysis\.ITypeSymbol](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.ITypeSymbol)
+__source__ : [ITypeSymbol](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.ITypeSymbol)
 
 
 
 ## Return Value
 
-[DotDoc\.Core\.Models\.TypeInfo](../../../DotDoc/DotDoc.Core.Models/TypeInfo.md)
+[TypeInfo](../../../DotDoc/DotDoc.Core.Models/TypeInfo.md)
 
 
 

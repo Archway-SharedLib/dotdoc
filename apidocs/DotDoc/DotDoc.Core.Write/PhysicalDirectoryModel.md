@@ -11,7 +11,7 @@ public class PhysicalDirectoryModel;
 
 Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > PhysicalDirectoryModel
 
-Implements: [DotDoc\.Core\.Write\.IDirectoryModel](../../DotDoc/DotDoc.Core.Write/IDirectoryModel.md)
+Implements: [IDirectoryModel](../../DotDoc/DotDoc.Core.Write/IDirectoryModel.md)
 
 ## Constructors
 

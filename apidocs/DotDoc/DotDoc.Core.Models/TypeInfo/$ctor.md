@@ -6,12 +6,12 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-public TypeInfo(Microsoft.CodeAnalysis.ITypeSymbol symbol);
+public TypeInfo(ITypeSymbol symbol);
 ```
 
 ## Parameters
 
-__symbol__ : [Microsoft\.CodeAnalysis\.ITypeSymbol](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.ITypeSymbol)
+__symbol__ : [ITypeSymbol](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.ITypeSymbol)
 
 
 

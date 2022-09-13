@@ -6,10 +6,10 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-public DotDoc.Core.Read.XmlDocInfo? Overloads { get; set; };
+public XmlDocInfo? Overloads { get; set; };
 ```
 
 ## Property Value
 
-[DotDoc\.Core\.Read\.XmlDocInfo?](../../../DotDoc/DotDoc.Core.Read/XmlDocInfo.md)
+[XmlDocInfo?](../../../DotDoc/DotDoc.Core.Read/XmlDocInfo.md)
 

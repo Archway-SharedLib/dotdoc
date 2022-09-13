@@ -6,16 +6,16 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-protected virtual void AppendInheritAndImplements(System.Text.StringBuilder sb ,DotDoc.Core.Models.TypeDocItem typeDocItem);
+protected virtual void AppendInheritAndImplements(StringBuilder sb ,TypeDocItem typeDocItem);
 ```
 
 ## Parameters
 
-__sb__ : [System\.Text\.StringBuilder](https://docs.microsoft.com/dotnet/api/System.Text.StringBuilder)
+__sb__ : [StringBuilder](https://docs.microsoft.com/dotnet/api/System.Text.StringBuilder)
 
 
 
-__typeDocItem__ : [DotDoc\.Core\.Models\.TypeDocItem](../../../DotDoc/DotDoc.Core.Models/TypeDocItem.md)
+__typeDocItem__ : [TypeDocItem](../../../DotDoc/DotDoc.Core.Models/TypeDocItem.md)
 
 
 

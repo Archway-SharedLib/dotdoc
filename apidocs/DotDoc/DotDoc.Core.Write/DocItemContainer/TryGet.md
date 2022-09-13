@@ -17,7 +17,7 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-public bool TryGet(string id ,out DotDoc.Core.Models.IDocItem? item);
+public bool TryGet(string id ,out IDocItem? item);
 ```
 
 ### Parameters
@@ -26,7 +26,7 @@ __id__ : [string](https://docs.microsoft.com/dotnet/api/System.String)
 
 
 
-__item__ : [DotDoc\.Core\.Models\.IDocItem?](../../../DotDoc/DotDoc.Core.Models/IDocItem.md)
+__item__ : [IDocItem?](../../../DotDoc/DotDoc.Core.Models/IDocItem.md)
 
 
 
@@ -41,7 +41,7 @@ __item__ : [DotDoc\.Core\.Models\.IDocItem?](../../../DotDoc/DotDoc.Core.Models/
 
 
 ```csharp
-public bool TryGet(string assemblyId ,string id ,out DotDoc.Core.Models.IDocItem? item);
+public bool TryGet(string assemblyId ,string id ,out IDocItem? item);
 ```
 
 ### Parameters
@@ -54,7 +54,7 @@ __id__ : [string](https://docs.microsoft.com/dotnet/api/System.String)
 
 
 
-__item__ : [DotDoc\.Core\.Models\.IDocItem?](../../../DotDoc/DotDoc.Core.Models/IDocItem.md)
+__item__ : [IDocItem?](../../../DotDoc/DotDoc.Core.Models/IDocItem.md)
 
 
 

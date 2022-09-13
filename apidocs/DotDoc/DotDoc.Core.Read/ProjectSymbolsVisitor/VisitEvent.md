@@ -6,18 +6,18 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-public override DotDoc.Core.Models.IDocItem? VisitEvent(Microsoft.CodeAnalysis.IEventSymbol symbol);
+public override IDocItem? VisitEvent(IEventSymbol symbol);
 ```
 
 ## Parameters
 
-__symbol__ : [Microsoft\.CodeAnalysis\.IEventSymbol](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.IEventSymbol)
+__symbol__ : [IEventSymbol](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.IEventSymbol)
 
 
 
 ## Return Value
 
-[DotDoc\.Core\.Models\.IDocItem?](../../../DotDoc/DotDoc.Core.Models/IDocItem.md)
+[IDocItem?](../../../DotDoc/DotDoc.Core.Models/IDocItem.md)
 
 
 

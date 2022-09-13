@@ -24,6 +24,7 @@ Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > Typ
 | [TypeId](./TypeInfo/TypeId.md) |  |
 | [Name](./TypeInfo/Name.md) |  |
 | [DisplayName](./TypeInfo/DisplayName.md) |  |
+| [FullDisplayName](./TypeInfo/FullDisplayName.md) |  |
 | [LinkType](./TypeInfo/LinkType.md) |  |
 | [BaseType](./TypeInfo/BaseType.md) |  |
 

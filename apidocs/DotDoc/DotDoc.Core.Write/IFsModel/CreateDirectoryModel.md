@@ -6,7 +6,7 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-public abstract DotDoc.Core.Write.IDirectoryModel CreateDirectoryModel(string path);
+public abstract IDirectoryModel CreateDirectoryModel(string path);
 ```
 
 ## Parameters
@@ -17,7 +17,7 @@ __path__ : [string](https://docs.microsoft.com/dotnet/api/System.String)
 
 ## Return Value
 
-[DotDoc\.Core\.Write\.IDirectoryModel](../../../DotDoc/DotDoc.Core.Write/IDirectoryModel.md)
+[IDirectoryModel](../../../DotDoc/DotDoc.Core.Write/IDirectoryModel.md)
 
 
 

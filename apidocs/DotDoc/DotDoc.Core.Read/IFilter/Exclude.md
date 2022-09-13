@@ -6,12 +6,12 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-public abstract bool Exclude(Microsoft.CodeAnalysis.ISymbol symbol ,string id);
+public abstract bool Exclude(ISymbol symbol ,string id);
 ```
 
 ## Parameters
 
-__symbol__ : [Microsoft\.CodeAnalysis\.ISymbol](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.ISymbol)
+__symbol__ : [ISymbol](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.ISymbol)
 
 
 

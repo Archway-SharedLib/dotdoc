@@ -28,4 +28,17 @@ public static class SymbolDisplayFormats
         SymbolDisplayMiscellaneousOptions.UseAsterisksInMultiDimensionalArrays |
         SymbolDisplayMiscellaneousOptions.UseErrorTypeSymbolName |
         SymbolDisplayMiscellaneousOptions.IncludeNullableReferenceTypeModifier);
+    
+    /// <summary>
+    /// タイプの <c>DisplayName</c> プロパティのフォーマットを定義します。
+    /// </summary>
+    public static SymbolDisplayFormat TypeDisplayNameFormat { get; } = new (
+        typeQualificationStyle: SymbolDisplayTypeQualificationStyle.NameAndContainingTypes,
+        genericsOptions: SymbolDisplayGenericsOptions.IncludeTypeParameters,
+        miscellaneousOptions:
+        SymbolDisplayMiscellaneousOptions.EscapeKeywordIdentifiers |
+        SymbolDisplayMiscellaneousOptions.UseSpecialTypes |
+        SymbolDisplayMiscellaneousOptions.UseAsterisksInMultiDimensionalArrays |
+        SymbolDisplayMiscellaneousOptions.UseErrorTypeSymbolName |
+        SymbolDisplayMiscellaneousOptions.IncludeNullableReferenceTypeModifier);
 }

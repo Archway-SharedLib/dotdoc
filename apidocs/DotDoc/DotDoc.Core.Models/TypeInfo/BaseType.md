@@ -6,10 +6,10 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-public DotDoc.Core.Models.TypeInfo? BaseType { get; };
+public TypeInfo? BaseType { get; };
 ```
 
 ## Property Value
 
-[DotDoc\.Core\.Models\.TypeInfo?](../../../DotDoc/DotDoc.Core.Models/TypeInfo.md)
+[TypeInfo?](../../../DotDoc/DotDoc.Core.Models/TypeInfo.md)
 

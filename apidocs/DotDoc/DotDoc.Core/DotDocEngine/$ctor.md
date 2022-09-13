@@ -6,12 +6,12 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-public DotDocEngine(DotDoc.Core.ILogger logger);
+public DotDocEngine(ILogger logger);
 ```
 
 ## Parameters
 
-__logger__ : [DotDoc\.Core\.ILogger](../../../DotDoc/DotDoc.Core/ILogger.md)
+__logger__ : [ILogger](../../../DotDoc/DotDoc.Core/ILogger.md)
 
 
 

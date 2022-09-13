@@ -6,16 +6,16 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-public ProjectSymbolsVisitor(DotDoc.Core.Read.IFilter filter ,Microsoft.CodeAnalysis.Compilation compilation);
+public ProjectSymbolsVisitor(IFilter filter ,Compilation compilation);
 ```
 
 ## Parameters
 
-__filter__ : [DotDoc\.Core\.Read\.IFilter](../../../DotDoc/DotDoc.Core.Read/IFilter.md)
+__filter__ : [IFilter](../../../DotDoc/DotDoc.Core.Read/IFilter.md)
 
 
 
-__compilation__ : [Microsoft\.CodeAnalysis\.Compilation](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.Compilation)
+__compilation__ : [Compilation](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.Compilation)
 
 
 

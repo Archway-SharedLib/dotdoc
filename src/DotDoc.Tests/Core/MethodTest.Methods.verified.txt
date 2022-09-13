@@ -131,7 +131,7 @@ assembly: [Test](../../Test.md)
 public class MethodVariation;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [Test\.BaseMethodVariation](../../Test/Test/BaseMethodVariation.md) > MethodVariation
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [BaseMethodVariation](../../Test/Test/BaseMethodVariation.md) > MethodVariation
 
 ## Methods
 

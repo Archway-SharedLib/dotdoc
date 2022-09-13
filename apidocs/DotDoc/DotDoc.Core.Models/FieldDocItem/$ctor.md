@@ -6,16 +6,16 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-public FieldDocItem(Microsoft.CodeAnalysis.IFieldSymbol symbol ,Microsoft.CodeAnalysis.Compilation compilation);
+public FieldDocItem(IFieldSymbol symbol ,Compilation compilation);
 ```
 
 ## Parameters
 
-__symbol__ : [Microsoft\.CodeAnalysis\.IFieldSymbol](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.IFieldSymbol)
+__symbol__ : [IFieldSymbol](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.IFieldSymbol)
 
 
 
-__compilation__ : [Microsoft\.CodeAnalysis\.Compilation](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.Compilation)
+__compilation__ : [Compilation](https://docs.microsoft.com/dotnet/api/Microsoft.CodeAnalysis.Compilation)
 
 
 

@@ -6,12 +6,12 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-public System.Threading.Tasks.Task WriteAsync();
+public Task WriteAsync();
 ```
 
 ## Return Value
 
-[System\.Threading\.Tasks\.Task](https://docs.microsoft.com/dotnet/api/System.Threading.Tasks.Task)
+[Task](https://docs.microsoft.com/dotnet/api/System.Threading.Tasks.Task)
 
 
 

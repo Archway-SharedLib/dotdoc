@@ -74,18 +74,18 @@ assembly: [Assem](../../../Assem.md)
 
 
 ```csharp
-public System.Collections.Generic.List<int> Method(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<int>> arg);
+public List<int> Method(Dictionary<string, List<int>> arg);
 ```
 
 ## Parameters
 
-__arg__ : [System\.Collections\.Generic\.Dictionary\<string, System\.Collections\.Generic\.List\<int\>\>](https://docs.microsoft.com/dotnet/api/System.Collections.Generic.Dictionary-2)
+__arg__ : [Dictionary\<string, List\<int\>\>](https://docs.microsoft.com/dotnet/api/System.Collections.Generic.Dictionary-2)
 
 
 
 ## Return Value
 
-[System\.Collections\.Generic\.List\<int\>](https://docs.microsoft.com/dotnet/api/System.Collections.Generic.List-1)
+[List\<int\>](https://docs.microsoft.com/dotnet/api/System.Collections.Generic.List-1)
 
 
 

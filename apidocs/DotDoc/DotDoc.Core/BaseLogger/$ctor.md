@@ -6,12 +6,12 @@ assembly: [DotDoc](../../../DotDoc.md)
 出力するログレベルを指定してインスタンスを生成します。
 
 ```csharp
-protected BaseLogger(DotDoc.Core.LogLevel level);
+protected BaseLogger(LogLevel level);
 ```
 
 ## Parameters
 
-__level__ : [DotDoc\.Core\.LogLevel](../../../DotDoc/DotDoc.Core/LogLevel.md)
+__level__ : [LogLevel](../../../DotDoc/DotDoc.Core/LogLevel.md)
 
 出力するログレベル
 

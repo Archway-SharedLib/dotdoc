@@ -9,7 +9,7 @@ assembly: [DotDoc](../../DotDoc.md)
 public class ConsoleLogger;
 ```
 
-Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [DotDoc\.Core\.BaseLogger](../../DotDoc/DotDoc.Core/BaseLogger.md) > ConsoleLogger
+Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > [BaseLogger](../../DotDoc/DotDoc.Core/BaseLogger.md) > ConsoleLogger
 
 ## Example
 

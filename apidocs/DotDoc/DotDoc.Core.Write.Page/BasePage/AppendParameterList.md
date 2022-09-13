@@ -6,16 +6,16 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-protected virtual void AppendParameterList(System.Text.StringBuilder sb ,System.Collections.Generic.IEnumerable<DotDoc.Core.Models.ParameterDocItem> parameters ,int depth = 2);
+protected virtual void AppendParameterList(StringBuilder sb ,IEnumerable<ParameterDocItem> parameters ,int depth = 2);
 ```
 
 ## Parameters
 
-__sb__ : [System\.Text\.StringBuilder](https://docs.microsoft.com/dotnet/api/System.Text.StringBuilder)
+__sb__ : [StringBuilder](https://docs.microsoft.com/dotnet/api/System.Text.StringBuilder)
 
 
 
-__parameters__ : [System\.Collections\.Generic\.IEnumerable\<DotDoc\.Core\.Models\.ParameterDocItem\>](https://docs.microsoft.com/dotnet/api/System.Collections.Generic.IEnumerable-1)
+__parameters__ : [IEnumerable\<ParameterDocItem\>](https://docs.microsoft.com/dotnet/api/System.Collections.Generic.IEnumerable-1)
 
 
 

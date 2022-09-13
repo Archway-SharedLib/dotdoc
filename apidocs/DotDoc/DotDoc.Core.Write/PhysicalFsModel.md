@@ -11,7 +11,7 @@ public class PhysicalFsModel;
 
 Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > PhysicalFsModel
 
-Implements: [DotDoc\.Core\.Write\.IFsModel](../../DotDoc/DotDoc.Core.Write/IFsModel.md)
+Implements: [IFsModel](../../DotDoc/DotDoc.Core.Write/IFsModel.md)
 
 ## Methods
 

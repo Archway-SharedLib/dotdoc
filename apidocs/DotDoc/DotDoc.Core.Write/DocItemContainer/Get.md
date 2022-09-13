@@ -17,7 +17,7 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-public DotDoc.Core.Models.IDocItem? Get(string id);
+public IDocItem? Get(string id);
 ```
 
 ### Parameters
@@ -28,7 +28,7 @@ __id__ : [string](https://docs.microsoft.com/dotnet/api/System.String)
 
 ### Return Value
 
-[DotDoc\.Core\.Models\.IDocItem?](../../../DotDoc/DotDoc.Core.Models/IDocItem.md)
+[IDocItem?](../../../DotDoc/DotDoc.Core.Models/IDocItem.md)
 
 
 
@@ -37,7 +37,7 @@ __id__ : [string](https://docs.microsoft.com/dotnet/api/System.String)
 
 
 ```csharp
-public DotDoc.Core.Models.IDocItem? Get(string assemblyId ,string id);
+public IDocItem? Get(string assemblyId ,string id);
 ```
 
 ### Parameters
@@ -52,7 +52,7 @@ __id__ : [string](https://docs.microsoft.com/dotnet/api/System.String)
 
 ### Return Value
 
-[DotDoc\.Core\.Models\.IDocItem?](../../../DotDoc/DotDoc.Core.Models/IDocItem.md)
+[IDocItem?](../../../DotDoc/DotDoc.Core.Models/IDocItem.md)
 
 
 

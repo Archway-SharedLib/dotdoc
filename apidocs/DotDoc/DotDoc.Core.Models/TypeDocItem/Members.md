@@ -6,10 +6,10 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-public System.Collections.Generic.List<DotDoc.Core.Models.IMemberDocItem> Members { get; };
+public List<IMemberDocItem> Members { get; };
 ```
 
 ## Property Value
 
-[System\.Collections\.Generic\.List\<DotDoc\.Core\.Models\.IMemberDocItem\>](https://docs.microsoft.com/dotnet/api/System.Collections.Generic.List-1)
+[List\<IMemberDocItem\>](https://docs.microsoft.com/dotnet/api/System.Collections.Generic.List-1)
 

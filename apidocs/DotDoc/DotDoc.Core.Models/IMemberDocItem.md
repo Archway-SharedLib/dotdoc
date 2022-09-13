@@ -9,7 +9,7 @@ assembly: [DotDoc](../../DotDoc.md)
 public interface IMemberDocItem;
 ```
 
-Implements: [DotDoc\.Core\.Models\.IDocItem](../../DotDoc/DotDoc.Core.Models/IDocItem.md)
+Implements: [IDocItem](../../DotDoc/DotDoc.Core.Models/IDocItem.md)
 
 ## Properties
 
