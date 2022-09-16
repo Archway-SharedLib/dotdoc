@@ -8,8 +8,6 @@
         <LangVersion>10.0</LangVersion>
         <PackAsTool>true</PackAsTool>
         <ToolCommandName>dotdoc</ToolCommandName>
-        <PackageOutputPath>./nupkg</PackageOutputPath>
-
         <MinVerTagPrefix>v</MinVerTagPrefix>
         <MinVerDefaultPreReleasePhase>preview</MinVerDefaultPreReleasePhase>
     </PropertyGroup>
