@@ -172,7 +172,7 @@ namespace DotDoc.Core.Write
         
         public string GetRelativeLink(IDocItem source, IDocItem dest)
         {
-            string FileName(string target) => SafeFileOrDirectoryName(_textTransform.EscapeMdText(target));
+            string FileName(string target) => SafeFileOrDirectoryName(_textTransform.EscapeMdLinkText(target));
             
             var basePath = dest switch
             {
