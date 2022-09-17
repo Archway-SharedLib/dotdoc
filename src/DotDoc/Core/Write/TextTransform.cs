@@ -91,7 +91,7 @@ public class TextTransform
 
         if (_items.TryGet(key, out var destItem))
         {
-            return $"[{EscapeMdText(display ?? destItem.DisplayName)}]({EscapeMdLinkText(_fileSystemOperation.GetRelativeLink(baseItem, destItem))})";
+            return $"[{EscapeMdText(display ?? destItem.DisplayName)}]({_fileSystemOperation.GetRelativeLink(baseItem, destItem)})";
         }
         
         if (key.StartsWith("!:", StringComparison.InvariantCultureIgnoreCase))
