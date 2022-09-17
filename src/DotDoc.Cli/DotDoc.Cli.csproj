@@ -7,7 +7,19 @@
         <Nullable>enable</Nullable>
         <LangVersion>10.0</LangVersion>
         <PackAsTool>true</PackAsTool>
+    </PropertyGroup>
+    <PropertyGroup>
         <ToolCommandName>dotdoc</ToolCommandName>
+        <Authors>Archway</Authors>
+        <Description>Markdown document generator.</Description>
+        <Copyright>Copyright 2022 (c) Archway inc. All rights reserved.</Copyright>
+        <PackageTags>markdown xml comment document</PackageTags>
+        <PackageLicenseExpression>https://github.com/Archway-SharedLib/dotdoc/blob/main/LICENSE</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/Archway-SharedLib/dotdoc</PackageProjectUrl>
+        <RepositoryType>GIT</RepositoryType>
+        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+        <!--minver-->
         <MinVerTagPrefix>v</MinVerTagPrefix>
         <MinVerDefaultPreReleasePhase>preview</MinVerDefaultPreReleasePhase>
     </PropertyGroup>
