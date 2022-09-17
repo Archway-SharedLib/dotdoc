@@ -73,6 +73,13 @@ public class TextTransform
             var newText = curr ?? string.Empty;
             return newText.Replace(val, "\\" + val);
         });
+    
+    public string EscapeMdLinkText(string? text)
+        => new[] { "`" }.Aggregate(text ?? string.Empty, (curr, val) =>
+        {
+            var newText = curr ?? string.Empty;
+            return newText.Replace(val, "\\" + val);
+        });
 
     public string ToMdLink(IDocItem baseItem, string? key, string? display = null, bool toCodeIfNoLink = true)
     {
@@ -84,7 +91,7 @@ public class TextTransform
 
         if (_items.TryGet(key, out var destItem))
         {
-            return $"[{EscapeMdText(display ?? destItem.DisplayName)}]({_fileSystemOperation.GetRelativeLink(baseItem, destItem)})";
+            return $"[{EscapeMdText(display ?? destItem.DisplayName)}]({EscapeMdLinkText(_fileSystemOperation.GetRelativeLink(baseItem, destItem))})";
         }
         
         if (key.StartsWith("!:", StringComparison.InvariantCultureIgnoreCase))
