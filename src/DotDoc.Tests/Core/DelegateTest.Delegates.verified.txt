@@ -34,7 +34,7 @@ namespace Test;
 | Name | Summary |
 |------|---------|
 | [PublicDelegate](./Test/PublicDelegate.md) | パブリックなデリゲートです。 |
-| [PublicDelegate\<T\>](./Test/PublicDelegate`1.md) | パブリックなTをもつデリゲートです。 |
+| [PublicDelegate\<T\>](./Test/PublicDelegate\`1.md) | パブリックなTをもつデリゲートです。 |
 
 
 

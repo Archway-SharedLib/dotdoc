@@ -33,7 +33,7 @@ namespace Test;
 
 | Name | Summary |
 |------|---------|
-| [NormalClass\<T\>](./Test/NormalClass`1.md) | 型パラメーター`T`をもつ |
+| [NormalClass\<T\>](./Test/NormalClass\`1.md) | 型パラメーター`T`をもつ |
 
 
 

@@ -33,7 +33,7 @@ namespace Test;
 
 | Name | Summary |
 |------|---------|
-| [Dic\<T, T2\>](./Test/Dic`2.md) |  |
+| [Dic\<T, T2\>](./Test/Dic\`2.md) |  |
 
 
 

@@ -172,12 +172,14 @@ namespace DotDoc.Core.Write
         
         public string GetRelativeLink(IDocItem source, IDocItem dest)
         {
+            string FileName(string target) => SafeFileOrDirectoryName(_textTransform.EscapeMdText(target));
+            
             var basePath = dest switch
             {
-                AssemblyDocItem => $"{SafeFileOrDirectoryName(dest.ToFileName())}.md",
-                NamespaceDocItem n => $"{SafeFileOrDirectoryName(_docItemContainer.Get(n.AssemblyId).ToFileName())}/{SafeFileOrDirectoryName(dest.ToFileName())}.md",
-                TypeDocItem t => $"{SafeFileOrDirectoryName(_docItemContainer.Get(t.AssemblyId).ToFileName())}/{SafeFileOrDirectoryName(_docItemContainer.Get(t.NamespaceId).ToFileName())}/{SafeFileOrDirectoryName(dest.ToFileName())}.md",
-                IMemberDocItem m => $"{SafeFileOrDirectoryName(_docItemContainer.Get(m.AssemblyId).ToFileName())}/{SafeFileOrDirectoryName(_docItemContainer.Get(m.NamespaceId).ToFileName())}/{SafeFileOrDirectoryName(_docItemContainer.Get(m.TypeId).ToFileName())}/{SafeFileOrDirectoryName(dest.ToFileName())}.md",
+                AssemblyDocItem => $"{FileName(dest.ToFileName())}.md",
+                NamespaceDocItem n => $"{FileName(_docItemContainer.Get(n.AssemblyId).ToFileName())}/{FileName(dest.ToFileName())}.md",
+                TypeDocItem t => $"{FileName(_docItemContainer.Get(t.AssemblyId).ToFileName())}/{FileName(_docItemContainer.Get(t.NamespaceId).ToFileName())}/{FileName(dest.ToFileName())}.md",
+                IMemberDocItem m => $"{FileName(_docItemContainer.Get(m.AssemblyId).ToFileName())}/{FileName(_docItemContainer.Get(m.NamespaceId).ToFileName())}/{FileName(_docItemContainer.Get(m.TypeId).ToFileName())}/{FileName(dest.ToFileName())}.md",
                 _ => string.Empty,
             };
             return source switch

@@ -52,7 +52,7 @@ public abstract class BasePage
         foreach (var item in items)
         {
             var nameCellValue = 
-                $"[{_transform.EscapeMdText(item.DisplayName)}](./{_docItem.ToFileName()}/{item.ToFileName()}.md)";
+                $"[{_transform.EscapeMdText(item.DisplayName)}](./{_transform.EscapeMdText(_docItem.ToFileName())}/{_transform.EscapeMdText(item.ToFileName())}.md)";
 
             sb.AppendLine($@"| {nameCellValue} | {_transform.ToMdText(_docItem, item, t => t.XmlDocInfo?.Summary, true).Replace("\n", "<br />").Replace("\r", "")} |");
         }

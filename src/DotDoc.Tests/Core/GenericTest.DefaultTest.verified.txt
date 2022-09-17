@@ -33,7 +33,7 @@ namespace Test;
 
 | Name | Summary |
 |------|---------|
-| [GenericClass\<T\>](./Test/GenericClass`1.md) | Genericクラスです。 |
+| [GenericClass\<T\>](./Test/GenericClass\`1.md) | Genericクラスです。 |
 
 
 
@@ -64,8 +64,8 @@ Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > Gen
 
 | Name | Summary |
 |------|---------|
-| [GenericMethod\<T1\>\(T\)](./GenericClass`1/GenericMethod.md) | T1です。 |
-| [GenericMethod\<T1, T2, T3\>\(T\)](./GenericClass`1/GenericMethod.md) | T３つです。 |
+| [GenericMethod\<T1\>\(T\)](./GenericClass\`1/GenericMethod.md) | T1です。 |
+| [GenericMethod\<T1, T2, T3\>\(T\)](./GenericClass\`1/GenericMethod.md) | T３つです。 |
 
 
 

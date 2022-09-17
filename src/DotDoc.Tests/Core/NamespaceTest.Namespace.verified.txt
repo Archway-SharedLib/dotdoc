@@ -33,7 +33,7 @@ namespace Test.Test2;
 
 | Name | Summary |
 |------|---------|
-| [Test3](./Test.Test2/Test3.md) |  |
+| [Test3](./Test\.Test2/Test3.md) |  |
 
 
 
