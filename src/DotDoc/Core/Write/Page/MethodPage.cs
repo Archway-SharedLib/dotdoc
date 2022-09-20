@@ -16,7 +16,7 @@ public class MethodPage: BasePage, IPage
     
     public string Write()
     {
-        var sb = new StringBuilder();
+        var sb = new TextBuilder();
         AppendTitle(sb, $"{_item.DisplayName} Method");
         AppendNamespaceAssemblyInformation(sb, _item.AssemblyId, _item.NamespaceId, 2);
 

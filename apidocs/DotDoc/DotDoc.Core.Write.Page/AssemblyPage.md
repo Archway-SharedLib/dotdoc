@@ -24,5 +24,5 @@ Implements: [IPage](../../DotDoc/DotDoc.Core.Write.Page/IPage.md)
 | Name | Summary |
 |------|---------|
 | [Write\(\)](./AssemblyPage/Write.md) |  |
-| [AppendItemList\<T\>\(StringBuilder, string, IEnumerable\<IDocItem\>, int\)](./AssemblyPage/AppendItemList.md) |  |
+| [AppendItemList\<T\>\(TextBuilder, string, IEnumerable\<IDocItem\>, int\)](./AssemblyPage/AppendItemList.md) |  |
 

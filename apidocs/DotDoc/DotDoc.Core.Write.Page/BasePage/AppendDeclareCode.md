@@ -1,4 +1,4 @@
-﻿# AppendDeclareCode\(StringBuilder\) Method
+﻿# AppendDeclareCode\(TextBuilder\) Method
 
 namespace: [DotDoc\.Core\.Write\.Page](../../DotDoc.Core.Write.Page.md)<br />
 assembly: [DotDoc](../../../DotDoc.md)
@@ -6,12 +6,12 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-protected virtual void AppendDeclareCode(StringBuilder sb);
+protected virtual void AppendDeclareCode(TextBuilder sb);
 ```
 
 ## Parameters
 
-__sb__ : [StringBuilder](https://docs.microsoft.com/dotnet/api/System.Text.StringBuilder)
+__sb__ : [TextBuilder](../../../DotDoc/DotDoc.Core.Write/TextBuilder.md)
 
 
 

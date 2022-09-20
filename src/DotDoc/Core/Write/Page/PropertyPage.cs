@@ -16,7 +16,7 @@ public class PropertyPage: BasePage, IPage
     
     public string Write()
     {
-        var sb = new StringBuilder();
+        var sb = new TextBuilder();
         AppendTitle(sb, $"{_item.DisplayName} Property");
         AppendNamespaceAssemblyInformation(sb, _item.AssemblyId, _item.NamespaceId, 2);
 

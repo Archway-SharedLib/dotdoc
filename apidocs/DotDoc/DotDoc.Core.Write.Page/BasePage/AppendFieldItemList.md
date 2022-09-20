@@ -1,4 +1,4 @@
-﻿# AppendFieldItemList\(StringBuilder, IEnumerable\<IDocItem\>, int, bool\) Method
+﻿# AppendFieldItemList\(TextBuilder, IEnumerable\<IDocItem\>, int, bool\) Method
 
 namespace: [DotDoc\.Core\.Write\.Page](../../DotDoc.Core.Write.Page.md)<br />
 assembly: [DotDoc](../../../DotDoc.md)
@@ -6,12 +6,12 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-protected virtual void AppendFieldItemList(StringBuilder sb ,IEnumerable<IDocItem> docItems ,int depth = 2 ,bool needFieldLInk = True);
+protected virtual void AppendFieldItemList(TextBuilder sb ,IEnumerable<IDocItem> docItems ,int depth = 2 ,bool needFieldLInk = True);
 ```
 
 ## Parameters
 
-__sb__ : [StringBuilder](https://docs.microsoft.com/dotnet/api/System.Text.StringBuilder)
+__sb__ : [TextBuilder](../../../DotDoc/DotDoc.Core.Write/TextBuilder.md)
 
 
 

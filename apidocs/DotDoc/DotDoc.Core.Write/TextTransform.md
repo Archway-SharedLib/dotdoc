@@ -23,5 +23,6 @@ Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > Tex
 |------|---------|
 | [ToMdText\<T\>\(IDocItem, T, Func\<T, string\>, bool\)](./TextTransform/ToMdText.md) |  |
 | [EscapeMdText\(string?\)](./TextTransform/EscapeMdText.md) |  |
+| [EscapeMdLinkText\(string?\)](./TextTransform/EscapeMdLinkText.md) |  |
 | [ToMdLink\(IDocItem, string?, string?, bool\)](./TextTransform/ToMdLink.md) |  |
 

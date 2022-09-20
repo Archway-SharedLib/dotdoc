@@ -21,16 +21,16 @@ Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > Bas
 
 | Name | Summary |
 |------|---------|
-| [AppendTitle\(StringBuilder, string, int\)](./BasePage/AppendTitle.md) |  |
-| [AppendExample\(StringBuilder, IDocItem, IDocItem, int\)](./BasePage/AppendExample.md) |  |
-| [AppendRemarks\(StringBuilder, IDocItem, IDocItem, int\)](./BasePage/AppendRemarks.md) |  |
-| [AppendItemList\<T\>\(StringBuilder, string, IEnumerable\<IDocItem\>, int\)](./BasePage/AppendItemList.md) |  |
-| [AppendFieldItemList\(StringBuilder, IEnumerable\<IDocItem\>, int, bool\)](./BasePage/AppendFieldItemList.md) |  |
-| [AppendTypeParameterList\(StringBuilder, IEnumerable\<TypeParameterDocItem\>, int\)](./BasePage/AppendTypeParameterList.md) |  |
-| [AppendDeclareCode\(StringBuilder\)](./BasePage/AppendDeclareCode.md) |  |
-| [AppendNamespaceAssemblyInformation\(StringBuilder, string, string, int\)](./BasePage/AppendNamespaceAssemblyInformation.md) |  |
-| [AppendAssemblyInformation\(StringBuilder, string, int\)](./BasePage/AppendAssemblyInformation.md) |  |
-| [AppendInheritAndImplements\(StringBuilder, TypeDocItem\)](./BasePage/AppendInheritAndImplements.md) |  |
-| [AppendParameterList\(StringBuilder, IEnumerable\<ParameterDocItem\>, int\)](./BasePage/AppendParameterList.md) |  |
-| [AppendReturnValue\(StringBuilder, ReturnItem, int\)](./BasePage/AppendReturnValue.md) |  |
+| [AppendTitle\(TextBuilder, string, int\)](./BasePage/AppendTitle.md) |  |
+| [AppendExample\(TextBuilder, IDocItem, IDocItem, int\)](./BasePage/AppendExample.md) |  |
+| [AppendRemarks\(TextBuilder, IDocItem, IDocItem, int\)](./BasePage/AppendRemarks.md) |  |
+| [AppendItemList\<T\>\(TextBuilder, string, IEnumerable\<IDocItem\>, int\)](./BasePage/AppendItemList.md) |  |
+| [AppendFieldItemList\(TextBuilder, IEnumerable\<IDocItem\>, int, bool\)](./BasePage/AppendFieldItemList.md) |  |
+| [AppendTypeParameterList\(TextBuilder, IEnumerable\<TypeParameterDocItem\>, int\)](./BasePage/AppendTypeParameterList.md) |  |
+| [AppendDeclareCode\(TextBuilder\)](./BasePage/AppendDeclareCode.md) |  |
+| [AppendNamespaceAssemblyInformation\(TextBuilder, string, string, int\)](./BasePage/AppendNamespaceAssemblyInformation.md) |  |
+| [AppendAssemblyInformation\(TextBuilder, string, int\)](./BasePage/AppendAssemblyInformation.md) |  |
+| [AppendInheritAndImplements\(TextBuilder, TypeDocItem\)](./BasePage/AppendInheritAndImplements.md) |  |
+| [AppendParameterList\(TextBuilder, IEnumerable\<ParameterDocItem\>, int\)](./BasePage/AppendParameterList.md) |  |
+| [AppendReturnValue\(TextBuilder, ReturnItem, int\)](./BasePage/AppendReturnValue.md) |  |
 

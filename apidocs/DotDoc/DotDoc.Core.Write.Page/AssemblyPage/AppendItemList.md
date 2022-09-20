@@ -1,4 +1,4 @@
-﻿# AppendItemList\<T\>\(StringBuilder, string, IEnumerable\<IDocItem\>, int\) Method
+﻿# AppendItemList\<T\>\(TextBuilder, string, IEnumerable\<IDocItem\>, int\) Method
 
 namespace: [DotDoc\.Core\.Write\.Page](../../DotDoc.Core.Write.Page.md)<br />
 assembly: [DotDoc](../../../DotDoc.md)
@@ -6,7 +6,7 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-protected override void AppendItemList<T>(StringBuilder sb ,string title ,IEnumerable<IDocItem> docItems ,int depth = 2);
+protected override void AppendItemList<T>(TextBuilder sb ,string title ,IEnumerable<IDocItem> docItems ,int depth = 2);
 ```
 
 ## Type Parameters
@@ -17,7 +17,7 @@ __T__ : [IDocItem](../../../DotDoc/DotDoc.Core.Models/IDocItem.md)
 
 ## Parameters
 
-__sb__ : [StringBuilder](https://docs.microsoft.com/dotnet/api/System.Text.StringBuilder)
+__sb__ : [TextBuilder](../../../DotDoc/DotDoc.Core.Write/TextBuilder.md)
 
 
 

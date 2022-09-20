@@ -18,10 +18,10 @@ public abstract class BasePage
         _itemContainer = itemContainer;
     }
 
-    protected virtual void AppendTitle(StringBuilder sb, string title, int depth = 1) =>
+    protected virtual void AppendTitle(TextBuilder sb, string title, int depth = 1) =>
         sb.AppendLine($"{string.Concat(Enumerable.Repeat("#", depth))} {_transform.EscapeMdText(title)}").AppendLine();
 
-    protected virtual void AppendExample(StringBuilder sb, IDocItem root, IDocItem target, int depth = 2)
+    protected virtual void AppendExample(TextBuilder sb, IDocItem root, IDocItem target, int depth = 2)
     {
         if (!string.IsNullOrEmpty(target.XmlDocInfo?.Example))
         {
@@ -30,7 +30,7 @@ public abstract class BasePage
         }
     }
     
-    protected virtual void AppendRemarks(StringBuilder sb, IDocItem root, IDocItem target, int depth = 2)
+    protected virtual void AppendRemarks(TextBuilder sb, IDocItem root, IDocItem target, int depth = 2)
     {
         if (!string.IsNullOrEmpty(target.XmlDocInfo?.Remarks))
         {
@@ -39,7 +39,7 @@ public abstract class BasePage
         }
     }
     
-    protected virtual void AppendItemList<T>(StringBuilder sb, string title, IEnumerable<IDocItem> docItems, int depth = 2) where T : IDocItem
+    protected virtual void AppendItemList<T>(TextBuilder sb, string title, IEnumerable<IDocItem> docItems, int depth = 2) where T : IDocItem
     {
         var items = docItems.OrEmpty().OfType<T>();
         if (!items.Any()) return;
@@ -60,7 +60,7 @@ public abstract class BasePage
         sb.AppendLine();
     }
     
-    protected virtual void AppendFieldItemList(StringBuilder sb, IEnumerable<IDocItem> docItems, int depth = 2, bool needFieldLInk = true)
+    protected virtual void AppendFieldItemList(TextBuilder sb, IEnumerable<IDocItem> docItems, int depth = 2, bool needFieldLInk = true)
     {
         var items = docItems.OrEmpty().OfType<FieldDocItem>();
         if (!items.Any()) return;
@@ -92,7 +92,7 @@ public abstract class BasePage
         return _transform.EscapeMdText(text);
     }
     
-    protected virtual void AppendTypeParameterList(StringBuilder sb, IEnumerable<TypeParameterDocItem> typeParameters, int depth = 2)
+    protected virtual void AppendTypeParameterList(TextBuilder sb, IEnumerable<TypeParameterDocItem> typeParameters, int depth = 2)
     {
         if(typeParameters.Any())
         {
@@ -137,7 +137,7 @@ public abstract class BasePage
         return result;
     }
     
-    protected virtual void AppendDeclareCode(StringBuilder sb)
+    protected virtual void AppendDeclareCode(TextBuilder sb)
     {
         sb.AppendLine("```csharp");
         sb.AppendLine(_docItem.ToDeclareCSharpCode());
@@ -145,7 +145,7 @@ public abstract class BasePage
         sb.AppendLine();
     }
     
-    protected virtual void AppendNamespaceAssemblyInformation(StringBuilder sb, string assemblyId, string namespaceId, int indent = 1)
+    protected virtual void AppendNamespaceAssemblyInformation(TextBuilder sb, string assemblyId, string namespaceId, int indent = 1)
     {
         var nsDocItem = _itemContainer.Get(namespaceId);
         
@@ -153,13 +153,13 @@ public abstract class BasePage
         AppendAssemblyInformation(sb, assemblyId, indent + 1);
     }
     
-    protected virtual void AppendAssemblyInformation(StringBuilder sb, string assemblyId, int indent = 1)
+    protected virtual void AppendAssemblyInformation(TextBuilder sb, string assemblyId, int indent = 1)
     {
         var assemDocItem = _itemContainer.Get(assemblyId);
         sb.AppendLine($"assembly: [{_transform.EscapeMdText(assemDocItem.DisplayName)}]({string.Concat(Enumerable.Repeat("../", indent))}{assemDocItem.ToFileName()}.md)").AppendLine();
     }
     
-    protected virtual void AppendInheritAndImplements(StringBuilder sb, TypeDocItem typeDocItem)
+    protected virtual void AppendInheritAndImplements(TextBuilder sb, TypeDocItem typeDocItem)
     {
         if (typeDocItem.BaseType is not null)
         {
@@ -180,7 +180,7 @@ public abstract class BasePage
         }
     }
     
-    protected virtual void AppendParameterList(StringBuilder sb, IEnumerable<ParameterDocItem> parameters, int depth = 2)
+    protected virtual void AppendParameterList(TextBuilder sb, IEnumerable<ParameterDocItem> parameters, int depth = 2)
     {
         var paramList = parameters.ToList();
         if(paramList.Any())
@@ -195,21 +195,11 @@ public abstract class BasePage
                     .AppendLine($"{_transform.ToMdText(_docItem, param, t => t.XmlDocText)}")
                     .AppendLine();
             }
-            
-            // sb.AppendLine("| Type | Name | Summary |");
-            // sb.AppendLine("|------|------|---------|");
-            // foreach(var param in paramList)
-            // {
-            //     var linkType = param.TypeInfo.GetLinkTypeInfo();
-            //     sb.AppendLine($@"| {_transform.ToMdLink(_docItem,  linkType.TypeId, linkType.DisplayName)} | {_transform.EscapeMdText(param.DisplayName)} | {_transform.ToMdText(_docItem, param, t => t.XmlDocText, true).Replace("\n", "<br />").Replace("\r", "")} |");
-            // }
-            // sb.AppendLine();
-            
-            
+           
         }
     }
     
-    protected virtual void AppendReturnValue(StringBuilder sb, ReturnItem returnItem, int depth = 2)
+    protected virtual void AppendReturnValue(TextBuilder sb, ReturnItem returnItem, int depth = 2)
     {
         if (returnItem?.TypeInfo is null) return;
             

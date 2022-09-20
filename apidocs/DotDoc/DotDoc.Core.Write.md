@@ -18,6 +18,7 @@ namespace DotDoc.Core.Write;
 | [PhysicalFileModel](./DotDoc.Core.Write/PhysicalFileModel.md) |  |
 | [PhysicalFsModel](./DotDoc.Core.Write/PhysicalFsModel.md) |  |
 | [PhysicalDirectoryModel](./DotDoc.Core.Write/PhysicalDirectoryModel.md) |  |
+| [TextBuilder](./DotDoc.Core.Write/TextBuilder.md) | [System\.Text\.StringBuilder](https://docs.microsoft.com/dotnet/api/System.Text.StringBuilder) のラッパーを定義します。 |
 | [TextTransform](./DotDoc.Core.Write/TextTransform.md) |  |
 | [WriteUtil](./DotDoc.Core.Write/WriteUtil.md) |  |
 

@@ -16,7 +16,7 @@ public class NamespacePage: BasePage, IPage
     
     public string Write()
     {
-        var sb = new StringBuilder();
+        var sb = new TextBuilder();
   
         AppendTitle(sb, $"{_item.DisplayName} Namespace");
         AppendAssemblyInformation(sb, _item.AssemblyId);

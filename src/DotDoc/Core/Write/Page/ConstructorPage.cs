@@ -18,8 +18,8 @@ public class ConstructorPage: BasePage, IPage
     
     public string Write()
     {
-        var sb = new StringBuilder();
-        AppendTitle(sb,$"{_itemContainer.Get(_item.TypeId).DisplayName} Constructor");
+        var sb = new TextBuilder();
+        AppendTitle(sb, $"{_itemContainer.Get(_item.TypeId).DisplayName} Constructor");
             
         AppendNamespaceAssemblyInformation(sb, _item.AssemblyId, _item.NamespaceId, 2);
             
@@ -64,7 +64,7 @@ public class ConstructorPage: BasePage, IPage
         return sb.ToString();
     }
 
-    private void AppendDeclareCode(StringBuilder sb, ConstructorDocItem item)
+    private void AppendDeclareCode(TextBuilder sb, ConstructorDocItem item)
     {
         sb.AppendLine("```csharp");
         sb.AppendLine(item.ToDeclareCSharpCode());

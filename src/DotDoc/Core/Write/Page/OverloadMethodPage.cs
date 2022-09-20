@@ -16,7 +16,7 @@ public class OverloadMethodPage: BasePage, IPage
     
     public string Write()
     {
-        var sb = new StringBuilder();
+        var sb = new TextBuilder();
         AppendTitle(sb, $"{_item.DisplayName} Method");
         AppendNamespaceAssemblyInformation(sb, _item.AssemblyId, _item.NamespaceId, 2);
 
@@ -53,7 +53,7 @@ public class OverloadMethodPage: BasePage, IPage
         return sb.ToString();
     }
 
-    private void AppendDeclareCode(StringBuilder sb, MethodDocItem item)
+    private void AppendDeclareCode(TextBuilder sb, MethodDocItem item)
     {
         sb.AppendLine("```csharp");
         sb.AppendLine(item.ToDeclareCSharpCode());
@@ -61,7 +61,7 @@ public class OverloadMethodPage: BasePage, IPage
         sb.AppendLine();
     }
     
-    private void AppendReturnValue(StringBuilder sb, MethodDocItem item, int depth = 2)
+    private void AppendReturnValue(TextBuilder sb, MethodDocItem item, int depth = 2)
     {
         if (item.ReturnValue?.TypeInfo is null) return;
             

@@ -18,7 +18,7 @@ public class AssemblyPage: BasePage, IPage
     
     public string Write()
     {
-        var sb = new StringBuilder();
+        var sb = new TextBuilder();
         
         AppendTitle(sb, $"{_docItem.DisplayName} Assembly");
         
@@ -29,7 +29,7 @@ public class AssemblyPage: BasePage, IPage
         return sb.ToString();
     }
 
-    protected override void AppendItemList<T>(StringBuilder sb, string title, IEnumerable<IDocItem> docItems, int depth = 2)
+    protected override void AppendItemList<T>(TextBuilder sb, string title, IEnumerable<IDocItem> docItems, int depth = 2)
     {
         var items = docItems.OrEmpty().OfType<T>().Where(i => !(_options.IgnoreEmptyNamespace && !i.Items.Any())).ToList();
         if (!items.Any()) return;

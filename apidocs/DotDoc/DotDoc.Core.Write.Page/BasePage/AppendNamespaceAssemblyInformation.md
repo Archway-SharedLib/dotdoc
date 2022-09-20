@@ -1,4 +1,4 @@
-﻿# AppendNamespaceAssemblyInformation\(StringBuilder, string, string, int\) Method
+﻿# AppendNamespaceAssemblyInformation\(TextBuilder, string, string, int\) Method
 
 namespace: [DotDoc\.Core\.Write\.Page](../../DotDoc.Core.Write.Page.md)<br />
 assembly: [DotDoc](../../../DotDoc.md)
@@ -6,12 +6,12 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-protected virtual void AppendNamespaceAssemblyInformation(StringBuilder sb ,string assemblyId ,string namespaceId ,int indent = 1);
+protected virtual void AppendNamespaceAssemblyInformation(TextBuilder sb ,string assemblyId ,string namespaceId ,int indent = 1);
 ```
 
 ## Parameters
 
-__sb__ : [StringBuilder](https://docs.microsoft.com/dotnet/api/System.Text.StringBuilder)
+__sb__ : [TextBuilder](../../../DotDoc/DotDoc.Core.Write/TextBuilder.md)
 
 
 

@@ -1,4 +1,4 @@
-﻿# AppendReturnValue\(StringBuilder, ReturnItem, int\) Method
+﻿# AppendReturnValue\(TextBuilder, ReturnItem, int\) Method
 
 namespace: [DotDoc\.Core\.Write\.Page](../../DotDoc.Core.Write.Page.md)<br />
 assembly: [DotDoc](../../../DotDoc.md)
@@ -6,12 +6,12 @@ assembly: [DotDoc](../../../DotDoc.md)
 
 
 ```csharp
-protected virtual void AppendReturnValue(StringBuilder sb ,ReturnItem returnItem ,int depth = 2);
+protected virtual void AppendReturnValue(TextBuilder sb ,ReturnItem returnItem ,int depth = 2);
 ```
 
 ## Parameters
 
-__sb__ : [StringBuilder](https://docs.microsoft.com/dotnet/api/System.Text.StringBuilder)
+__sb__ : [TextBuilder](../../../DotDoc/DotDoc.Core.Write/TextBuilder.md)
 
 
 
