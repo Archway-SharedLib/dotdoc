@@ -9,6 +9,7 @@
         <PackAsTool>true</PackAsTool>
     </PropertyGroup>
     <PropertyGroup>
+        <PackageId>dotnet-dotdoc</PackageId>
         <ToolCommandName>dotdoc</ToolCommandName>
         <Authors>Archway</Authors>
         <Description>Markdown document generator.</Description>
