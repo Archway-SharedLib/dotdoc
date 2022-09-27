@@ -1,3 +1,5 @@
+<img src="./assets/logo/logo.svg" alt="logo" height="192px" style="margin-bottom:2rem;" />
+
 # dotdoc
 
 Reads XML document comments contained in the solution or project file and generates Markdown. It can be viewed on the Azure DevOps Wiki.
