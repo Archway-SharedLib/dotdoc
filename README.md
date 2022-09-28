@@ -6,13 +6,25 @@ Reads XML document comments contained in the solution or project file and genera
 
 ## Usage
 
-TODO: I'll write when I release it.
+```bash
+# add tool manifest
+dotnet new tool-manifest
+
+# install dotdoc locally
+dotnet tool install dotnet-dotdoc
+
+# create dotdoc Configuration
+dotnet tool run dotdoc init
+
+# generate document from solution/project
+dotnet tool run dotdoc run
+```
 
 ## Commands
 
 ### init
 
-```
+```bash
 dotdoc init
 ```
 
@@ -20,7 +32,7 @@ Generate a `.dotdoc` file to the current directory containing the default settin
 
 ### run
 
-```
+```bash
 dotdoc run
 ```
 
@@ -123,7 +135,7 @@ Inline elements are available as childe nodes of section and block elements. Lin
 
 - [\<c\>](https://docs.microsoft.com/dotnet/csharp/language-reference/language-specification/documentation-comments#c)
 - [\<see\>](https://docs.microsoft.com/dotnet/csharp/language-reference/language-specification/documentation-comments#see)
-- [\paramref\>](https://docs.microsoft.com/dotnet/csharp/language-reference/language-specification/documentation-comments#paramref)
+- [\<paramref\>](https://docs.microsoft.com/dotnet/csharp/language-reference/language-specification/documentation-comments#paramref)
 - [\<typeparamref\>](https://docs.microsoft.com/dotnet/csharp/language-reference/language-specification/documentation-comments#typeparamref)
 
 ### Miscellaneous Elements
