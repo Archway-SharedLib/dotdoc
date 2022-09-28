@@ -20,6 +20,7 @@
         <RepositoryType>GIT</RepositoryType>
         <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
         <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+        <PackageReadmeFile>..\..\README.md</PackageReadmeFile>
         <!--minver-->
         <MinVerTagPrefix>v</MinVerTagPrefix>
         <MinVerDefaultPreReleasePhase>preview</MinVerDefaultPreReleasePhase>
