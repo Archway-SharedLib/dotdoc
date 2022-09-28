@@ -167,3 +167,7 @@ This element is used to define the content that should appear on the auto-genera
     <!--each section elements-->
 </overloads>
 ```
+
+## Example
+
+- [dotdoc apidocs](./apidocs/DotDoc.md)
