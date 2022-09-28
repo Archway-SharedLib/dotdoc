@@ -1,8 +1,6 @@
-using System.Text;
-using System.Text.Json;
-using System.Text.Json.Nodes;
-using System.Text.Json.Serialization;
 using DotDoc.Core;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace DotDoc.Cli;
 
@@ -12,7 +10,7 @@ public class InitHandler: IHandler
     {
         var currDir = Directory.GetCurrentDirectory();
         var slnFileName = Directory.GetFiles(currDir, "*.sln", SearchOption.AllDirectories).FirstOrDefault();
-        var inputFile = slnFileName is not null ? Path.GetRelativePath(currDir, slnFileName) : string.Empty;
+        var inputFile = (slnFileName is not null ? Path.GetRelativePath(currDir, slnFileName) : string.Empty).Replace('\\', '/');
         if (!string.IsNullOrEmpty(inputFile))
         {
             logger.Trace($"Found {inputFile}.");
