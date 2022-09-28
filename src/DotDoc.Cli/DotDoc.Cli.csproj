@@ -20,11 +20,11 @@
         <RepositoryType>GIT</RepositoryType>
         <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
         <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-        <PackageReadmeFile>..\..\README.md</PackageReadmeFile>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
         <!--minver-->
         <MinVerTagPrefix>v</MinVerTagPrefix>
         <MinVerDefaultPreReleasePhase>preview</MinVerDefaultPreReleasePhase>
-        <PackageIcon>logo_128.png</PackageIcon>
+        <PackageIcon>/assets/logo/logo_128.png</PackageIcon>
         <RepositoryUrl>https://github.com/Archway-SharedLib/dotdoc</RepositoryUrl>
     </PropertyGroup>
 
@@ -38,7 +38,15 @@
     <ItemGroup>
         <None Include="..\..\assets\logo\logo_128.png">
             <Pack>True</Pack>
-            <PackagePath></PackagePath>
+            <PackagePath>/assets/logo</PackagePath>
+        </None>
+        <None Include="..\..\assets\logo\logo.svg">
+            <Pack>True</Pack>
+            <PackagePath>/assets/logo</PackagePath>
+        </None>
+        <None Include="..\..\README.md">
+            <Pack>True</Pack>
+            <PackagePath>\</PackagePath>
         </None>
     </ItemGroup>
 </Project>
