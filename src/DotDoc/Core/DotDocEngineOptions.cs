@@ -90,6 +90,14 @@ namespace DotDoc.Core
         /// </summary>
         public string XmlDocumentFile { get; set; } = "assembliesdoc.xml";
 
+        /// <summary>
+        /// 処理前にファイルおよびディレクトリを削除するかどうか
+        /// </summary>
         public bool RemoveAssembliesPageAndDir { get; set; } = false;
+
+        /// <summary>
+        /// サマリのテキストを指定します。
+        /// </summary>
+        public string Summry { get; set; } = string.Empty;
     }
 }

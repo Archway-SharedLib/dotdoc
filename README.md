@@ -64,7 +64,8 @@ Configurations are set in the `.dotdoc` file.
   "AssembliesPage": {
     "Name": "Assemblies",
     "XmlDocumentFile": "assemblies.xml",
-    "RemoveAssembliesPageAndDir": true
+    "RemoveAssembliesPageAndDir": true,
+    "Summary" : "Summary text for assemblies page"
   }
 }
 ```
@@ -100,7 +101,7 @@ Specifies the destination directory. If it does not exist, it will be created.
 
 ### RemoveOutputDir
 
-Specifies whether the output directory is deleted before processing.
+Specifies whether the output directory is deleted before processing. Default is false.
 
 ### IgnoreEmptyNamespace
 
@@ -114,16 +115,26 @@ Specify whether to exclude the `AssemblyDoc` and `NamespaceDoc` classes.
 
 Specify whether or not to output assemblies page. Default is false.
 
-__Name__ : Used for file and directory names and titles.
+### AssembliesPage.Name
 
-__XmlDocumentFile__ : Specify the name of the XML file that defines the contents of the assemblies page. The XML format is the same as for ordinary document comments. The root element must be `member`.
+Used for file and directory names and titles.
+
+### AssembliesPage.XmlDocumentFile
+
+Specify the name of the XML file that defines the contents of the assemblies page. The XML format is the same as for ordinary document comments. The root element must be `member`.
 ```xml
 <member>
   <summary>This is summary text for assemblies page.</summary>
 </member>
 ```
 
-__RemoveAssembliesPageAndDir__: Specifies whether the output file and directory is deleted before processing.
+### AssembliesPage.Summary
+
+Specify summary text. This value overrides the value of the `summary` element specified in the `XmlDocumentFile`.
+
+### AssembliesPage.RemoveAssembliesPageAndDir
+
+Specifies whether the output file and directory is deleted before processing. Default is false.
 
 ## Documentation Xml Elements
 
