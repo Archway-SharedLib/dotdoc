@@ -28,7 +28,22 @@ namespace DotDoc.Core.Write
         public async Task WriteAsync()
         {
             var rootDir = _fsModel.CreateDirectoryModel(_options.OutputDir);
-            foreach (var assemDocItem in _docItems.OfType<AssemblyDocItem>())
+            rootDir.CreateIfNotExists();
+
+            var assemblyDocItems = _docItems.OfType<AssemblyDocItem>().ToList();
+            if (_options.CreateAssembliesPage)
+            {
+                var docItem = new RootDocItem(_options.AssembliesPage, _fsModel, assemblyDocItems);
+                var safeName = docItem.ToFileName();
+                var pageMd = new AssembliesPage(docItem, _textTransform, _docItemContainer).Write();
+
+                var file = _fsModel.CreateFileModel(_fsModel.PathJoin(rootDir.GetFullName(), safeName + ".md"));
+                file.WriteText(pageMd);
+
+                rootDir = _fsModel.CreateDirectoryModel(_fsModel.PathJoin(rootDir.GetFullName(), safeName));
+            }
+
+            foreach (var assemDocItem in assemblyDocItems)
             {
                 await WriteAssemblyAsync(rootDir, assemDocItem);
             }

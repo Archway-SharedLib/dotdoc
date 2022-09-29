@@ -44,6 +44,8 @@ public class TestFileModel : IFileModel
     public bool Exists() => false;
 
     public string GetExtension() => Path.GetExtension(_fileName);
+
+    public string ReadAll() => string.Empty;   
 }
 
 public class TestDirectoryModel : IDirectoryModel

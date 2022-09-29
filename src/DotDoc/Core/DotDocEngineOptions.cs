@@ -59,6 +59,12 @@ namespace DotDoc.Core
         /// </summary>
         public bool ExcludeDocumentClass { get; set; } = true;
         
+        /// <summary>
+        /// アセンブリの一覧が記載されたページを作るかどうかを指定します。
+        /// </summary>
+        public bool CreateAssembliesPage { get; set; } = false;
+
+        public AssembliesPageOptions AssembliesPage { get; set; }
         // public Func<IFsModel> CreateFsModel { get; init; } = () => new PhysicalFsModel();
 
         public static DotDocEngineOptions Default(string inputFileName)
@@ -70,5 +76,18 @@ namespace DotDoc.Core
                 OutputDir = "./output"
             };
         }
+    }
+
+    public class AssembliesPageOptions
+    {
+        /// <summary>
+        /// ページ名を指定します。ファイル名やディレクトリ名にも利用されます。
+        /// </summary>
+        public string Name { get; set; } = "Assemblies";
+
+        /// <summary>
+        /// ドキュメントが記載されたファイル名を指定します。
+        /// </summary>
+        public string XmlDocumentFile { get; set; } = "assembliesdoc.xml";
     }
 }

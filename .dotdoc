@@ -10,7 +10,7 @@
     "ProtectedInternal"
   ],
   "OutputDir": "./apidocs",
-  "RemoveOutputDir": true,
+  "RemoveOutputDir": false,
   "LogLevel": "Info",
   "IgnoreEmptyNamespace": true,
   "ExcludeDocumentClass": true

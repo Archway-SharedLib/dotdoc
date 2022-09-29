@@ -16,6 +16,7 @@ public interface IFileModel
     void WriteText(string text);
     bool Exists();
     string GetExtension();
+    string ReadAll();
 }
 
 public interface IDirectoryModel
@@ -41,6 +42,12 @@ public class PhysicalFileModel : IFileModel
     public bool Exists() => _fileInfo.Exists;
     
     public string GetExtension() => _fileInfo.Extension;
+
+    public string ReadAll()
+    {
+        using var sr = _fileInfo.OpenText(); ;
+        return sr.ReadToEnd();
+    }
 }
 
 public class PhysicalFsModel : IFsModel
