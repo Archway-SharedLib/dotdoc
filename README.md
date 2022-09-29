@@ -202,4 +202,4 @@ This element is used to define the content that should appear on the auto-genera
 
 ## Example
 
-- [dotdoc apidocs](./apidocs/DotDoc.md)
+- [dotdoc apidocs](./apidocs/Assemblies.md)
