@@ -29,4 +29,6 @@ Inheritance: [object](https://docs.microsoft.com/dotnet/api/System.Object) > Dot
 | [LogLevel](./DotDocEngineOptions/LogLevel.md) | ログレベルを指定します。 |
 | [IgnoreEmptyNamespace](./DotDocEngineOptions/IgnoreEmptyNamespace.md) | 型メンバーをもたない空の名前空間を無視するかどうかを指定します。 |
 | [ExcludeDocumentClass](./DotDocEngineOptions/ExcludeDocumentClass.md) | AssemblyDocやNamespaceDocクラスを除外するかどうかを指定します。 |
+| [CreateAssembliesPage](./DotDocEngineOptions/CreateAssembliesPage.md) | アセンブリの一覧が記載されたページを作るかどうかを指定します。 |
+| [AssembliesPage](./DotDocEngineOptions/AssembliesPage.md) |  |
 

@@ -26,4 +26,6 @@ Implements: [IFileModel](../../DotDoc/DotDoc.Core.Write/IFileModel.md)
 | [WriteText\(string\)](./PhysicalFileModel/WriteText.md) |  |
 | [Exists\(\)](./PhysicalFileModel/Exists.md) |  |
 | [GetExtension\(\)](./PhysicalFileModel/GetExtension.md) |  |
+| [ReadAll\(\)](./PhysicalFileModel/ReadAll.md) |  |
+| [Delete\(\)](./PhysicalFileModel/Delete.md) |  |
 

@@ -17,6 +17,8 @@ public interface IFileModel
     bool Exists();
     string GetExtension();
     string ReadAll();
+
+    void Delete();
 }
 
 public interface IDirectoryModel
@@ -47,6 +49,12 @@ public class PhysicalFileModel : IFileModel
     {
         using var sr = _fileInfo.OpenText(); ;
         return sr.ReadToEnd();
+    }
+
+    public void Delete()
+    {
+        if (!_fileInfo.Exists) return;
+        _fileInfo.Delete();
     }
 }
 

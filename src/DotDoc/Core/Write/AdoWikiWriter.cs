@@ -33,14 +33,25 @@ namespace DotDoc.Core.Write
             var assemblyDocItems = _docItems.OfType<AssemblyDocItem>().ToList();
             if (_options.CreateAssembliesPage)
             {
-                var docItem = new RootDocItem(_options.AssembliesPage, _fsModel, assemblyDocItems);
+                var opt = _options.AssembliesPage ?? new AssembliesPageOptions();
+                var docItem = new RootDocItem(opt, _fsModel, assemblyDocItems);
                 var safeName = docItem.ToFileName();
                 var pageMd = new AssembliesPage(docItem, _textTransform, _docItemContainer).Write();
 
                 var file = _fsModel.CreateFileModel(_fsModel.PathJoin(rootDir.GetFullName(), safeName + ".md"));
+                if(opt.RemoveAssembliesPageAndDir)
+                {
+                    file.Delete();
+                }
+
                 file.WriteText(pageMd);
 
                 rootDir = _fsModel.CreateDirectoryModel(_fsModel.PathJoin(rootDir.GetFullName(), safeName));
+                if (opt.RemoveAssembliesPageAndDir)
+                {
+                    rootDir.Delete();
+                }
+                rootDir.CreateIfNotExists();
             }
 
             foreach (var assemDocItem in assemblyDocItems)

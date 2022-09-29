@@ -29,6 +29,7 @@ namespace DotDoc.Core.Models;
 | [ParameterDocItem](./DotDoc.Core.Models/ParameterDocItem.md) |  |
 | [PropertyDocItem](./DotDoc.Core.Models/PropertyDocItem.md) |  |
 | [ReturnItem](./DotDoc.Core.Models/ReturnItem.md) |  |
+| [RootDocItem](./DotDoc.Core.Models/RootDocItem.md) |  |
 | [StructDocItem](./DotDoc.Core.Models/StructDocItem.md) |  |
 | [TypeDocItem](./DotDoc.Core.Models/TypeDocItem.md) |  |
 | [TypeInfo](./DotDoc.Core.Models/TypeInfo.md) |  |

@@ -12,6 +12,7 @@ namespace DotDoc.Core.Write.Page;
 
 | Name | Summary |
 |------|---------|
+| [AssembliesPage](./DotDoc.Core.Write.Page/AssembliesPage.md) |  |
 | [AssemblyPage](./DotDoc.Core.Write.Page/AssemblyPage.md) |  |
 | [BasePage](./DotDoc.Core.Write.Page/BasePage.md) |  |
 | [ClassPage](./DotDoc.Core.Write.Page/ClassPage.md) |  |

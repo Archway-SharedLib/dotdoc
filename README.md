@@ -59,7 +59,13 @@ Configurations are set in the `.dotdoc` file.
   "RemoveOutputDir": true,
   "IgnoreEmptyNamespace": true,
   "ExcludeDocumentClass": true,
-  "LogLevel": "Info"
+  "LogLevel": "Info",
+  "CreateAssembliesPage": true,
+  "AssembliesPage": {
+    "Name": "Assemblies",
+    "XmlDocumentFile": "assemblies.xml",
+    "RemoveAssembliesPageAndDir": true
+  }
 }
 ```
 
@@ -100,9 +106,24 @@ Specifies whether the output directory is deleted before processing.
 
 Specifies whether or not to output namespaces that do not contain types.
 
-### ExcliceDocumentClass
+### ExcludeDocumentClass
 
 Specify whether to exclude the `AssemblyDoc` and `NamespaceDoc` classes.
+
+### CreateAssembliesPage
+
+Specify whether or not to output assemblies page. Default is false.
+
+__Name__ : Used for file and directory names and titles.
+
+__XmlDocumentFile__ : Specify the name of the XML file that defines the contents of the assemblies page. The XML format is the same as for ordinary document comments. The root element must be `member`.
+```xml
+<member>
+  <summary>This is summary text for assemblies page.</summary>
+</member>
+```
+
+__RemoveAssembliesPageAndDir__: Specifies whether the output file and directory is deleted before processing.
 
 ## Documentation Xml Elements
 

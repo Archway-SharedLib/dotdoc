@@ -10,8 +10,14 @@
     "ProtectedInternal"
   ],
   "OutputDir": "./apidocs",
-  "RemoveOutputDir": false,
+  "RemoveOutputDir": true,
   "LogLevel": "Info",
   "IgnoreEmptyNamespace": true,
-  "ExcludeDocumentClass": true
+  "ExcludeDocumentClass": true,
+  "CreateAssembliesPage": true,
+  "AssembliesPage": {
+    "Name": "Assemblies",
+    "XmlDocumentFile": "apireference.xml",
+    "RemoveAssembliesPageAndDir": true
+  }
 }

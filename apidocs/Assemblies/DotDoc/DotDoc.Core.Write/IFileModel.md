@@ -16,4 +16,6 @@ public interface IFileModel;
 | [WriteText\(string\)](./IFileModel/WriteText.md) |  |
 | [Exists\(\)](./IFileModel/Exists.md) |  |
 | [GetExtension\(\)](./IFileModel/GetExtension.md) |  |
+| [ReadAll\(\)](./IFileModel/ReadAll.md) |  |
+| [Delete\(\)](./IFileModel/Delete.md) |  |
 

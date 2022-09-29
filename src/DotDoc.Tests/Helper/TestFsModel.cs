@@ -35,7 +35,7 @@ public class TestFileModel : IFileModel
     {
         _stringBuilder.AppendLine();
         _stringBuilder.AppendLine("---------------------");
-        _stringBuilder.AppendLine($"file name { _fileName}");
+        _stringBuilder.AppendLine($"file name {_fileName}");
         _stringBuilder.AppendLine("---------------------");
         _stringBuilder.AppendLine();
         _stringBuilder.AppendLine(text);
@@ -45,7 +45,9 @@ public class TestFileModel : IFileModel
 
     public string GetExtension() => Path.GetExtension(_fileName);
 
-    public string ReadAll() => string.Empty;   
+    public string ReadAll() => string.Empty;
+
+    public void Delete(){}
 }
 
 public class TestDirectoryModel : IDirectoryModel

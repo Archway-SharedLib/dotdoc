@@ -89,5 +89,7 @@ namespace DotDoc.Core
         /// ドキュメントが記載されたファイル名を指定します。
         /// </summary>
         public string XmlDocumentFile { get; set; } = "assembliesdoc.xml";
+
+        public bool RemoveAssembliesPageAndDir { get; set; } = false;
     }
 }
