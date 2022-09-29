@@ -98,6 +98,6 @@ namespace DotDoc.Core
         /// <summary>
         /// サマリのテキストを指定します。
         /// </summary>
-        public string Summry { get; set; } = string.Empty;
+        public string Summary { get; set; } = string.Empty;
     }
 }

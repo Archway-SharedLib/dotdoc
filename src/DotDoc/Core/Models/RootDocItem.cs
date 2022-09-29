@@ -13,9 +13,9 @@ namespace DotDoc.Core.Models
             XmlDocInfo = LoadXmlDocumentInfo(fsModel);
             DisplayName = _options.Name;
             Items = assemblies;
-            if(string.IsNullOrEmpty(_options.Summry))
+            if(string.IsNullOrEmpty(_options.Summary))
             {
-                XmlDocInfo.Summary = _options.Summry;
+                XmlDocInfo.Summary = _options.Summary;
             }
         }
 
