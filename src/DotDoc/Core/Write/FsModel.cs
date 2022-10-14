@@ -38,7 +38,7 @@ public class PhysicalFileModel : IFileModel
 
     public void WriteText(string text)
     {
-        File.WriteAllText(_fileInfo.FullName, text, Encoding.UTF8);
+        File.WriteAllText(_fileInfo.FullName, text, new UTF8Encoding(false));
     }
 
     public bool Exists() => _fileInfo.Exists;
