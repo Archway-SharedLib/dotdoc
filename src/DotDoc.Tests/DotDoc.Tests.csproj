@@ -28,6 +28,9 @@
     </ItemGroup>
 
     <ItemGroup>
+      <None Update="Core\AssembliesDocTest.Default.verified.txt">
+        <DependentUpon>AssembliesDocTest.cs</DependentUpon>
+      </None>
       <None Update="Core\ClassTest.Classes.verified.txt">
         <DependentUpon>ClassTest.cs</DependentUpon>
       </None>
